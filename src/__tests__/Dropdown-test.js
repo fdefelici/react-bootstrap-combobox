@@ -1,6 +1,6 @@
 import React from 'react';
 import {cleanup, fireEvent, render, create} from '@testing-library/react';
-import Dropdown from '../index';
+import { Dropdown } from '../index';
 import Enzyme, {shallow} from 'enzyme'
 import Adapter from 'enzyme-adapter-react-16'
 

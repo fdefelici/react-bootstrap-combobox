@@ -1,0 +1,19 @@
+language: node_js
+node_js:
+  - 10.16.0
+install:
+  - npm install -g codecov
+  - npm install
+script:
+  - npm run test
+  - codecov --token=2d6f5593-63fe-418d-aaed-fa7c2f82c0eb
+  - npm run build  
+deploy:
+  provider: npm
+  email: fdf8210@gmail.com
+  api_key:
+    secure: FsheljvMAlSD8xLMmg8W/wwmUMhKPizMoRph1dZOU5Bl8nekM+pCtLs6AlGjxBhLXg9Ubp59lWwz7wBXiekWKSji9hpEiZyTsZqaTJsL3jOGXrejEBS+qkcSoJ7BuFhvSraZd5gwzmgMv+Rel0Waw0AQZXxhcKkGvj2/Cl8MNnJkrn9kI+kcEvO+iFO3HUtb1qx2qxiWcYMkBZsvMa0yi4P7MNaGmecwCpZqvB1ak676nPt02Y3jlMSCMWyF/vDkEAxEsI0KynrpkDpYsVyHyaRaJOUuuVl1nmUSPUzjBYdz5dJcWVTMJcCkvTi3fICFvni0QSQFJnAk1uVtichjWPb3ytRF72bum+OKZnUgn0Vvy4IkOe6wo2hnQSgVfeF2YBAQFkBhFNZxIEBqRVvOGdCBUEd0cjuVOh/X4zcmtmpS/vAm7yVdFFO7WCg5kwF10+bPH4SbMRun0Wer0U4YFgxxLwD+nj5NQeGhNrlePDEXCXY3MmSUTZKxpWzmtw8TIgXwQbdSZjq/JRufOV/KIEGUgUo3UIk3Pnscn6hRQJ4OVVjPIrBykwARo/BDWMuP7z+EHLCYzdujst9M2jk3UkZInTiXyQq+34lQjUxTtFEwhQkdKo68N/7Ly8IiE2gNA2HHG0FVNncg6LvUak0siO3tsBGPVcLgQuOajrY4sDM=
+  on:
+    tags: true
+    repo: fdefelici/re-boot-select
+  skip_cleanup: true

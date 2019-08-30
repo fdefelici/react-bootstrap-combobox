@@ -3,10 +3,10 @@ node_js:
   - 10.16.0
 install:
   - npm install -g codecov
-  - npm install
+  - npm install --ignore-scripts
 script:
   - npm run test
-  - codecov --token=2d6f5593-63fe-418d-aaed-fa7c2f82c0eb
+  - codecov --token=b0fd890e-36fd-4395-8591-9054d978f917
   - npm run build  
 deploy:
   provider: npm

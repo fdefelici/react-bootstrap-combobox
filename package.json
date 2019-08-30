@@ -4,6 +4,15 @@
   "description": "Select Component for React based on Bootstrap",
   "license": "MIT",
   "repository": "/re-boot-select",
+  "keywords": [
+    "react",
+    "bootstrap",
+    "select",
+    "combo",
+    "combobox",
+    "multi-select",
+    "dropdown"
+  ],
   "main": "dist/index.js",
   "module": "dist/index.es.js",
   "jsnext:main": "dist/index.es.js",

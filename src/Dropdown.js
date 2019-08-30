@@ -81,7 +81,6 @@ class Dropdown extends Component {
   }
 
   filterData = event => {
-    console.log(event.target.value)
     this.setState(
       {
         dataFiltered : [...this.data].filter(

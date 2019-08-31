@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-import DropdownCss from "./Dropdown.css";
+import "./Dropdown.css";
 
 class Dropdown extends Component {
 
@@ -8,6 +8,7 @@ class Dropdown extends Component {
   placeholderDefault = ""
   labelElement = ""
   maxElementPlaceholder = 0
+  onSelectAndDeselect = () => {}
   labels = {
     action: "Select",
     select: "selected",
@@ -30,6 +31,9 @@ class Dropdown extends Component {
       if(this.props.labels.plural) this.labels.plural = this.props.labels.plural
       if(this.props.labels.selectAll) this.labels.selectAll = this.props.labels.selectAll
       if(this.props.labels.deselectAll) this.labels.deselectAll = this.props.labels.deselectAll
+      if(this.props.onSelectAndDeselect && typeof this.props.onSelectAndDeselect === 'function') {
+        this.onSelectAndDeselect = this.props.onSelectAndDeselect
+      }
     }
 
     this.data = this.props.data? [...this.props.data].map((each,index) => { return {label: each, index: index} }): []
@@ -47,12 +51,18 @@ class Dropdown extends Component {
 
   }
 
+  runCallback(selection) {
+    if(this.props.onSelectAndDeselect) {
+      this.props.onSelectAndDeselect(selection)
+    }
+  }
+
   closeOrOpen = () => {
     this.setState({isOpen:!this.state.isOpen})
   };
 
   selectElement = (element) => {
-    
+
     if(this.isMultiSelect){
       let newSelected = [...this.state.selected]
 
@@ -66,18 +76,25 @@ class Dropdown extends Component {
 
       this.setState({selected: newSelected, placeholder: newPlaceholder})
 
+      this.runCallback(newSelected)
+
     } else {
       this.setState({selected: [element], placeholder: element.label})
+
+      this.runCallback([element])
     }
   };
 
   selectAllElements = () => {
     let newPlaceholder = this.data.length > this.maxElementPlaceholder? `${this.data.length} ${this.labels.plural} ${this.labels.select}`: this.data.map(each => each.label).join(", ")
     this.setState({selected: [...this.data], placeholder: newPlaceholder})
+
+    this.runCallback([...this.data])
   }
 
   deselectAllElements = () => {
     this.setState({selected: [], placeholder: this.placeholderDefault})
+    this.runCallback([])
   }
 
   filterData = event => {

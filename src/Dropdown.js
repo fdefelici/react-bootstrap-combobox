@@ -6,12 +6,11 @@ class Dropdown extends Component {
 
   data = []
   placeholderDefault = ""
-  labelElement = ""
   maxElementPlaceholder = 0
   onSelectAndDeselect = () => {}
   labels = {
     action: "Select",
-    select: "selected",
+    selected: "selected",
     singular: "item",
     plural: "items",
     selectAll: "Select All",
@@ -26,7 +25,7 @@ class Dropdown extends Component {
     
     if(this.props.labels) {
       if(this.props.labels.action) this.labels.action = this.props.labels.action
-      if(this.props.labels.select) this.labels.select = this.props.labels.select
+      if(this.props.labels.selected) this.labels.selected = this.props.labels.selected
       if(this.props.labels.singular) this.labels.singular = this.props.labels.singular
       if(this.props.labels.plural) this.labels.plural = this.props.labels.plural
       if(this.props.labels.selectAll) this.labels.selectAll = this.props.labels.selectAll
@@ -72,7 +71,7 @@ class Dropdown extends Component {
         newSelected.push(element)
       }
 
-      let newPlaceholder = newSelected.length > this.maxElementPlaceholder? `${newSelected.length} ${this.labels.plural} ${this.labels.select}`: newSelected.map(each => each.label).join(", ")
+      let newPlaceholder = newSelected.length > this.maxElementPlaceholder? `${newSelected.length} ${this.labels.plural} ${this.labels.selected}`: newSelected.map(each => each.label).join(", ")
 
       this.setState({selected: newSelected, placeholder: newPlaceholder})
 
@@ -86,7 +85,7 @@ class Dropdown extends Component {
   };
 
   selectAllElements = () => {
-    let newPlaceholder = this.data.length > this.maxElementPlaceholder? `${this.data.length} ${this.labels.plural} ${this.labels.select}`: this.data.map(each => each.label).join(", ")
+    let newPlaceholder = this.data.length > this.maxElementPlaceholder? `${this.data.length} ${this.labels.plural} ${this.labels.selected}`: this.data.map(each => each.label).join(", ")
     this.setState({selected: [...this.data], placeholder: newPlaceholder})
 
     this.runCallback([...this.data])

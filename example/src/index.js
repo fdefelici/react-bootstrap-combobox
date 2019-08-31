@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
+import 'bootstrap/dist/css/bootstrap.min.css'
 import {Dropdown} from "re-boot-select"
 
 class App extends React.Component{
@@ -20,14 +21,15 @@ class App extends React.Component{
             <Dropdown
               isMultiSelect={true}
               showButtonsSelectAll={true}
-              labelElement="serviceId"
-              data={["AA", "AB", "BB", "CC", "DD", "BB", "EE", "FF", "GG"]}
+              data={["Apple", "Banana", "Citrus", "Grapefruit", "Lime", "Mandarin", "Mango", "Melon", "Watermelon"]}
               maxElementPlaceholder="5"
               labels={{
-                selected: "selected",
-                singular: "element",
-                plural: "elements",
-                selectAll: "Select All"
+                action: "Pick some",
+                selected: "picked",
+                singular: "fruit",
+                plural: "fruits",
+                selectAll: "Pick All",
+                deselectAll: "Release All"
               }}
               onSelectAndDeselect={selected => {
                 this.setState({ selected: selected });

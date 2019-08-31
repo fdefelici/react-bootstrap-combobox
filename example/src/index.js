@@ -21,7 +21,6 @@ class App extends React.Component{
             <Dropdown
               isMultiSelect={true}
               showButtonsSelectAll={true}
-              labelElement="serviceId"
               data={["AA", "AB", "BB", "CC", "DD", "BB", "EE", "FF", "GG"]}
               maxElementPlaceholder="5"
               labels={{

@@ -6,7 +6,6 @@ class Dropdown extends Component {
 
   data = []
   placeholderDefault = ""
-  labelElement = ""
   maxElementPlaceholder = 0
   onSelectAndDeselect = () => {}
   labels = {

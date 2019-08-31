@@ -18,7 +18,6 @@ describe('Dropdown tests', () => {
       <Dropdown
       isMultiSelect={true}
       showButtonsSelectAll={true}
-      labelElement="serviceId"
       data={["AA", "AB", "BB", "CC", "DD", "BB", "EE", "FF", "GG"]}
       maxElementPlaceholder="5"
       labels={{deselectAll: "NoneSelected",selectAll: "AllSelected"}}
@@ -42,7 +41,6 @@ describe('Dropdown tests', () => {
       <Dropdown
       isMultiSelect={true}
       showButtonsSelectAll={true}
-      labelElement="serviceId"
       data={["AA", "AB", "BB", "CC", "DD", "BB", "EE", "FF", "GG"]}
       maxElementPlaceholder="5"
       labels={{deselectAll: "NoneSelected",selectAll: "AllSelected"}}
@@ -66,7 +64,6 @@ describe('Dropdown tests', () => {
       <Dropdown
       isMultiSelect={true}
       showButtonsSelectAll={true}
-      labelElement="serviceId"
       data={["AA", "AB", "BB", "CC", "DD", "BB", "EE", "FF", "GG"]}
       maxElementPlaceholder="5"
       labels={{singular: "car", plural: "cars"}}
@@ -90,7 +87,6 @@ describe('Dropdown tests', () => {
       <Dropdown
       isMultiSelect={true}
       showButtonsSelectAll={true}
-      labelElement="serviceId"
       data={["AA", "AB", "BB", "CC", "DD", "BB", "EE", "FF", "GG"]}
       maxElementPlaceholder="5"
       labels={{singular: "car", plural: "cars"}}
@@ -109,7 +105,6 @@ describe('Dropdown tests', () => {
       <Dropdown
       isMultiSelect={true}
       showButtonsSelectAll={true}
-      labelElement="serviceId"
       data={["AA", "AB", "BB", "CC", "DD", "BB", "EE", "FF", "GG"]}
       maxElementPlaceholder="2"
       labels={{singular: "car"}}
@@ -130,7 +125,6 @@ describe('Dropdown tests', () => {
     const component = shallow(
       <Dropdown
       isMultiSelect={false}
-      labelElement="serviceId"
       data={["AA", "AB", "BB", "CC", "DD", "BB", "EE", "FF", "GG"]}
       maxElementPlaceholder="2"
       labels={{singular: "car"}}
@@ -153,7 +147,6 @@ describe('Dropdown tests', () => {
       <Dropdown
       isMultiSelect={true}
       showButtonsSelectAll={true}
-      labelElement="serviceId"
       data={["AA", "AB", "BB", "CC", "DD", "BB", "EE", "FF", "GG"]}
       maxElementPlaceholder="5"
       labels={{deselectAll: "NoneSelected",selectAll: "AllSelected"}}

@@ -61,7 +61,7 @@ Using ```labels``` property it is possible to customize any text the component s
 
 **Special Markers**
 
-To build your text it's possible to use the follow markers:
+To build labels it's possible to use the follow markers:
 * ```{size}```: represent the total number of items
 * ```{sel}```: represent the number of items currently selected
 

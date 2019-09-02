@@ -51,6 +51,7 @@ Using ```labels``` property it is possible to customize any text the component s
 
 Param | Type | Description | Default 
 ----- | ---- | ----------- | ------- 
+---:  | :--- | :---        | :--- 
 cap.select.empty | string | Shown when there are no item selected | "Select an item"
 cap.select.singular | string | Shown when just one item is selected | "1 item selected" or same as "cap.select.plural" if only plural is defined.
 cap.select.plural | string | Shown when multiple items are selected | "{size} item selected"

@@ -58,6 +58,7 @@ btn.select.all | string | Label for Select All Button | "Select All"
 btn.unselect.all | string | Label for Unselect All Button | "Unselect All"
 
 **Special Markers**
+
 To build your text it's possible to use the follow markers:
 * ```{size}```: represent the total number of items
 * ```{sele}```: represent the number of items currently selected

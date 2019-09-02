@@ -42,9 +42,10 @@ This component allow customization tweeking the following attributes:
 | `id` | string | html element ID  | none  |
 | `isMultiSelect` | boolean | Allow multiple selection | false  |
 | `labels` | object | Localization support (see details in [localization paragraph](#localization-support)) | - |
-| `maxElementPlaceHolder` | integer | Max number of elements ... | ??  |
-| `onSelectAndDeselect` | function | Function called when a selection/deselection happen (see details in the [example](example/)) | none  |
-| `showButtonsSelectAll` | boolean | Show Select All / Deselect All buttons | false  |
+| `maxItemsAsCaption` | integer | Max number of visible items (comma separated) in caption before showing label message `cap.select.singular` or `cap.select.plural` | 0 |
+| `onChange` | function | Function called when a selection/deselection happen (see details in the [example](example/)) | none  |
+| `showButtons` | boolean | Show Select/Deselect All buttons | false |
+| `showSearch` | boolean | Show Search field | false |
 
 
 ## Localization Support
@@ -53,7 +54,7 @@ Using ```labels``` property it is possible to customize any text the component s
 | Attribute | Type | Description | Default |
 |  ---: | :--- | :---        | :---    |
 | `cap.select.empty` | string | Shown when there are no item selected | "Select an item" |
-| `cap.select.singular` | string | Shown when just one item is selected | "1 item selected" or same as `cap.select.plural` if only plural is defined |
+| `cap.select.singular` | string | Shown when just one item is selected | "1 item selected" or same as `cap.select.plural` if only plural attribute is defined |
 | `cap.select.plural` | string | Shown when multiple items are selected | "{size} item selected" |
 | `btn.select.all` | string | Label for Select All Button | "All" |
 | `btn.unselect.all` | string | Label for Unselect All Button | "Clear" |

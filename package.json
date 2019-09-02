@@ -3,7 +3,10 @@
   "version": "0.0.2",
   "description": "Select Component for React based on Bootstrap",
   "license": "MIT",
-  "repository": "/re-boot-select",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fdefelici/re-boot-select.git"
+  },
   "publishConfig": {
     "access": "public"
   },

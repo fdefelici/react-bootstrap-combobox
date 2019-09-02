@@ -39,6 +39,7 @@ This component allow customization tweeking the following attributes:
 | Attribute | Type | Description | Default |
 |  ---: | :--- | :---        | :---    |
 | `data` | string array | List of items | []  |
+| `id` | string | html element ID  | none  |
 | `isMultiSelect` | boolean | Allow multiple selection | false  |
 | `labels` | object | Localization support (see details in [localization paragraph](#localization-support)) | - |
 | `maxElementPlaceHolder` | integer | Max number of elements ... | ??  |

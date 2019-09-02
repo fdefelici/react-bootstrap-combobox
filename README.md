@@ -49,7 +49,7 @@ This component allow customization tweeking the following attributes:
 
 
 ## Localization Support
-Using ```labels``` property it is possible to customize any text the component shows.
+Using ```labels``` attribute it is possible to customize any text the component shows.
 
 | Attribute | Type | Description | Default |
 |  ---: | :--- | :---        | :---    |

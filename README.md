@@ -54,8 +54,8 @@ Using ```labels``` property it is possible to customize any text the component s
 | Attribute | Type | Description | Default |
 |  ---: | :--- | :---        | :---    |
 | `cap.select.empty` | string | Shown when there are no item selected | "Select an item" |
-| `cap.select.singular` | string | Shown when just one item is selected | "1 item selected" or same as `cap.select.plural` if only plural attribute is defined |
-| `cap.select.plural` | string | Shown when multiple items are selected | "{size} item selected" |
+| `cap.select.singular` | string | Shown when just one item is selected, only when `maxItemsAsCaption` is set to 0 | "1 item selected" or same as `cap.select.plural` if only plural attribute is defined. |
+| `cap.select.plural` | string | Shown when multiple items are selected, only when the number of selected items is greather than  `maxItemsAsCaption` | "{size} item selected" |
 | `btn.select.all` | string | Label for Select All Button | "All" |
 | `btn.unselect.all` | string | Label for Unselect All Button | "Clear" |
 
@@ -76,7 +76,6 @@ To build your text it's possible to use the follow markers:
         "btn.select.all": "Pick All",
         "btn.unselect.all": "Release All",
     }}
-
 />
 ```
 

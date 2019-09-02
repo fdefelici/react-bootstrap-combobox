@@ -63,7 +63,6 @@
     float: right;
     display: inline-block;
     right: 15px;
-    margin-top: 5px;
 }
 
 .bs-searchbox {
@@ -120,4 +119,10 @@
 
 .hide {
     display: none
+}
+
+.special-title {
+    overflow:hidden;
+    width: 93%;
+    text-align: left;
 }

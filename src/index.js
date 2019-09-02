@@ -1,5 +1,3 @@
-import Dropdown from './Dropdown';
+const RBS = require('./RBS');
 
-export {
-   Dropdown
-}
+module.exports = RBS.default || RBS;

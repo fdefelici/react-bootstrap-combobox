@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import 'bootstrap/dist/css/bootstrap.min.css'
-import {Dropdown} from "re-boot-select"
+import RBS from "re-boot-select"
 
 class App extends React.Component{
 
@@ -18,7 +18,7 @@ class App extends React.Component{
     render(){
         return (
           <React.Fragment>
-            <Dropdown
+            <RBS.Select
               isMultiSelect={true}
               showButtonsSelectAll={true}
               data={["Apple", "Banana", "Citrus", "Grapefruit", "Lime", "Mandarin", "Mango", "Melon", "Watermelon"]}
@@ -34,7 +34,7 @@ class App extends React.Component{
               onSelectAndDeselect={selected => {
                 this.setState({ selected: selected });
               }}
-            ></Dropdown>
+            ></RBS.Select>
 
             <span style={this.stylePrint}>selected: {this.state.selected.map(each => each.label).join(", ")}</span>
           </React.Fragment>

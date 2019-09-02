@@ -51,26 +51,26 @@ Using ```labels``` property it is possible to customize any text the component s
 
 Param | Type | Description | Default 
 ----- | ---- | ----------- | ------- 
-selection.empty | string | Shown when there are no selections | "Select an item"
-selection.singular | string | Shown when one item is selected | "..."
-selection.plural | string | Shown when multiple items are selected | "..." 
-btn.select.all | string | Label for Select All Button | "Select All"
-btn.unselect.all | string | Label for Unselect All Button | "Unselect All"
+cap.select.empty | string | Shown when there are no item selected | "Select an item"
+cap.select.singular | string | Shown when just one item is selected | "1 item selected" or same as "cap.select.plural" if only plural is defined.
+cap.select.plural | string | Shown when multiple items are selected | "{size} item selected"
+btn.select.all | string | Label for Select All Button | "All"
+btn.unselect.all | string | Label for Unselect All Button | "Clear"
 
 **Special Markers**
 
 To build your text it's possible to use the follow markers:
 * ```{size}```: represent the total number of items
-* ```{sele}```: represent the number of items currently selected
+* ```{sel}```: represent the number of items currently selected
 
 **Example**
 ```javascript
 <RBS.Select
     ...
     labels={{
-        "sel.empty": "Select an item",
-        "sel.singular": "One item selected",
-        "sel.plural": "{sele} of {size} items selected",
+        "cap.select.empty": "Select an item",
+        "cap.select.singular": "One item selected",
+        "cap.select.plural": "{sel} of {size} items selected",
         "btn.select.all": "Pick All",
         "btn.unselect.all": "Release All",
     }}

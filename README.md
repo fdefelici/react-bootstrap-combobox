@@ -40,7 +40,7 @@ This component allow customization tweeking the following attributes:
 |  ---: | :--- | :---        | :---    |
 | `data` | string array | List of items | []  |
 | `isMultiSelect` | boolean | Allow multiple selection | false  |
-| `labels` | object | Localization support (check paragraph below for [details](#localization-support)) | -  |
+| `labels` | object | Localization support (see details in [localization paragraph](#localization-support)) | - |
 | `maxElementPlaceHolder` | integer | Max number of elements ... | ??  |
 | `onSelectAndDeselect` | function | Function called when a selection/deselection happen | none  |
 | `showButtonsSelectAll` | boolean | Show Select All / Deselect All buttons | false  |

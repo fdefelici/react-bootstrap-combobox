@@ -16,9 +16,9 @@ describe('Dropdown tests', () => {
     const component = shallow(
       <Select
       isMultiSelect={true}
-      showButtonsSelectAll={true}
+      showButtons={true}
       data={["AA", "AB", "BB", "CC", "DD", "BB", "EE", "FF", "GG"]}
-      maxElementPlaceholder="5"
+      maxItemsAsCaption="5"
       id="123"
     ></Select>,
     );
@@ -38,13 +38,13 @@ describe('Dropdown tests', () => {
     const component = shallow(
       <Select
       isMultiSelect={true}
-      showButtonsSelectAll={true}
+      showButtons={true}
       data={["AA", "AB", "BB", "CC", "DD", "BB", "EE", "FF", "GG"]}
-      maxElementPlaceholder="5"
+      maxItemsAsCaption="5"
       labels = {{
-        "sel.empty": "Select a car",
-        "sel.singular": "One car selected",
-        "sel.plural": "{sel} of {size} cars selected",
+        "cap.select.empty": "Select a car",
+        "cap.select.singular": "One car selected",
+        "cap.select.plural": "{sel} of {size} cars selected",
         "btn.select.all": "Pick All",
         "btn.unselect.all": "Release All",
       }}
@@ -67,12 +67,12 @@ describe('Dropdown tests', () => {
     const component = shallow(
       <Select
       isMultiSelect={true}
-      showButtonsSelectAll={true}
+      showButtons={true}
       data={["AA", "AB", "BB", "CC", "DD", "BB", "EE", "FF", "GG"]}
-      maxElementPlaceholder="0"
+      maxItemsAsCaption="0"
       labels = {{
-        "sel.empty": "Select a car",
-        "sel.plural": "{sel} of {size} cars selected",
+        "cap.select.empty": "Select a car",
+        "cap.select.plural": "{sel} of {size} cars selected",
         "btn.select.all": "Pick All",
         "btn.unselect.all": "Release All",
       }}
@@ -95,11 +95,11 @@ describe('Dropdown tests', () => {
     const component = shallow(
       <Select
       isMultiSelect={true}
-      showButtonsSelectAll={true}
+      showButtons={true}
       data={["AA", "AB", "BB", "CC", "DD", "BB", "EE", "FF", "GG"]}
-      maxElementPlaceholder="0"
+      maxItemsAsCaption="0"
       labels = {{
-        "sel.empty": "Select a car",
+        "cap.select.empty": "Select a car",
         "btn.select.all": "Pick All",
         "btn.unselect.all": "Release All",
       }}
@@ -123,9 +123,9 @@ describe('Dropdown tests', () => {
     const component = shallow(
       <Select
       isMultiSelect={true}
-      showButtonsSelectAll={true}
+      showButtons={true}
       data={["AA", "AB", "BB", "CC", "DD", "BB", "EE", "FF", "GG"]}
-      maxElementPlaceholder="5"
+      maxItemsAsCaption="5"
       id="123"
     ></Select>,
     );
@@ -147,9 +147,9 @@ describe('Dropdown tests', () => {
     const component = shallow(
       <Select
       isMultiSelect={true}
-      showButtonsSelectAll={true}
+      showButtons={true}
       data={["AA", "AB", "BB", "CC", "DD", "BB", "EE", "FF", "GG"]}
-      maxElementPlaceholder="5"
+      maxItemsAsCaption="5"
   
       id="123"
     ></Select>,
@@ -170,9 +170,9 @@ describe('Dropdown tests', () => {
     const component = shallow(
       <Select
       isMultiSelect={true}
-      showButtonsSelectAll={true}
+      showButtons={true}
       data={["AA", "AB", "BB", "CC", "DD", "BB", "EE", "FF", "GG"]}
-      maxElementPlaceholder="5"
+      maxItemsAsCaption="5"
       
       id="123"
     ></Select>,
@@ -184,14 +184,14 @@ describe('Dropdown tests', () => {
     
   });
 
-  it('Select three elements, maxElementPlaceholder = 2', () => {
+  it('Select three elements, maxItemsAsCaption = 2', () => {
 
     const component = shallow(
       <Select
       isMultiSelect={true}
-      showButtonsSelectAll={true}
+      showButtons={true}
       data={["AA", "AB", "BB", "CC", "DD", "BB", "EE", "FF", "GG"]}
-      maxElementPlaceholder="2"
+      maxItemsAsCaption="2"
       labels={{singular: "car"}}
       id="123"
     ></Select>,
@@ -213,11 +213,11 @@ describe('Dropdown tests', () => {
       <Select
       isMultiSelect={false}
       data={["AA", "AB", "BB", "CC", "DD", "BB", "EE", "FF", "GG"]}
-      maxElementPlaceholder="2"
+      maxItemsAsCaption="2"
       labels = {{
-        "sel.empty": "Select a car",
-        "sel.singular": "One car selected",
-        "sel.plural": "{sel} of {size} cars selected",
+        "cap.select.empty": "Select a car",
+        "cap.select.singular": "One car selected",
+        "cap.select.plural": "{sel} of {size} cars selected",
         "btn.select.all": "Pick All",
         "btn.unselect.all": "Release All",
       }}
@@ -240,13 +240,13 @@ describe('Dropdown tests', () => {
     const {getByText} = render(
       <Select
       isMultiSelect={true}
-      showButtonsSelectAll={true}
+      showButtons={true}
       data={["AA", "AB", "BB", "CC", "DD", "BB", "EE", "FF", "GG"]}
-      maxElementPlaceholder="5"
+      maxItemsAsCaption="5"
       labels = {{
-        "sel.empty": "Select a car",
-        "sel.singular": "One car selected",
-        "sel.plural": "{sel} of {size} cars selected",
+        "cap.select.empty": "Select a car",
+        "cap.select.singular": "One car selected",
+        "cap.select.plural": "{sel} of {size} cars selected",
         "btn.select.all": "Pick All",
         "btn.unselect.all": "Release All",
       }}
@@ -264,8 +264,8 @@ describe('Dropdown tests', () => {
     const component = shallow(
       <Select
       isMultiSelect={true}
-      showSearchBar={true}
-      showButtonsSelectAll={true}
+      showSearch={true}
+      showButtons={true}
       data={["AA"]}/>
     );
     
@@ -278,7 +278,7 @@ describe('Dropdown tests', () => {
     const component = shallow(
       <Select
       isMultiSelect={true}
-      showButtonsSelectAll={true}
+      showButtons={true}
       data={["AA"]}/>
     );
     

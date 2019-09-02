@@ -6,28 +6,20 @@ class Select extends Component {
 
   data = []
   placeholderDefault = ""
-  maxElementPlaceholder = 0
-  onSelectAndDeselect = () => {}
-  /*labels = {
-    action: "Select",
-    selected: "selected",
-    singular: "item",
-    plural: "items",
-    selectAll: "Select All",
-    deselectAll: "Deselect All"
-  }*/
+  maxItemsAsCaption = 0
+  onChange = () => {}
 
   labels = {
-    "sel.empty": "Select an item",
-    "sel.singular": "1 item selected",
-    "sel.plural": "{size} items selected",
+    "cap.select.empty": "Select an item",
+    "cap.select.singular": "1 item selected",
+    "cap.select.plural": "{size} items selected",
     "btn.select.all": "All",
     "btn.unselect.all": "Clear",
   }
 
   isMultiSelect = false
-  showButtonsSelectAll = false
-  showSearchBar = false
+  showButtons = false
+  showSearch = false
   
   /* html ids */
   id = undefined
@@ -42,12 +34,12 @@ class Select extends Component {
     super(props)
     
     if(this.props.labels) {
-      if(this.props.labels["sel.empty"]) this.labels["sel.empty"] = this.props.labels["sel.empty"]
-      if(this.props.labels["sel.plural"]) {
-        this.labels["sel.plural"] = this.props.labels["sel.plural"]
-        this.labels["sel.singular"] = this.props.labels["sel.singular"]? this.props.labels["sel.singular"] : this.props.labels["sel.plural"]
+      if(this.props.labels["cap.select.empty"]) this.labels["cap.select.empty"] = this.props.labels["cap.select.empty"]
+      if(this.props.labels["cap.select.plural"]) {
+        this.labels["cap.select.plural"] = this.props.labels["cap.select.plural"]
+        this.labels["cap.select.singular"] = this.props.labels["cap.select.singular"]? this.props.labels["cap.select.singular"] : this.props.labels["cap.select.plural"]
       } else {
-        this.labels["sel.singular"] = this.props.labels["sel.singular"]? this.props.labels["sel.singular"] : this.labels["sel.singular"]
+        this.labels["cap.select.singular"] = this.props.labels["cap.select.singular"]? this.props.labels["cap.select.singular"] : this.labels["cap.select.singular"]
       }
       
       if(this.props.labels["btn.select.all"]) this.labels["btn.select.all"] = this.props.labels["btn.select.all"]
@@ -62,16 +54,16 @@ class Select extends Component {
       this.idDeselectAll = "rbs-menu-button-deselectall-button-" + this.id
       this.idList = "rbs-menu-button-dropdown-list-" + this.id
     }
-    if(this.props.onSelectAndDeselect && typeof this.props.onSelectAndDeselect === 'function') {
-      this.onSelectAndDeselect = this.props.onSelectAndDeselect
+    if(this.props.onChange && typeof this.props.onChange === 'function') {
+      this.onChange = this.props.onChange
     }
 
     this.data = this.props.data? [...this.props.data].map((each,index) => { return {label: each, index: index} }): []
-    this.placeholderDefault = this.labels["sel.empty"]
-    this.maxElementPlaceholder = this.props.maxElementPlaceholder? this.props.maxElementPlaceholder: 0
+    this.placeholderDefault = this.labels["cap.select.empty"]
+    this.maxItemsAsCaption = this.props.maxItemsAsCaption? this.props.maxItemsAsCaption: 0
     this.isMultiSelect = this.props.isMultiSelect? this.props.isMultiSelect: false
-    this.showSearchBar = this.props.showSearchBar? this.props.showSearchBar: false
-    this.showButtonsSelectAll = this.props.showButtonsSelectAll? this.props.showButtonsSelectAll: false
+    this.showSearch = this.props.showSearch? this.props.showSearch: false
+    this.showButtons = this.props.showButtons? this.props.showButtons: false
 
     this.state = {
       placeholder: "",
@@ -83,8 +75,8 @@ class Select extends Component {
   }
 
   runCallback(selection) {
-    if(this.props.onSelectAndDeselect) {
-      this.props.onSelectAndDeselect(selection)
+    if(this.props.onChange) {
+      this.props.onChange(selection)
     }
   }
 
@@ -93,9 +85,9 @@ class Select extends Component {
   };
 
   getLabelSelected = (sizeSelected) => {
-    let result = this.labels["sel.singular"]
+    let result = this.labels["cap.select.singular"]
     if(sizeSelected > 1 ) {
-      result = this.labels["sel.plural"]
+      result = this.labels["cap.select.plural"]
     }
 
     result = result.replace("{sel}", sizeSelected)
@@ -113,7 +105,7 @@ class Select extends Component {
         newSelected.push(element)
       }
 
-      let newPlaceholder = newSelected.length > this.maxElementPlaceholder? this.getLabelSelected(newSelected.length): newSelected.map(each => each.label).join(", ")
+      let newPlaceholder = newSelected.length > this.maxItemsAsCaption? this.getLabelSelected(newSelected.length): newSelected.map(each => each.label).join(", ")
 
       this.setState({selected: newSelected, placeholder: newPlaceholder})
 
@@ -127,7 +119,7 @@ class Select extends Component {
   };
 
   selectAllElements = () => {
-    let newPlaceholder = this.data.length > this.maxElementPlaceholder? this.getLabelSelected(this.data.length): this.data.map(each => each.label).join(", ")
+    let newPlaceholder = this.data.length > this.maxItemsAsCaption? this.getLabelSelected(this.data.length): this.data.map(each => each.label).join(", ")
     this.setState({selected: [...this.data], placeholder: newPlaceholder})
 
     this.runCallback([...this.data])
@@ -169,7 +161,7 @@ class Select extends Component {
             <span className="caret"></span>
           </button>
           <div className={"dropdown-menu " + (this.state.isOpen ? "open" : "")}>
-            <div className={"bs-searchbox " + (this.showSearchBar ? "": "hide")}>
+            <div className={"bs-searchbox " + (this.showSearch ? "": "hide")}>
               <input
                 type="text"
                 className="form-control"
@@ -177,7 +169,7 @@ class Select extends Component {
               />
             </div>
 
-            <div className={"bs-actionsbox " + (this.isMultiSelect && this.showButtonsSelectAll ? "": "hide")}>
+            <div className={"bs-actionsbox " + (this.isMultiSelect && this.showButtons ? "": "hide")}>
               <div className="btn-group btn-block">
                 <button id={this.idSelectAll} onClick={this.selectAllElements}
                   type="button"

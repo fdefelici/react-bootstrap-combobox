@@ -43,7 +43,7 @@ This component allow customization tweeking the following attributes:
 | `isMultiSelect` | boolean | Allow multiple selection | false  |
 | `labels` | object | Localization support (see details in [localization paragraph](#localization-support)) | - |
 | `maxElementPlaceHolder` | integer | Max number of elements ... | ??  |
-| `onSelectAndDeselect` | function | Function called when a selection/deselection happen | none  |
+| `onSelectAndDeselect` | function | Function called when a selection/deselection happen (see details in the [example](example/)) | none  |
 | `showButtonsSelectAll` | boolean | Show Select All / Deselect All buttons | false  |
 
 

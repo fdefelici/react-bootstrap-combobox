@@ -1,12 +1,16 @@
 {
   "name": "@fdefelici/re-boot-select",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Select Component for React based on Bootstrap",
   "license": "MIT",
   "repository": "/re-boot-select",
   "publishConfig": {
     "access": "public"
   },
+  "bugs": {
+    "url": "https://github.com/fdefelici/re-boot-select/issues"
+  },
+  "homepage": "https://github.com/fdefelici/re-boot-select#readme",
   "keywords": [
     "react",
     "bootstrap",

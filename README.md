@@ -8,7 +8,7 @@ Select Component for React based on Bootstrap which offer the following features
 * Scrollbar Control
 * Localization 
 
-[FOTO]
+![Component ShowCase](../example/images/showcase.png)
 
 # Usage
 This component is based on React and Bootstrap (only css part), so in your project you must have these dependencies. It's suggested to adopt the following versions:

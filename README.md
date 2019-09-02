@@ -43,7 +43,7 @@ This component allow customization tweeking the following attributes:
 | `isMultiSelect` | boolean | Allow multiple selection | false  |
 | `labels` | object | Localization support (see details in [localization paragraph](#localization-support)) | - |
 | `maxItemsAsCaption` | integer | Max number of visible items (comma separated) in caption before showing label message `cap.select.singular` or `cap.select.plural` | 0 |
-| `onChange` | function | Function called when a selection/deselection happen (see details in the [example](example/)) | none  |
+| `onChange` | function | Callback function called when a selection/deselection happen (see details in the [example](example/)) | none  |
 | `showButtons` | boolean | Show Select/Deselect All buttons | false |
 | `showSearch` | boolean | Show Search field | false |
 
@@ -66,6 +66,8 @@ To build your text it's possible to use the follow markers:
 * ```{sel}```: represent the number of items currently selected
 
 **Example**
+
+Example of fully labels customization:
 ```javascript
 <RBS.Select
     ...

@@ -264,11 +264,25 @@ describe('Dropdown tests', () => {
     const component = shallow(
       <Select
       isMultiSelect={true}
+      showSearchBar={true}
       showButtonsSelectAll={true}
       data={["AA"]}/>
     );
     
-    expect(component.find(".input-box").html()).toEqual("<div class=\"input-box\"><button type=\"button\" class=\"btn btn-default dropdown-toggle show-special-title button-dropdown\"><span class=\"pull-left filter-option\"></span><span class=\"pull-left special-title\">Select an item</span> <span class=\"caret\"></span></button><div class=\"dropdown-menu \"><div class=\"bs-searchbox\"><input type=\"text\" class=\"form-control\"/></div><div class=\"bs-actionsbox \"><div class=\"btn-group btn-block\"><button type=\"button\" class=\"actions-btn bs-select-all btn btn-default select-all-button\">All</button><button type=\"button\" class=\"actions-btn bs-deselect-all btn btn-default deselect-all-button\">Clear</button></div></div><ul class=\"dropdown-menu inner\"><li class=\"noselect\"><a>AA<span class=\"\"></span></a></li></ul></div></div>")
+    expect(component.find(".input-box").html()).toEqual("<div class=\"input-box\"><button type=\"button\" class=\"btn btn-default dropdown-toggle show-special-title button-dropdown\"><span class=\"pull-left filter-option\"></span><span class=\"pull-left special-title\">Select an item</span> <span class=\"caret\"></span></button><div class=\"dropdown-menu \"><div class=\"bs-searchbox \"><input type=\"text\" class=\"form-control\"/></div><div class=\"bs-actionsbox \"><div class=\"btn-group btn-block\"><button type=\"button\" class=\"actions-btn bs-select-all btn btn-default select-all-button\">All</button><button type=\"button\" class=\"actions-btn bs-deselect-all btn btn-default deselect-all-button\">Clear</button></div></div><ul class=\"dropdown-menu inner\"><li class=\"noselect\"><a>AA<span class=\"\"></span></a></li></ul></div></div>")
+  
+  });
+
+  it('Hide search bar', () => {
+  
+    const component = shallow(
+      <Select
+      isMultiSelect={true}
+      showButtonsSelectAll={true}
+      data={["AA"]}/>
+    );
+    
+    expect(component.find(".input-box").html()).toEqual("<div class=\"input-box\"><button type=\"button\" class=\"btn btn-default dropdown-toggle show-special-title button-dropdown\"><span class=\"pull-left filter-option\"></span><span class=\"pull-left special-title\">Select an item</span> <span class=\"caret\"></span></button><div class=\"dropdown-menu \"><div class=\"bs-searchbox hide\"><input type=\"text\" class=\"form-control\"/></div><div class=\"bs-actionsbox \"><div class=\"btn-group btn-block\"><button type=\"button\" class=\"actions-btn bs-select-all btn btn-default select-all-button\">All</button><button type=\"button\" class=\"actions-btn bs-deselect-all btn btn-default deselect-all-button\">Clear</button></div></div><ul class=\"dropdown-menu inner\"><li class=\"noselect\"><a>AA<span class=\"\"></span></a></li></ul></div></div>")
   
   });
   

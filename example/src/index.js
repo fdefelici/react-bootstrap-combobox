@@ -23,6 +23,7 @@ class App extends React.Component{
               showButtonsSelectAll={true}
               data={["Apple", "Banana", "Citrus", "Grapefruit", "Lime", "Mandarin", "Mango", "Melon", "Watermelon"]}
               maxElementPlaceholder="5"
+              showSearchBar="true"
               labels = {{
                 "sel.empty": "Select an item",
                 "sel.singular": "One item selected",

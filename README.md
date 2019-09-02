@@ -15,12 +15,12 @@ This component is based on React and Bootstrap (only css part), so in your proje
 * react >= 15.0.0
 * bootstrap >= 3.3.0
 
-Then import the library:
+then import the library:
 ```shell
 $ npm install @fdefelici/re-boot-select[@VERSION] --save
 ```
 
-And use it in your code:
+and use it in your code:
 ```javascript
 import RBS from "@fdefelici/re-boot-select"
 
@@ -40,7 +40,7 @@ Param | Type | Description | Default
 ----- | ---- | ----------- | ------- 
 data | string array | List of items | []
 isMultiSelect | boolean | Allow multiple selection | false
-labels | object | Localization support (check paragraph below for [details](#localization-support)) | English
+labels | object | Localization support (check paragraph below for [details](#localization-support)) | -
 maxElementPlaceHolder | integer | Max number of elements ... | ??
 onSelectAndDeselect | function | Function called when a selection/deselection happen | none
 showButtonsSelectAll | boolean | Show Select All / Deselect All buttons | false

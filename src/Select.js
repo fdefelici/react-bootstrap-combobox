@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 
-import "./Dropdown.css";
+import "./Select.css";
 
-class Dropdown extends Component {
+class Select extends Component {
 
   data = []
   placeholderDefault = ""
@@ -173,7 +173,7 @@ class Dropdown extends Component {
             <ul id={this.idList} className="dropdown-menu inner">
               {this.state.dataFiltered.map(each => {
                 return (
-                  <li key={each.label + each.index}>
+                  <li className="noselect" key={each.label + each.index}>
                     <a
                       onClick={() => {
                         if(!this.isMultiSelect) this.closeOrOpen();
@@ -202,4 +202,4 @@ class Dropdown extends Component {
   };
 }
   
-export default Dropdown;
+export default Select;

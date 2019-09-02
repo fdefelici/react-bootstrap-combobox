@@ -19,8 +19,7 @@ describe('Dropdown tests', () => {
       showButtonsSelectAll={true}
       data={["AA", "AB", "BB", "CC", "DD", "BB", "EE", "FF", "GG"]}
       maxElementPlaceholder="5"
-      labels={{deselectAll: "NoneSelected",selectAll: "AllSelected"}}
-      uniqueId="123"
+      id="123"
     ></Select>,
     );
 
@@ -34,6 +33,91 @@ describe('Dropdown tests', () => {
   
   });
 
+  it('Click select/deselect all with different labels', () => {
+    
+    const component = shallow(
+      <Select
+      isMultiSelect={true}
+      showButtonsSelectAll={true}
+      data={["AA", "AB", "BB", "CC", "DD", "BB", "EE", "FF", "GG"]}
+      maxElementPlaceholder="5"
+      labels = {{
+        "sel.empty": "Select a car",
+        "sel.singular": "One car selected",
+        "sel.plural": "{sel} of {size} cars selected",
+        "btn.select.all": "Pick All",
+        "btn.unselect.all": "Release All",
+      }}
+      id="123"
+    ></Select>,
+    );
+
+    expect(component.find("#rbs-menu-button-123").html()).toEqual("<button id=\"rbs-menu-button-123\" type=\"button\" class=\"btn btn-default dropdown-toggle show-special-title button-dropdown\"><span class=\"pull-left filter-option\"></span><span class=\"pull-left special-title\">Select a car</span> <span class=\"caret\"></span></button>")
+    
+    component.find('#rbs-menu-button-selectall-button-123').simulate('click');
+    expect(component.find("#rbs-menu-button-123").html()).toEqual("<button id=\"rbs-menu-button-123\" type=\"button\" class=\"btn btn-default dropdown-toggle show-special-title button-dropdown\"><span class=\"pull-left filter-option\"></span><span class=\"pull-left special-title\">9 of 9 cars selected</span> <span class=\"caret\"></span></button>")
+
+    component.find('#rbs-menu-button-deselectall-button-123').simulate('click');
+    expect(component.find("#rbs-menu-button-123").html()).toEqual("<button id=\"rbs-menu-button-123\" type=\"button\" class=\"btn btn-default dropdown-toggle show-special-title button-dropdown\"><span class=\"pull-left filter-option\"></span><span class=\"pull-left special-title\">Select a car</span> <span class=\"caret\"></span></button>")
+  
+  });
+
+  it('Click select/deselect all with different labels - no singular', () => {
+    
+    const component = shallow(
+      <Select
+      isMultiSelect={true}
+      showButtonsSelectAll={true}
+      data={["AA", "AB", "BB", "CC", "DD", "BB", "EE", "FF", "GG"]}
+      maxElementPlaceholder="0"
+      labels = {{
+        "sel.empty": "Select a car",
+        "sel.plural": "{sel} of {size} cars selected",
+        "btn.select.all": "Pick All",
+        "btn.unselect.all": "Release All",
+      }}
+      id="123"
+    ></Select>,
+    );
+
+    expect(component.find("#rbs-menu-button-123").html()).toEqual("<button id=\"rbs-menu-button-123\" type=\"button\" class=\"btn btn-default dropdown-toggle show-special-title button-dropdown\"><span class=\"pull-left filter-option\"></span><span class=\"pull-left special-title\">Select a car</span> <span class=\"caret\"></span></button>")
+    
+    shallow(component.find("a").get(0)).simulate("click")
+    expect(component.find("#rbs-menu-button-123").html()).toEqual("<button id=\"rbs-menu-button-123\" type=\"button\" class=\"btn btn-default dropdown-toggle show-special-title button-dropdown\"><span class=\"pull-left filter-option\"></span><span class=\"pull-left special-title\">1 of 9 cars selected</span> <span class=\"caret\"></span></button>")
+
+    component.find('#rbs-menu-button-deselectall-button-123').simulate('click');
+    expect(component.find("#rbs-menu-button-123").html()).toEqual("<button id=\"rbs-menu-button-123\" type=\"button\" class=\"btn btn-default dropdown-toggle show-special-title button-dropdown\"><span class=\"pull-left filter-option\"></span><span class=\"pull-left special-title\">Select a car</span> <span class=\"caret\"></span></button>")
+  
+  });
+
+  it('Click select/deselect all with different labels - no singular and no plural', () => {
+    
+    const component = shallow(
+      <Select
+      isMultiSelect={true}
+      showButtonsSelectAll={true}
+      data={["AA", "AB", "BB", "CC", "DD", "BB", "EE", "FF", "GG"]}
+      maxElementPlaceholder="0"
+      labels = {{
+        "sel.empty": "Select a car",
+        "btn.select.all": "Pick All",
+        "btn.unselect.all": "Release All",
+      }}
+      id="123"
+    ></Select>,
+    );
+
+    expect(component.find("#rbs-menu-button-123").html()).toEqual("<button id=\"rbs-menu-button-123\" type=\"button\" class=\"btn btn-default dropdown-toggle show-special-title button-dropdown\"><span class=\"pull-left filter-option\"></span><span class=\"pull-left special-title\">Select a car</span> <span class=\"caret\"></span></button>")
+    
+    shallow(component.find("a").get(0)).simulate("click")
+    expect(component.find("#rbs-menu-button-123").html()).toEqual("<button id=\"rbs-menu-button-123\" type=\"button\" class=\"btn btn-default dropdown-toggle show-special-title button-dropdown\"><span class=\"pull-left filter-option\"></span><span class=\"pull-left special-title\">1 item selected</span> <span class=\"caret\"></span></button>")
+
+    component.find('#rbs-menu-button-deselectall-button-123').simulate('click');
+    expect(component.find("#rbs-menu-button-123").html()).toEqual("<button id=\"rbs-menu-button-123\" type=\"button\" class=\"btn btn-default dropdown-toggle show-special-title button-dropdown\"><span class=\"pull-left filter-option\"></span><span class=\"pull-left special-title\">Select a car</span> <span class=\"caret\"></span></button>")
+  
+  });
+
+
   it('Filter list', () => {
     
     const component = shallow(
@@ -42,8 +126,7 @@ describe('Dropdown tests', () => {
       showButtonsSelectAll={true}
       data={["AA", "AB", "BB", "CC", "DD", "BB", "EE", "FF", "GG"]}
       maxElementPlaceholder="5"
-      labels={{deselectAll: "NoneSelected",selectAll: "AllSelected"}}
-      uniqueId="123"
+      id="123"
     ></Select>,
     );
 
@@ -67,20 +150,19 @@ describe('Dropdown tests', () => {
       showButtonsSelectAll={true}
       data={["AA", "AB", "BB", "CC", "DD", "BB", "EE", "FF", "GG"]}
       maxElementPlaceholder="5"
-      labels={{singular: "car", plural: "cars"}}
-      uniqueId="123"
+  
+      id="123"
     ></Select>,
     );
 
-    expect(component.find("#rbs-menu-button-123").html()).toEqual("<button id=\"rbs-menu-button-123\" type=\"button\" class=\"btn btn-default dropdown-toggle show-special-title button-dropdown\"><span class=\"pull-left filter-option\"></span><span class=\"pull-left special-title\">Select car</span> <span class=\"caret\"></span></button>")
+    expect(component.find("#rbs-menu-button-123").html()).toEqual("<button id=\"rbs-menu-button-123\" type=\"button\" class=\"btn btn-default dropdown-toggle show-special-title button-dropdown\"><span class=\"pull-left filter-option\"></span><span class=\"pull-left special-title\">Select an item</span> <span class=\"caret\"></span></button>")
     
     component.find('#rbs-menu-button-selectall-button-123').simulate('click');
-    expect(component.find("#rbs-menu-button-123").html()).toEqual("<button id=\"rbs-menu-button-123\" type=\"button\" class=\"btn btn-default dropdown-toggle show-special-title button-dropdown\"><span class=\"pull-left filter-option\"></span><span class=\"pull-left special-title\">9 cars selected</span> <span class=\"caret\"></span></button>")
+    expect(component.find("#rbs-menu-button-123").html()).toEqual("<button id=\"rbs-menu-button-123\" type=\"button\" class=\"btn btn-default dropdown-toggle show-special-title button-dropdown\"><span class=\"pull-left filter-option\"></span><span class=\"pull-left special-title\">9 items selected</span> <span class=\"caret\"></span></button>")
 
     component.find('#rbs-menu-button-deselectall-button-123').simulate('click');
-    expect(component.find("#rbs-menu-button-123").html()).toEqual("<button id=\"rbs-menu-button-123\" type=\"button\" class=\"btn btn-default dropdown-toggle show-special-title button-dropdown\"><span class=\"pull-left filter-option\"></span><span class=\"pull-left special-title\">Select car</span> <span class=\"caret\"></span></button>")
-
-  
+    expect(component.find("#rbs-menu-button-123").html()).toEqual("<button id=\"rbs-menu-button-123\" type=\"button\" class=\"btn btn-default dropdown-toggle show-special-title button-dropdown\"><span class=\"pull-left filter-option\"></span><span class=\"pull-left special-title\">Select an item</span> <span class=\"caret\"></span></button>")
+ 
   });
 
   it('Select first element', () => {
@@ -91,12 +173,12 @@ describe('Dropdown tests', () => {
       showButtonsSelectAll={true}
       data={["AA", "AB", "BB", "CC", "DD", "BB", "EE", "FF", "GG"]}
       maxElementPlaceholder="5"
-      labels={{singular: "car", plural: "cars"}}
-      uniqueId="123"
+      
+      id="123"
     ></Select>,
     );
 
-    expect(component.find("#rbs-menu-button-123").html()).toEqual("<button id=\"rbs-menu-button-123\" type=\"button\" class=\"btn btn-default dropdown-toggle show-special-title button-dropdown\"><span class=\"pull-left filter-option\"></span><span class=\"pull-left special-title\">Select car</span> <span class=\"caret\"></span></button>")
+    expect(component.find("#rbs-menu-button-123").html()).toEqual("<button id=\"rbs-menu-button-123\" type=\"button\" class=\"btn btn-default dropdown-toggle show-special-title button-dropdown\"><span class=\"pull-left filter-option\"></span><span class=\"pull-left special-title\">Select an item</span> <span class=\"caret\"></span></button>")
     shallow(component.find("a").get(0)).simulate("click")
     expect(component.find("#rbs-menu-button-123").html()).toEqual("<button id=\"rbs-menu-button-123\" type=\"button\" class=\"btn btn-default dropdown-toggle show-special-title button-dropdown\"><span class=\"pull-left filter-option\"></span><span class=\"pull-left special-title\">AA</span> <span class=\"caret\"></span></button>")  
     
@@ -111,19 +193,20 @@ describe('Dropdown tests', () => {
       data={["AA", "AB", "BB", "CC", "DD", "BB", "EE", "FF", "GG"]}
       maxElementPlaceholder="2"
       labels={{singular: "car"}}
-      uniqueId="123"
+      id="123"
     ></Select>,
     );
 
-    expect(component.find("#rbs-menu-button-123").html()).toEqual("<button id=\"rbs-menu-button-123\" type=\"button\" class=\"btn btn-default dropdown-toggle show-special-title button-dropdown\"><span class=\"pull-left filter-option\"></span><span class=\"pull-left special-title\">Select car</span> <span class=\"caret\"></span></button>")
+    expect(component.find("#rbs-menu-button-123").html()).toEqual("<button id=\"rbs-menu-button-123\" type=\"button\" class=\"btn btn-default dropdown-toggle show-special-title button-dropdown\"><span class=\"pull-left filter-option\"></span><span class=\"pull-left special-title\">Select an item</span> <span class=\"caret\"></span></button>")
     shallow(component.find("a").get(0)).simulate("click")
     shallow(component.find("a").get(1)).simulate("click")
     expect(component.find("#rbs-menu-button-123").html()).toEqual("<button id=\"rbs-menu-button-123\" type=\"button\" class=\"btn btn-default dropdown-toggle show-special-title button-dropdown\"><span class=\"pull-left filter-option\"></span><span class=\"pull-left special-title\">AA, AB</span> <span class=\"caret\"></span></button>")  
     shallow(component.find("a").get(2)).simulate("click")
-    expect(component.find("#rbs-menu-button-123").html()).toEqual("<button id=\"rbs-menu-button-123\" type=\"button\" class=\"btn btn-default dropdown-toggle show-special-title button-dropdown\"><span class=\"pull-left filter-option\"></span><span class=\"pull-left special-title\">3 items selected</span> <span class=\"caret\"></span></button>")  
+    expect(component.find("#rbs-menu-button-123").html()).toEqual("<button id=\"rbs-menu-button-123\" type=\"button\" class=\"btn btn-default dropdown-toggle show-special-title button-dropdown\"><span class=\"pull-left filter-option\"></span><span class=\"pull-left special-title\">9 items selected</span> <span class=\"caret\"></span></button>")  
 
   });
 
+  
   it('Single select', () => {
 
     const component = shallow(
@@ -131,12 +214,18 @@ describe('Dropdown tests', () => {
       isMultiSelect={false}
       data={["AA", "AB", "BB", "CC", "DD", "BB", "EE", "FF", "GG"]}
       maxElementPlaceholder="2"
-      labels={{singular: "car"}}
-      uniqueId="123"
+      labels = {{
+        "sel.empty": "Select a car",
+        "sel.singular": "One car selected",
+        "sel.plural": "{sel} of {size} cars selected",
+        "btn.select.all": "Pick All",
+        "btn.unselect.all": "Release All",
+      }}
+      id="123"
     ></Select>,
     );
 
-    expect(component.find("#rbs-menu-button-123").html()).toEqual("<button id=\"rbs-menu-button-123\" type=\"button\" class=\"btn btn-default dropdown-toggle show-special-title button-dropdown\"><span class=\"pull-left filter-option\"></span><span class=\"pull-left special-title\">Select car</span> <span class=\"caret\"></span></button>")
+    expect(component.find("#rbs-menu-button-123").html()).toEqual("<button id=\"rbs-menu-button-123\" type=\"button\" class=\"btn btn-default dropdown-toggle show-special-title button-dropdown\"><span class=\"pull-left filter-option\"></span><span class=\"pull-left special-title\">Select a car</span> <span class=\"caret\"></span></button>")
     shallow(component.find("a").get(0)).simulate("click")
     expect(component.find("#rbs-menu-button-123").html()).toEqual("<button id=\"rbs-menu-button-123\" type=\"button\" class=\"btn btn-default dropdown-toggle show-special-title button-dropdown\"><span class=\"pull-left filter-option\"></span><span class=\"pull-left special-title\">AA</span> <span class=\"caret\"></span></button>")  
     shallow(component.find("a").get(1)).simulate("click")
@@ -154,13 +243,19 @@ describe('Dropdown tests', () => {
       showButtonsSelectAll={true}
       data={["AA", "AB", "BB", "CC", "DD", "BB", "EE", "FF", "GG"]}
       maxElementPlaceholder="5"
-      labels={{deselectAll: "NoneSelected",selectAll: "AllSelected"}}
-      uniqueId="123"
+      labels = {{
+        "sel.empty": "Select a car",
+        "sel.singular": "One car selected",
+        "sel.plural": "{sel} of {size} cars selected",
+        "btn.select.all": "Pick All",
+        "btn.unselect.all": "Release All",
+      }}
+      id="123"
     ></Select>,
     );
     
-    expect(getByText(/AllSelected/i)).toBeTruthy()
-    expect(getByText(/NoneSelected/i)).toBeTruthy()
+    expect(getByText(/Pick All/i)).toBeTruthy()
+    expect(getByText(/Release All/i)).toBeTruthy()
 
   });
 
@@ -173,7 +268,7 @@ describe('Dropdown tests', () => {
       data={["AA"]}/>
     );
     
-    expect(component.find(".input-box").html()).toEqual("<div class=\"input-box\"><button type=\"button\" class=\"btn btn-default dropdown-toggle show-special-title button-dropdown\"><span class=\"pull-left filter-option\"></span><span class=\"pull-left special-title\">Select item</span> <span class=\"caret\"></span></button><div class=\"dropdown-menu \"><div class=\"bs-searchbox\"><input type=\"text\" class=\"form-control\"/></div><div class=\"bs-actionsbox \"><div class=\"btn-group btn-block\"><button type=\"button\" class=\"actions-btn bs-select-all btn btn-default select-all-button\">Select All</button><button type=\"button\" class=\"actions-btn bs-deselect-all btn btn-default deselect-all-button\">Deselect All</button></div></div><ul class=\"dropdown-menu inner\"><li class=\"noselect\"><a>AA<span class=\"\"></span></a></li></ul></div></div>")
+    expect(component.find(".input-box").html()).toEqual("<div class=\"input-box\"><button type=\"button\" class=\"btn btn-default dropdown-toggle show-special-title button-dropdown\"><span class=\"pull-left filter-option\"></span><span class=\"pull-left special-title\">Select an item</span> <span class=\"caret\"></span></button><div class=\"dropdown-menu \"><div class=\"bs-searchbox\"><input type=\"text\" class=\"form-control\"/></div><div class=\"bs-actionsbox \"><div class=\"btn-group btn-block\"><button type=\"button\" class=\"actions-btn bs-select-all btn btn-default select-all-button\">All</button><button type=\"button\" class=\"actions-btn bs-deselect-all btn btn-default deselect-all-button\">Clear</button></div></div><ul class=\"dropdown-menu inner\"><li class=\"noselect\"><a>AA<span class=\"\"></span></a></li></ul></div></div>")
   
   });
   

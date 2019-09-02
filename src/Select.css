@@ -6,6 +6,7 @@
     display: block;
     /*margin-left: inherit !important;*/
     padding-left: inherit !important;
+    min-width: 100%;
 }
 
 .dropdown-menu {
@@ -17,7 +18,7 @@
     left: 0;
     z-index: 1000;
     float: left;
-    min-width: 160px;
+    min-width: 100%;
     padding: 10px 0px 5px 0px;
     margin: 3px 0 0;
     font-size: 14px;

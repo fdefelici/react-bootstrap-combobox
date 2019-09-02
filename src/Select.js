@@ -27,6 +27,7 @@ class Select extends Component {
 
   isMultiSelect = false
   showButtonsSelectAll = false
+  showSearchBar = false
   
   /* html ids */
   id = undefined
@@ -69,6 +70,7 @@ class Select extends Component {
     this.placeholderDefault = this.labels["sel.empty"]
     this.maxElementPlaceholder = this.props.maxElementPlaceholder? this.props.maxElementPlaceholder: 0
     this.isMultiSelect = this.props.isMultiSelect? this.props.isMultiSelect: false
+    this.showSearchBar = this.props.showSearchBar? this.props.showSearchBar: false
     this.showButtonsSelectAll = this.props.showButtonsSelectAll? this.props.showButtonsSelectAll: false
 
     this.state = {
@@ -167,7 +169,7 @@ class Select extends Component {
             <span className="caret"></span>
           </button>
           <div className={"dropdown-menu " + (this.state.isOpen ? "open" : "")}>
-            <div className="bs-searchbox">
+            <div className={"bs-searchbox " + (this.showSearchBar ? "": "hide")}>
               <input
                 type="text"
                 className="form-control"

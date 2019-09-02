@@ -23,13 +23,12 @@ class App extends React.Component{
               showButtonsSelectAll={true}
               data={["Apple", "Banana", "Citrus", "Grapefruit", "Lime", "Mandarin", "Mango", "Melon", "Watermelon"]}
               maxElementPlaceholder="5"
-              labels={{
-                action: "Pick some",
-                selected: "picked",
-                singular: "fruit",
-                plural: "fruits",
-                selectAll: "Pick All",
-                deselectAll: "Release All"
+              labels = {{
+                "sel.empty": "Select an item",
+                "sel.singular": "One item selected",
+                "sel.plural": "{sel} of {size} items selected",
+                "btn.select.all": "Pick All",
+                "btn.unselect.all": "Release All",
               }}
               onSelectAndDeselect={selected => {
                 this.setState({ selected: selected });

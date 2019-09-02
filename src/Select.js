@@ -8,19 +8,28 @@ class Select extends Component {
   placeholderDefault = ""
   maxElementPlaceholder = 0
   onSelectAndDeselect = () => {}
-  labels = {
+  /*labels = {
     action: "Select",
     selected: "selected",
     singular: "item",
     plural: "items",
     selectAll: "Select All",
     deselectAll: "Deselect All"
+  }*/
+
+  labels = {
+    "sel.empty": "Select an item",
+    "sel.singular": "1 item selected",
+    "sel.plural": "{size} items selected",
+    "btn.select.all": "All",
+    "btn.unselect.all": "Clear",
   }
+
   isMultiSelect = false
   showButtonsSelectAll = false
   
   /* html ids */
-  uniqueId = undefined
+  id = undefined
   idRbs = undefined
   idMenuButton = undefined
   idSelectAll = undefined
@@ -32,28 +41,32 @@ class Select extends Component {
     super(props)
     
     if(this.props.labels) {
-      if(this.props.labels.action) this.labels.action = this.props.labels.action
-      if(this.props.labels.selected) this.labels.selected = this.props.labels.selected
-      if(this.props.labels.singular) this.labels.singular = this.props.labels.singular
-      if(this.props.labels.plural) this.labels.plural = this.props.labels.plural
-      if(this.props.labels.selectAll) this.labels.selectAll = this.props.labels.selectAll
-      if(this.props.labels.deselectAll) this.labels.deselectAll = this.props.labels.deselectAll
+      if(this.props.labels["sel.empty"]) this.labels["sel.empty"] = this.props.labels["sel.empty"]
+      if(this.props.labels["sel.plural"]) {
+        this.labels["sel.plural"] = this.props.labels["sel.plural"]
+        this.labels["sel.singular"] = this.props.labels["sel.singular"]? this.props.labels["sel.singular"] : this.props.labels["sel.plural"]
+      } else {
+        this.labels["sel.singular"] = this.props.labels["sel.singular"]? this.props.labels["sel.singular"] : this.labels["sel.singular"]
+      }
+      
+      if(this.props.labels["btn.select.all"]) this.labels["btn.select.all"] = this.props.labels["btn.select.all"]
+      if(this.props.labels["btn.unselect.all"]) this.labels["btn.unselect.all"] = this.props.labels["btn.unselect.all"]
     }
 
-    if(this.props.uniqueId) {
-      this.uniqueId = this.props.uniqueId
-      this.idRbs = "rbs-" + this.uniqueId
-      this.idMenuButton = "rbs-menu-button-" + this.uniqueId
-      this.idSelectAll = "rbs-menu-button-selectall-button-" + this.uniqueId
-      this.idDeselectAll = "rbs-menu-button-deselectall-button-" + this.uniqueId
-      this.idList = "rbs-menu-button-dropdown-list-" + this.uniqueId
+    if(this.props.id) {
+      this.id = this.props.id
+      this.idRbs = "rbs-" + this.id
+      this.idMenuButton = "rbs-menu-button-" + this.id
+      this.idSelectAll = "rbs-menu-button-selectall-button-" + this.id
+      this.idDeselectAll = "rbs-menu-button-deselectall-button-" + this.id
+      this.idList = "rbs-menu-button-dropdown-list-" + this.id
     }
     if(this.props.onSelectAndDeselect && typeof this.props.onSelectAndDeselect === 'function') {
       this.onSelectAndDeselect = this.props.onSelectAndDeselect
     }
 
     this.data = this.props.data? [...this.props.data].map((each,index) => { return {label: each, index: index} }): []
-    this.placeholderDefault = `${this.labels.action} ${this.labels.singular}`
+    this.placeholderDefault = this.labels["sel.empty"]
     this.maxElementPlaceholder = this.props.maxElementPlaceholder? this.props.maxElementPlaceholder: 0
     this.isMultiSelect = this.props.isMultiSelect? this.props.isMultiSelect: false
     this.showButtonsSelectAll = this.props.showButtonsSelectAll? this.props.showButtonsSelectAll: false
@@ -77,6 +90,16 @@ class Select extends Component {
     this.setState({isOpen:!this.state.isOpen})
   };
 
+  getLabelSelected = (sizeSelected) => {
+    let result = this.labels["sel.singular"]
+    if(sizeSelected > 1 ) {
+      result = this.labels["sel.plural"]
+    }
+
+    result = result.replace("{sel}", sizeSelected)
+    return result.replace("{size}", this.data.length)
+  };
+
   selectElement = (element) => {
 
     if(this.isMultiSelect){
@@ -88,7 +111,7 @@ class Select extends Component {
         newSelected.push(element)
       }
 
-      let newPlaceholder = newSelected.length > this.maxElementPlaceholder? `${newSelected.length} ${this.labels.plural} ${this.labels.selected}`: newSelected.map(each => each.label).join(", ")
+      let newPlaceholder = newSelected.length > this.maxElementPlaceholder? this.getLabelSelected(newSelected.length): newSelected.map(each => each.label).join(", ")
 
       this.setState({selected: newSelected, placeholder: newPlaceholder})
 
@@ -102,7 +125,7 @@ class Select extends Component {
   };
 
   selectAllElements = () => {
-    let newPlaceholder = this.data.length > this.maxElementPlaceholder? `${this.data.length} ${this.labels.plural} ${this.labels.selected}`: this.data.map(each => each.label).join(", ")
+    let newPlaceholder = this.data.length > this.maxElementPlaceholder? this.getLabelSelected(this.data.length): this.data.map(each => each.label).join(", ")
     this.setState({selected: [...this.data], placeholder: newPlaceholder})
 
     this.runCallback([...this.data])
@@ -158,13 +181,13 @@ class Select extends Component {
                   type="button"
                   className="actions-btn bs-select-all btn btn-default select-all-button"
                 >
-                  {this.labels.selectAll}
+                  {this.labels["btn.select.all"]}
                 </button>
                 <button id={this.idDeselectAll} onClick={this.deselectAllElements}
                   type="button"
                   className="actions-btn bs-deselect-all btn btn-default deselect-all-button"
                 >
-                  {this.labels.deselectAll}
+                  {this.labels["btn.unselect.all"]}
                 </button>
               </div>
             </div>

@@ -34,9 +34,9 @@ import RBS from "@fdefelici/re-boot-select"
 > For a full working example take a look [here](example/).
 
 # Configuration
-This component allow customization tweeking the following parameters:
+This component allow customization tweeking the following attributes:
 
-| Param | Type | Description | Default |
+| Attribute | Type | Description | Default |
 |  ---: | :--- | :---        | :---    |
 | `data` | string array | List of items | []  |
 | `isMultiSelect` | boolean | Allow multiple selection | false  |
@@ -49,7 +49,7 @@ This component allow customization tweeking the following parameters:
 ## Localization Support
 Using ```labels``` property it is possible to customize any text the component shows.
 
-| Param | Type | Description | Default |
+| Attribute | Type | Description | Default |
 |  ---: | :--- | :---        | :---    |
 | `cap.select.empty` | string | Shown when there are no item selected | "Select an item" |
 | `cap.select.singular` | string | Shown when just one item is selected | "1 item selected" or same as `cap.select.plural` if only plural is defined |

@@ -36,27 +36,26 @@ import RBS from "@fdefelici/re-boot-select"
 # Configuration
 This component allow customization tweeking the following parameters:
 
-Param | Type | Description | Default 
------ | ---- | ----------- | ------- 
-data | string array | List of items | []
-isMultiSelect | boolean | Allow multiple selection | false
-labels | object | Localization support (check paragraph below for [details](#localization-support)) | -
-maxElementPlaceHolder | integer | Max number of elements ... | ??
-onSelectAndDeselect | function | Function called when a selection/deselection happen | none
-showButtonsSelectAll | boolean | Show Select All / Deselect All buttons | false
+| Param | Type | Description | Default |
+|  ---: | :--- | :---        | :---    |
+| `data` | string array | List of items | []  |
+| `isMultiSelect` | boolean | Allow multiple selection | false  |
+| `labels` | object | Localization support (check paragraph below for [details](#localization-support)) | -  |
+| `maxElementPlaceHolder` | integer | Max number of elements ... | ??  |
+| `onSelectAndDeselect` | function | Function called when a selection/deselection happen | none  |
+| `showButtonsSelectAll` | boolean | Show Select All / Deselect All buttons | false  |
 
 
 ## Localization Support
 Using ```labels``` property it is possible to customize any text the component shows.
 
-Param | Type | Description | Default 
------ | ---- | ----------- | ------- 
----:  | :--- | :---        | :--- 
-cap.select.empty | string | Shown when there are no item selected | "Select an item"
-cap.select.singular | string | Shown when just one item is selected | "1 item selected" or same as "cap.select.plural" if only plural is defined.
-cap.select.plural | string | Shown when multiple items are selected | "{size} item selected"
-btn.select.all | string | Label for Select All Button | "All"
-btn.unselect.all | string | Label for Unselect All Button | "Clear"
+| Param | Type | Description | Default |
+|  ---: | :--- | :---        | :---    |
+| `cap.select.empty` | string | Shown when there are no item selected | "Select an item" |
+| `cap.select.singular` | string | Shown when just one item is selected | "1 item selected" or same as `cap.select.plural` if only plural is defined |
+| `cap.select.plural` | string | Shown when multiple items are selected | "{size} item selected" |
+| `btn.select.all` | string | Label for Select All Button | "All" |
+| `btn.unselect.all` | string | Label for Unselect All Button | "Clear" |
 
 **Special Markers**
 

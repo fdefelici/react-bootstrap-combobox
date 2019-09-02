@@ -20,10 +20,10 @@ class App extends React.Component{
           <React.Fragment>
             <RBS.Select
               isMultiSelect={true}
-              showButtonsSelectAll={true}
+              showButtons={true}
               data={["Apple", "Banana", "Citrus", "Grapefruit", "Lime", "Mandarin", "Mango", "Melon", "Watermelon"]}
-              maxElementPlaceholder="5"
-              showSearchBar="true"
+              maxItemsAsCaption="5"
+              showSearch="true"
               labels = {{
                 "sel.empty": "Select an item",
                 "sel.singular": "One item selected",
@@ -31,7 +31,7 @@ class App extends React.Component{
                 "btn.select.all": "Pick All",
                 "btn.unselect.all": "Release All",
               }}
-              onSelectAndDeselect={selected => {
+              onChange={selected => {
                 this.setState({ selected: selected });
               }}
             ></RBS.Select>

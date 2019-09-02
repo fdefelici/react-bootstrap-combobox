@@ -8,7 +8,7 @@ Select Component for React based on Bootstrap which offer the following features
 * Scrollbar Control
 * Localization 
 
-![Component ShowCase](../example/images/showcase.png)
+![Component ShowCase](example/images/showcase.png)
 
 # Usage
 This component is based on React and Bootstrap (only css part), so in your project you must have these dependencies. It's suggested to adopt the following versions:
@@ -31,7 +31,7 @@ import RBS from "@fdefelici/re-boot-select"
 />
 ```
 
-> For a full working example take a look [here](../example).
+> For a full working example take a look [here](example/).
 
 # Configuration
 This component allow customization tweeking the following parameters:

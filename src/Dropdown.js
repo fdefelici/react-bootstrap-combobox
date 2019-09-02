@@ -18,6 +18,14 @@ class Dropdown extends Component {
   }
   isMultiSelect = false
   showButtonsSelectAll = false
+  
+  /* html ids */
+  uniqueId = undefined
+  idRbs = undefined
+  idMenuButton = undefined
+  idSelectAll = undefined
+  idDeselectAll = undefined
+  idList = undefined
 
   
   constructor(props) {
@@ -30,9 +38,18 @@ class Dropdown extends Component {
       if(this.props.labels.plural) this.labels.plural = this.props.labels.plural
       if(this.props.labels.selectAll) this.labels.selectAll = this.props.labels.selectAll
       if(this.props.labels.deselectAll) this.labels.deselectAll = this.props.labels.deselectAll
-      if(this.props.onSelectAndDeselect && typeof this.props.onSelectAndDeselect === 'function') {
-        this.onSelectAndDeselect = this.props.onSelectAndDeselect
-      }
+    }
+
+    if(this.props.uniqueId) {
+      this.uniqueId = this.props.uniqueId
+      this.idRbs = "rbs-" + this.uniqueId
+      this.idMenuButton = "rbs-menu-button-" + this.uniqueId
+      this.idSelectAll = "rbs-menu-button-selectall-button-" + this.uniqueId
+      this.idDeselectAll = "rbs-menu-button-deselectall-button-" + this.uniqueId
+      this.idList = "rbs-menu-button-dropdown-list-" + this.uniqueId
+    }
+    if(this.props.onSelectAndDeselect && typeof this.props.onSelectAndDeselect === 'function') {
+      this.onSelectAndDeselect = this.props.onSelectAndDeselect
     }
 
     this.data = this.props.data? [...this.props.data].map((each,index) => { return {label: each, index: index} }): []
@@ -110,9 +127,9 @@ class Dropdown extends Component {
   render = () => {
     return (
       <React.Fragment>
-        <div className="input-box">
+        <div id={this.idRbs} className="input-box">
           <button
-            id="restboot-menu-button"
+            id={this.idMenuButton}
             onClick={this.closeOrOpen}
             type="button"
             className="btn btn-default dropdown-toggle show-special-title button-dropdown"
@@ -137,13 +154,13 @@ class Dropdown extends Component {
 
             <div className={"bs-actionsbox " + (this.isMultiSelect && this.showButtonsSelectAll ? "": "hide")}>
               <div className="btn-group btn-block">
-                <button id="restboot-selectall-button" onClick={this.selectAllElements}
+                <button id={this.idSelectAll} onClick={this.selectAllElements}
                   type="button"
                   className="actions-btn bs-select-all btn btn-default select-all-button"
                 >
                   {this.labels.selectAll}
                 </button>
-                <button id="restboot-deselectall-button" onClick={this.deselectAllElements}
+                <button id={this.idDeselectAll} onClick={this.deselectAllElements}
                   type="button"
                   className="actions-btn bs-deselect-all btn btn-default deselect-all-button"
                 >
@@ -153,7 +170,7 @@ class Dropdown extends Component {
             </div>
 
             
-            <ul id="restboot-dropdown-list" className="dropdown-menu inner">
+            <ul id={this.idList} className="dropdown-menu inner">
               {this.state.dataFiltered.map(each => {
                 return (
                   <li key={each.label + each.index}>

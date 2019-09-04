@@ -86,3 +86,7 @@ This component has been tested against the following browsers:
 * Chrome  76+
 * Firefox 68+
 * Internet Explorer Edge 
+
+
+# How to Contribute
+If you want to contribute to the project, please follow the [guidelines](CONTRIBUTING.md).

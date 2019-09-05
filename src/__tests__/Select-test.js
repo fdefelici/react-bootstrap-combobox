@@ -1,7 +1,7 @@
 import React from 'react';
 import {cleanup, fireEvent, render, create} from '@testing-library/react';
 import RBS, { Select } from '../index';
-import Enzyme, {shallow} from 'enzyme'
+import Enzyme, {shallow, mount} from 'enzyme'
 import Adapter from 'enzyme-adapter-react-16'
 
 Enzyme.configure({adapter: new Adapter()})
@@ -121,6 +121,34 @@ describe('Dropdown tests', () => {
     eventObj = { target: { value: '' } };
     component.find('input').simulate('change', eventObj);
     expect(component.find("#rbs-menu-button-dropdown-list-123").html()).toEqual("<ul id=\"rbs-menu-button-dropdown-list-123\" class=\"dropdown-menu inner\"><li class=\"noselect\"><a>AA<span class=\"glyphicon glyphicon-ok\"></span></a></li><li class=\"noselect\"><a>AB<span class=\"\"></span></a></li><li class=\"noselect\"><a>BB<span class=\"glyphicon glyphicon-ok\"></span></a></li><li class=\"noselect\"><a>CC<span class=\"\"></span></a></li><li class=\"noselect\"><a>DD<span class=\"\"></span></a></li><li class=\"noselect\"><a>EE<span class=\"\"></span></a></li><li class=\"noselect\"><a>FF<span class=\"\"></span></a></li><li class=\"noselect\"><a>GG<span class=\"\"></span></a></li></ul>")
+
+  });
+
+  it('Data change', () => {
+
+    let data = ["AA", "AB", "BB", "CC", "DD", "EE", "FF", "GG"]
+    let data2 = ["HH", "GG"]
+
+    
+    const component = mount(
+      <Select
+      isMultiSelect={true}
+      showButtons={true}
+      data={data}
+      maxItemsAsCaption="0"
+      labels = {{
+        "cap.select.empty": "Select a car",
+        "cap.select.plural": "{sel} of {size} cars selected",
+        "btn.select.all": "Pick All",
+        "btn.unselect.all": "Release All",
+      }}
+      id="123"
+    ></Select>,
+    );
+
+    expect(component.find("#rbs-menu-button-dropdown-list-123").html()).toEqual("<ul id=\"rbs-menu-button-dropdown-list-123\" class=\"dropdown-menu inner\"><li class=\"noselect\"><a>AA<span class=\"\"></span></a></li><li class=\"noselect\"><a>AB<span class=\"\"></span></a></li><li class=\"noselect\"><a>BB<span class=\"\"></span></a></li><li class=\"noselect\"><a>CC<span class=\"\"></span></a></li><li class=\"noselect\"><a>DD<span class=\"\"></span></a></li><li class=\"noselect\"><a>EE<span class=\"\"></span></a></li><li class=\"noselect\"><a>FF<span class=\"\"></span></a></li><li class=\"noselect\"><a>GG<span class=\"\"></span></a></li></ul>")
+    component.setProps({ data: data2 });
+    expect(component.find("#rbs-menu-button-dropdown-list-123").html()).toEqual("<ul id=\"rbs-menu-button-dropdown-list-123\" class=\"dropdown-menu inner\"><li class=\"noselect\"><a>HH<span class=\"\"></span></a></li><li class=\"noselect\"><a>GG<span class=\"\"></span></a></li></ul>")
 
   });
 

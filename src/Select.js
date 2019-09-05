@@ -4,7 +4,6 @@ import "./Select.css";
 
 class Select extends Component {
 
-  data = []
   placeholderDefault = ""
   maxItemsAsCaption = 0
   onChange = () => {}
@@ -58,7 +57,6 @@ class Select extends Component {
       this.onChange = this.props.onChange
     }
 
-    this.data = this.props.data? [...this.props.data].map((each,index) => { return {label: each, index: index} }): []
     this.placeholderDefault = this.labels["cap.select.empty"]
     this.maxItemsAsCaption = this.props.maxItemsAsCaption? this.props.maxItemsAsCaption: 0
     this.isMultiSelect = this.props.isMultiSelect? this.props.isMultiSelect: false
@@ -68,10 +66,23 @@ class Select extends Component {
     this.state = {
       placeholder: "",
       isOpen: false,
-      dataFiltered : [...this.data],
-      selected: []
+      dataFiltered : this.props.data? this.props.data.map((each,index) => { return {label: each, index: index} }): [],
+      selected: [],
+      data : this.props.data? this.props.data.map((each,index) => { return {label: each, index: index} }): []
     }
 
+
+  }
+  componentDidUpdate(prevProps, prevState) {
+    if(JSON.stringify(this.props.data.map((each,index) => { return {label: each, index: index} })) !== JSON.stringify(this.state.data)) {
+      this.setState({
+        data : this.props.data.map((each,index) => { return {label: each, index: index} }),
+        dataFiltered : this.props.data.map((each,index) => { return {label: each, index: index} }),
+        selected: []
+      })
+
+      this.runCallback([])
+    }
   }
 
   runCallback(selection) {
@@ -91,7 +102,15 @@ class Select extends Component {
     }
 
     result = result.replace("{sel}", sizeSelected)
-    return result.replace("{size}", this.data.length)
+    return result.replace("{size}", this.state.data.length)
+  };
+
+  searchElementInArray = (array, element) => {
+    let findElement = function(each) {
+      return element.label === each.label && element.index === each.index;
+    }
+
+    return array.find(findElement)
   };
 
   selectElement = (element) => {
@@ -99,8 +118,8 @@ class Select extends Component {
     if(this.isMultiSelect){
       let newSelected = [...this.state.selected]
 
-      if(newSelected.includes(element)) {
-        newSelected = newSelected.filter( each =>{ return each !== element })
+      if(this.searchElementInArray(newSelected, element) !== undefined) {
+        newSelected = newSelected.filter( each =>{ return each.label !== element.label && each.index !== element.index })
       } else {
         newSelected.push(element)
       }
@@ -119,10 +138,22 @@ class Select extends Component {
   };
 
   selectAllElements = () => {
-    let newPlaceholder = this.data.length > this.maxItemsAsCaption? this.getLabelSelected(this.data.length): this.data.map(each => each.label).join(", ")
-    this.setState({selected: [...this.data], placeholder: newPlaceholder})
+    let compare = (toCompare) => {
+      return function(current){
+        return toCompare.filter(function(other){
+          return other.label == current.label && other.index == current.index
+        }).length == 0;
+      }
+    }
 
-    this.runCallback([...this.data])
+    var onlyInDataFiltered = this.state.dataFiltered.filter(compare(this.state.selected))
+
+    let newSelected = this.state.selected.concat(onlyInDataFiltered)
+
+    let newPlaceholder = newSelected.length > this.maxItemsAsCaption? this.getLabelSelected(newSelected.length): newSelected.map(each => each.label).join(", ")
+    this.setState({selected: newSelected, placeholder: newPlaceholder})
+
+    this.runCallback(newSelected)
   }
 
   deselectAllElements = () => {
@@ -133,10 +164,11 @@ class Select extends Component {
   filterData = event => {
     this.setState(
       {
-        dataFiltered : [...this.data].filter(
+        dataFiltered : this.state.data.filter(
         (each) => each.label.toLowerCase().startsWith(event.target.value.toLowerCase()))
       }
     )
+
   };
 
 
@@ -200,7 +232,7 @@ class Select extends Component {
                       {each.label}
                       <span
                         className={
-                          this.state.selected.indexOf(each) >= 0
+                          this.searchElementInArray(this.state.selected, each) !== undefined
                             ? "glyphicon glyphicon-ok"
                             : ""
                         }

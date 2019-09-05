@@ -1,7 +1,7 @@
 import React from 'react';
 import {cleanup, fireEvent, render, create} from '@testing-library/react';
 import RBS, { Select } from '../index';
-import Enzyme, {shallow} from 'enzyme'
+import Enzyme, {shallow, mount} from 'enzyme'
 import Adapter from 'enzyme-adapter-react-16'
 
 Enzyme.configure({adapter: new Adapter()})
@@ -88,6 +88,98 @@ describe('Dropdown tests', () => {
     component.find('#rbs-menu-button-deselectall-button-123').simulate('click');
     expect(component.find("#rbs-menu-button-123").html()).toEqual("<button id=\"rbs-menu-button-123\" type=\"button\" class=\"btn btn-default dropdown-toggle show-special-title button-dropdown\"><span class=\"pull-left filter-option\"></span><span class=\"pull-left special-title\">Select a car</span> <span class=\"caret\"></span></button>")
   
+  });
+
+  it('Select first, filter, select all and remove filter', () => {
+    
+    const component = shallow(
+      <Select
+      isMultiSelect={true}
+      showButtons={true}
+      data={["AA", "AB", "BB", "CC", "DD", "EE", "FF", "GG"]}
+      maxItemsAsCaption="0"
+      labels = {{
+        "cap.select.empty": "Select a car",
+        "cap.select.plural": "{sel} of {size} cars selected",
+        "btn.select.all": "Pick All",
+        "btn.unselect.all": "Release All",
+      }}
+      id="123"
+    ></Select>,
+    );
+
+    expect(component.find("#rbs-menu-button-123").html()).toEqual("<button id=\"rbs-menu-button-123\" type=\"button\" class=\"btn btn-default dropdown-toggle show-special-title button-dropdown\"><span class=\"pull-left filter-option\"></span><span class=\"pull-left special-title\">Select a car</span> <span class=\"caret\"></span></button>")
+    
+    shallow(component.find("a").get(0)).simulate("click")
+    expect(component.find("#rbs-menu-button-123").html()).toEqual("<button id=\"rbs-menu-button-123\" type=\"button\" class=\"btn btn-default dropdown-toggle show-special-title button-dropdown\"><span class=\"pull-left filter-option\"></span><span class=\"pull-left special-title\">1 of 8 cars selected</span> <span class=\"caret\"></span></button>")
+
+    let eventObj = { target: { value: 'B' } };
+    component.find('input').simulate('change', eventObj);
+    expect(component.find("#rbs-menu-button-dropdown-list-123").html()).toEqual("<ul id=\"rbs-menu-button-dropdown-list-123\" class=\"dropdown-menu inner\"><li class=\"noselect\"><a>BB<span class=\"\"></span></a></li></ul>")
+    shallow(component.find("a").get(0)).simulate("click")
+
+    eventObj = { target: { value: '' } };
+    component.find('input').simulate('change', eventObj);
+    expect(component.find("#rbs-menu-button-dropdown-list-123").html()).toEqual("<ul id=\"rbs-menu-button-dropdown-list-123\" class=\"dropdown-menu inner\"><li class=\"noselect\"><a>AA<span class=\"glyphicon glyphicon-ok\"></span></a></li><li class=\"noselect\"><a>AB<span class=\"\"></span></a></li><li class=\"noselect\"><a>BB<span class=\"glyphicon glyphicon-ok\"></span></a></li><li class=\"noselect\"><a>CC<span class=\"\"></span></a></li><li class=\"noselect\"><a>DD<span class=\"\"></span></a></li><li class=\"noselect\"><a>EE<span class=\"\"></span></a></li><li class=\"noselect\"><a>FF<span class=\"\"></span></a></li><li class=\"noselect\"><a>GG<span class=\"\"></span></a></li></ul>")
+
+  });
+
+  it('Data change', () => {
+
+    let data = ["AA", "AB", "BB", "CC", "DD", "EE", "FF", "GG"]
+    let data2 = ["HH", "GG"]
+
+    
+    const component = mount(
+      <Select
+      isMultiSelect={true}
+      showButtons={true}
+      data={data}
+      maxItemsAsCaption="0"
+      labels = {{
+        "cap.select.empty": "Select a car",
+        "cap.select.plural": "{sel} of {size} cars selected",
+        "btn.select.all": "Pick All",
+        "btn.unselect.all": "Release All",
+      }}
+      id="123"
+    ></Select>,
+    );
+
+    expect(component.find("#rbs-menu-button-dropdown-list-123").html()).toEqual("<ul id=\"rbs-menu-button-dropdown-list-123\" class=\"dropdown-menu inner\"><li class=\"noselect\"><a>AA<span class=\"\"></span></a></li><li class=\"noselect\"><a>AB<span class=\"\"></span></a></li><li class=\"noselect\"><a>BB<span class=\"\"></span></a></li><li class=\"noselect\"><a>CC<span class=\"\"></span></a></li><li class=\"noselect\"><a>DD<span class=\"\"></span></a></li><li class=\"noselect\"><a>EE<span class=\"\"></span></a></li><li class=\"noselect\"><a>FF<span class=\"\"></span></a></li><li class=\"noselect\"><a>GG<span class=\"\"></span></a></li></ul>")
+    component.setProps({ data: data2 });
+    expect(component.find("#rbs-menu-button-dropdown-list-123").html()).toEqual("<ul id=\"rbs-menu-button-dropdown-list-123\" class=\"dropdown-menu inner\"><li class=\"noselect\"><a>HH<span class=\"\"></span></a></li><li class=\"noselect\"><a>GG<span class=\"\"></span></a></li></ul>")
+
+  });
+
+  it('onChange run', () => {
+
+    let data = ["AA", "AB", "BB", "CC", "DD", "EE", "FF", "GG"]
+    let data2 = ["HH", "GG"]
+
+    let isTested = false
+    let onChange = () => { isTested = true }
+    
+    const component = mount(
+      <Select
+      isMultiSelect={true}
+      showButtons={true}
+      data={data}
+      maxItemsAsCaption="0"
+      onChange = {onChange}
+      labels = {{
+        "cap.select.empty": "Select a car",
+        "cap.select.plural": "{sel} of {size} cars selected",
+        "btn.select.all": "Pick All",
+        "btn.unselect.all": "Release All",
+      }}
+      id="123"
+    ></Select>,
+    );
+
+    shallow(component.find("a").get(0)).simulate("click")
+    expect(isTested).toEqual(true)
+
   });
 
   it('Click select/deselect all with different labels - no singular and no plural', () => {

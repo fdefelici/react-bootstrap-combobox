@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import 'bootstrap/dist/css/bootstrap.min.css'
-import RBS from "re-boot-select"
+import RBS from "@fdefelici/re-boot-select"
 
 class App extends React.Component{
 
@@ -37,6 +37,7 @@ class App extends React.Component{
             ></RBS.Select>
 
             <span style={this.stylePrint}>selected: {this.state.selected.map(each => each.label).join(", ")}</span>
+
           </React.Fragment>
         );
     }

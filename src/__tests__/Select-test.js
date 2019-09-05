@@ -152,6 +152,36 @@ describe('Dropdown tests', () => {
 
   });
 
+  it('onChange run', () => {
+
+    let data = ["AA", "AB", "BB", "CC", "DD", "EE", "FF", "GG"]
+    let data2 = ["HH", "GG"]
+
+    let isTested = false
+    let onChange = () => { isTested = true }
+    
+    const component = mount(
+      <Select
+      isMultiSelect={true}
+      showButtons={true}
+      data={data}
+      maxItemsAsCaption="0"
+      onChange = {onChange}
+      labels = {{
+        "cap.select.empty": "Select a car",
+        "cap.select.plural": "{sel} of {size} cars selected",
+        "btn.select.all": "Pick All",
+        "btn.unselect.all": "Release All",
+      }}
+      id="123"
+    ></Select>,
+    );
+
+    shallow(component.find("a").get(0)).simulate("click")
+    expect(isTested).toEqual(true)
+
+  });
+
   it('Click select/deselect all with different labels - no singular and no plural', () => {
     
     const component = shallow(

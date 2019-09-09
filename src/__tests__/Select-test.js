@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactDOM from 'react-dom'
 import {cleanup, fireEvent, render, create} from '@testing-library/react';
 import RBS, { Select } from '../index';
 import Enzyme, {shallow, mount} from 'enzyme'
@@ -10,6 +11,28 @@ Enzyme.configure({adapter: new Adapter()})
 afterEach(cleanup)
 
 describe('Dropdown tests', () => {
+
+  it('Should not call action on click inside the component', () => {
+    const map = {}
+  
+    document.addEventListener = jest.fn((event, cb) => {
+      map[event] = cb
+    })
+  
+    const props = {
+      actions: {
+        something: jest.fn(),
+      }
+    }
+  
+    const wrapper = mount(<Select {... props} />)
+  
+    map.mousedown({
+      target: ReactDOM.findDOMNode(wrapper.instance()),
+    })
+  
+    expect(props.actions.something).not.toHaveBeenCalled()
+  })
 
   it('Click select/deselect all', () => {
     

@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import OutsideAlerter from "./OutsideAlerter";
 
 import "./Select.css";
 
@@ -175,7 +176,7 @@ class Select extends Component {
 
   render = () => {
     return (
-      <React.Fragment>
+      <OutsideAlerter onClickOutside={()=>this.setState({isOpen:false})}>
         <div id={this.idRbs} className="input-box">
           <button
             id={this.idMenuButton}
@@ -246,7 +247,7 @@ class Select extends Component {
 
           </div>
         </div>
-      </React.Fragment>
+      </OutsideAlerter>
     );
   };
 }

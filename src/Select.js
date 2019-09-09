@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import OutsideAlerter from "./OutsideAlerter";
+import LostFocusHandler from "./LostFocusHandler";
 
 import "./Select.css";
 
@@ -176,7 +176,7 @@ class Select extends Component {
 
   render = () => {
     return (
-      <OutsideAlerter onClickOutside={()=>this.setState({isOpen:false})}>
+      <LostFocusHandler onClickOutside={()=>this.setState({isOpen:false})}>
         <div id={this.idRbs} className="input-box">
           <button
             id={this.idMenuButton}
@@ -247,7 +247,7 @@ class Select extends Component {
 
           </div>
         </div>
-      </OutsideAlerter>
+      </LostFocusHandler>
     );
   };
 }

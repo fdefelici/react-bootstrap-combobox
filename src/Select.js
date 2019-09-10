@@ -6,6 +6,7 @@ class Select extends Component {
 
   placeholderDefault = ""
   maxItemsAsCaption = 0
+  visibleScrollingItems = undefined
   onChange = () => {}
 
   labels = {
@@ -62,6 +63,10 @@ class Select extends Component {
     this.isMultiSelect = this.props.isMultiSelect? this.props.isMultiSelect: false
     this.showSearch = this.props.showSearch? this.props.showSearch: false
     this.showButtons = this.props.showButtons? this.props.showButtons: false
+
+    this.visibleScrollingItems = this.props.visibleScrollingItems
+                  ? (3 + 20 + 3) * this.props.visibleScrollingItems + "px"
+                  : (3 + 20 + 3) * 6 + "px"
 
     this.state = {
       placeholder: "",
@@ -171,8 +176,7 @@ class Select extends Component {
 
   };
 
-
-
+  
   render = () => {
     return (
       <React.Fragment>
@@ -193,7 +197,7 @@ class Select extends Component {
             <span className="caret"></span>
           </button>
           <div className={"dropdown-menu " + (this.state.isOpen ? "open" : "")}>
-            <div className={"bs-searchbox " + (this.showSearch ? "": "hide")}>
+            <div className={"bs-searchbox " + (this.showSearch ? "" : "hide")}>
               <input
                 type="text"
                 className="form-control"
@@ -201,15 +205,24 @@ class Select extends Component {
               />
             </div>
 
-            <div className={"bs-actionsbox " + (this.isMultiSelect && this.showButtons ? "": "hide")}>
+            <div
+              className={
+                "bs-actionsbox " +
+                (this.isMultiSelect && this.showButtons ? "" : "hide")
+              }
+            >
               <div className="btn-group btn-block">
-                <button id={this.idSelectAll} onClick={this.selectAllElements}
+                <button
+                  id={this.idSelectAll}
+                  onClick={this.selectAllElements}
                   type="button"
                   className="actions-btn bs-select-all btn btn-default select-all-button"
                 >
                   {this.labels["btn.select.all"]}
                 </button>
-                <button id={this.idDeselectAll} onClick={this.deselectAllElements}
+                <button
+                  id={this.idDeselectAll}
+                  onClick={this.deselectAllElements}
                   type="button"
                   className="actions-btn bs-deselect-all btn btn-default deselect-all-button"
                 >
@@ -218,21 +231,31 @@ class Select extends Component {
               </div>
             </div>
 
-            
-            <ul id={this.idList} className="dropdown-menu inner">
+            <ul
+              id={this.idList}
+              className="dropdown-menu inner"
+              style={{
+                maxHeight: this.visibleScrollingItems
+              }}
+            > {/* left (3) + item (20) + rigth (3) */}
+
+              
               {this.state.dataFiltered.map(each => {
                 return (
                   <li className="noselect" key={each.label + each.index}>
                     <a
                       onClick={() => {
-                        if(!this.isMultiSelect) this.closeOrOpen();
+                        if (!this.isMultiSelect) this.closeOrOpen();
                         this.selectElement(each);
                       }}
                     >
                       {each.label}
                       <span
                         className={
-                          this.searchElementInArray(this.state.selected, each) !== undefined
+                          this.searchElementInArray(
+                            this.state.selected,
+                            each
+                          ) !== undefined
                             ? "glyphicon glyphicon-ok"
                             : ""
                         }
@@ -242,8 +265,6 @@ class Select extends Component {
                 );
               })}
             </ul>
-            
-
           </div>
         </div>
       </React.Fragment>

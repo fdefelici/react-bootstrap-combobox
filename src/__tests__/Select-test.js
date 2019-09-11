@@ -182,6 +182,35 @@ describe('Dropdown tests', () => {
 
   });
 
+
+  it('Select first and second item', () => {
+    
+    const component = shallow(
+      <Select
+      isMultiSelect={true}
+      showButtons={true}
+      data={["AA", "AB", "BB", "CC", "DD", "EE", "FF", "GG"]}
+      maxCaptionItems="0"
+      labels = {{
+        "cap.select.empty": "Select a car",
+        "cap.select.plural": "{sel} of {size} cars selected",
+        "btn.select.all": "Pick All",
+        "btn.unselect.all": "Release All",
+      }}
+      id="123"
+    ></Select>,
+    );
+
+    expect(component.find("#rbs-menu-button-123").html()).toEqual("<button id=\"rbs-menu-button-123\" type=\"button\" class=\"btn btn-default dropdown-toggle show-special-title button-dropdown\"><span class=\"pull-left filter-option\"></span><span class=\"pull-left special-title\">Select a car</span> <span class=\"caret\"></span></button>")
+    
+    shallow(component.find("a").get(0)).simulate("click")
+    expect(component.find("#rbs-menu-button-123").html()).toEqual("<button id=\"rbs-menu-button-123\" type=\"button\" class=\"btn btn-default dropdown-toggle show-special-title button-dropdown\"><span class=\"pull-left filter-option\"></span><span class=\"pull-left special-title\">1 of 8 cars selected</span> <span class=\"caret\"></span></button>")
+
+    shallow(component.find("a").get(1)).simulate("click")
+    expect(component.find("#rbs-menu-button-123").html()).toEqual("<button id=\"rbs-menu-button-123\" type=\"button\" class=\"btn btn-default dropdown-toggle show-special-title button-dropdown\"><span class=\"pull-left filter-option\"></span><span class=\"pull-left special-title\">2 of 8 cars selected</span> <span class=\"caret\"></span></button>")
+
+  });
+
   it('Data change', () => {
 
     let data = ["AA", "AB", "BB", "CC", "DD", "EE", "FF", "GG"]

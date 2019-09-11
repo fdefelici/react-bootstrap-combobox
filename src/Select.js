@@ -7,7 +7,7 @@ class Select extends Component {
 
   placeholderDefault = ""
   maxCaptionItems = 0
-  maxDropdownItems = undefined
+  maxDropdownItems = 6
   onChange = () => {}
 
   labels = {

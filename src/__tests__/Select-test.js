@@ -69,6 +69,37 @@ describe('Dropdown tests', () => {
     expect(props.actions.something).not.toHaveBeenCalled()
   })
 
+  it('Filter list and select', () => {
+    
+    const component = shallow(
+      <Select
+      isMultiSelect={true}
+      showButtons={true}
+      data={["AA", "AB", "BB", "CC", "DD", "BB", "EE", "FF", "GG"]}
+      maxCaptionItems="5"
+      id="123"
+    ></Select>,
+    );
+
+    expect(component.find("#rbs-menu-button-dropdown-list-123").html()).toEqual("<ul id=\"rbs-menu-button-dropdown-list-123\" class=\"dropdown-menu inner\" style=\"max-height:156px\"> <li class=\"noselect\"><a>AA<span class=\"\"></span></a></li><li class=\"noselect\"><a>AB<span class=\"\"></span></a></li><li class=\"noselect\"><a>BB<span class=\"\"></span></a></li><li class=\"noselect\"><a>CC<span class=\"\"></span></a></li><li class=\"noselect\"><a>DD<span class=\"\"></span></a></li><li class=\"noselect\"><a>BB<span class=\"\"></span></a></li><li class=\"noselect\"><a>EE<span class=\"\"></span></a></li><li class=\"noselect\"><a>FF<span class=\"\"></span></a></li><li class=\"noselect\"><a>GG<span class=\"\"></span></a></li></ul>")
+    
+    shallow(component.find("a").get(0)).simulate("click")
+    expect(component.find("#rbs-menu-button-123").html()).toEqual("<button id=\"rbs-menu-button-123\" type=\"button\" class=\"btn btn-default dropdown-toggle show-special-title button-dropdown\"><span class=\"pull-left filter-option\"></span><span class=\"pull-left special-title\">AA</span> <span class=\"caret\"></span></button>")
+
+    let eventObj = { target: { value: 'BB' } };
+    component.find('input').simulate('change', eventObj);
+    expect(component.find("#rbs-menu-button-dropdown-list-123").html()).toEqual("<ul id=\"rbs-menu-button-dropdown-list-123\" class=\"dropdown-menu inner\" style=\"max-height:156px\"> <li class=\"noselect\"><a>BB<span class=\"\"></span></a></li><li class=\"noselect\"><a>BB<span class=\"\"></span></a></li></ul>")
+
+    component.find('#rbs-menu-button-selectall-button-123').simulate('click');
+    expect(component.find("#rbs-menu-button-dropdown-list-123").html()).toEqual("<ul id=\"rbs-menu-button-dropdown-list-123\" class=\"dropdown-menu inner\" style=\"max-height:156px\"> <li class=\"noselect\"><a>BB<span class=\"glyphicon glyphicon-ok\"></span></a></li><li class=\"noselect\"><a>BB<span class=\"glyphicon glyphicon-ok\"></span></a></li></ul>")
+
+    eventObj = { target: { value: '' } };
+    component.find('input').simulate('change', eventObj);
+    expect(component.find("#rbs-menu-button-dropdown-list-123").html()).toEqual("<ul id=\"rbs-menu-button-dropdown-list-123\" class=\"dropdown-menu inner\" style=\"max-height:156px\"> <li class=\"noselect\"><a>AA<span class=\"glyphicon glyphicon-ok\"></span></a></li><li class=\"noselect\"><a>AB<span class=\"\"></span></a></li><li class=\"noselect\"><a>BB<span class=\"glyphicon glyphicon-ok\"></span></a></li><li class=\"noselect\"><a>CC<span class=\"\"></span></a></li><li class=\"noselect\"><a>DD<span class=\"\"></span></a></li><li class=\"noselect\"><a>BB<span class=\"glyphicon glyphicon-ok\"></span></a></li><li class=\"noselect\"><a>EE<span class=\"\"></span></a></li><li class=\"noselect\"><a>FF<span class=\"\"></span></a></li><li class=\"noselect\"><a>GG<span class=\"\"></span></a></li></ul>")
+
+  
+  });
+
   it('Click select/deselect all', () => {
     
     const component = shallow(

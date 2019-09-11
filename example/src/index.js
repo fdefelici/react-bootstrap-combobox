@@ -24,7 +24,7 @@ class App extends React.Component{
               visibleScrollingItems={4}
               data={["Apple", "Banana", "Citrus", "Grapefruit", "Lime", "Mandarin", "Mango", "Melon", "Watermelon"]}
               maxItemsAsCaption="5"
-              showSearch="true"
+              showSearch={true}
               labels = {{
                 "sel.empty": "Select an item",
                 "sel.singular": "One item selected",

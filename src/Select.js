@@ -125,7 +125,7 @@ class Select extends Component {
       let newSelected = [...this.state.selected]
 
       if(this.searchElementInArray(newSelected, element) !== undefined) {
-        newSelected = newSelected.filter( each =>{ return each.label !== element.label && each.index !== element.index })
+        newSelected = newSelected.filter( each =>{ return each.index !== element.index })
       } else {
         newSelected.push(element)
       }
@@ -147,7 +147,7 @@ class Select extends Component {
     let compare = (toCompare) => {
       return function(current){
         return toCompare.filter(function(other){
-          return other.label == current.label && other.index == current.index
+          return other.index == current.index
         }).length == 0;
       }
     }

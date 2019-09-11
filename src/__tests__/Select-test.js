@@ -18,7 +18,7 @@ describe('Dropdown tests', () => {
       isMultiSelect={true}
       showButtons={true}
       data={["AA", "AB", "BB", "CC", "DD", "BB", "EE", "FF", "GG"]}
-      maxItemsAsCaption="5"
+      maxCaptionItems="5"
       id="123"
     ></Select>,
     );
@@ -40,7 +40,7 @@ describe('Dropdown tests', () => {
       isMultiSelect={true}
       showButtons={true}
       data={["AA", "AB", "BB", "CC", "DD", "BB", "EE", "FF", "GG"]}
-      maxItemsAsCaption="5"
+      maxCaptionItems="5"
       labels = {{
         "cap.select.empty": "Select a car",
         "cap.select.singular": "One car selected",
@@ -69,7 +69,7 @@ describe('Dropdown tests', () => {
       isMultiSelect={true}
       showButtons={true}
       data={["AA", "AB", "BB", "CC", "DD", "BB", "EE", "FF", "GG"]}
-      maxItemsAsCaption="0"
+      maxCaptionItems="0"
       labels = {{
         "cap.select.empty": "Select a car",
         "cap.select.plural": "{sel} of {size} cars selected",
@@ -97,7 +97,7 @@ describe('Dropdown tests', () => {
       isMultiSelect={true}
       showButtons={true}
       data={["AA", "AB", "BB", "CC", "DD", "EE", "FF", "GG"]}
-      maxItemsAsCaption="0"
+      maxCaptionItems="0"
       labels = {{
         "cap.select.empty": "Select a car",
         "cap.select.plural": "{sel} of {size} cars selected",
@@ -135,7 +135,7 @@ describe('Dropdown tests', () => {
       isMultiSelect={true}
       showButtons={true}
       data={data}
-      maxItemsAsCaption="0"
+      maxCaptionItems="0"
       labels = {{
         "cap.select.empty": "Select a car",
         "cap.select.plural": "{sel} of {size} cars selected",
@@ -165,7 +165,7 @@ describe('Dropdown tests', () => {
       isMultiSelect={true}
       showButtons={true}
       data={data}
-      maxItemsAsCaption="0"
+      maxCaptionItems="0"
       onChange = {onChange}
       labels = {{
         "cap.select.empty": "Select a car",
@@ -189,7 +189,7 @@ describe('Dropdown tests', () => {
       isMultiSelect={true}
       showButtons={true}
       data={["AA", "AB", "BB", "CC", "DD", "BB", "EE", "FF", "GG"]}
-      maxItemsAsCaption="0"
+      maxCaptionItems="0"
       labels = {{
         "cap.select.empty": "Select a car",
         "btn.select.all": "Pick All",
@@ -217,7 +217,7 @@ describe('Dropdown tests', () => {
       isMultiSelect={true}
       showButtons={true}
       data={["AA", "AB", "BB", "CC", "DD", "BB", "EE", "FF", "GG"]}
-      maxItemsAsCaption="5"
+      maxCaptionItems="5"
       id="123"
     ></Select>,
     );
@@ -241,7 +241,7 @@ describe('Dropdown tests', () => {
       isMultiSelect={true}
       showButtons={true}
       data={["AA", "AB", "BB", "CC", "DD", "BB", "EE", "FF", "GG"]}
-      maxItemsAsCaption="5"
+      maxCaptionItems="5"
   
       id="123"
     ></Select>,
@@ -264,7 +264,7 @@ describe('Dropdown tests', () => {
       isMultiSelect={true}
       showButtons={true}
       data={["AA", "AB", "BB", "CC", "DD", "BB", "EE", "FF", "GG"]}
-      maxItemsAsCaption="5"
+      maxCaptionItems="5"
       
       id="123"
     ></Select>,
@@ -276,14 +276,14 @@ describe('Dropdown tests', () => {
     
   });
 
-  it('Select three elements, maxItemsAsCaption = 2', () => {
+  it('Select three elements, maxCaptionItems = 2', () => {
 
     const component = shallow(
       <Select
       isMultiSelect={true}
       showButtons={true}
       data={["AA", "AB", "BB", "CC", "DD", "BB", "EE", "FF", "GG"]}
-      maxItemsAsCaption="2"
+      maxCaptionItems="2"
       labels={{singular: "car"}}
       id="123"
     ></Select>,
@@ -305,7 +305,7 @@ describe('Dropdown tests', () => {
       <Select
       isMultiSelect={false}
       data={["AA", "AB", "BB", "CC", "DD", "BB", "EE", "FF", "GG"]}
-      maxItemsAsCaption="2"
+      maxCaptionItems="2"
       labels = {{
         "cap.select.empty": "Select a car",
         "cap.select.singular": "One car selected",
@@ -334,7 +334,7 @@ describe('Dropdown tests', () => {
       isMultiSelect={true}
       showButtons={true}
       data={["AA", "AB", "BB", "CC", "DD", "BB", "EE", "FF", "GG"]}
-      maxItemsAsCaption="5"
+      maxCaptionItems="5"
       labels = {{
         "cap.select.empty": "Select a car",
         "cap.select.singular": "One car selected",
@@ -384,8 +384,8 @@ describe('Dropdown tests', () => {
       <Select
       isMultiSelect={false}
       data={["AA", "AB", "BB", "CC", "DD", "BB", "EE", "FF", "GG"]}
-      maxItemsAsCaption="2"
-      visibleScrollingItems="2"
+      maxCaptionItems="2"
+      maxDropdownItems="2"
       labels = {{
         "cap.select.empty": "Select a car",
         "cap.select.singular": "One car selected",
@@ -403,8 +403,8 @@ describe('Dropdown tests', () => {
       <Select
       isMultiSelect={false}
       data={["AA", "AB", "BB", "CC", "DD", "BB", "EE", "FF", "GG"]}
-      maxItemsAsCaption="2"
-      visibleScrollingItems="4"
+      maxCaptionItems="2"
+      maxDropdownItems="4"
       labels = {{
         "cap.select.empty": "Select a car",
         "cap.select.singular": "One car selected",

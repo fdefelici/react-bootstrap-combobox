@@ -5,8 +5,8 @@ import "./Select.css";
 class Select extends Component {
 
   placeholderDefault = ""
-  maxItemsAsCaption = 0
-  visibleScrollingItems = undefined
+  maxCaptionItems = 0
+  maxDropdownItems = undefined
   onChange = () => {}
 
   labels = {
@@ -59,13 +59,13 @@ class Select extends Component {
     }
 
     this.placeholderDefault = this.labels["cap.select.empty"]
-    this.maxItemsAsCaption = this.props.maxItemsAsCaption? this.props.maxItemsAsCaption: 0
+    this.maxCaptionItems = this.props.maxCaptionItems? this.props.maxCaptionItems: 0
     this.isMultiSelect = this.props.isMultiSelect? this.props.isMultiSelect: false
     this.showSearch = this.props.showSearch? this.props.showSearch: false
     this.showButtons = this.props.showButtons? this.props.showButtons: false
 
-    this.visibleScrollingItems = this.props.visibleScrollingItems
-                  ? (3 + 20 + 3) * this.props.visibleScrollingItems + "px"
+    this.maxDropdownItems = this.props.maxDropdownItems
+                  ? (3 + 20 + 3) * this.props.maxDropdownItems + "px"
                   : (3 + 20 + 3) * 6 + "px"
 
     this.state = {
@@ -129,7 +129,7 @@ class Select extends Component {
         newSelected.push(element)
       }
 
-      let newPlaceholder = newSelected.length > this.maxItemsAsCaption? this.getLabelSelected(newSelected.length): newSelected.map(each => each.label).join(", ")
+      let newPlaceholder = newSelected.length > this.maxCaptionItems? this.getLabelSelected(newSelected.length): newSelected.map(each => each.label).join(", ")
 
       this.setState({selected: newSelected, placeholder: newPlaceholder})
 
@@ -155,7 +155,7 @@ class Select extends Component {
 
     let newSelected = this.state.selected.concat(onlyInDataFiltered)
 
-    let newPlaceholder = newSelected.length > this.maxItemsAsCaption? this.getLabelSelected(newSelected.length): newSelected.map(each => each.label).join(", ")
+    let newPlaceholder = newSelected.length > this.maxCaptionItems? this.getLabelSelected(newSelected.length): newSelected.map(each => each.label).join(", ")
     this.setState({selected: newSelected, placeholder: newPlaceholder})
 
     this.runCallback(newSelected)
@@ -235,7 +235,7 @@ class Select extends Component {
               id={this.idList}
               className="dropdown-menu inner"
               style={{
-                maxHeight: this.visibleScrollingItems
+                maxHeight: this.maxDropdownItems
               }}
             > {/* left (3) + item (20) + rigth (3) */}
 

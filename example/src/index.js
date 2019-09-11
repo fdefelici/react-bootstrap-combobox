@@ -21,9 +21,9 @@ class App extends React.Component{
             <RBS.Select
               isMultiSelect={true}
               showButtons={true}
-              visibleScrollingItems={4}
+              maxDropdownItems={4}
               data={["Apple", "Banana", "Citrus", "Grapefruit", "Lime", "Mandarin", "Mango", "Melon", "Watermelon"]}
-              maxItemsAsCaption="5"
+              maxCaptionItems="5"
               showSearch={true}
               labels = {{
                 "sel.empty": "Select an item",

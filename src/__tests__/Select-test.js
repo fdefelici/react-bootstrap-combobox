@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom'
 import {cleanup, fireEvent, render, create} from '@testing-library/react';
-import RBS, { Select } from '../index';
+import Select from '../index';
 import Enzyme, {shallow, mount} from 'enzyme'
 import Adapter from 'enzyme-adapter-react-16'
 
@@ -26,7 +26,6 @@ describe('Dropdown tests', () => {
           isMultiSelect={true}
           showButtons={true}
           data={["AA", "AB", "BB", "CC", "DD", "BB", "EE", "FF", "GG"]}
-          maxItemsAsCaption="5"
           id="123"
         ></Select>
       </div>

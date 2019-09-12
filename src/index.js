@@ -1,3 +1,3 @@
-const RBS = require('./RBS');
+const Select = require('./Select');
 
-module.exports = RBS.default || RBS;
+module.exports = Select.default || Select;

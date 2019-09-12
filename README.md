@@ -1,6 +1,6 @@
 # react-bootstrap-combobox &middot; [![GitHub package.json version](https://img.shields.io/github/package-json/v/fdefelici/react-bootstrap-combobox?color=blue&label=npm)](https://www.npmjs.com/package/@fdefelici/react-bootstrap-combobox) [![Build Status](https://travis-ci.org/fdefelici/react-bootstrap-combobox.svg?branch=master)](https://travis-ci.org/fdefelici/react-bootstrap-combobox) [![codecov](https://codecov.io/gh/fdefelici/react-bootstrap-combobox/branch/master/graph/badge.svg)](https://codecov.io/gh/fdefelici/react-bootstrap-combobox)
 
-Select Component for React based on Bootstrap which offer the following features:
+Combobox Component for React based on Bootstrap which offer the following features:
 * Single Selection
 * Multiple Selection
 * Selection Handling
@@ -22,11 +22,11 @@ $ npm install @fdefelici/react-bootstrap-combobox[@VERSION] --save
 
 and use it in your code:
 ```javascript
-import RBS from "@fdefelici/react-bootstrap-combobox"
+import Combobox from "@fdefelici/react-bootstrap-combobox"
 
 ...
 
-<RBS.Select
+<Combobox
     data={["Apple", "Banana", "Citrus", "Grapefruit"]}
 />
 ```
@@ -70,7 +70,7 @@ To build labels it's possible to use the follow markers:
 
 Example of fully labels customization:
 ```javascript
-<RBS.Select
+<Combobox
     ...
     labels={{
         "cap.select.empty": "Select an item",

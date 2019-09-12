@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import 'bootstrap/dist/css/bootstrap.min.css'
-import RBS from "@fdefelici/re-boot-select"
+import RBS from "@fdefelici/react-bootstrap-combobox"
 
 class App extends React.Component{
 

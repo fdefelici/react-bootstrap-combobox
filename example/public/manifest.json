@@ -1,6 +1,6 @@
 {
-  "short_name": "re-boot-select",
-  "name": "re-boot-select",
+  "short_name": "react-bootstrap-combobox",
+  "name": "react-bootstrap-combobox",
   "start_url": "./index.html",
   "display": "standalone",
   "theme_color": "#000000",

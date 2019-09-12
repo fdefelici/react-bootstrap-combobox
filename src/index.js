@@ -1,3 +1,3 @@
-const RBS = require('./RBS');
+const Combobox = require('./Combobox');
 
-module.exports = RBS.default || RBS;
+module.exports = Combobox.default || Combobox;

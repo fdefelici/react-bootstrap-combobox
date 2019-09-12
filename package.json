@@ -1,19 +1,19 @@
 {
-  "name": "@fdefelici/re-boot-select",
-  "version": "0.0.4",
+  "name": "@fdefelici/react-bootstrap-combobox",
+  "version": "1.0.0",
   "description": "Select Component for React based on Bootstrap",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/fdefelici/re-boot-select.git"
+    "url": "git+https://github.com/fdefelici/react-bootstrap-combobox.git"
   },
   "publishConfig": {
     "access": "public"
   },
   "bugs": {
-    "url": "https://github.com/fdefelici/re-boot-select/issues"
+    "url": "https://github.com/fdefelici/react-bootstrap-combobox/issues"
   },
-  "homepage": "https://github.com/fdefelici/re-boot-select#readme",
+  "homepage": "https://github.com/fdefelici/react-bootstrap-combobox#readme",
   "keywords": [
     "react",
     "bootstrap",

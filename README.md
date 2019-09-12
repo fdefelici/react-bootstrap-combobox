@@ -1,6 +1,6 @@
-# re-boot-select &middot; [![GitHub package.json version](https://img.shields.io/github/package-json/v/fdefelici/re-boot-select?color=blue&label=npm)](https://www.npmjs.com/package/@fdefelici/re-boot-select) [![Build Status](https://travis-ci.org/fdefelici/re-boot-select.svg?branch=master)](https://travis-ci.org/fdefelici/re-boot-select) [![codecov](https://codecov.io/gh/fdefelici/re-boot-select/branch/master/graph/badge.svg)](https://codecov.io/gh/fdefelici/re-boot-select)
+# react-bootstrap-combobox &middot; [![GitHub package.json version](https://img.shields.io/github/package-json/v/fdefelici/react-bootstrap-combobox?color=blue&label=npm)](https://www.npmjs.com/package/@fdefelici/react-bootstrap-combobox) [![Build Status](https://travis-ci.org/fdefelici/react-bootstrap-combobox.svg?branch=master)](https://travis-ci.org/fdefelici/react-bootstrap-combobox) [![codecov](https://codecov.io/gh/fdefelici/react-bootstrap-combobox/branch/master/graph/badge.svg)](https://codecov.io/gh/fdefelici/react-bootstrap-combobox)
 
-Select Component for React based on Bootstrap which offer the following features:
+Combobox Component for React based on Bootstrap which offer the following features:
 * Single Selection
 * Multiple Selection
 * Selection Handling
@@ -17,16 +17,16 @@ This component is based on React and Bootstrap (only css part), so in your proje
 
 then import the library:
 ```shell
-$ npm install @fdefelici/re-boot-select[@VERSION] --save
+$ npm install @fdefelici/react-bootstrap-combobox[@VERSION] --save
 ```
 
 and use it in your code:
 ```javascript
-import RBS from "@fdefelici/re-boot-select"
+import Combobox from "@fdefelici/react-bootstrap-combobox"
 
 ...
 
-<RBS.Select
+<Combobox
     data={["Apple", "Banana", "Citrus", "Grapefruit"]}
 />
 ```
@@ -70,7 +70,7 @@ To build labels it's possible to use the follow markers:
 
 Example of fully labels customization:
 ```javascript
-<RBS.Select
+<Combobox
     ...
     labels={{
         "cap.select.empty": "Select an item",

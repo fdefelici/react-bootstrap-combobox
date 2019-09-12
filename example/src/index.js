@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import 'bootstrap/dist/css/bootstrap.min.css'
-import Select from "@fdefelici/react-bootstrap-combobox"
+import Combobox from "@fdefelici/react-bootstrap-combobox"
 
 class App extends React.Component{
 
@@ -18,7 +18,7 @@ class App extends React.Component{
     render(){
         return (
           <React.Fragment>
-            <Select
+            <Combobox
               isMultiSelect={true}
               showButtons={true}
               maxDropdownItems={4}
@@ -35,7 +35,7 @@ class App extends React.Component{
               onChange={selected => {
                 this.setState({ selected: selected });
               }}
-            ></Select>
+            ></Combobox>
 
             <span style={this.stylePrint}>selected: {this.state.selected.map(each => each.label).join(", ")}</span>
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom'
 import {cleanup, fireEvent, render, create} from '@testing-library/react';
-import Select from '../index';
+import Combobox from '../index';
 import Enzyme, {shallow, mount} from 'enzyme'
 import Adapter from 'enzyme-adapter-react-16'
 
@@ -22,12 +22,12 @@ describe('Dropdown tests', () => {
     const component = mount(
       <div id="container">
         <button id="outside">click outside</button>
-        <Select
+        <Combobox
           isMultiSelect={true}
           showButtons={true}
           data={["AA", "AB", "BB", "CC", "DD", "BB", "EE", "FF", "GG"]}
           id="123"
-        ></Select>
+        ></Combobox>
       </div>
     );
 
@@ -59,7 +59,7 @@ describe('Dropdown tests', () => {
       }
     }
   
-    const wrapper = mount(<Select {... props} />)
+    const wrapper = mount(<Combobox {... props} />)
   
     map.mousedown({
       target: ReactDOM.findDOMNode(wrapper.instance()),
@@ -71,13 +71,13 @@ describe('Dropdown tests', () => {
   it('Filter list and select', () => {
     
     const component = shallow(
-      <Select
+      <Combobox
       isMultiSelect={true}
       showButtons={true}
       data={["AA", "AB", "BB", "CC", "DD", "BB", "EE", "FF", "GG"]}
       maxCaptionItems="5"
       id="123"
-    ></Select>,
+    ></Combobox>,
     );
 
     expect(component.find("#rbc-menu-button-dropdown-list-123").html()).toEqual("<ul id=\"rbc-menu-button-dropdown-list-123\" class=\"dropdown-menu inner\" style=\"max-height:156px\"> <li class=\"noselect\"><a>AA<span class=\"\"></span></a></li><li class=\"noselect\"><a>AB<span class=\"\"></span></a></li><li class=\"noselect\"><a>BB<span class=\"\"></span></a></li><li class=\"noselect\"><a>CC<span class=\"\"></span></a></li><li class=\"noselect\"><a>DD<span class=\"\"></span></a></li><li class=\"noselect\"><a>BB<span class=\"\"></span></a></li><li class=\"noselect\"><a>EE<span class=\"\"></span></a></li><li class=\"noselect\"><a>FF<span class=\"\"></span></a></li><li class=\"noselect\"><a>GG<span class=\"\"></span></a></li></ul>")
@@ -102,13 +102,13 @@ describe('Dropdown tests', () => {
   it('Click select/deselect all', () => {
     
     const component = shallow(
-      <Select
+      <Combobox
       isMultiSelect={true}
       showButtons={true}
       data={["AA", "AB", "BB", "CC", "DD", "BB", "EE", "FF", "GG"]}
       maxCaptionItems="5"
       id="123"
-    ></Select>,
+    ></Combobox>,
     );
 
     expect(component.find("#rbc-menu-button-dropdown-list-123").html()).toEqual("<ul id=\"rbc-menu-button-dropdown-list-123\" class=\"dropdown-menu inner\" style=\"max-height:156px\"> <li class=\"noselect\"><a>AA<span class=\"\"></span></a></li><li class=\"noselect\"><a>AB<span class=\"\"></span></a></li><li class=\"noselect\"><a>BB<span class=\"\"></span></a></li><li class=\"noselect\"><a>CC<span class=\"\"></span></a></li><li class=\"noselect\"><a>DD<span class=\"\"></span></a></li><li class=\"noselect\"><a>BB<span class=\"\"></span></a></li><li class=\"noselect\"><a>EE<span class=\"\"></span></a></li><li class=\"noselect\"><a>FF<span class=\"\"></span></a></li><li class=\"noselect\"><a>GG<span class=\"\"></span></a></li></ul>")
@@ -124,7 +124,7 @@ describe('Dropdown tests', () => {
   it('Click select/deselect all with different labels', () => {
     
     const component = shallow(
-      <Select
+      <Combobox
       isMultiSelect={true}
       showButtons={true}
       data={["AA", "AB", "BB", "CC", "DD", "BB", "EE", "FF", "GG"]}
@@ -137,7 +137,7 @@ describe('Dropdown tests', () => {
         "btn.unselect.all": "Release All",
       }}
       id="123"
-    ></Select>,
+    ></Combobox>,
     );
 
     expect(component.find("#rbc-menu-button-123").html()).toEqual("<button id=\"rbc-menu-button-123\" type=\"button\" class=\"btn btn-default dropdown-toggle show-special-title button-dropdown\"><span class=\"pull-left filter-option\"></span><span class=\"pull-left special-title\">Select a car</span> <span class=\"caret\"></span></button>")
@@ -153,7 +153,7 @@ describe('Dropdown tests', () => {
   it('Click select item and deselect all with different labels - no singular', () => {
     
     const component = shallow(
-      <Select
+      <Combobox
       isMultiSelect={true}
       showButtons={true}
       data={["AA", "AB", "BB", "CC", "DD", "BB", "EE", "FF", "GG"]}
@@ -165,7 +165,7 @@ describe('Dropdown tests', () => {
         "btn.unselect.all": "Release All",
       }}
       id="123"
-    ></Select>,
+    ></Combobox>,
     );
 
     expect(component.find("#rbc-menu-button-123").html()).toEqual("<button id=\"rbc-menu-button-123\" type=\"button\" class=\"btn btn-default dropdown-toggle show-special-title button-dropdown\"><span class=\"pull-left filter-option\"></span><span class=\"pull-left special-title\">Select a car</span> <span class=\"caret\"></span></button>")
@@ -181,7 +181,7 @@ describe('Dropdown tests', () => {
   it('Click select/deselect all with same labels', () => {
     
     const component = shallow(
-      <Select
+      <Combobox
       isMultiSelect={true}
       showButtons={true}
       data={["AA", "AA", "AA", "CC", "DD", "BB", "EE", "FF", "GG"]}
@@ -193,7 +193,7 @@ describe('Dropdown tests', () => {
         "btn.unselect.all": "Release All",
       }}
       id="123"
-    ></Select>,
+    ></Combobox>,
     );
 
     expect(component.find("#rbc-menu-button-123").html()).toEqual("<button id=\"rbc-menu-button-123\" type=\"button\" class=\"btn btn-default dropdown-toggle show-special-title button-dropdown\"><span class=\"pull-left filter-option\"></span><span class=\"pull-left special-title\">Select a car</span> <span class=\"caret\"></span></button>")
@@ -211,7 +211,7 @@ describe('Dropdown tests', () => {
   it('Select first, filter, select all and remove filter', () => {
     
     const component = shallow(
-      <Select
+      <Combobox
       isMultiSelect={true}
       showButtons={true}
       data={["AA", "AB", "BB", "CC", "DD", "EE", "FF", "GG"]}
@@ -223,7 +223,7 @@ describe('Dropdown tests', () => {
         "btn.unselect.all": "Release All",
       }}
       id="123"
-    ></Select>,
+    ></Combobox>,
     );
 
     expect(component.find("#rbc-menu-button-123").html()).toEqual("<button id=\"rbc-menu-button-123\" type=\"button\" class=\"btn btn-default dropdown-toggle show-special-title button-dropdown\"><span class=\"pull-left filter-option\"></span><span class=\"pull-left special-title\">Select a car</span> <span class=\"caret\"></span></button>")
@@ -246,7 +246,7 @@ describe('Dropdown tests', () => {
   it('Select first and second item', () => {
     
     const component = shallow(
-      <Select
+      <Combobox
       isMultiSelect={true}
       showButtons={true}
       data={["AA", "AB", "BB", "CC", "DD", "EE", "FF", "GG"]}
@@ -258,7 +258,7 @@ describe('Dropdown tests', () => {
         "btn.unselect.all": "Release All",
       }}
       id="123"
-    ></Select>,
+    ></Combobox>,
     );
 
     expect(component.find("#rbc-menu-button-123").html()).toEqual("<button id=\"rbc-menu-button-123\" type=\"button\" class=\"btn btn-default dropdown-toggle show-special-title button-dropdown\"><span class=\"pull-left filter-option\"></span><span class=\"pull-left special-title\">Select a car</span> <span class=\"caret\"></span></button>")
@@ -274,7 +274,7 @@ describe('Dropdown tests', () => {
   it('Select first and second item - same label', () => {
     
     const component = shallow(
-      <Select
+      <Combobox
       isMultiSelect={true}
       showButtons={true}
       data={["AA", "AA", "AA", "CC", "DD", "EE", "FF", "GG"]}
@@ -286,7 +286,7 @@ describe('Dropdown tests', () => {
         "btn.unselect.all": "Release All",
       }}
       id="123"
-    ></Select>,
+    ></Combobox>,
     );
 
     expect(component.find("#rbc-menu-button-123").html()).toEqual("<button id=\"rbc-menu-button-123\" type=\"button\" class=\"btn btn-default dropdown-toggle show-special-title button-dropdown\"><span class=\"pull-left filter-option\"></span><span class=\"pull-left special-title\">Select a car</span> <span class=\"caret\"></span></button>")
@@ -303,7 +303,7 @@ describe('Dropdown tests', () => {
   it('Select first and deselect item', () => {
     
     const component = shallow(
-      <Select
+      <Combobox
       isMultiSelect={true}
       showButtons={true}
       data={["AA", "AA", "AA", "CC", "DD", "EE", "FF", "GG"]}
@@ -315,7 +315,7 @@ describe('Dropdown tests', () => {
         "btn.unselect.all": "Release All",
       }}
       id="123"
-    ></Select>,
+    ></Combobox>,
     );
 
     expect(component.find("#rbc-menu-button-123").html()).toEqual("<button id=\"rbc-menu-button-123\" type=\"button\" class=\"btn btn-default dropdown-toggle show-special-title button-dropdown\"><span class=\"pull-left filter-option\"></span><span class=\"pull-left special-title\">Select a car</span> <span class=\"caret\"></span></button>")
@@ -336,7 +336,7 @@ describe('Dropdown tests', () => {
 
     
     const component = mount(
-      <Select
+      <Combobox
       isMultiSelect={true}
       showButtons={true}
       data={data}
@@ -348,7 +348,7 @@ describe('Dropdown tests', () => {
         "btn.unselect.all": "Release All",
       }}
       id="123"
-    ></Select>,
+    ></Combobox>,
     );
 
     expect(component.find("#rbc-menu-button-dropdown-list-123").html()).toEqual("<ul id=\"rbc-menu-button-dropdown-list-123\" class=\"dropdown-menu inner\" style=\"max-height: 156px;\"> <li class=\"noselect\"><a>AA<span class=\"\"></span></a></li><li class=\"noselect\"><a>AB<span class=\"\"></span></a></li><li class=\"noselect\"><a>BB<span class=\"\"></span></a></li><li class=\"noselect\"><a>CC<span class=\"\"></span></a></li><li class=\"noselect\"><a>DD<span class=\"\"></span></a></li><li class=\"noselect\"><a>EE<span class=\"\"></span></a></li><li class=\"noselect\"><a>FF<span class=\"\"></span></a></li><li class=\"noselect\"><a>GG<span class=\"\"></span></a></li></ul>")
@@ -366,7 +366,7 @@ describe('Dropdown tests', () => {
     let onChange = () => { isTested = true }
     
     const component = mount(
-      <Select
+      <Combobox
       isMultiSelect={true}
       showButtons={true}
       data={data}
@@ -379,7 +379,7 @@ describe('Dropdown tests', () => {
         "btn.unselect.all": "Release All",
       }}
       id="123"
-    ></Select>,
+    ></Combobox>,
     );
 
     shallow(component.find("a").get(0)).simulate("click")
@@ -390,7 +390,7 @@ describe('Dropdown tests', () => {
   it('Click select/deselect all with different labels - no singular and no plural', () => {
     
     const component = shallow(
-      <Select
+      <Combobox
       isMultiSelect={true}
       showButtons={true}
       data={["AA", "AB", "BB", "CC", "DD", "BB", "EE", "FF", "GG"]}
@@ -401,7 +401,7 @@ describe('Dropdown tests', () => {
         "btn.unselect.all": "Release All",
       }}
       id="123"
-    ></Select>,
+    ></Combobox>,
     );
 
     expect(component.find("#rbc-menu-button-123").html()).toEqual("<button id=\"rbc-menu-button-123\" type=\"button\" class=\"btn btn-default dropdown-toggle show-special-title button-dropdown\"><span class=\"pull-left filter-option\"></span><span class=\"pull-left special-title\">Select a car</span> <span class=\"caret\"></span></button>")
@@ -418,13 +418,13 @@ describe('Dropdown tests', () => {
   it('Filter list', () => {
     
     const component = shallow(
-      <Select
+      <Combobox
       isMultiSelect={true}
       showButtons={true}
       data={["AA", "AB", "BB", "CC", "DD", "BB", "EE", "FF", "GG"]}
       maxCaptionItems="5"
       id="123"
-    ></Select>,
+    ></Combobox>,
     );
 
     expect(component.find("#rbc-menu-button-dropdown-list-123").html()).toEqual("<ul id=\"rbc-menu-button-dropdown-list-123\" class=\"dropdown-menu inner\" style=\"max-height:156px\"> <li class=\"noselect\"><a>AA<span class=\"\"></span></a></li><li class=\"noselect\"><a>AB<span class=\"\"></span></a></li><li class=\"noselect\"><a>BB<span class=\"\"></span></a></li><li class=\"noselect\"><a>CC<span class=\"\"></span></a></li><li class=\"noselect\"><a>DD<span class=\"\"></span></a></li><li class=\"noselect\"><a>BB<span class=\"\"></span></a></li><li class=\"noselect\"><a>EE<span class=\"\"></span></a></li><li class=\"noselect\"><a>FF<span class=\"\"></span></a></li><li class=\"noselect\"><a>GG<span class=\"\"></span></a></li></ul>")
@@ -442,14 +442,14 @@ describe('Dropdown tests', () => {
   it('Singular/plural labels', () => {
 
     const component = shallow(
-      <Select
+      <Combobox
       isMultiSelect={true}
       showButtons={true}
       data={["AA", "AB", "BB", "CC", "DD", "BB", "EE", "FF", "GG"]}
       maxCaptionItems="5"
   
       id="123"
-    ></Select>,
+    ></Combobox>,
     );
 
     expect(component.find("#rbc-menu-button-123").html()).toEqual("<button id=\"rbc-menu-button-123\" type=\"button\" class=\"btn btn-default dropdown-toggle show-special-title button-dropdown\"><span class=\"pull-left filter-option\"></span><span class=\"pull-left special-title\">Select an item</span> <span class=\"caret\"></span></button>")
@@ -465,14 +465,14 @@ describe('Dropdown tests', () => {
   it('Select first element', () => {
 
     const component = shallow(
-      <Select
+      <Combobox
       isMultiSelect={true}
       showButtons={true}
       data={["AA", "AB", "BB", "CC", "DD", "BB", "EE", "FF", "GG"]}
       maxCaptionItems="5"
       
       id="123"
-    ></Select>,
+    ></Combobox>,
     );
 
     expect(component.find("#rbc-menu-button-123").html()).toEqual("<button id=\"rbc-menu-button-123\" type=\"button\" class=\"btn btn-default dropdown-toggle show-special-title button-dropdown\"><span class=\"pull-left filter-option\"></span><span class=\"pull-left special-title\">Select an item</span> <span class=\"caret\"></span></button>")
@@ -484,14 +484,14 @@ describe('Dropdown tests', () => {
   it('Select three elements, maxCaptionItems = 2', () => {
 
     const component = shallow(
-      <Select
+      <Combobox
       isMultiSelect={true}
       showButtons={true}
       data={["AA", "AB", "BB", "CC", "DD", "BB", "EE", "FF", "GG"]}
       maxCaptionItems="2"
       labels={{singular: "car"}}
       id="123"
-    ></Select>,
+    ></Combobox>,
     );
 
     expect(component.find("#rbc-menu-button-123").html()).toEqual("<button id=\"rbc-menu-button-123\" type=\"button\" class=\"btn btn-default dropdown-toggle show-special-title button-dropdown\"><span class=\"pull-left filter-option\"></span><span class=\"pull-left special-title\">Select an item</span> <span class=\"caret\"></span></button>")
@@ -507,7 +507,7 @@ describe('Dropdown tests', () => {
   it('Single select', () => {
 
     const component = shallow(
-      <Select
+      <Combobox
       isMultiSelect={false}
       data={["AA", "AB", "BB", "CC", "DD", "BB", "EE", "FF", "GG"]}
       maxCaptionItems="2"
@@ -519,7 +519,7 @@ describe('Dropdown tests', () => {
         "btn.unselect.all": "Release All",
       }}
       id="123"
-    ></Select>,
+    ></Combobox>,
     );
 
     expect(component.find("#rbc-menu-button-123").html()).toEqual("<button id=\"rbc-menu-button-123\" type=\"button\" class=\"btn btn-default dropdown-toggle show-special-title button-dropdown\"><span class=\"pull-left filter-option\"></span><span class=\"pull-left special-title\">Select a car</span> <span class=\"caret\"></span></button>")
@@ -535,7 +535,7 @@ describe('Dropdown tests', () => {
     
 
     const {getByText} = render(
-      <Select
+      <Combobox
       isMultiSelect={true}
       showButtons={true}
       data={["AA", "AB", "BB", "CC", "DD", "BB", "EE", "FF", "GG"]}
@@ -548,7 +548,7 @@ describe('Dropdown tests', () => {
         "btn.unselect.all": "Release All",
       }}
       id="123"
-    ></Select>,
+    ></Combobox>,
     );
     
     expect(getByText(/Pick All/i)).toBeTruthy()
@@ -559,7 +559,7 @@ describe('Dropdown tests', () => {
   it('No html ids', () => {
   
     const component = shallow(
-      <Select
+      <Combobox
       isMultiSelect={true}
       showSearch={true}
       showButtons={true}
@@ -573,7 +573,7 @@ describe('Dropdown tests', () => {
   it('Hide search bar', () => {
   
     const component = shallow(
-      <Select
+      <Combobox
       isMultiSelect={true}
       showButtons={true}
       data={["AA"]}/>
@@ -586,7 +586,7 @@ describe('Dropdown tests', () => {
   it('Test items shown in scrollbar, [2 items = 52px, 4 items = 104px]', () => {
 
     let component = shallow(
-      <Select
+      <Combobox
       isMultiSelect={false}
       data={["AA", "AB", "BB", "CC", "DD", "BB", "EE", "FF", "GG"]}
       maxCaptionItems="2"
@@ -599,13 +599,13 @@ describe('Dropdown tests', () => {
         "btn.unselect.all": "Release All",
       }}
       id="123"
-    ></Select>,
+    ></Combobox>,
     );
 
     expect(component.find("#rbc-menu-button-dropdown-list-123").html()).toEqual("<ul id=\"rbc-menu-button-dropdown-list-123\" class=\"dropdown-menu inner\" style=\"max-height:52px\"> <li class=\"noselect\"><a>AA<span class=\"\"></span></a></li><li class=\"noselect\"><a>AB<span class=\"\"></span></a></li><li class=\"noselect\"><a>BB<span class=\"\"></span></a></li><li class=\"noselect\"><a>CC<span class=\"\"></span></a></li><li class=\"noselect\"><a>DD<span class=\"\"></span></a></li><li class=\"noselect\"><a>BB<span class=\"\"></span></a></li><li class=\"noselect\"><a>EE<span class=\"\"></span></a></li><li class=\"noselect\"><a>FF<span class=\"\"></span></a></li><li class=\"noselect\"><a>GG<span class=\"\"></span></a></li></ul>")
 
     component = shallow(
-      <Select
+      <Combobox
       isMultiSelect={false}
       data={["AA", "AB", "BB", "CC", "DD", "BB", "EE", "FF", "GG"]}
       maxCaptionItems="2"
@@ -618,7 +618,7 @@ describe('Dropdown tests', () => {
         "btn.unselect.all": "Release All",
       }}
       id="123"
-    ></Select>,
+    ></Combobox>,
     );
 
     expect(component.find("#rbc-menu-button-dropdown-list-123").html()).toEqual("<ul id=\"rbc-menu-button-dropdown-list-123\" class=\"dropdown-menu inner\" style=\"max-height:104px\"> <li class=\"noselect\"><a>AA<span class=\"\"></span></a></li><li class=\"noselect\"><a>AB<span class=\"\"></span></a></li><li class=\"noselect\"><a>BB<span class=\"\"></span></a></li><li class=\"noselect\"><a>CC<span class=\"\"></span></a></li><li class=\"noselect\"><a>DD<span class=\"\"></span></a></li><li class=\"noselect\"><a>BB<span class=\"\"></span></a></li><li class=\"noselect\"><a>EE<span class=\"\"></span></a></li><li class=\"noselect\"><a>FF<span class=\"\"></span></a></li><li class=\"noselect\"><a>GG<span class=\"\"></span></a></li></ul>")

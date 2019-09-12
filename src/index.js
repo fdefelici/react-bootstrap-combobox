@@ -1,3 +1,3 @@
-const Select = require('./Select');
+const Combobox = require('./Select');
 
-module.exports = Select.default || Select;
+module.exports = Combobox.default || Combobox;

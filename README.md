@@ -42,7 +42,8 @@ This component allow customization tweeking the following attributes:
 | `id` | string | html element ID  | none  |
 | `isMultiSelect` | boolean | Allow multiple selection | false  |
 | `labels` | object | Localization support (see details in [localization paragraph](#localization-support)) | - |
-| `maxItemsAsCaption` | integer | Max number of visible items (comma separated) in caption before showing label message `cap.select.singular` or `cap.select.plural` | 0 |
+| `maxCaptionItems` | integer | Max number of visible items (comma separated) in caption before showing label message `cap.select.singular` or `cap.select.plural` | 0 |
+| `maxDropdownItems` | integer | Max number of visible items in dropdown menu | 6 |
 | `onChange` | function | Callback function called when a selection/deselection happen (see details in the [example](example/)) | none  |
 | `showButtons` | boolean | Show Select/Deselect All buttons | false |
 | `showSearch` | boolean | Show Search field | false |
@@ -54,8 +55,8 @@ Using ```labels``` attribute it is possible to customize any text the component 
 | Attribute | Type | Description | Default |
 |  ---: | :--- | :---        | :---    |
 | `cap.select.empty` | string | Shown when there are no item selected | "Select an item" |
-| `cap.select.singular` | string | Shown when just one item is selected, only when `maxItemsAsCaption` is set to 0 | "1 item selected" or same as `cap.select.plural` if only plural attribute is defined. |
-| `cap.select.plural` | string | Shown when multiple items are selected, only when the number of selected items is greather than  `maxItemsAsCaption` | "{size} item selected" |
+| `cap.select.singular` | string | Shown when just one item is selected, only when `maxCaptionItems` is set to 0 | "1 item selected" or same as `cap.select.plural` if only plural attribute is defined. |
+| `cap.select.plural` | string | Shown when multiple items are selected, only when the number of selected items is greather than  `maxCaptionItems` | "{size} item selected" |
 | `btn.select.all` | string | Label for Select All Button | "All" |
 | `btn.unselect.all` | string | Label for Unselect All Button | "Clear" |
 

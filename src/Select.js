@@ -1,11 +1,13 @@
 import React, { Component } from "react";
+import LostFocusHandler from "./LostFocusHandler";
 
 import "./Select.css";
 
 class Select extends Component {
 
   placeholderDefault = ""
-  maxItemsAsCaption = 0
+  maxCaptionItems = 0
+  maxDropdownItems = 6
   onChange = () => {}
 
   labels = {
@@ -58,10 +60,14 @@ class Select extends Component {
     }
 
     this.placeholderDefault = this.labels["cap.select.empty"]
-    this.maxItemsAsCaption = this.props.maxItemsAsCaption? this.props.maxItemsAsCaption: 0
+    this.maxCaptionItems = this.props.maxCaptionItems? this.props.maxCaptionItems: 0
     this.isMultiSelect = this.props.isMultiSelect? this.props.isMultiSelect: false
     this.showSearch = this.props.showSearch? this.props.showSearch: false
     this.showButtons = this.props.showButtons? this.props.showButtons: false
+
+    this.maxDropdownItems = this.props.maxDropdownItems
+                  ? (3 + 20 + 3) * this.props.maxDropdownItems + "px"
+                  : (3 + 20 + 3) * 6 + "px"
 
     this.state = {
       placeholder: "",
@@ -119,12 +125,12 @@ class Select extends Component {
       let newSelected = [...this.state.selected]
 
       if(this.searchElementInArray(newSelected, element) !== undefined) {
-        newSelected = newSelected.filter( each =>{ return each.label !== element.label && each.index !== element.index })
+        newSelected = newSelected.filter( each =>{ return each.index !== element.index })
       } else {
         newSelected.push(element)
       }
 
-      let newPlaceholder = newSelected.length > this.maxItemsAsCaption? this.getLabelSelected(newSelected.length): newSelected.map(each => each.label).join(", ")
+      let newPlaceholder = newSelected.length > this.maxCaptionItems? this.getLabelSelected(newSelected.length): newSelected.map(each => each.label).join(", ")
 
       this.setState({selected: newSelected, placeholder: newPlaceholder})
 
@@ -141,7 +147,7 @@ class Select extends Component {
     let compare = (toCompare) => {
       return function(current){
         return toCompare.filter(function(other){
-          return other.label == current.label && other.index == current.index
+          return other.index == current.index
         }).length == 0;
       }
     }
@@ -150,7 +156,7 @@ class Select extends Component {
 
     let newSelected = this.state.selected.concat(onlyInDataFiltered)
 
-    let newPlaceholder = newSelected.length > this.maxItemsAsCaption? this.getLabelSelected(newSelected.length): newSelected.map(each => each.label).join(", ")
+    let newPlaceholder = newSelected.length > this.maxCaptionItems? this.getLabelSelected(newSelected.length): newSelected.map(each => each.label).join(", ")
     this.setState({selected: newSelected, placeholder: newPlaceholder})
 
     this.runCallback(newSelected)
@@ -171,11 +177,10 @@ class Select extends Component {
 
   };
 
-
-
+  
   render = () => {
     return (
-      <React.Fragment>
+      <LostFocusHandler onClickOutside={()=>this.setState({isOpen:false})}>
         <div id={this.idRbs} className="input-box">
           <button
             id={this.idMenuButton}
@@ -193,7 +198,7 @@ class Select extends Component {
             <span className="caret"></span>
           </button>
           <div className={"dropdown-menu " + (this.state.isOpen ? "open" : "")}>
-            <div className={"bs-searchbox " + (this.showSearch ? "": "hide")}>
+            <div className={"bs-searchbox " + (this.showSearch ? "" : "hide")}>
               <input
                 type="text"
                 className="form-control"
@@ -201,15 +206,24 @@ class Select extends Component {
               />
             </div>
 
-            <div className={"bs-actionsbox " + (this.isMultiSelect && this.showButtons ? "": "hide")}>
+            <div
+              className={
+                "bs-actionsbox " +
+                (this.isMultiSelect && this.showButtons ? "" : "hide")
+              }
+            >
               <div className="btn-group btn-block">
-                <button id={this.idSelectAll} onClick={this.selectAllElements}
+                <button
+                  id={this.idSelectAll}
+                  onClick={this.selectAllElements}
                   type="button"
                   className="actions-btn bs-select-all btn btn-default select-all-button"
                 >
                   {this.labels["btn.select.all"]}
                 </button>
-                <button id={this.idDeselectAll} onClick={this.deselectAllElements}
+                <button
+                  id={this.idDeselectAll}
+                  onClick={this.deselectAllElements}
                   type="button"
                   className="actions-btn bs-deselect-all btn btn-default deselect-all-button"
                 >
@@ -218,21 +232,31 @@ class Select extends Component {
               </div>
             </div>
 
-            
-            <ul id={this.idList} className="dropdown-menu inner">
+            <ul
+              id={this.idList}
+              className="dropdown-menu inner"
+              style={{
+                maxHeight: this.maxDropdownItems
+              }}
+            > {/* left (3) + item (20) + rigth (3) */}
+
+              
               {this.state.dataFiltered.map(each => {
                 return (
                   <li className="noselect" key={each.label + each.index}>
                     <a
                       onClick={() => {
-                        if(!this.isMultiSelect) this.closeOrOpen();
+                        if (!this.isMultiSelect) this.closeOrOpen();
                         this.selectElement(each);
                       }}
                     >
                       {each.label}
                       <span
                         className={
-                          this.searchElementInArray(this.state.selected, each) !== undefined
+                          this.searchElementInArray(
+                            this.state.selected,
+                            each
+                          ) !== undefined
                             ? "glyphicon glyphicon-ok"
                             : ""
                         }
@@ -242,11 +266,9 @@ class Select extends Component {
                 );
               })}
             </ul>
-            
-
           </div>
         </div>
-      </React.Fragment>
+      </LostFocusHandler>
     );
   };
 }

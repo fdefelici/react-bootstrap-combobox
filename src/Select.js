@@ -24,7 +24,7 @@ class Select extends Component {
   
   /* html ids */
   id = undefined
-  idRbs = undefined
+  idRbc = undefined
   idMenuButton = undefined
   idSelectAll = undefined
   idDeselectAll = undefined
@@ -49,11 +49,11 @@ class Select extends Component {
 
     if(this.props.id) {
       this.id = this.props.id
-      this.idRbs = "rbs-" + this.id
-      this.idMenuButton = "rbs-menu-button-" + this.id
-      this.idSelectAll = "rbs-menu-button-selectall-button-" + this.id
-      this.idDeselectAll = "rbs-menu-button-deselectall-button-" + this.id
-      this.idList = "rbs-menu-button-dropdown-list-" + this.id
+      this.idRbc = "rbc-" + this.id
+      this.idMenuButton = "rbc-menu-button-" + this.id
+      this.idSelectAll = "rbc-menu-button-selectall-button-" + this.id
+      this.idDeselectAll = "rbc-menu-button-deselectall-button-" + this.id
+      this.idList = "rbc-menu-button-dropdown-list-" + this.id
     }
     if(this.props.onChange && typeof this.props.onChange === 'function') {
       this.onChange = this.props.onChange
@@ -181,7 +181,7 @@ class Select extends Component {
   render = () => {
     return (
       <LostFocusHandler onClickOutside={()=>this.setState({isOpen:false})}>
-        <div id={this.idRbs} className="input-box">
+        <div id={this.idRbc} className="input-box">
           <button
             id={this.idMenuButton}
             onClick={this.closeOrOpen}

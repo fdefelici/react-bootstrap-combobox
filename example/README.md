@@ -3,6 +3,29 @@
 In order to run the example, clone this repository and then:
 
 ```
+// Step 1. Install example
+react-bootstrap-combobox/example>  npm install
+
+// Step 2. Run the example
+react-bootstrap-combobox/example>  npm run start
+
+// A browser will be lauched showing the example
+```
+
+
+## Notes For Developers
+You can update ```example/package.json``` to load locally the library as follow: 
+
+```javascript
+ "dependencies": {
+    ...,
+    "@fdefelici/react-bootstrap-combobox": "file.."
+  },
+```
+
+And then run the following commands:
+
+```
 // Step 1. Install and Build the library from the repository root
 react-bootstrap-combobox>  npm install
 
@@ -16,11 +39,3 @@ react-bootstrap-combobox/example>  npm run start
 
 ```
 
-**NOTE**: You can skip [**Step 1**] setting react-bootstrap-combobox version in ```example/package.json``` so that it is downloaded from npmjs registry (instead of locally)
-
-```javascript
- "dependencies": {
-    ...,
-    "@fdefelici/react-bootstrap-combobox": "<VERSION>"
-  },
-```

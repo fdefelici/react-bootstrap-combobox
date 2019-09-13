@@ -22,23 +22,37 @@ class App extends React.Component{
               isMultiSelect={true}
               showButtons={true}
               maxDropdownItems={4}
-              data={["Apple", "Banana", "Citrus", "Grapefruit", "Lime", "Mandarin", "Mango", "Melon", "Watermelon"]}
+              data={[
+                { label: "Apple", value: "apple" },
+                { label: "Banana", value: "banana" },
+                { label: "Citrus", value: "citrus" },
+                { label: "Grapefruit", value: "grapefruit" },
+                { label: "Lime", value: "lime" },
+                { label: "Mandarin", value: "mandarin" },
+                { label: "Mango", value: "mango" },
+                { label: "Melon", value: "melon" },
+                { label: "Watermelon", value: "watermelon" }
+              ]}
               maxCaptionItems="5"
               showSearch={true}
-              labels = {{
+              labels={{
                 "sel.empty": "Select an item",
                 "sel.singular": "One item selected",
                 "sel.plural": "{sel} of {size} items selected",
                 "btn.select.all": "Pick All",
-                "btn.unselect.all": "Release All",
+                "btn.unselect.all": "Release All"
               }}
               onChange={selected => {
                 this.setState({ selected: selected });
               }}
             ></Combobox>
 
-            <span style={this.stylePrint}>selected: {this.state.selected.map(each => each.label).join(", ")}</span>
-
+            <span style={this.stylePrint}>
+              selected =>
+              {this.state.selected
+                .map(each => "[label: " + each.label + ", value: " + each.value + "]")
+                .join(", ")}
+            </span>
           </React.Fragment>
         );
     }

@@ -337,7 +337,6 @@ describe('Dropdown tests', () => {
   it('onChange run', () => {
 
     let data = ["AA", "AB", "BB", "CC", "DD", "EE", "FF", "GG"]
-    let data2 = ["HH", "GG"]
 
     let isTested = false
     let onChange = () => { isTested = true }
@@ -542,5 +541,46 @@ describe('Dropdown tests', () => {
 
     expect(component.find("#rbc-menu-button-dropdown-list-123").html()).toEqual("<ul id=\"rbc-menu-button-dropdown-list-123\" class=\"dropdown-menu inner\" style=\"max-height:104px\"> <li class=\"noselect\"><a>AA<span class=\"\"></span></a></li><li class=\"noselect\"><a>AB<span class=\"\"></span></a></li><li class=\"noselect\"><a>BB<span class=\"\"></span></a></li><li class=\"noselect\"><a>CC<span class=\"\"></span></a></li><li class=\"noselect\"><a>DD<span class=\"\"></span></a></li><li class=\"noselect\"><a>BB<span class=\"\"></span></a></li><li class=\"noselect\"><a>EE<span class=\"\"></span></a></li><li class=\"noselect\"><a>FF<span class=\"\"></span></a></li><li class=\"noselect\"><a>GG<span class=\"\"></span></a></li></ul>")
   });
+
+  it('Test objects of the menu - creation from string array', () => {
+
+    let data = ["AA", "AB", "BB", "CC", "DD", "EE", "FF", "GG"]
+
+    let objectSelected = {}
+    let onChange = selected => { objectSelected = selected }
+    
+    const component = mount(
+      <Combobox
+        data={data}
+        onChange = {onChange}
+      ></Combobox>,
+    );
+
+    shallow(component.find("a").get(0)).simulate("click")
+    expect(JSON.stringify(objectSelected)).toEqual("[{\"label\":\"AA\",\"value\":\"AA\",\"index\":0}]")
+
+  });
+
+  it('Test objects of the menu - creation from object array', () => {
+
+    let data = [{label:"AA", value: "first"},{label: "AB", value: "second"}]
+
+    let objectSelected = {}
+    let onChange = selected => { objectSelected = selected }
+    
+    const component = mount(
+      <Combobox
+        isMultiSelect={true}
+        data={data}
+        onChange = {onChange}
+      ></Combobox>,
+    );
+
+    shallow(component.find("a").get(0)).simulate("click")
+    shallow(component.find("a").get(1)).simulate("click")
+    expect(JSON.stringify(objectSelected)).toEqual("[{\"label\":\"AA\",\"value\":\"first\",\"index\":0},{\"label\":\"AB\",\"value\":\"second\",\"index\":1}]")
+
+  });
+  
   
 });

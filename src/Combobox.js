@@ -72,18 +72,34 @@ class Combobox extends Component {
     this.state = {
       placeholder: "",
       isOpen: false,
-      dataFiltered : this.props.data? this.props.data.map((each,index) => { return {label: each, index: index} }): [],
+      dataFiltered : this.prepareDataFromProps(),
       selected: [],
-      data : this.props.data? this.props.data.map((each,index) => { return {label: each, index: index} }): []
+      data : this.prepareDataFromProps()
     }
 
 
   }
+
+  prepareDataFromProps = () => {
+
+    if( this.props.data ) {
+      if(typeof this.props.data[0] == "string") {
+        return this.props.data.map((each,index) => { return {label: each, value: each, index: index} })
+      } else if(typeof this.props.data[0] == "object") {
+        return this.props.data.map((each,index) => { return {label: each.label, value: each.value, index: index} })
+      }
+    } else {
+      return []
+    }
+
+  };
+
+
   componentDidUpdate(prevProps, prevState) {
-    if(JSON.stringify(this.props.data.map((each,index) => { return {label: each, index: index} })) !== JSON.stringify(this.state.data)) {
+    if(JSON.stringify(this.prepareDataFromProps()) !== JSON.stringify(this.state.data)) {
       this.setState({
-        data : this.props.data.map((each,index) => { return {label: each, index: index} }),
-        dataFiltered : this.props.data.map((each,index) => { return {label: each, index: index} }),
+        data : this.prepareDataFromProps(),
+        dataFiltered : this.prepareDataFromProps(),
         selected: []
       })
 

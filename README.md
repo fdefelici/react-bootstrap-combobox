@@ -1,4 +1,4 @@
-# react-bootstrap-combobox &middot; [![GitHub package.json version](https://img.shields.io/github/package-json/v/fdefelici/react-bootstrap-combobox?color=blue&label=npm)](https://www.npmjs.com/package/@fdefelici/react-bootstrap-combobox) [![Build Status](https://travis-ci.org/fdefelici/react-bootstrap-combobox.svg?branch=master)](https://travis-ci.org/fdefelici/react-bootstrap-combobox) [![codecov](https://codecov.io/gh/fdefelici/react-bootstrap-combobox/branch/master/graph/badge.svg)](https://codecov.io/gh/fdefelici/react-bootstrap-combobox) [![CodeSandBox](https://img.shields.io/badge/demo-live-blueviolet)](https://5mcto.csb.app/)
+# react-bootstrap-combobox &middot; [![GitHub package.json version](https://img.shields.io/github/package-json/v/fdefelici/react-bootstrap-combobox?color=blue&label=npm)](https://www.npmjs.com/package/@fdefelici/react-bootstrap-combobox) [![Build Status](https://travis-ci.org/fdefelici/react-bootstrap-combobox.svg?branch=master)](https://travis-ci.org/fdefelici/react-bootstrap-combobox) [![codecov](https://codecov.io/gh/fdefelici/react-bootstrap-combobox/branch/master/graph/badge.svg)](https://codecov.io/gh/fdefelici/react-bootstrap-combobox) [![CodeSandBox](https://img.shields.io/badge/demo-live-blueviolet)](https://codesandbox.io/s/github/fdefelici/react-bootstrap-combobox/tree/master/example?fontsize=14)
 
 Combobox Component for React based on Bootstrap which offer the following features:
 * Single Selection
@@ -31,7 +31,7 @@ import Combobox from "@fdefelici/react-bootstrap-combobox"
 />
 ```
 
-> For a full working example take a look at the [local example](example/) or at the [live demo](https://5mcto.csb.app/).
+> For a full working example take a look at the [local example](example/) or at the [live demo](https://codesandbox.io/s/github/fdefelici/react-bootstrap-combobox/tree/master/example?fontsize=14).
 
 # Configuration
 This component allow customization tweeking the following attributes:

@@ -13,7 +13,7 @@ class Combobox extends Component {
   labels = {
     "cap.select.empty": "Select an item",
     "cap.select.singular": "1 item selected",
-    "cap.select.plural": "{size} items selected",
+    "cap.select.plural": "{sel} items selected",
     "btn.select.all": "All",
     "btn.unselect.all": "Clear",
   }

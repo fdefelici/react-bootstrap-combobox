@@ -23,8 +23,6 @@ describe('Dropdown tests', () => {
       <div id="container">
         <button id="outside">click outside</button>
         <Combobox
-          isMultiSelect={true}
-          showButtons={true}
           data={["AA", "AB", "BB", "CC", "DD", "BB", "EE", "FF", "GG"]}
           id="123"
         ></Combobox>
@@ -34,16 +32,16 @@ describe('Dropdown tests', () => {
     
 
     //closed
-    expect(component.find(".input-box").html()).toEqual("<div id=\"rbc-123\" class=\"input-box\"><button id=\"rbc-menu-button-123\" type=\"button\" class=\"btn btn-default dropdown-toggle show-special-title button-dropdown\"><span class=\"pull-left filter-option\"></span><span class=\"pull-left special-title\">Select an item</span>&nbsp;<span class=\"caret\"></span></button><div class=\"dropdown-menu \"><div class=\"bs-searchbox hide\"><input type=\"text\" class=\"form-control\"></div><div class=\"bs-actionsbox \"><div class=\"btn-group btn-block\"><button id=\"rbc-menu-button-selectall-button-123\" type=\"button\" class=\"actions-btn bs-select-all btn btn-default select-all-button\">All</button><button id=\"rbc-menu-button-deselectall-button-123\" type=\"button\" class=\"actions-btn bs-deselect-all btn btn-default deselect-all-button\">Clear</button></div></div><ul id=\"rbc-menu-button-dropdown-list-123\" class=\"dropdown-menu inner\" style=\"max-height: 156px;\"> <li class=\"noselect\"><a>AA<span class=\"\"></span></a></li><li class=\"noselect\"><a>AB<span class=\"\"></span></a></li><li class=\"noselect\"><a>BB<span class=\"\"></span></a></li><li class=\"noselect\"><a>CC<span class=\"\"></span></a></li><li class=\"noselect\"><a>DD<span class=\"\"></span></a></li><li class=\"noselect\"><a>BB<span class=\"\"></span></a></li><li class=\"noselect\"><a>EE<span class=\"\"></span></a></li><li class=\"noselect\"><a>FF<span class=\"\"></span></a></li><li class=\"noselect\"><a>GG<span class=\"\"></span></a></li></ul></div></div>")
+    expect(component.find(".input-box").html()).toEqual("<div id=\"rbc-123\" class=\"input-box\"><button id=\"rbc-menu-button-123\" type=\"button\" class=\"btn btn-default dropdown-toggle show-special-title button-dropdown\"><span class=\"pull-left filter-option\"></span><span class=\"pull-left special-title\">Select an item</span>&nbsp;<span class=\"caret\"></span></button><div class=\"dropdown-menu \"><div class=\"bs-searchbox hide\"><input type=\"text\" class=\"form-control\"></div><div class=\"bs-actionsbox hide\"><div class=\"btn-group btn-block\"><button id=\"rbc-menu-button-selectall-button-123\" type=\"button\" class=\"actions-btn bs-select-all btn btn-default select-all-button\">All</button><button id=\"rbc-menu-button-deselectall-button-123\" type=\"button\" class=\"actions-btn bs-deselect-all btn btn-default deselect-all-button\">Clear</button></div></div><ul id=\"rbc-menu-button-dropdown-list-123\" class=\"dropdown-menu inner\" style=\"max-height: 156px;\"> <li class=\"noselect\"><a>AA<span class=\"\"></span></a></li><li class=\"noselect\"><a>AB<span class=\"\"></span></a></li><li class=\"noselect\"><a>BB<span class=\"\"></span></a></li><li class=\"noselect\"><a>CC<span class=\"\"></span></a></li><li class=\"noselect\"><a>DD<span class=\"\"></span></a></li><li class=\"noselect\"><a>BB<span class=\"\"></span></a></li><li class=\"noselect\"><a>EE<span class=\"\"></span></a></li><li class=\"noselect\"><a>FF<span class=\"\"></span></a></li><li class=\"noselect\"><a>GG<span class=\"\"></span></a></li></ul></div></div>")
     component.find('#rbc-menu-button-123').simulate('click');
     //open
-    expect(component.find(".input-box").html()).toEqual("<div id=\"rbc-123\" class=\"input-box\"><button id=\"rbc-menu-button-123\" type=\"button\" class=\"btn btn-default dropdown-toggle show-special-title button-dropdown\"><span class=\"pull-left filter-option\"></span><span class=\"pull-left special-title\">Select an item</span>&nbsp;<span class=\"caret\"></span></button><div class=\"dropdown-menu open\"><div class=\"bs-searchbox hide\"><input type=\"text\" class=\"form-control\"></div><div class=\"bs-actionsbox \"><div class=\"btn-group btn-block\"><button id=\"rbc-menu-button-selectall-button-123\" type=\"button\" class=\"actions-btn bs-select-all btn btn-default select-all-button\">All</button><button id=\"rbc-menu-button-deselectall-button-123\" type=\"button\" class=\"actions-btn bs-deselect-all btn btn-default deselect-all-button\">Clear</button></div></div><ul id=\"rbc-menu-button-dropdown-list-123\" class=\"dropdown-menu inner\" style=\"max-height: 156px;\"> <li class=\"noselect\"><a>AA<span class=\"\"></span></a></li><li class=\"noselect\"><a>AB<span class=\"\"></span></a></li><li class=\"noselect\"><a>BB<span class=\"\"></span></a></li><li class=\"noselect\"><a>CC<span class=\"\"></span></a></li><li class=\"noselect\"><a>DD<span class=\"\"></span></a></li><li class=\"noselect\"><a>BB<span class=\"\"></span></a></li><li class=\"noselect\"><a>EE<span class=\"\"></span></a></li><li class=\"noselect\"><a>FF<span class=\"\"></span></a></li><li class=\"noselect\"><a>GG<span class=\"\"></span></a></li></ul></div></div>")
+    expect(component.find(".input-box").html()).toEqual("<div id=\"rbc-123\" class=\"input-box\"><button id=\"rbc-menu-button-123\" type=\"button\" class=\"btn btn-default dropdown-toggle show-special-title button-dropdown\"><span class=\"pull-left filter-option\"></span><span class=\"pull-left special-title\">Select an item</span>&nbsp;<span class=\"caret\"></span></button><div class=\"dropdown-menu open\"><div class=\"bs-searchbox hide\"><input type=\"text\" class=\"form-control\"></div><div class=\"bs-actionsbox hide\"><div class=\"btn-group btn-block\"><button id=\"rbc-menu-button-selectall-button-123\" type=\"button\" class=\"actions-btn bs-select-all btn btn-default select-all-button\">All</button><button id=\"rbc-menu-button-deselectall-button-123\" type=\"button\" class=\"actions-btn bs-deselect-all btn btn-default deselect-all-button\">Clear</button></div></div><ul id=\"rbc-menu-button-dropdown-list-123\" class=\"dropdown-menu inner\" style=\"max-height: 156px;\"> <li class=\"noselect\"><a>AA<span class=\"\"></span></a></li><li class=\"noselect\"><a>AB<span class=\"\"></span></a></li><li class=\"noselect\"><a>BB<span class=\"\"></span></a></li><li class=\"noselect\"><a>CC<span class=\"\"></span></a></li><li class=\"noselect\"><a>DD<span class=\"\"></span></a></li><li class=\"noselect\"><a>BB<span class=\"\"></span></a></li><li class=\"noselect\"><a>EE<span class=\"\"></span></a></li><li class=\"noselect\"><a>FF<span class=\"\"></span></a></li><li class=\"noselect\"><a>GG<span class=\"\"></span></a></li></ul></div></div>")
     //click outside
     map.mousedown({
       target: ReactDOM.findDOMNode(component.instance()),
     })
     //closed
-    expect(component.find(".input-box").html()).toEqual("<div id=\"rbc-123\" class=\"input-box\"><button id=\"rbc-menu-button-123\" type=\"button\" class=\"btn btn-default dropdown-toggle show-special-title button-dropdown\"><span class=\"pull-left filter-option\"></span><span class=\"pull-left special-title\">Select an item</span>&nbsp;<span class=\"caret\"></span></button><div class=\"dropdown-menu \"><div class=\"bs-searchbox hide\"><input type=\"text\" class=\"form-control\"></div><div class=\"bs-actionsbox \"><div class=\"btn-group btn-block\"><button id=\"rbc-menu-button-selectall-button-123\" type=\"button\" class=\"actions-btn bs-select-all btn btn-default select-all-button\">All</button><button id=\"rbc-menu-button-deselectall-button-123\" type=\"button\" class=\"actions-btn bs-deselect-all btn btn-default deselect-all-button\">Clear</button></div></div><ul id=\"rbc-menu-button-dropdown-list-123\" class=\"dropdown-menu inner\" style=\"max-height: 156px;\"> <li class=\"noselect\"><a>AA<span class=\"\"></span></a></li><li class=\"noselect\"><a>AB<span class=\"\"></span></a></li><li class=\"noselect\"><a>BB<span class=\"\"></span></a></li><li class=\"noselect\"><a>CC<span class=\"\"></span></a></li><li class=\"noselect\"><a>DD<span class=\"\"></span></a></li><li class=\"noselect\"><a>BB<span class=\"\"></span></a></li><li class=\"noselect\"><a>EE<span class=\"\"></span></a></li><li class=\"noselect\"><a>FF<span class=\"\"></span></a></li><li class=\"noselect\"><a>GG<span class=\"\"></span></a></li></ul></div></div>")
+    expect(component.find(".input-box").html()).toEqual("<div id=\"rbc-123\" class=\"input-box\"><button id=\"rbc-menu-button-123\" type=\"button\" class=\"btn btn-default dropdown-toggle show-special-title button-dropdown\"><span class=\"pull-left filter-option\"></span><span class=\"pull-left special-title\">Select an item</span>&nbsp;<span class=\"caret\"></span></button><div class=\"dropdown-menu \"><div class=\"bs-searchbox hide\"><input type=\"text\" class=\"form-control\"></div><div class=\"bs-actionsbox hide\"><div class=\"btn-group btn-block\"><button id=\"rbc-menu-button-selectall-button-123\" type=\"button\" class=\"actions-btn bs-select-all btn btn-default select-all-button\">All</button><button id=\"rbc-menu-button-deselectall-button-123\" type=\"button\" class=\"actions-btn bs-deselect-all btn btn-default deselect-all-button\">Clear</button></div></div><ul id=\"rbc-menu-button-dropdown-list-123\" class=\"dropdown-menu inner\" style=\"max-height: 156px;\"> <li class=\"noselect\"><a>AA<span class=\"\"></span></a></li><li class=\"noselect\"><a>AB<span class=\"\"></span></a></li><li class=\"noselect\"><a>BB<span class=\"\"></span></a></li><li class=\"noselect\"><a>CC<span class=\"\"></span></a></li><li class=\"noselect\"><a>DD<span class=\"\"></span></a></li><li class=\"noselect\"><a>BB<span class=\"\"></span></a></li><li class=\"noselect\"><a>EE<span class=\"\"></span></a></li><li class=\"noselect\"><a>FF<span class=\"\"></span></a></li><li class=\"noselect\"><a>GG<span class=\"\"></span></a></li></ul></div></div>")
   })
 
   it('Should not call action on click inside the component', () => {
@@ -208,28 +206,20 @@ describe('Dropdown tests', () => {
   
   });
 
-  it('Select first, filter, select all and remove filter', () => {
+  it('Select first, filter, select filtered and remove filter', () => {
     
     const component = shallow(
       <Combobox
       isMultiSelect={true}
-      showButtons={true}
       data={["AA", "AB", "BB", "CC", "DD", "EE", "FF", "GG"]}
-      maxCaptionItems="0"
-      labels = {{
-        "cap.select.empty": "Select a car",
-        "cap.select.plural": "{sel} of {size} cars selected",
-        "btn.select.all": "Pick All",
-        "btn.unselect.all": "Release All",
-      }}
       id="123"
     ></Combobox>,
     );
 
-    expect(component.find("#rbc-menu-button-123").html()).toEqual("<button id=\"rbc-menu-button-123\" type=\"button\" class=\"btn btn-default dropdown-toggle show-special-title button-dropdown\"><span class=\"pull-left filter-option\"></span><span class=\"pull-left special-title\">Select a car</span> <span class=\"caret\"></span></button>")
+    expect(component.find("#rbc-menu-button-123").html()).toEqual("<button id=\"rbc-menu-button-123\" type=\"button\" class=\"btn btn-default dropdown-toggle show-special-title button-dropdown\"><span class=\"pull-left filter-option\"></span><span class=\"pull-left special-title\">Select an item</span> <span class=\"caret\"></span></button>")
     
     shallow(component.find("a").get(0)).simulate("click")
-    expect(component.find("#rbc-menu-button-123").html()).toEqual("<button id=\"rbc-menu-button-123\" type=\"button\" class=\"btn btn-default dropdown-toggle show-special-title button-dropdown\"><span class=\"pull-left filter-option\"></span><span class=\"pull-left special-title\">1 of 8 cars selected</span> <span class=\"caret\"></span></button>")
+    expect(component.find("#rbc-menu-button-123").html()).toEqual("<button id=\"rbc-menu-button-123\" type=\"button\" class=\"btn btn-default dropdown-toggle show-special-title button-dropdown\"><span class=\"pull-left filter-option\"></span><span class=\"pull-left special-title\">1 item selected</span> <span class=\"caret\"></span></button>")
 
     let eventObj = { target: { value: 'B' } };
     component.find('input').simulate('change', eventObj);
@@ -248,26 +238,18 @@ describe('Dropdown tests', () => {
     const component = shallow(
       <Combobox
       isMultiSelect={true}
-      showButtons={true}
       data={["AA", "AB", "BB", "CC", "DD", "EE", "FF", "GG"]}
-      maxCaptionItems="0"
-      labels = {{
-        "cap.select.empty": "Select a car",
-        "cap.select.plural": "{sel} of {size} cars selected",
-        "btn.select.all": "Pick All",
-        "btn.unselect.all": "Release All",
-      }}
       id="123"
     ></Combobox>,
     );
 
-    expect(component.find("#rbc-menu-button-123").html()).toEqual("<button id=\"rbc-menu-button-123\" type=\"button\" class=\"btn btn-default dropdown-toggle show-special-title button-dropdown\"><span class=\"pull-left filter-option\"></span><span class=\"pull-left special-title\">Select a car</span> <span class=\"caret\"></span></button>")
+    expect(component.find("#rbc-menu-button-123").html()).toEqual("<button id=\"rbc-menu-button-123\" type=\"button\" class=\"btn btn-default dropdown-toggle show-special-title button-dropdown\"><span class=\"pull-left filter-option\"></span><span class=\"pull-left special-title\">Select an item</span> <span class=\"caret\"></span></button>")
     
     shallow(component.find("a").get(0)).simulate("click")
-    expect(component.find("#rbc-menu-button-123").html()).toEqual("<button id=\"rbc-menu-button-123\" type=\"button\" class=\"btn btn-default dropdown-toggle show-special-title button-dropdown\"><span class=\"pull-left filter-option\"></span><span class=\"pull-left special-title\">1 of 8 cars selected</span> <span class=\"caret\"></span></button>")
+    expect(component.find("#rbc-menu-button-123").html()).toEqual("<button id=\"rbc-menu-button-123\" type=\"button\" class=\"btn btn-default dropdown-toggle show-special-title button-dropdown\"><span class=\"pull-left filter-option\"></span><span class=\"pull-left special-title\">1 item selected</span> <span class=\"caret\"></span></button>")
 
     shallow(component.find("a").get(1)).simulate("click")
-    expect(component.find("#rbc-menu-button-123").html()).toEqual("<button id=\"rbc-menu-button-123\" type=\"button\" class=\"btn btn-default dropdown-toggle show-special-title button-dropdown\"><span class=\"pull-left filter-option\"></span><span class=\"pull-left special-title\">2 of 8 cars selected</span> <span class=\"caret\"></span></button>")
+    expect(component.find("#rbc-menu-button-123").html()).toEqual("<button id=\"rbc-menu-button-123\" type=\"button\" class=\"btn btn-default dropdown-toggle show-special-title button-dropdown\"><span class=\"pull-left filter-option\"></span><span class=\"pull-left special-title\">2 items selected</span> <span class=\"caret\"></span></button>")
 
   });
 
@@ -276,57 +258,61 @@ describe('Dropdown tests', () => {
     const component = shallow(
       <Combobox
       isMultiSelect={true}
-      showButtons={true}
       data={["AA", "AA", "AA", "CC", "DD", "EE", "FF", "GG"]}
-      maxCaptionItems="0"
-      labels = {{
-        "cap.select.empty": "Select a car",
-        "cap.select.plural": "{sel} of {size} cars selected",
-        "btn.select.all": "Pick All",
-        "btn.unselect.all": "Release All",
-      }}
       id="123"
     ></Combobox>,
     );
 
-    expect(component.find("#rbc-menu-button-123").html()).toEqual("<button id=\"rbc-menu-button-123\" type=\"button\" class=\"btn btn-default dropdown-toggle show-special-title button-dropdown\"><span class=\"pull-left filter-option\"></span><span class=\"pull-left special-title\">Select a car</span> <span class=\"caret\"></span></button>")
+    expect(component.find("#rbc-menu-button-123").html()).toEqual("<button id=\"rbc-menu-button-123\" type=\"button\" class=\"btn btn-default dropdown-toggle show-special-title button-dropdown\"><span class=\"pull-left filter-option\"></span><span class=\"pull-left special-title\">Select an item</span> <span class=\"caret\"></span></button>")
     
     shallow(component.find("a").get(0)).simulate("click")
-    expect(component.find("#rbc-menu-button-123").html()).toEqual("<button id=\"rbc-menu-button-123\" type=\"button\" class=\"btn btn-default dropdown-toggle show-special-title button-dropdown\"><span class=\"pull-left filter-option\"></span><span class=\"pull-left special-title\">1 of 8 cars selected</span> <span class=\"caret\"></span></button>")
+    expect(component.find("#rbc-menu-button-123").html()).toEqual("<button id=\"rbc-menu-button-123\" type=\"button\" class=\"btn btn-default dropdown-toggle show-special-title button-dropdown\"><span class=\"pull-left filter-option\"></span><span class=\"pull-left special-title\">1 item selected</span> <span class=\"caret\"></span></button>")
     expect(component.find("#rbc-menu-button-dropdown-list-123").html()).toEqual("<ul id=\"rbc-menu-button-dropdown-list-123\" class=\"dropdown-menu inner\" style=\"max-height:156px\"> <li class=\"noselect\"><a>AA<span class=\"glyphicon glyphicon-ok\"></span></a></li><li class=\"noselect\"><a>AA<span class=\"\"></span></a></li><li class=\"noselect\"><a>AA<span class=\"\"></span></a></li><li class=\"noselect\"><a>CC<span class=\"\"></span></a></li><li class=\"noselect\"><a>DD<span class=\"\"></span></a></li><li class=\"noselect\"><a>EE<span class=\"\"></span></a></li><li class=\"noselect\"><a>FF<span class=\"\"></span></a></li><li class=\"noselect\"><a>GG<span class=\"\"></span></a></li></ul>")
 
     shallow(component.find("a").get(1)).simulate("click")
-    expect(component.find("#rbc-menu-button-123").html()).toEqual("<button id=\"rbc-menu-button-123\" type=\"button\" class=\"btn btn-default dropdown-toggle show-special-title button-dropdown\"><span class=\"pull-left filter-option\"></span><span class=\"pull-left special-title\">2 of 8 cars selected</span> <span class=\"caret\"></span></button>")
+    expect(component.find("#rbc-menu-button-123").html()).toEqual("<button id=\"rbc-menu-button-123\" type=\"button\" class=\"btn btn-default dropdown-toggle show-special-title button-dropdown\"><span class=\"pull-left filter-option\"></span><span class=\"pull-left special-title\">2 items selected</span> <span class=\"caret\"></span></button>")
     expect(component.find("#rbc-menu-button-dropdown-list-123").html()).toEqual("<ul id=\"rbc-menu-button-dropdown-list-123\" class=\"dropdown-menu inner\" style=\"max-height:156px\"> <li class=\"noselect\"><a>AA<span class=\"glyphicon glyphicon-ok\"></span></a></li><li class=\"noselect\"><a>AA<span class=\"glyphicon glyphicon-ok\"></span></a></li><li class=\"noselect\"><a>AA<span class=\"\"></span></a></li><li class=\"noselect\"><a>CC<span class=\"\"></span></a></li><li class=\"noselect\"><a>DD<span class=\"\"></span></a></li><li class=\"noselect\"><a>EE<span class=\"\"></span></a></li><li class=\"noselect\"><a>FF<span class=\"\"></span></a></li><li class=\"noselect\"><a>GG<span class=\"\"></span></a></li></ul>")
   });
   
-  it('Select first and deselect item', () => {
+  it('Select first and deselect item - multiselect', () => {
     
     const component = shallow(
       <Combobox
       isMultiSelect={true}
-      showButtons={true}
       data={["AA", "AA", "AA", "CC", "DD", "EE", "FF", "GG"]}
-      maxCaptionItems="0"
-      labels = {{
-        "cap.select.empty": "Select a car",
-        "cap.select.plural": "{sel} of {size} cars selected",
-        "btn.select.all": "Pick All",
-        "btn.unselect.all": "Release All",
-      }}
       id="123"
     ></Combobox>,
     );
 
-    expect(component.find("#rbc-menu-button-123").html()).toEqual("<button id=\"rbc-menu-button-123\" type=\"button\" class=\"btn btn-default dropdown-toggle show-special-title button-dropdown\"><span class=\"pull-left filter-option\"></span><span class=\"pull-left special-title\">Select a car</span> <span class=\"caret\"></span></button>")
+    expect(component.find("#rbc-menu-button-123").html()).toEqual("<button id=\"rbc-menu-button-123\" type=\"button\" class=\"btn btn-default dropdown-toggle show-special-title button-dropdown\"><span class=\"pull-left filter-option\"></span><span class=\"pull-left special-title\">Select an item</span> <span class=\"caret\"></span></button>")
     
     shallow(component.find("a").get(0)).simulate("click")
-    expect(component.find("#rbc-menu-button-123").html()).toEqual("<button id=\"rbc-menu-button-123\" type=\"button\" class=\"btn btn-default dropdown-toggle show-special-title button-dropdown\"><span class=\"pull-left filter-option\"></span><span class=\"pull-left special-title\">1 of 8 cars selected</span> <span class=\"caret\"></span></button>")
+    expect(component.find("#rbc-menu-button-123").html()).toEqual("<button id=\"rbc-menu-button-123\" type=\"button\" class=\"btn btn-default dropdown-toggle show-special-title button-dropdown\"><span class=\"pull-left filter-option\"></span><span class=\"pull-left special-title\">1 item selected</span> <span class=\"caret\"></span></button>")
     expect(component.find("#rbc-menu-button-dropdown-list-123").html()).toEqual("<ul id=\"rbc-menu-button-dropdown-list-123\" class=\"dropdown-menu inner\" style=\"max-height:156px\"> <li class=\"noselect\"><a>AA<span class=\"glyphicon glyphicon-ok\"></span></a></li><li class=\"noselect\"><a>AA<span class=\"\"></span></a></li><li class=\"noselect\"><a>AA<span class=\"\"></span></a></li><li class=\"noselect\"><a>CC<span class=\"\"></span></a></li><li class=\"noselect\"><a>DD<span class=\"\"></span></a></li><li class=\"noselect\"><a>EE<span class=\"\"></span></a></li><li class=\"noselect\"><a>FF<span class=\"\"></span></a></li><li class=\"noselect\"><a>GG<span class=\"\"></span></a></li></ul>")
 
     shallow(component.find("a").get(0)).simulate("click")
-    expect(component.find("#rbc-menu-button-123").html()).toEqual("<button id=\"rbc-menu-button-123\" type=\"button\" class=\"btn btn-default dropdown-toggle show-special-title button-dropdown\"><span class=\"pull-left filter-option\"></span><span class=\"pull-left special-title\">Select a car</span> <span class=\"caret\"></span></button>")
+    expect(component.find("#rbc-menu-button-123").html()).toEqual("<button id=\"rbc-menu-button-123\" type=\"button\" class=\"btn btn-default dropdown-toggle show-special-title button-dropdown\"><span class=\"pull-left filter-option\"></span><span class=\"pull-left special-title\">Select an item</span> <span class=\"caret\"></span></button>")
     expect(component.find("#rbc-menu-button-dropdown-list-123").html()).toEqual("<ul id=\"rbc-menu-button-dropdown-list-123\" class=\"dropdown-menu inner\" style=\"max-height:156px\"> <li class=\"noselect\"><a>AA<span class=\"\"></span></a></li><li class=\"noselect\"><a>AA<span class=\"\"></span></a></li><li class=\"noselect\"><a>AA<span class=\"\"></span></a></li><li class=\"noselect\"><a>CC<span class=\"\"></span></a></li><li class=\"noselect\"><a>DD<span class=\"\"></span></a></li><li class=\"noselect\"><a>EE<span class=\"\"></span></a></li><li class=\"noselect\"><a>FF<span class=\"\"></span></a></li><li class=\"noselect\"><a>GG<span class=\"\"></span></a></li></ul>")
+  });
+
+  it('Select first and deselect item - singleselect', () => {
+    
+    const component = shallow(
+      <Combobox
+      data={["AA", "AA", "AA", "CC", "DD", "EE", "FF", "GG"]}
+      id="123"
+    ></Combobox>,
+    );
+
+    expect(component.find("#rbc-menu-button-123").html()).toEqual("<button id=\"rbc-menu-button-123\" type=\"button\" class=\"btn btn-default dropdown-toggle show-special-title button-dropdown\"><span class=\"pull-left filter-option\"></span><span class=\"pull-left special-title\">Select an item</span> <span class=\"caret\"></span></button>")
+    
+    shallow(component.find("a").get(0)).simulate("click")
+    expect(component.find("#rbc-menu-button-123").html()).toEqual("<button id=\"rbc-menu-button-123\" type=\"button\" class=\"btn btn-default dropdown-toggle show-special-title button-dropdown\"><span class=\"pull-left filter-option\"></span><span class=\"pull-left special-title\">AA</span> <span class=\"caret\"></span></button>")
+    expect(component.find("#rbc-menu-button-dropdown-list-123").html()).toEqual("<ul id=\"rbc-menu-button-dropdown-list-123\" class=\"dropdown-menu inner\" style=\"max-height:156px\"> <li class=\"noselect\"><a>AA<span class=\"glyphicon glyphicon-ok\"></span></a></li><li class=\"noselect\"><a>AA<span class=\"\"></span></a></li><li class=\"noselect\"><a>AA<span class=\"\"></span></a></li><li class=\"noselect\"><a>CC<span class=\"\"></span></a></li><li class=\"noselect\"><a>DD<span class=\"\"></span></a></li><li class=\"noselect\"><a>EE<span class=\"\"></span></a></li><li class=\"noselect\"><a>FF<span class=\"\"></span></a></li><li class=\"noselect\"><a>GG<span class=\"\"></span></a></li></ul>")
+
+    shallow(component.find("a").get(0)).simulate("click")
+    expect(component.find("#rbc-menu-button-123").html()).toEqual("<button id=\"rbc-menu-button-123\" type=\"button\" class=\"btn btn-default dropdown-toggle show-special-title button-dropdown\"><span class=\"pull-left filter-option\"></span><span class=\"pull-left special-title\">AA</span> <span class=\"caret\"></span></button>")
+    expect(component.find("#rbc-menu-button-dropdown-list-123").html()).toEqual("<ul id=\"rbc-menu-button-dropdown-list-123\" class=\"dropdown-menu inner\" style=\"max-height:156px\"> <li class=\"noselect\"><a>AA<span class=\"glyphicon glyphicon-ok\"></span></a></li><li class=\"noselect\"><a>AA<span class=\"\"></span></a></li><li class=\"noselect\"><a>AA<span class=\"\"></span></a></li><li class=\"noselect\"><a>CC<span class=\"\"></span></a></li><li class=\"noselect\"><a>DD<span class=\"\"></span></a></li><li class=\"noselect\"><a>EE<span class=\"\"></span></a></li><li class=\"noselect\"><a>FF<span class=\"\"></span></a></li><li class=\"noselect\"><a>GG<span class=\"\"></span></a></li></ul>")
   });
 
   it('Data change', () => {
@@ -337,16 +323,7 @@ describe('Dropdown tests', () => {
     
     const component = mount(
       <Combobox
-      isMultiSelect={true}
-      showButtons={true}
       data={data}
-      maxCaptionItems="0"
-      labels = {{
-        "cap.select.empty": "Select a car",
-        "cap.select.plural": "{sel} of {size} cars selected",
-        "btn.select.all": "Pick All",
-        "btn.unselect.all": "Release All",
-      }}
       id="123"
     ></Combobox>,
     );
@@ -367,18 +344,8 @@ describe('Dropdown tests', () => {
     
     const component = mount(
       <Combobox
-      isMultiSelect={true}
-      showButtons={true}
       data={data}
-      maxCaptionItems="0"
       onChange = {onChange}
-      labels = {{
-        "cap.select.empty": "Select a car",
-        "cap.select.plural": "{sel} of {size} cars selected",
-        "btn.select.all": "Pick All",
-        "btn.unselect.all": "Release All",
-      }}
-      id="123"
     ></Combobox>,
     );
 
@@ -418,11 +385,8 @@ describe('Dropdown tests', () => {
   it('Filter list', () => {
     
     const component = shallow(
-      <Combobox
-      isMultiSelect={true}
-      showButtons={true}
+      <Combobox  
       data={["AA", "AB", "BB", "CC", "DD", "BB", "EE", "FF", "GG"]}
-      maxCaptionItems="5"
       id="123"
     ></Combobox>,
     );
@@ -447,7 +411,6 @@ describe('Dropdown tests', () => {
       showButtons={true}
       data={["AA", "AB", "BB", "CC", "DD", "BB", "EE", "FF", "GG"]}
       maxCaptionItems="5"
-  
       id="123"
     ></Combobox>,
     );
@@ -466,11 +429,7 @@ describe('Dropdown tests', () => {
 
     const component = shallow(
       <Combobox
-      isMultiSelect={true}
-      showButtons={true}
       data={["AA", "AB", "BB", "CC", "DD", "BB", "EE", "FF", "GG"]}
-      maxCaptionItems="5"
-      
       id="123"
     ></Combobox>,
     );
@@ -486,10 +445,8 @@ describe('Dropdown tests', () => {
     const component = shallow(
       <Combobox
       isMultiSelect={true}
-      showButtons={true}
       data={["AA", "AB", "BB", "CC", "DD", "BB", "EE", "FF", "GG"]}
       maxCaptionItems="2"
-      labels={{singular: "car"}}
       id="123"
     ></Combobox>,
     );
@@ -499,7 +456,7 @@ describe('Dropdown tests', () => {
     shallow(component.find("a").get(1)).simulate("click")
     expect(component.find("#rbc-menu-button-123").html()).toEqual("<button id=\"rbc-menu-button-123\" type=\"button\" class=\"btn btn-default dropdown-toggle show-special-title button-dropdown\"><span class=\"pull-left filter-option\"></span><span class=\"pull-left special-title\">AA, AB</span> <span class=\"caret\"></span></button>")  
     shallow(component.find("a").get(2)).simulate("click")
-    expect(component.find("#rbc-menu-button-123").html()).toEqual("<button id=\"rbc-menu-button-123\" type=\"button\" class=\"btn btn-default dropdown-toggle show-special-title button-dropdown\"><span class=\"pull-left filter-option\"></span><span class=\"pull-left special-title\">9 items selected</span> <span class=\"caret\"></span></button>")  
+    expect(component.find("#rbc-menu-button-123").html()).toEqual("<button id=\"rbc-menu-button-123\" type=\"button\" class=\"btn btn-default dropdown-toggle show-special-title button-dropdown\"><span class=\"pull-left filter-option\"></span><span class=\"pull-left special-title\">3 items selected</span> <span class=\"caret\"></span></button>")  
 
   });
 
@@ -508,21 +465,12 @@ describe('Dropdown tests', () => {
 
     const component = shallow(
       <Combobox
-      isMultiSelect={false}
       data={["AA", "AB", "BB", "CC", "DD", "BB", "EE", "FF", "GG"]}
-      maxCaptionItems="2"
-      labels = {{
-        "cap.select.empty": "Select a car",
-        "cap.select.singular": "One car selected",
-        "cap.select.plural": "{sel} of {size} cars selected",
-        "btn.select.all": "Pick All",
-        "btn.unselect.all": "Release All",
-      }}
       id="123"
     ></Combobox>,
     );
 
-    expect(component.find("#rbc-menu-button-123").html()).toEqual("<button id=\"rbc-menu-button-123\" type=\"button\" class=\"btn btn-default dropdown-toggle show-special-title button-dropdown\"><span class=\"pull-left filter-option\"></span><span class=\"pull-left special-title\">Select a car</span> <span class=\"caret\"></span></button>")
+    expect(component.find("#rbc-menu-button-123").html()).toEqual("<button id=\"rbc-menu-button-123\" type=\"button\" class=\"btn btn-default dropdown-toggle show-special-title button-dropdown\"><span class=\"pull-left filter-option\"></span><span class=\"pull-left special-title\">Select an item</span> <span class=\"caret\"></span></button>")
     shallow(component.find("a").get(0)).simulate("click")
     expect(component.find("#rbc-menu-button-123").html()).toEqual("<button id=\"rbc-menu-button-123\" type=\"button\" class=\"btn btn-default dropdown-toggle show-special-title button-dropdown\"><span class=\"pull-left filter-option\"></span><span class=\"pull-left special-title\">AA</span> <span class=\"caret\"></span></button>")  
     shallow(component.find("a").get(1)).simulate("click")
@@ -533,19 +481,13 @@ describe('Dropdown tests', () => {
 
   it('Select/deselect all labels', () => {
     
-
     const {getByText} = render(
       <Combobox
-      isMultiSelect={true}
       showButtons={true}
       data={["AA", "AB", "BB", "CC", "DD", "BB", "EE", "FF", "GG"]}
-      maxCaptionItems="5"
       labels = {{
-        "cap.select.empty": "Select a car",
-        "cap.select.singular": "One car selected",
-        "cap.select.plural": "{sel} of {size} cars selected",
         "btn.select.all": "Pick All",
-        "btn.unselect.all": "Release All",
+        "btn.unselect.all": "Release All"
       }}
       id="123"
     ></Combobox>,
@@ -560,13 +502,10 @@ describe('Dropdown tests', () => {
   
     const component = shallow(
       <Combobox
-      isMultiSelect={true}
-      showSearch={true}
-      showButtons={true}
       data={["AA"]}/>
     );
     
-    expect(component.find(".input-box").html()).toEqual("<div class=\"input-box\"><button type=\"button\" class=\"btn btn-default dropdown-toggle show-special-title button-dropdown\"><span class=\"pull-left filter-option\"></span><span class=\"pull-left special-title\">Select an item</span> <span class=\"caret\"></span></button><div class=\"dropdown-menu \"><div class=\"bs-searchbox \"><input type=\"text\" class=\"form-control\"/></div><div class=\"bs-actionsbox \"><div class=\"btn-group btn-block\"><button type=\"button\" class=\"actions-btn bs-select-all btn btn-default select-all-button\">All</button><button type=\"button\" class=\"actions-btn bs-deselect-all btn btn-default deselect-all-button\">Clear</button></div></div><ul class=\"dropdown-menu inner\" style=\"max-height:156px\"> <li class=\"noselect\"><a>AA<span class=\"\"></span></a></li></ul></div></div>")
+    expect(component.find(".input-box").html()).toEqual("<div class=\"input-box\"><button type=\"button\" class=\"btn btn-default dropdown-toggle show-special-title button-dropdown\"><span class=\"pull-left filter-option\"></span><span class=\"pull-left special-title\">Select an item</span> <span class=\"caret\"></span></button><div class=\"dropdown-menu \"><div class=\"bs-searchbox hide\"><input type=\"text\" class=\"form-control\"/></div><div class=\"bs-actionsbox hide\"><div class=\"btn-group btn-block\"><button type=\"button\" class=\"actions-btn bs-select-all btn btn-default select-all-button\">All</button><button type=\"button\" class=\"actions-btn bs-deselect-all btn btn-default deselect-all-button\">Clear</button></div></div><ul class=\"dropdown-menu inner\" style=\"max-height:156px\"> <li class=\"noselect\"><a>AA<span class=\"\"></span></a></li></ul></div></div>")
   
   });
 
@@ -574,12 +513,10 @@ describe('Dropdown tests', () => {
   
     const component = shallow(
       <Combobox
-      isMultiSelect={true}
-      showButtons={true}
       data={["AA"]}/>
     );
     
-    expect(component.find(".input-box").html()).toEqual("<div class=\"input-box\"><button type=\"button\" class=\"btn btn-default dropdown-toggle show-special-title button-dropdown\"><span class=\"pull-left filter-option\"></span><span class=\"pull-left special-title\">Select an item</span> <span class=\"caret\"></span></button><div class=\"dropdown-menu \"><div class=\"bs-searchbox hide\"><input type=\"text\" class=\"form-control\"/></div><div class=\"bs-actionsbox \"><div class=\"btn-group btn-block\"><button type=\"button\" class=\"actions-btn bs-select-all btn btn-default select-all-button\">All</button><button type=\"button\" class=\"actions-btn bs-deselect-all btn btn-default deselect-all-button\">Clear</button></div></div><ul class=\"dropdown-menu inner\" style=\"max-height:156px\"> <li class=\"noselect\"><a>AA<span class=\"\"></span></a></li></ul></div></div>")
+    expect(component.find(".input-box").html()).toEqual("<div class=\"input-box\"><button type=\"button\" class=\"btn btn-default dropdown-toggle show-special-title button-dropdown\"><span class=\"pull-left filter-option\"></span><span class=\"pull-left special-title\">Select an item</span> <span class=\"caret\"></span></button><div class=\"dropdown-menu \"><div class=\"bs-searchbox hide\"><input type=\"text\" class=\"form-control\"/></div><div class=\"bs-actionsbox hide\"><div class=\"btn-group btn-block\"><button type=\"button\" class=\"actions-btn bs-select-all btn btn-default select-all-button\">All</button><button type=\"button\" class=\"actions-btn bs-deselect-all btn btn-default deselect-all-button\">Clear</button></div></div><ul class=\"dropdown-menu inner\" style=\"max-height:156px\"> <li class=\"noselect\"><a>AA<span class=\"\"></span></a></li></ul></div></div>")
   
   });
 
@@ -587,17 +524,8 @@ describe('Dropdown tests', () => {
 
     let component = shallow(
       <Combobox
-      isMultiSelect={false}
       data={["AA", "AB", "BB", "CC", "DD", "BB", "EE", "FF", "GG"]}
-      maxCaptionItems="2"
       maxDropdownItems="2"
-      labels = {{
-        "cap.select.empty": "Select a car",
-        "cap.select.singular": "One car selected",
-        "cap.select.plural": "{sel} of {size} cars selected",
-        "btn.select.all": "Pick All",
-        "btn.unselect.all": "Release All",
-      }}
       id="123"
     ></Combobox>,
     );
@@ -606,17 +534,8 @@ describe('Dropdown tests', () => {
 
     component = shallow(
       <Combobox
-      isMultiSelect={false}
       data={["AA", "AB", "BB", "CC", "DD", "BB", "EE", "FF", "GG"]}
-      maxCaptionItems="2"
       maxDropdownItems="4"
-      labels = {{
-        "cap.select.empty": "Select a car",
-        "cap.select.singular": "One car selected",
-        "cap.select.plural": "{sel} of {size} cars selected",
-        "btn.select.all": "Pick All",
-        "btn.unselect.all": "Release All",
-      }}
       id="123"
     ></Combobox>,
     );

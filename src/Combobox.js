@@ -129,7 +129,7 @@ class Combobox extends Component {
 
   searchElementInArray = (array, element) => {
     let findElement = function(each) {
-      return element.label === each.label && element.index === each.index;
+      return element.value === each.value && element.index === each.index;
     }
 
     return array.find(findElement)
@@ -150,12 +150,12 @@ class Combobox extends Component {
 
       this.setState({selected: newSelected, placeholder: newPlaceholder})
 
-      this.runCallback(newSelected)
+      this.runCallback(newSelected.map(each => {return {value: each.value, index: each.index}}))
 
     } else {
       this.setState({selected: [element], placeholder: element.label})
 
-      this.runCallback([element])
+      this.runCallback([{value: element.value, index: element.index}])
     }
   };
 

@@ -557,7 +557,7 @@ describe('Dropdown tests', () => {
     );
 
     shallow(component.find("a").get(0)).simulate("click")
-    expect(JSON.stringify(objectSelected)).toEqual("[{\"label\":\"AA\",\"value\":\"AA\",\"index\":0}]")
+    expect(JSON.stringify(objectSelected)).toEqual("[{\"value\":\"AA\",\"index\":0}]")
 
   });
 
@@ -578,7 +578,7 @@ describe('Dropdown tests', () => {
 
     shallow(component.find("a").get(0)).simulate("click")
     shallow(component.find("a").get(1)).simulate("click")
-    expect(JSON.stringify(objectSelected)).toEqual("[{\"label\":\"AA\",\"value\":\"first\",\"index\":0},{\"label\":\"AB\",\"value\":\"second\",\"index\":1}]")
+    expect(JSON.stringify(objectSelected)).toEqual("[{\"value\":\"first\",\"index\":0},{\"value\":\"second\",\"index\":1}]")
 
   });
   

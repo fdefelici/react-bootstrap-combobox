@@ -20,13 +20,13 @@ class App extends React.Component{
 
     styleCombobox1 = {
       float:"left",
-      width: "500px"
+      width: "250px"
     }
 
     styleCombobox2 = {
-      marginLeft : "200px",
+      marginLeft : "100px",
       float:"left",
-      width: "500px"
+      width: "250px"
     }
 
     render(){
@@ -83,9 +83,9 @@ class App extends React.Component{
                 showButtons={true}
                 maxDropdownItems={4}
                 data={[
-                  { label: "Apple", value: "apple" },
-                  { label: "Banana", value: "banana" },
-                  { label: "Citrus", value: "citrus" },
+                  { label: "Apple", value: "apple", icon:<span style={{height: "15px",width: "15px",marginTop:"3px", backgroundColor: "#bbb",borderRadius: "50%", display: "inline-block"}}></span>},
+                  { label: "Banana", value: "banana", icon:<span className={"glyphicon glyphicon-plus"}></span> },
+                  { label: "Citrus", value: "citrus", icon:<span style={{height: "15px",width: "15px",marginTop:"3px", backgroundColor: "#bbb",borderRadius: "50%", display: "inline-block"}}></span> },
                   { label: "Grapefruit", value: "grapefruit" },
                   { label: "Lime", value: "lime" },
                   { label: "Mandarin", value: "mandarin" },

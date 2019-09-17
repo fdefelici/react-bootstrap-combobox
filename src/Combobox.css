@@ -137,3 +137,11 @@
               user-select: none; /* Non-prefixed version, currently
                                     supported by Chrome and Opera */
   }
+
+.rbc-padding-right10 {
+    padding-left: 10px !important;
+}
+
+.rbc-padding-right30 {
+    padding-left: 30px !important;
+}

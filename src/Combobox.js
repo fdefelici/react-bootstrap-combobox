@@ -10,6 +10,8 @@ class Combobox extends Component {
   maxDropdownItems = 6
   onChange = () => {}
 
+  areThereIcons = false
+
   labels = {
     "cap.select.empty": "Select an item",
     "cap.select.singular": "1 item selected",
@@ -86,7 +88,16 @@ class Combobox extends Component {
       if(typeof this.props.data[0] == "string") {
         return this.props.data.map((each,index) => { return {label: each, value: each, index: index} })
       } else if(typeof this.props.data[0] == "object") {
-        return this.props.data.map((each,index) => { return {label: each.label, value: each.value, index: index} })
+        return this.props.data.map((each, index) => {
+          this.areThereIcons = each.icon? true: this.areThereIcons
+
+          return {
+            label: each.label,
+            value: each.value,
+            icon: each.icon,
+            index: index
+          };
+        });
       }
     } else {
       return []
@@ -96,7 +107,7 @@ class Combobox extends Component {
 
 
   componentDidUpdate(prevProps, prevState) {
-    if(JSON.stringify(this.prepareDataFromProps()) !== JSON.stringify(this.state.data)) {
+    if(JSON.stringify(this.prepareDataFromProps().map(each=>{return{label: each.label, value: each.value, index: each.index}})) !== JSON.stringify(this.state.data.map(each=>{return{label: each.label, value: each.value, index: each.index}}))) {
       this.setState({
         data : this.prepareDataFromProps(),
         dataFiltered : this.prepareDataFromProps(),
@@ -259,13 +270,14 @@ class Combobox extends Component {
               
               {this.state.dataFiltered.map(each => {
                 return (
-                  <li className="noselect" key={each.label + each.index}>
-                    <a
+                  <li className="noselect" key={each.value + each.index}>
+                    <a className={(each.icon?"rbc-padding-right10": this.areThereIcons?"rbc-padding-right30": "")}
                       onClick={() => {
                         if (!this.isMultiSelect) this.closeOrOpen();
                         this.selectElement(each);
                       }}
                     >
+                      <div><span style={{float:"left", paddingRight:"5px"}}>{each.icon ? each.icon: ""}</span></div>
                       {each.label}
                       <span
                         className={

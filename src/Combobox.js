@@ -72,18 +72,34 @@ class Combobox extends Component {
     this.state = {
       placeholder: "",
       isOpen: false,
-      dataFiltered : this.props.data? this.props.data.map((each,index) => { return {label: each, index: index} }): [],
+      dataFiltered : this.prepareDataFromProps(),
       selected: [],
-      data : this.props.data? this.props.data.map((each,index) => { return {label: each, index: index} }): []
+      data : this.prepareDataFromProps()
     }
 
 
   }
+
+  prepareDataFromProps = () => {
+
+    if( this.props.data ) {
+      if(typeof this.props.data[0] == "string") {
+        return this.props.data.map((each,index) => { return {label: each, value: each, index: index} })
+      } else if(typeof this.props.data[0] == "object") {
+        return this.props.data.map((each,index) => { return {label: each.label, value: each.value, index: index} })
+      }
+    } else {
+      return []
+    }
+
+  };
+
+
   componentDidUpdate(prevProps, prevState) {
-    if(JSON.stringify(this.props.data.map((each,index) => { return {label: each, index: index} })) !== JSON.stringify(this.state.data)) {
+    if(JSON.stringify(this.prepareDataFromProps()) !== JSON.stringify(this.state.data)) {
       this.setState({
-        data : this.props.data.map((each,index) => { return {label: each, index: index} }),
-        dataFiltered : this.props.data.map((each,index) => { return {label: each, index: index} }),
+        data : this.prepareDataFromProps(),
+        dataFiltered : this.prepareDataFromProps(),
         selected: []
       })
 
@@ -113,7 +129,7 @@ class Combobox extends Component {
 
   searchElementInArray = (array, element) => {
     let findElement = function(each) {
-      return element.label === each.label && element.index === each.index;
+      return element.value === each.value && element.index === each.index;
     }
 
     return array.find(findElement)
@@ -134,12 +150,12 @@ class Combobox extends Component {
 
       this.setState({selected: newSelected, placeholder: newPlaceholder})
 
-      this.runCallback(newSelected)
+      this.runCallback(newSelected.map(each => {return {value: each.value, index: each.index}}))
 
     } else {
       this.setState({selected: [element], placeholder: element.label})
 
-      this.runCallback([element])
+      this.runCallback([{value: element.value, index: element.index}])
     }
   };
 

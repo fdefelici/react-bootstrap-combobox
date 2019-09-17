@@ -38,7 +38,7 @@ This component allow customization tweeking the following attributes:
 
 | Attribute | Type | Description | Default |
 |  ---: | :--- | :---        | :---    |
-| `data` | string array | List of items | []  |
+| `data` | array | List of strings, e.g. `["Apple", "Banana"]`<br/><b>or</b><br/> list of label/value objects, e.g. `[{label: "Apple", value: "apple"}, {label: "Banana", value: "banana"}]`    | []  |
 | `id` | string | html element ID  | none  |
 | `isMultiSelect` | boolean | Allow multiple selection | false  |
 | `labels` | object | Localization support (see details in [localization paragraph](#localization-support)) | - |

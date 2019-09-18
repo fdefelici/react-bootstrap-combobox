@@ -137,3 +137,23 @@
               user-select: none; /* Non-prefixed version, currently
                                     supported by Chrome and Opera */
   }
+
+.rbc-padding-right10 {
+    padding-left: 10px !important;
+}
+
+.rbc-padding-right30 {
+    padding-left: 30px !important;
+}
+
+.rbc-icon * {
+    max-height: 20px;
+    margin: auto;
+    display:block;
+}
+
+.rbc-icon {
+    height: 20px;
+    float:left !important;
+    padding-right: 5px;
+}

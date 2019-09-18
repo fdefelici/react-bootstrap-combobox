@@ -49,16 +49,17 @@ This component allow customization tweeking the following attributes:
 | `showSearch` | boolean | Show Search field | false |
 
 ## Icons
-When data is an array of label/value objects, it is possibile to add an icon attribute to show a component at the left of an element of the list; the attribute is optional for each element.
+When data is an array of label/value objects, it is possibile to add an icon attribute to show it on the left side of an element of the list (look at the previous screenshot); the attribute is optional for each element.
+
+The max height of the icon is setted to 20px.
 
 Examples of icon attribute:
 ```javascript
         data={[
-                  { label: "Apple", value: "apple", icon:<img alt="" src={require("./images/apple.png")} />},
+                  { label: "Apple", value: "apple", icon:<img alt="" src={require("./images/apple.png")}/>},
                   { label: "Banana", value: "banana", icon:<span className={"glyphicon glyphicon-plus"}></span>},
                   { label: "Citrus", value: "citrus"}
-        }]
-/>
+        ]};
 ```
 
 ## Localization Support

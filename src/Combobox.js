@@ -269,6 +269,7 @@ class Combobox extends Component {
 
               
               {this.state.dataFiltered.map(each => {
+                
                 return (
                   <li className="noselect" key={each.value + each.index}>
                     <a className={(each.icon?"rbc-padding-right10": this.areThereIcons?"rbc-padding-right30": "")}
@@ -277,7 +278,7 @@ class Combobox extends Component {
                         this.selectElement(each);
                       }}
                     >
-                      <div><span style={{float:"left", paddingRight:"5px"}}>{each.icon ? each.icon: ""}</span></div>
+                      <span className={"rbc-icon"}>{each.icon ? each.icon: ""}</span>
                       {each.label}
                       <span
                         className={

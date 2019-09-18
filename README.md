@@ -8,7 +8,7 @@ Combobox Component for React based on Bootstrap which offer the following featur
 * Scrollbar Control
 * Localization 
 
-![Component ShowCase](example/images/showcase.png)
+![Component ShowCase](example/src/images/showcase.png)
 
 # Usage
 This component is based on React and Bootstrap (only css part), so in your project you must have these dependencies. It's suggested to adopt the following versions:
@@ -38,7 +38,7 @@ This component allow customization tweeking the following attributes:
 
 | Attribute | Type | Description | Default |
 |  ---: | :--- | :---        | :---    |
-| `data` | array | List of strings, e.g. `["Apple", "Banana"]`<br/><b>or</b><br/> list of label/value objects, e.g. `[{label: "Apple", value: "apple"}, {label: "Banana", value: "banana"}]`    | []  |
+| `data` | array | List of strings, e.g. `["Apple", "Banana"]`<br/><b>or</b><br/> list of label/value objects, e.g. `[{label: "Apple", value: "apple"}, {label: "Banana", value: "banana, icon:<img alt="" src={require('./images/apple.png')"}]` where icon is optional (see details in [icons](#icons)).    | []  |
 | `id` | string | html element ID  | none  |
 | `isMultiSelect` | boolean | Allow multiple selection | false  |
 | `labels` | object | Localization support (see details in [localization paragraph](#localization-support)) | - |
@@ -48,6 +48,18 @@ This component allow customization tweeking the following attributes:
 | `showButtons` | boolean | Show Select/Deselect All buttons | false |
 | `showSearch` | boolean | Show Search field | false |
 
+## Icons
+When data is an array of label/value objects, it is possibile to add an icon attribute to show a component at the left of an element of the list; the attribute is optional for each element.
+
+Examples of icon attribute:
+```javascript
+        data={[
+                  { label: "Apple", value: "apple", icon:<img alt="" src={require("./images/apple.png")} />},
+                  { label: "Banana", value: "banana", icon:<span className={"glyphicon glyphicon-plus"}></span>},
+                  { label: "Citrus", value: "citrus"}
+        }]
+/>
+```
 
 ## Localization Support
 Using ```labels``` attribute it is possible to customize any text the component shows.

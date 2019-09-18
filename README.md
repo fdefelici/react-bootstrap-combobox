@@ -55,11 +55,11 @@ The max height of the icon is setted to 20px.
 
 Examples of icon attribute:
 ```javascript
-        data={[
-                  { label: "Apple", value: "apple", icon:<img alt="" src={require("./images/apple.png")}/>},
-                  { label: "Banana", value: "banana", icon:<span className={"glyphicon glyphicon-plus"}></span>},
-                  { label: "Citrus", value: "citrus"}
-        ]};
+    data={[
+        { label: "Apple", value: "apple", icon:<img alt="" src={require("./images/apple.png")}/>},
+        { label: "Banana", value: "banana", icon:<span className={"glyphicon glyphicon-plus"}></span>},
+        { label: "Citrus", value: "citrus"}
+    ]};
 ```
 
 ## Localization Support

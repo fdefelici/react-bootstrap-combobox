@@ -1,4 +1,4 @@
-# react-bootstrap-combobox &middot; [![GitHub package.json version](https://img.shields.io/github/package-json/v/fdefelici/react-bootstrap-combobox?color=blue&label=npm)](https://www.npmjs.com/package/@fdefelici/react-bootstrap-combobox) [![Build Status](https://travis-ci.org/fdefelici/react-bootstrap-combobox.svg?branch=master)](https://travis-ci.org/fdefelici/react-bootstrap-combobox) [![codecov](https://codecov.io/gh/fdefelici/react-bootstrap-combobox/branch/master/graph/badge.svg)](https://codecov.io/gh/fdefelici/react-bootstrap-combobox)
+# react-bootstrap-combobox &middot; [![NPM version](https://img.shields.io/badge/npm-v1.2.0-blue)](https://www.npmjs.com/package/@fdefelici/react-bootstrap-combobox) [![Build Status](https://travis-ci.org/fdefelici/react-bootstrap-combobox.svg?branch=v1.2.0)](https://travis-ci.org/fdefelici/react-bootstrap-combobox) [![codecov](https://codecov.io/gh/fdefelici/react-bootstrap-combobox/branch/v1.2.0/graph/badge.svg)](https://codecov.io/gh/fdefelici/react-bootstrap-combobox) [![CodeSandBox](https://img.shields.io/badge/demo-live-blueviolet)](https://codesandbox.io/s/github/fdefelici/react-bootstrap-combobox/tree/v1.2.0/example?fontsize=14)
 
 Combobox Component for React based on Bootstrap which offer the following features:
 * Single Selection
@@ -8,7 +8,7 @@ Combobox Component for React based on Bootstrap which offer the following featur
 * Scrollbar Control
 * Localization 
 
-![Component ShowCase](example/images/showcase.png)
+![Component ShowCase](example/src/images/showcase.png)
 
 # Usage
 This component is based on React and Bootstrap (only css part), so in your project you must have these dependencies. It's suggested to adopt the following versions:
@@ -31,14 +31,14 @@ import Combobox from "@fdefelici/react-bootstrap-combobox"
 />
 ```
 
-> For a full working example take a look [here](example/).
+> For a full working example take a look at the [local example](example/) or at the [live demo](https://codesandbox.io/s/github/fdefelici/react-bootstrap-combobox/tree/v1.2.0/example?fontsize=14).
 
 # Configuration
 This component allow customization tweeking the following attributes:
 
 | Attribute | Type | Description | Default |
 |  ---: | :--- | :---        | :---    |
-| `data` | string array | List of items | []  |
+| `data` | array | List of strings, e.g. `["Apple", "Banana"]`<br/><b>or</b><br/> list of label/value objects, e.g. `[{label: "Apple", value: "apple", selected:true}, {label: "Banana", value: "banana, icon:<img alt="" src={require('./images/apple.png')"}]` where icon and selected are optional (see details in [icons](#icons) and in [initial selection](#initial-selection)).    | []  |
 | `id` | string | html element ID  | none  |
 | `isMultiSelect` | boolean | Allow multiple selection | false  |
 | `labels` | object | Localization support (see details in [localization paragraph](#localization-support)) | - |
@@ -47,6 +47,25 @@ This component allow customization tweeking the following attributes:
 | `onChange` | function | Callback function called when a selection/deselection happen (see details in the [example](example/)) | none  |
 | `showButtons` | boolean | Show Select/Deselect All buttons | false |
 | `showSearch` | boolean | Show Search field | false |
+
+## Icons
+When data is an array of label/value objects, it is possibile to add an icon attribute to show it on the left side of an element of the list (look at the previous screenshot); the attribute is optional for each element.
+
+The max height of the icon is setted to 20px.
+
+Examples of icon attribute:
+```javascript
+    data={[
+        { label: "Apple", value: "apple", icon:<img alt="" src={require("./images/apple.png")}/>},
+        { label: "Banana", value: "banana", icon:<span className={"glyphicon glyphicon-plus"}></span>},
+        { label: "Citrus", value: "citrus"}
+    ]};
+```
+
+## Initial Selection
+
+When data is an array of label/value objects, it is possibile to add a boolean selected attribute to set a default selection at initialitation; the attribute is optional.
+Also the onChange callback won't be called at initialization (see [configuration](#configuration)).
 
 
 ## Localization Support

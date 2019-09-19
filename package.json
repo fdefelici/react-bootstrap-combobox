@@ -1,6 +1,6 @@
 {
   "name": "@fdefelici/react-bootstrap-combobox",
-  "version": "1.0.0",
+  "version": "1.2.0",
   "description": "Select Component for React based on Bootstrap",
   "license": "MIT",
   "repository": {
@@ -21,7 +21,8 @@
     "combo",
     "combobox",
     "multi-select",
-    "dropdown"
+    "dropdown",
+    "front-end"
   ],
   "main": "dist/index.js",
   "module": "dist/index.es.js",
@@ -32,6 +33,7 @@
   },
   "scripts": {
     "test": "cross-env CI=1 react-scripts test --env=jsdom",
+    "coverage": "cross-env CI=1 react-scripts test --coverage --env=jsdom",
     "test:watch": "react-scripts test --env=jsdom",
     "build": "rollup -c",
     "start": "rollup -c -w",

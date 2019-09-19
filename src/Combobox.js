@@ -10,10 +10,12 @@ class Combobox extends Component {
   maxDropdownItems = 6
   onChange = () => {}
 
+  areThereIcons = false
+
   labels = {
     "cap.select.empty": "Select an item",
     "cap.select.singular": "1 item selected",
-    "cap.select.plural": "{size} items selected",
+    "cap.select.plural": "{sel} items selected",
     "btn.select.all": "All",
     "btn.unselect.all": "Clear",
   }
@@ -69,21 +71,58 @@ class Combobox extends Component {
                   ? (3 + 20 + 3) * this.props.maxDropdownItems + "px"
                   : (3 + 20 + 3) * 6 + "px"
 
+    let initialData = this.prepareDataFromProps()
+    let initialSelection = this.prepareSelectionFromProps(initialData)
+    let newPlaceholder = initialSelection.length > this.maxCaptionItems? this.getLabelSelected(initialSelection.length, initialData): initialSelection.map(each => each.label).join(", ")
+
     this.state = {
-      placeholder: "",
+      placeholder: newPlaceholder,
       isOpen: false,
-      dataFiltered : this.props.data? this.props.data.map((each,index) => { return {label: each, index: index} }): [],
-      selected: [],
-      data : this.props.data? this.props.data.map((each,index) => { return {label: each, index: index} }): []
+      dataFiltered : initialData,
+      selected: initialSelection,
+      data : initialData
     }
 
 
   }
+
+  prepareSelectionFromProps = (data) => {
+    let selection = []
+    if( this.props.data && typeof this.props.data[0] == "object") {
+      data.forEach(each => {if(this.props.data[each.index].selected) selection.push(each)})
+    }
+    return selection
+  }
+
+  prepareDataFromProps = () => {
+
+    if( this.props.data ) {
+      if(typeof this.props.data[0] == "string") {
+        return this.props.data.map((each,index) => { return {label: each, value: each, index: index} })
+      } else if(typeof this.props.data[0] == "object") {
+        return this.props.data.map((each, index) => {
+          this.areThereIcons = each.icon? true: this.areThereIcons
+
+          return {
+            label: each.label,
+            value: each.value,
+            icon: each.icon,
+            index: index
+          };
+        });
+      }
+    } else {
+      return []
+    }
+
+  };
+
+
   componentDidUpdate(prevProps, prevState) {
-    if(JSON.stringify(this.props.data.map((each,index) => { return {label: each, index: index} })) !== JSON.stringify(this.state.data)) {
+    if(JSON.stringify(this.prepareDataFromProps().map(each=>{return{label: each.label, value: each.value, index: each.index}})) !== JSON.stringify(this.state.data.map(each=>{return{label: each.label, value: each.value, index: each.index}}))) {
       this.setState({
-        data : this.props.data.map((each,index) => { return {label: each, index: index} }),
-        dataFiltered : this.props.data.map((each,index) => { return {label: each, index: index} }),
+        data : this.prepareDataFromProps(),
+        dataFiltered : this.prepareDataFromProps(),
         selected: []
       })
 
@@ -101,19 +140,19 @@ class Combobox extends Component {
     this.setState({isOpen:!this.state.isOpen})
   };
 
-  getLabelSelected = (sizeSelected) => {
+  getLabelSelected = (sizeSelected, data) => {
     let result = this.labels["cap.select.singular"]
     if(sizeSelected > 1 ) {
       result = this.labels["cap.select.plural"]
     }
 
     result = result.replace("{sel}", sizeSelected)
-    return result.replace("{size}", this.state.data.length)
+    return result.replace("{size}", data.length)
   };
 
   searchElementInArray = (array, element) => {
     let findElement = function(each) {
-      return element.label === each.label && element.index === each.index;
+      return element.value === each.value && element.index === each.index;
     }
 
     return array.find(findElement)
@@ -130,16 +169,16 @@ class Combobox extends Component {
         newSelected.push(element)
       }
 
-      let newPlaceholder = newSelected.length > this.maxCaptionItems? this.getLabelSelected(newSelected.length): newSelected.map(each => each.label).join(", ")
+      let newPlaceholder = newSelected.length > this.maxCaptionItems? this.getLabelSelected(newSelected.length, this.state.data): newSelected.map(each => each.label).join(", ")
 
       this.setState({selected: newSelected, placeholder: newPlaceholder})
 
-      this.runCallback(newSelected)
+      this.runCallback(newSelected.map(each => {return {value: each.value, index: each.index}}))
 
     } else {
       this.setState({selected: [element], placeholder: element.label})
 
-      this.runCallback([element])
+      this.runCallback([{value: element.value, index: element.index}])
     }
   };
 
@@ -156,7 +195,7 @@ class Combobox extends Component {
 
     let newSelected = this.state.selected.concat(onlyInDataFiltered)
 
-    let newPlaceholder = newSelected.length > this.maxCaptionItems? this.getLabelSelected(newSelected.length): newSelected.map(each => each.label).join(", ")
+    let newPlaceholder = newSelected.length > this.maxCaptionItems? this.getLabelSelected(newSelected.length, this.state.data): newSelected.map(each => each.label).join(", ")
     this.setState({selected: newSelected, placeholder: newPlaceholder})
 
     this.runCallback(newSelected)
@@ -242,14 +281,16 @@ class Combobox extends Component {
 
               
               {this.state.dataFiltered.map(each => {
+                
                 return (
-                  <li className="noselect" key={each.label + each.index}>
-                    <a
+                  <li className="noselect" key={each.value + each.index}>
+                    <a className={(each.icon?"rbc-padding-right10": this.areThereIcons?"rbc-padding-right30": "")}
                       onClick={() => {
                         if (!this.isMultiSelect) this.closeOrOpen();
                         this.selectElement(each);
                       }}
                     >
+                      <span className={"rbc-icon"}>{each.icon ? each.icon: ""}</span>
                       {each.label}
                       <span
                         className={

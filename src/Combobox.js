@@ -75,8 +75,6 @@ class Combobox extends Component {
     let initialSelection = this.prepareSelectionFromProps(initialData)
     let newPlaceholder = initialSelection.length > this.maxCaptionItems? this.getLabelSelected(initialSelection.length, initialData): initialSelection.map(each => each.label).join(", ")
 
-    if(initialSelection.length > 0) this.runCallback(initialSelection)
-
     this.state = {
       placeholder: newPlaceholder,
       isOpen: false,

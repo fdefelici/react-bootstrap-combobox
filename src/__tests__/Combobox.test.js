@@ -652,5 +652,32 @@ describe('Dropdown tests', () => {
     expect(component.find("#rbc-menu-button-dropdown-list-123").html()).toEqual("<ul id=\"rbc-menu-button-dropdown-list-123\" class=\"dropdown-menu inner\" style=\"max-height: 156px;\"> <li class=\"noselect\"><a class=\"\"><span class=\"rbc-icon\"></span>AA<span class=\"\"></span></a></li><li class=\"noselect\"><a class=\"\"><span class=\"rbc-icon\"></span>AB<span class=\"glyphicon glyphicon-ok\"></span></a></li></ul>")
 
   });
+
+  it('Objects of the menu - creation from object array with initial selection and multiple selection [maxCaptionItems = 0]', () => {
+
+    let data = [
+      {
+        label: "AA",
+        value: "first"
+      },
+      { label: "AB", value: "second", selected: true }
+    ];
+
+   
+    const component = mount(
+      <Combobox
+        data={data}
+        id="123"
+        maxCaptionItems={1}
+        isMultiSelect={true}
+      ></Combobox>,
+    );
+
+    expect(component.find("#rbc-menu-button-123").html()).toEqual("<button id=\"rbc-menu-button-123\" type=\"button\" class=\"btn btn-default dropdown-toggle show-special-title button-dropdown\"><span class=\"pull-left filter-option\"></span><span class=\"pull-left special-title\">AB</span>&nbsp;<span class=\"caret\"></span></button>")
+    shallow(component.find("a").get(0)).simulate("click")
+    expect(component.find("#rbc-menu-button-dropdown-list-123").html()).toEqual("<ul id=\"rbc-menu-button-dropdown-list-123\" class=\"dropdown-menu inner\" style=\"max-height: 156px;\"> <li class=\"noselect\"><a class=\"\"><span class=\"rbc-icon\"></span>AA<span class=\"glyphicon glyphicon-ok\"></span></a></li><li class=\"noselect\"><a class=\"\"><span class=\"rbc-icon\"></span>AB<span class=\"glyphicon glyphicon-ok\"></span></a></li></ul>")
+
+  });
+  
   
 });

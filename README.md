@@ -65,6 +65,7 @@ Examples of icon attribute:
 ## Initial Selection
 
 When data is an array of label/value objects, it is possibile to add a boolean selected attribute to set a default selection at initialitation; the attribute is optional.
+Also the onChange callback won't be called at initialization (see [configuration](#configuration)).
 
 
 ## Localization Support

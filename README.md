@@ -19,7 +19,7 @@ This component is based on React and Bootstrap (only css part), so in your proje
 
 then import the library:
 ```shell
-$ npm install @fdefelici/react-bootstrap-combobox@1.1.0 --save
+$ npm install @fdefelici/react-bootstrap-combobox@1.2.0 --save
 ```
 
 and use it in your code:

@@ -32,6 +32,15 @@ def fix_dependency(file_path, version):
     with open(file_path, "wt") as file:
         file.write(data)
 
+def fix_install(file_path, version): 
+    with open(file_path, "rt") as file:
+        data = file.read()
+
+    data = re.sub(r'@fdefelici/react-bootstrap-combobox@[0-9]+\.[0-9]+\.[0-9]+', '@fdefelici/react-bootstrap-combobox@{version}'.format(**locals()), data, 1)
+    
+    with open(file_path, "wt") as file:
+        file.write(data)
+
 def main(version):
     if len(sys.argv) != 2:
         print("[ERROR] Missing argument version such as: X.Y.Z")
@@ -45,6 +54,7 @@ def main(version):
     py_path = os.path.realpath(__file__)
     base_path = os.path.join(os.path.dirname(py_path), "..")
     fix_badges(os.path.join(base_path, "README.md"), version)
+    fix_install(os.path.join(base_path, "README.md"), version)
     fix_version(os.path.join(base_path, "package.json"), version)
     fix_version(os.path.join(base_path, "package-lock.json"), version)
     fix_dependency(os.path.join(base_path, "example/package.json"), version)

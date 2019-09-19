@@ -8,8 +8,8 @@ def fix_badges(file_path, version):
 
     data = re.sub(r'npm-v.*?-blue', 'npm-v{version}-blue'.format(**locals()), data)
     data = re.sub(r'branch=.*?\)', 'branch=v{version})'.format(**locals()), data)
-    data = re.sub(r'branch/.*/graph', 'branch/v{version}/graph'.format(**locals()), data)
-    data = re.sub(r'tree/.*/', 'tree/v{version}/'.format(**locals()), data)
+    data = re.sub(r'branch/.*?/graph', 'branch/v{version}/graph'.format(**locals()), data)
+    data = re.sub(r'tree/.*?/', 'tree/v{version}/'.format(**locals()), data)
 
     with open(file_path, "wt") as file:
         file.write(data)

@@ -46,7 +46,7 @@ def main(version):
         print("[ERROR] Missing argument version such as: X.Y.Z")
         sys.exit()
     version = sys.argv[1]
-    ver_pattern = re.compile("^[0-9]\.[0-9]\.[0-9]$")
+    ver_pattern = re.compile("^[0-9]+\.[0-9]+\.[0-9]+$")
     if not ver_pattern.match(version):
         print("[ERROR] Wrong argument version. It must be: X.Y.Z")
         sys.exit()

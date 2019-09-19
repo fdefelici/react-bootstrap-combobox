@@ -96,7 +96,7 @@ class Combobox extends Component {
 
   prepareDataFromProps = () => {
 
-    if( this.props.data ) {
+    if( this.props.data && this.props.data.length > 0 ) {
       if(typeof this.props.data[0] == "string") {
         return this.props.data.map((each,index) => { return {label: each, value: each, index: index} })
       } else if(typeof this.props.data[0] == "object") {

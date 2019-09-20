@@ -678,6 +678,40 @@ describe('Dropdown tests', () => {
     expect(component.find("#rbc-menu-button-dropdown-list-123").html()).toEqual("<ul id=\"rbc-menu-button-dropdown-list-123\" class=\"dropdown-menu inner\" style=\"max-height: 156px;\"> <li class=\"noselect\"><a class=\"\"><span class=\"rbc-icon\"></span>AA<span class=\"glyphicon glyphicon-ok\"></span></a></li><li class=\"noselect\"><a class=\"\"><span class=\"rbc-icon\"></span>AB<span class=\"glyphicon glyphicon-ok\"></span></a></li></ul>")
 
   });
+
+  it('Init with empty data', () => {
+
+    let data = []
+
+   
+    const component = mount(
+      <Combobox
+        data={data}
+        id="123"
+      ></Combobox>,
+    );
+
+    expect(component.find("#rbc-menu-button-123").html()).toEqual("<button id=\"rbc-menu-button-123\" type=\"button\" class=\"btn btn-default dropdown-toggle show-special-title button-dropdown\"><span class=\"pull-left filter-option\"></span><span class=\"pull-left special-title\">Select an item</span>&nbsp;<span class=\"caret\"></span></button>")
+    expect(component.find("#rbc-menu-button-dropdown-list-123").html()).toEqual("<ul id=\"rbc-menu-button-dropdown-list-123\" class=\"dropdown-menu inner\" style=\"max-height: 156px;\"> </ul>")
+
+  });
+  
+  it('Init with undefined data', () => {
+
+    let data = undefined
+
+   
+    const component = mount(
+      <Combobox
+        data={data}
+        id="123"
+      ></Combobox>,
+    );
+
+    expect(component.find("#rbc-menu-button-123").html()).toEqual("<button id=\"rbc-menu-button-123\" type=\"button\" class=\"btn btn-default dropdown-toggle show-special-title button-dropdown\"><span class=\"pull-left filter-option\"></span><span class=\"pull-left special-title\">Select an item</span>&nbsp;<span class=\"caret\"></span></button>")
+    expect(component.find("#rbc-menu-button-dropdown-list-123").html()).toEqual("<ul id=\"rbc-menu-button-dropdown-list-123\" class=\"dropdown-menu inner\" style=\"max-height: 156px;\"> </ul>")
+
+  });
   
   
 });

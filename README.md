@@ -46,17 +46,21 @@ This component allow customization tweeking the following attributes:
 | `labels` | object | Localization support (see details in [Localization paragraph](#localization-support)) | - |
 | `maxCaptionItems` | integer | Max number of visible items (comma separated) in caption before showing label message `cap.select.singular` or `cap.select.plural` | 0 |
 | `maxDropdownItems` | integer | Max number of visible items in dropdown menu | 6 |
-| `onChange` | function | Callback function called when a selection/deselection happen with the folliwing signature: `function (selection)` where `selection` is an array of objects with format `{index, value}` (see details in the [example](example/)) | none  |
+| `onChange` | function | Callback function called when a selection/deselection happen with the following signature: `function (selection)` where `selection` is an array of objects with format `{index, value}` (see details in the [example](example/)) | none  |
 | `showButtons` | boolean | Show Select/Deselect All buttons | false |
 | `showSearch` | boolean | Show Search field | false |
 
 
 ## Data Attribute Explained
 When data is an array objects, it is possibile to specify the following fields:
-* `label` [string][MANDATORY]: the text shown to the user for the item
-* `value` [string][MANDATORY]: the value retrieved on user selection
-* `selected` [bool][OPTIONAL]: specify if the item is initially selected by default. If selected is true the onChange callback won't be called at first.
-* `icon` [html][OPTIONAL]: attach an icon using plain html or react component. For rendering reason the Maximum Height of this component is set to 20px.
+
+| Attribute | Type | Mandatory | Description | 
+|  ---: | :--- | :---        | :---    |
+| `label` | string | yes | the text shown to the user for the item |
+| `value` | string | yes | the value retrieved on user selection |
+| `selected` | bool | no | specify if the item is initially selected by default. If selected is true the onChange callback won't be called at first |
+| `icon` | html | no | attach an icon using plain html or react component. For rendering reason the **Maximum Height** of this component is set to **20px** |
+
 
 > NOTE: It is not mandatory to make every item have the same format. So for each one it is possible to use the fields needed. (For instance it is possibile to define some item with icon and others without).
 

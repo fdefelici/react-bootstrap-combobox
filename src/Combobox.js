@@ -71,20 +71,32 @@ class Combobox extends Component {
                   ? (3 + 20 + 3) * this.props.maxDropdownItems + "px"
                   : (3 + 20 + 3) * 6 + "px"
 
+    let initialData = this.prepareDataFromProps()
+    let initialSelection = this.prepareSelectionFromProps(initialData)
+    let newPlaceholder = initialSelection.length > this.maxCaptionItems? this.getLabelSelected(initialSelection.length, initialData): initialSelection.map(each => each.label).join(", ")
+
     this.state = {
-      placeholder: "",
+      placeholder: newPlaceholder,
       isOpen: false,
-      dataFiltered : this.prepareDataFromProps(),
-      selected: [],
-      data : this.prepareDataFromProps()
+      dataFiltered : initialData,
+      selected: initialSelection,
+      data : initialData
     }
 
 
   }
 
+  prepareSelectionFromProps = (data) => {
+    let selection = []
+    if( this.props.data && typeof this.props.data[0] == "object") {
+      data.forEach(each => {if(this.props.data[each.index].selected) selection.push(each)})
+    }
+    return selection
+  }
+
   prepareDataFromProps = () => {
 
-    if( this.props.data ) {
+    if( this.props.data && this.props.data.length > 0 ) {
       if(typeof this.props.data[0] == "string") {
         return this.props.data.map((each,index) => { return {label: each, value: each, index: index} })
       } else if(typeof this.props.data[0] == "object") {
@@ -128,14 +140,14 @@ class Combobox extends Component {
     this.setState({isOpen:!this.state.isOpen})
   };
 
-  getLabelSelected = (sizeSelected) => {
+  getLabelSelected = (sizeSelected, data) => {
     let result = this.labels["cap.select.singular"]
     if(sizeSelected > 1 ) {
       result = this.labels["cap.select.plural"]
     }
 
     result = result.replace("{sel}", sizeSelected)
-    return result.replace("{size}", this.state.data.length)
+    return result.replace("{size}", data.length)
   };
 
   searchElementInArray = (array, element) => {
@@ -157,7 +169,7 @@ class Combobox extends Component {
         newSelected.push(element)
       }
 
-      let newPlaceholder = newSelected.length > this.maxCaptionItems? this.getLabelSelected(newSelected.length): newSelected.map(each => each.label).join(", ")
+      let newPlaceholder = newSelected.length > this.maxCaptionItems? this.getLabelSelected(newSelected.length, this.state.data): newSelected.map(each => each.label).join(", ")
 
       this.setState({selected: newSelected, placeholder: newPlaceholder})
 
@@ -183,7 +195,7 @@ class Combobox extends Component {
 
     let newSelected = this.state.selected.concat(onlyInDataFiltered)
 
-    let newPlaceholder = newSelected.length > this.maxCaptionItems? this.getLabelSelected(newSelected.length): newSelected.map(each => each.label).join(", ")
+    let newPlaceholder = newSelected.length > this.maxCaptionItems? this.getLabelSelected(newSelected.length, this.state.data): newSelected.map(each => each.label).join(", ")
     this.setState({selected: newSelected, placeholder: newPlaceholder})
 
     this.runCallback(newSelected)

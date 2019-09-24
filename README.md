@@ -1,23 +1,25 @@
 # react-bootstrap-combobox &middot; [![NPM version](https://img.shields.io/badge/npm-v1.3.0-blue)](https://www.npmjs.com/package/@fdefelici/react-bootstrap-combobox) [![Build Status](https://travis-ci.org/fdefelici/react-bootstrap-combobox.svg?branch=v1.3.0)](https://travis-ci.org/fdefelici/react-bootstrap-combobox) [![codecov](https://codecov.io/gh/fdefelici/react-bootstrap-combobox/branch/v1.3.0/graph/badge.svg)](https://codecov.io/gh/fdefelici/react-bootstrap-combobox) [![CodeSandBox](https://img.shields.io/badge/demo-live-blueviolet)](https://codesandbox.io/s/github/fdefelici/react-bootstrap-combobox/tree/v1.3.0/example?fontsize=14)
 
 Combobox Component for React based on Bootstrap which offer the following features:
+
 * Single Selection
 * Multiple Selection
 * Selection Handling
 * Search through items
 * Scrollbar Control
 * Localization 
+* Item customization
 
 ![Component ShowCase](example/src/images/showcase.png)
 
 # Usage
 This component is based on React and Bootstrap (only css part), so in your project you must have these dependencies. It's suggested to adopt the following versions:
 * react >= 15.0.0
-* bootstrap >= 3.3.0
+* bootstrap >= 3.3.0 and < 4.0.0
 
 then import the library:
 ```shell
-$ npm install @fdefelici/react-bootstrap-combobox[@VERSION] --save
+$ npm install @fdefelici/react-bootstrap-combobox@1.2.1 --save
 ```
 
 and use it in your code:
@@ -38,27 +40,37 @@ This component allow customization tweeking the following attributes:
 
 | Attribute | Type | Description | Default |
 |  ---: | :--- | :---        | :---    |
-| `data` | array | List of strings, e.g. `["Apple", "Banana"]`<br/><b>or</b><br/> list of label/value objects, e.g. `[{label: "Apple", value: "apple"}, {label: "Banana", value: "banana, icon:<img alt="" src={require('./images/apple.png')"}]` where icon is optional (see details in [icons](#icons)).    | []  |
+| `data` | array | Data attribute can have following format: <ul><li>list of strings: `["Apple", "Banana"]`, <b>or</b></li><li>list of objects, e.g. `[{label: "Apple", value: "apple", selected: true, icon: <span className={"glyphicon glyphicon-plus"}></span>}]` where the attributes `selected` and `icon` are optionals (see details in [Data Attribute paragraph](#data-attribute-explained)).</li></ul>  | []  |
 | `id` | string | html element ID  | none  |
 | `isMultiSelect` | boolean | Allow multiple selection | false  |
-| `labels` | object | Localization support (see details in [localization paragraph](#localization-support)) | - |
+| `labels` | object | Localization support (see details in [Localization paragraph](#localization-support)) | - |
 | `maxCaptionItems` | integer | Max number of visible items (comma separated) in caption before showing label message `cap.select.singular` or `cap.select.plural` | 0 |
 | `maxDropdownItems` | integer | Max number of visible items in dropdown menu | 6 |
-| `onChange` | function | Callback function called when a selection/deselection happen (see details in the [example](example/)) | none  |
+| `onChange` | function | Callback function called when a selection/deselection happen with the following signature: `function (selection)` where `selection` is an array of objects with format `{index, value}` (see details in the [example](example/)) | none  |
 | `showButtons` | boolean | Show Select/Deselect All buttons | false |
 | `showSearch` | boolean | Show Search field | false |
 
-## Icons
-When data is an array of label/value objects, it is possibile to add an icon attribute to show it on the left side of an element of the list (look at the previous screenshot); the attribute is optional for each element.
 
-The max height of the icon is setted to 20px.
+## Data Attribute Explained
+When data is an array objects, it is possibile to specify the following fields:
 
-Examples of icon attribute:
+| Attribute | Type | Mandatory | Description | 
+|  ---: | :--- | :---        | :---    |
+| `label` | string | yes | the text shown to the user for the item |
+| `value` | string | yes | the value retrieved on user selection |
+| `selected` | bool | no | specify if the item is initially selected by default. If selected is true the onChange callback won't be called at first |
+| `icon` | html | no | attach an icon using plain html or react component. For rendering reason the **Maximum Height** of this component is set to **20px** |
+
+
+> NOTE: It is not mandatory to make every item have the same format. So for each one it is possible to use the fields needed. (For instance it is possibile to define some item with icon and others without).
+
+Some examples of usage:
 ```javascript
     data={[
-        { label: "Apple", value: "apple", icon:<img alt="" src={require("./images/apple.png")}/>},
-        { label: "Banana", value: "banana", icon:<span className={"glyphicon glyphicon-plus"}></span>},
-        { label: "Citrus", value: "citrus"}
+        { label: "Apple", value: "apple", icon: <img alt="" src={require("./images/apple.png")}/>},
+        { label: "Banana", value: "banana", icon: <span className={"glyphicon glyphicon-plus"}></span>},
+        { label: "Citrus", value: "citrus"},
+        { label: "Mango", value: "mango", selected: true}
     ]};
 ```
 

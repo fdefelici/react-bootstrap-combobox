@@ -45,7 +45,7 @@
     "prop-types": "^15.5.4",
     "react": ">=15.0.0",
     "react-dom": ">=15.0.0",
-    "bootstrap": ">=3.3.0"
+    "bootstrap": ">=3.3.0 <4.0.0"
   },
   "devDependencies": {
     "@testing-library/react": "9.1.3",

@@ -15,7 +15,7 @@ Combobox Component for React based on Bootstrap which offer the following featur
 # Usage
 This component is based on React and Bootstrap (only css part), so in your project you must have these dependencies. It's suggested to adopt the following versions:
 * react >= 15.0.0
-* bootstrap >= 3.3.0
+* bootstrap >= 3.3.0 and < 4.0.0
 
 then import the library:
 ```shell

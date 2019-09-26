@@ -157,3 +157,8 @@
     float:left !important;
     padding-right: 5px;
 }
+
+.caption-text-area {
+    width: auto;
+    display: inline-block
+}

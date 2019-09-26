@@ -58,7 +58,7 @@ class App extends React.Component{
                   "Melon",
                   "Watermelon"
                 ]}
-                maxCaptionItems="5"
+                maxCaptionItems="auto"
                 showSearch={true}
                 labels={{
                   "sel.empty": "Select an item",

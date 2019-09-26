@@ -125,12 +125,15 @@ class Combobox extends Component {
   componentDidMount = () => {};
 
   componentDidUpdate(prevProps, prevState) {
-    const captionTextContainerSize = document.getElementById(
+    /*const captionTextContainerSize = document.getElementById(
       "caption-text-area-container-" + this.idRbc
     ).clientWidth;
     const captionTextSize = document.getElementById(
       "caption-text-area-" + this.idRbc
-    ).clientWidth;
+    ).clientWidth;*/
+
+    const captionTextContainerSize = this.getCaptionTextContainerSize()
+    const captionTextSize = this.getCaptionTextSize()
 
     if (
       this.props.maxCaptionItems === "auto" &&
@@ -138,7 +141,7 @@ class Combobox extends Component {
       captionTextSize >= captionTextContainerSize
     ) {
       this.setState({
-        placeholder: this.getNewPlaceholder(this.state.selected)
+        placeholder: this.getLabelSelected(this.state.selected.length)
       });
     }
 
@@ -192,13 +195,29 @@ class Combobox extends Component {
     return array.find(findElement);
   };
 
+  getCaptionTextContainerSize = () => {
+    return document.getElementById(
+      "caption-text-area-container-" + this.idRbc
+    ).clientWidth;
+  }
+
+  getCaptionTextSize = () => {
+    return document.getElementById(
+      "caption-text-area-" + this.idRbc
+    ).clientWidth;
+  }
+
   getNewPlaceholder = (newSelected) => {
-    const captionTextContainerSize = document.getElementById(
+    /*const captionTextContainerSize = document.getElementById(
       "caption-text-area-container-" + this.idRbc
     ).clientWidth;
     const captionTextSize = document.getElementById(
       "caption-text-area-" + this.idRbc
     ).clientWidth;
+    */
+
+    const captionTextContainerSize = this.getCaptionTextContainerSize()
+    const captionTextSize = this.getCaptionTextSize()
 
     let newPlaceholder = "";
       if (

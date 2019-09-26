@@ -1,6 +1,5 @@
 import React from "react";
-import ReactDOM from "react-dom";
-import { cleanup, fireEvent, render, create } from "@testing-library/react";
+import { cleanup, render } from "@testing-library/react";
 import Combobox from "../index";
 import Enzyme, { shallow, mount } from "enzyme";
 import Adapter from "enzyme-adapter-react-16";

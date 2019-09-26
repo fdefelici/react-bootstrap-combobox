@@ -54,6 +54,7 @@ class App extends React.Component {
                   isMultiSelect={true}
                   showButtons={true}
                   maxDropdownItems={4}
+                  selected={this.state.selectedCombobox1}
                   data={[
                     "Apple",
                     "Banana",
@@ -78,6 +79,8 @@ class App extends React.Component {
                     this.setState({ selectedCombobox1: selected });
                   }}
                 ></Combobox>
+
+                <button style={{marginTop: "5px"}} onClick={()=>{this.setState({selectedCombobox1:[]})}}>RESET</button>
               </td>
               <td style={this.stylePrint}>
                 <span>

@@ -711,19 +711,44 @@ describe("Dropdown tests", () => {
     );
 
     component.instance().getCaptionTextContainerSize = jest.fn(() => 150);
-    component.instance().getCaptionTextSize = jest.fn(() => 200);
+    component.instance().getCaptionTextSize = jest.fn(() => 0);
     component.update();
 
     expect(component.find("#rbc-menu-button-123").html()).toEqual(
       '<button id="rbc-menu-button-123" type="button" class="btn btn-default dropdown-toggle show-special-title button-dropdown"><span class="pull-left filter-option"></span><span class="pull-left special-title" id="caption-text-area-container-rbc-123"><div class="caption-text-area" id="caption-text-area-rbc-123">Select an item</div></span>&nbsp;<span class="caret"></span></button>'
     );
+    
+    component.instance().getCaptionTextSize = jest.fn(() => 50);
+    component.update();
     shallow(component.find("a").get(0)).simulate("click");
-    shallow(component.find("a").get(1)).simulate("click");
-    shallow(component.find("a").get(2)).simulate("click");
-    shallow(component.find("a").get(3)).simulate("click");
-    shallow(component.find("a").get(4)).simulate("click");
+
     expect(component.find("#rbc-menu-button-123").html()).toEqual(
-      '<button id=\"rbc-menu-button-123\" type=\"button\" class=\"btn btn-default dropdown-toggle show-special-title button-dropdown\"><span class=\"pull-left filter-option\"></span><span class=\"pull-left special-title\" id=\"caption-text-area-container-rbc-123\"><div class=\"caption-text-area\" id=\"caption-text-area-rbc-123\">5 items selected</div></span>&nbsp;<span class=\"caret\"></span></button>'
+      '<button id=\"rbc-menu-button-123\" type=\"button\" class=\"btn btn-default dropdown-toggle show-special-title button-dropdown\"><span class=\"pull-left filter-option\"></span><span class=\"pull-left special-title\" id=\"caption-text-area-container-rbc-123\"><div class=\"caption-text-area\" id=\"caption-text-area-rbc-123\">Apple</div></span>&nbsp;<span class=\"caret\"></span></button>'
     );
+    
+    component.instance().getCaptionTextSize = jest.fn(() => 100);
+    component.update();
+    shallow(component.find("a").get(1)).simulate("click");
+    
+    expect(component.find("#rbc-menu-button-123").html()).toEqual(
+      '<button id=\"rbc-menu-button-123\" type=\"button\" class=\"btn btn-default dropdown-toggle show-special-title button-dropdown\"><span class=\"pull-left filter-option\"></span><span class=\"pull-left special-title\" id=\"caption-text-area-container-rbc-123\"><div class=\"caption-text-area\" id=\"caption-text-area-rbc-123\">Apple, Banana</div></span>&nbsp;<span class=\"caret\"></span></button>'
+    );
+
+    component.instance().getCaptionTextSize = jest.fn(() => 110);
+    component.update();
+    shallow(component.find("a").get(2)).simulate("click");
+    
+    expect(component.find("#rbc-menu-button-123").html()).toEqual(
+      '<button id=\"rbc-menu-button-123\" type=\"button\" class=\"btn btn-default dropdown-toggle show-special-title button-dropdown\"><span class=\"pull-left filter-option\"></span><span class=\"pull-left special-title\" id=\"caption-text-area-container-rbc-123\"><div class=\"caption-text-area\" id=\"caption-text-area-rbc-123\">Apple, Banana, Citrus</div></span>&nbsp;<span class=\"caret\"></span></button>'
+    );
+
+    component.instance().getCaptionTextSize = jest.fn(() => 200);
+    component.update();
+    shallow(component.find("a").get(3)).simulate("click");
+    
+    expect(component.find("#rbc-menu-button-123").html()).toEqual(
+      '<button id=\"rbc-menu-button-123\" type=\"button\" class=\"btn btn-default dropdown-toggle show-special-title button-dropdown\"><span class=\"pull-left filter-option\"></span><span class=\"pull-left special-title\" id=\"caption-text-area-container-rbc-123\"><div class=\"caption-text-area\" id=\"caption-text-area-rbc-123\">4 items selected</div></span>&nbsp;<span class=\"caret\"></span></button>'
+    );
+  
   });
 });

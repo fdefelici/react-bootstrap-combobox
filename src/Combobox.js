@@ -124,13 +124,7 @@ class Combobox extends Component {
 
   componentDidMount = () => {};
 
-  componentDidUpdate(prevProps, prevState) {
-    /*const captionTextContainerSize = document.getElementById(
-      "caption-text-area-container-" + this.idRbc
-    ).clientWidth;
-    const captionTextSize = document.getElementById(
-      "caption-text-area-" + this.idRbc
-    ).clientWidth;*/
+  componentDidUpdate(prevProps, prevState) {    
 
     const captionTextContainerSize = this.getCaptionTextContainerSize()
     const captionTextSize = this.getCaptionTextSize()
@@ -208,13 +202,6 @@ class Combobox extends Component {
   }
 
   getNewPlaceholder = (newSelected) => {
-    /*const captionTextContainerSize = document.getElementById(
-      "caption-text-area-container-" + this.idRbc
-    ).clientWidth;
-    const captionTextSize = document.getElementById(
-      "caption-text-area-" + this.idRbc
-    ).clientWidth;
-    */
 
     const captionTextContainerSize = this.getCaptionTextContainerSize()
     const captionTextSize = this.getCaptionTextSize()

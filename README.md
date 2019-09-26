@@ -42,7 +42,7 @@ This component allow customization tweeking the following attributes:
 | `id` | string | html element ID  | none  |
 | `isMultiSelect` | boolean | Allow multiple selection | false  |
 | `labels` | object | Localization support (see details in [localization paragraph](#localization-support)) | - |
-| `maxCaptionItems` | integer | Max number of visible items (comma separated) in caption before showing label message `cap.select.singular` or `cap.select.plural` | 0 |
+| `maxCaptionItems` | integer <b>or</b> "auto" | Max number of visible items (comma separated) in caption before showing label message `cap.select.singular` or `cap.select.plural`. If it is equal to "auto", it automatically detects the caption overflow | 0 |
 | `maxDropdownItems` | integer | Max number of visible items in dropdown menu | 6 |
 | `onChange` | function | Callback function called when a selection/deselection happen (see details in the [example](example/)) | none  |
 | `showButtons` | boolean | Show Select/Deselect All buttons | false |

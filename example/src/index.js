@@ -65,7 +65,7 @@ class App extends React.Component {
                     "Melon",
                     "Watermelon"
                   ]}
-                  maxCaptionItems="5"
+                  maxCaptionItems="auto"
                   showSearch={true}
                   labels={{
                     "sel.empty": "Select an item",
@@ -79,7 +79,6 @@ class App extends React.Component {
                   }}
                 ></Combobox>
               </td>
-
               <td style={this.stylePrint}>
                 <span>
                   <b>selected:</b>

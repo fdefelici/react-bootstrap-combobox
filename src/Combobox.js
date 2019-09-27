@@ -92,6 +92,7 @@ class Combobox extends Component {
 
     let initialData = this.prepareDataFromProps()
     let initialSelection = this.prepareSelectionFromProps(initialData)
+
     let newPlaceholder = initialSelection.length > this.maxCaptionItems? this.getLabelSelected(initialSelection.length, initialData): initialSelection.map(each => each.label).join(", ")
 
     this.state = {
@@ -132,9 +133,12 @@ class Combobox extends Component {
     }
   };
 
-  componentDidMount = () => {};
-
   componentDidUpdate(prevProps, prevState) {    
+
+    if(this.props.trigReset && !prevProps.trigReset) {
+      this.deselectAllElements()
+      if(this.props.onTrigReset) this.props.onTrigReset()
+    }
 
     const captionTextContainerSize = this.getCaptionTextContainerSize()
     const captionTextSize = this.getCaptionTextSize()
@@ -364,8 +368,9 @@ class Combobox extends Component {
               {" "}
               {/* left (3) + item (20) + rigth (3) */}
               {this.state.dataFiltered.map(each => {
+                
                 return (
-                  <li className="noselect" key={each.value + each.index}>
+                  <li className="noselect" key={this.idRbc + "_" + each.value + "_" + each.index}>
                     <a
                       className={
                         each.icon

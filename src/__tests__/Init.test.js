@@ -1,5 +1,4 @@
 import React from "react";
-import ReactDOM from "react-dom";
 import { cleanup, fireEvent, render, create } from "@testing-library/react";
 import Combobox from "../index";
 import Enzyme, { shallow, mount } from "enzyme";

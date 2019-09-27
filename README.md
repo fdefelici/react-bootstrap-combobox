@@ -47,7 +47,7 @@ This component allow customization tweeking the following attributes:
 | `maxCaptionItems` | integer <br/>or<br/> "auto" | Max number of visible items (comma separated) in caption before showing label message `cap.select.singular` or `cap.select.plural`. If it is equal to `"auto"`, it automatically detects the caption overflow. | 0 |
 | `maxDropdownItems` | integer | Max number of visible items in dropdown menu | 6 |
 | `onChange` | function | Callback function called when a selection/deselection happens with the following signature: `function (selection)` where `selection` is an array of objects with format `{index, value}` (see details in the [example](example/)) | none  |
-| `onTrigReset` | function | Callback function called when `trigReset` attribute comes `true` with the following signature: `function ()` (see details in the [example](example/)) | none  |
+| `onTrigReset` | function | Callback function called when `trigReset` attribute comes `true` (see details in the [example](example/)). | none  |
 | `showButtons` | boolean | Show Select/Deselect All buttons | false |
 | `showSearch` | boolean | Show Search field | false |
 | `trigReset` | boolean | Deselect all elements when, from `false`, it comes `true`; it will be called `onTrigReset` callback | false |

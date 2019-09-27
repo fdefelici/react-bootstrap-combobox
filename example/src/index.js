@@ -11,7 +11,8 @@ class App extends React.Component {
     selectedCombobox1: [],
     selectedCombobox2: [],
     selectedCombobox3: [],
-    selectedCombobox4: []
+    selectedCombobox4: [],
+    trigResetCombobox1: false
   };
 
   stylePrint = {
@@ -54,7 +55,9 @@ class App extends React.Component {
                   isMultiSelect={true}
                   showButtons={true}
                   maxDropdownItems={4}
-                  selected={this.state.selectedCombobox1}
+                  trigReset={this.state.trigResetCombobox1}
+                  onTrigReset={() => {
+                    this.setState({ trigResetCombobox1: false })}}
                   data={[
                     "Apple",
                     "Banana",
@@ -80,7 +83,14 @@ class App extends React.Component {
                   }}
                 ></Combobox>
 
-                <button style={{marginTop: "5px"}} onClick={()=>{this.setState({selectedCombobox1:[]})}}>RESET</button>
+                <button
+                  style={{ marginTop: "5px" }}
+                  onClick={() => {
+                    this.setState({ trigResetCombobox1: true });
+                  }}
+                >
+                  RESET
+                </button>
               </td>
               <td style={this.stylePrint}>
                 <span>
@@ -236,7 +246,7 @@ class App extends React.Component {
               </td>
               <td style={this.styleCombobox}>
                 <Combobox
-                  id="123"
+                  id="12345"
                   isMultiSelect={true}
                   showButtons={false}
                   showSearch={false}

@@ -15,12 +15,12 @@ Combobox Component for React based on Bootstrap which offer the following featur
 # Usage
 This component is based on React and Bootstrap (only css part), so in your project you must have these dependencies. It's suggested to adopt the following versions:
 * react >= 15.0.0
-* bootstrap >= 3.3.0
+* bootstrap >= 3.3.0 and < 4.0.0
 
 then import the library:
 ```shell
+
 $ npm install @fdefelici/react-bootstrap-combobox@1.4.0 --save
-```
 
 and use it in your code:
 ```javascript
@@ -44,19 +44,25 @@ This component allow customization tweeking the following attributes:
 | `id` | string | html element ID  | none  |
 | `isMultiSelect` | boolean | Allow multiple selection | false  |
 | `labels` | object | Localization support (see details in [Localization paragraph](#localization-support)) | - |
-| `maxCaptionItems` | integer | Max number of visible items (comma separated) in caption before showing label message `cap.select.singular` or `cap.select.plural` | 0 |
+| `maxCaptionItems` | integer <br/>or<br/> "auto" | Max number of visible items (comma separated) in caption before showing label message `cap.select.singular` or `cap.select.plural`. If it is equal to `"auto"`, it automatically detects the caption overflow. | 0 |
 | `maxDropdownItems` | integer | Max number of visible items in dropdown menu | 6 |
-| `onChange` | function | Callback function called when a selection/deselection happen (see details in the [example](example/)) | none  |
+| `onChange` | function | Callback function called when a selection/deselection happens with the following signature: `function (selection)` where `selection` is an array of objects with format `{index, value}` (see details in the [example](example/)) | none  |
+| `onTrigReset` | function | Callback function called when `trigReset` attribute comes `true` (see details in the [example](example/)). | none  |
 | `showButtons` | boolean | Show Select/Deselect All buttons | false |
 | `showSearch` | boolean | Show Search field | false |
+| `trigReset` | boolean | Deselect all elements when, from `false`, it comes `true`; it will be called `onTrigReset` callback | false |
 
 
 ## Data Attribute Explained
 When data is an array objects, it is possibile to specify the following fields:
-* `label` [string][MANDATORY]: the text shown to the user for the item
-* `value` [string][MANDATORY]: the value retrieved on user selection
-* `selected` [bool][OPTIONAL]: specify if the item is initially selected by default. If selected is true the onChange callback won't be called at first.
-* `icon` [html][OPTIONAL]: attach an icon using plain html or react component. For rendering reason the Maximum Height of this component is set to 20px.
+
+| Attribute | Type | Mandatory | Description | 
+|  ---: | :--- | :---        | :---    |
+| `label` | string | yes | the text shown to the user for the item |
+| `value` | string | yes | the value retrieved on user selection |
+| `selected` | bool | no | specify if the item is initially selected by default. If selected is true the onChange callback won't be called at first |
+| `icon` | html | no | attach an icon using plain html or react component. For rendering reason the **Maximum Height** of this component is set to **20px** |
+
 
 > NOTE: It is not mandatory to make every item have the same format. So for each one it is possible to use the fields needed. (For instance it is possibile to define some item with icon and others without).
 
@@ -80,6 +86,7 @@ Using ```labels``` attribute it is possible to customize any text the component 
 | `cap.select.plural` | string | Shown when multiple items are selected, only when the number of selected items is greather than  `maxCaptionItems` | "{size} item selected" |
 | `btn.select.all` | string | Label for Select All Button | "All" |
 | `btn.unselect.all` | string | Label for Unselect All Button | "Clear" |
+| `lst.empty` | string | Label used when `data` is an empty array | "No Items" |
 
 **Special Markers**
 

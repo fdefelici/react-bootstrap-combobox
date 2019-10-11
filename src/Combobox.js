@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import LostFocusHandler from "./LostFocusHandler";
 
 import "./Combobox.css";
+import {imgLoading} from "./loading.js"
 
 class Combobox extends Component {
   placeholderDefault = "";
@@ -150,6 +151,10 @@ class Combobox extends Component {
       if (this.props.onTrigReset) this.props.onTrigReset();
     }
 
+    if(this.props.isLoading && !prevProps.isLoading) {
+      this.deselectAllElements();
+    }
+    
     const captionTextContainerSize = this.getCaptionTextContainerSize();
     const captionTextSize = this.getCaptionTextSize();
 
@@ -319,6 +324,11 @@ class Combobox extends Component {
   render = () => {
     let menu = <div className={"rbc-padding-left20"}>{this.labels["lst.empty"]}</div>;
 
+    let caretOrLoadingImg = <span className="caret"></span>
+    if(this.props.isLoading) {
+      caretOrLoadingImg = <img style={{width:"15px", height:"15px"}} src={imgLoading}/>
+    }
+
     if (this.props.data && this.props.data.length > 0) {
       menu = (
         <ul
@@ -377,6 +387,7 @@ class Combobox extends Component {
             onClick={this.closeOrOpen}
             type="button"
             className="btn btn-default dropdown-toggle show-special-title button-dropdown"
+            disabled={this.props.isLoading}
           >
             <span className="pull-left filter-option"></span>
             <span
@@ -393,7 +404,9 @@ class Combobox extends Component {
               </div>
             </span>
             &nbsp;
-            <span className="caret"></span>
+            
+            {caretOrLoadingImg}
+
           </button>
           <div className={"dropdown-menu " + (this.state.isOpen ? "open" : "")}>
             <div className={"bs-searchbox " + (this.showSearch ? "" : "hide")}>

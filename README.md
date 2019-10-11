@@ -42,6 +42,7 @@ This component allow customization tweeking the following attributes:
 |  ---: | :--- | :---        | :---    |
 | `data` | array | Data attribute can have following format: <ul><li>list of strings: `["Apple", "Banana"]`, <b>or</b></li><li>list of objects, e.g. `[{label: "Apple", value: "apple", selected: true, icon: <span className={"glyphicon glyphicon-plus"}></span>}]` where the attributes `selected` and `icon` are optionals (see details in [Data Attribute paragraph](#data-attribute-explained)).</li></ul>  | []  |
 | `id` | string | html element ID  | none  |
+| `isLoading` | boolean | Set the menu to loading status; combobox will be disabled and reactivated when isLoading comes false. | false  |
 | `isMultiSelect` | boolean | Allow multiple selection | false  |
 | `labels` | object | Localization support (see details in [Localization paragraph](#localization-support)) | - |
 | `maxCaptionItems` | integer <br/>or<br/> "auto" | Max number of visible items (comma separated) in caption before showing label message `cap.select.singular` or `cap.select.plural`. If it is equal to `"auto"`, it automatically detects the caption overflow. | 0 |

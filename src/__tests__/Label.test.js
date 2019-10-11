@@ -128,4 +128,17 @@ describe("Label tests", () => {
           '<div class=\"input-box\"><button type=\"button\" class=\"btn btn-default dropdown-toggle show-special-title button-dropdown\"><span class=\"pull-left filter-option\"></span><span class=\"pull-left special-title\" id=\"caption-text-area-container-undefined\"><div class=\"caption-text-area\" id=\"caption-text-area-undefined\">Select an item</div></span> <span class=\"caret\"></span></button><div class=\"dropdown-menu \"><div class=\"bs-searchbox hide\"><input type=\"text\" class=\"form-control\"/></div><div class=\"bs-actionsbox hide\"><div class=\"btn-group btn-block\"><button type=\"button\" class=\"actions-btn bs-select-all btn btn-default select-all-button\">All</button><button type=\"button\" class=\"actions-btn bs-deselect-all btn btn-default deselect-all-button\">Clear</button></div></div><div class=\"rbc-padding-left20\">No cars</div></div></div>'
         );
       });
+
+      it("Join initial selection", () => {
+        const component = shallow(<Combobox
+           data={[{ label: "AA", value: "aa", selected: true}, { label: "BB", value: "bb", selected: true}]} maxCaptionItems={3}  />);
+    
+        component.instance().getCaptionTextContainerSize = jest.fn(() => 0);
+        component.instance().getCaptionTextSize = jest.fn(() => 0);
+        component.update();
+    
+        expect(component.find(".input-box").html()).toEqual(
+          '<div class=\"input-box\"><button type=\"button\" class=\"btn btn-default dropdown-toggle show-special-title button-dropdown\"><span class=\"pull-left filter-option\"></span><span class=\"pull-left special-title\" id=\"caption-text-area-container-undefined\"><div class=\"caption-text-area\" id=\"caption-text-area-undefined\">AA, BB</div></span> <span class=\"caret\"></span></button><div class=\"dropdown-menu \"><div class=\"bs-searchbox hide\"><input type=\"text\" class=\"form-control\"/></div><div class=\"bs-actionsbox hide\"><div class=\"btn-group btn-block\"><button type=\"button\" class=\"actions-btn bs-select-all btn btn-default select-all-button\">All</button><button type=\"button\" class=\"actions-btn bs-deselect-all btn btn-default deselect-all-button\">Clear</button></div></div><ul class=\"dropdown-menu inner\" style=\"max-height:156px\"> <li class=\"noselect\"><a class=\"\"><span class=\"rbc-icon\"></span>AA<span class=\"glyphicon glyphicon-ok\"></span></a></li><li class=\"noselect\"><a class=\"\"><span class=\"rbc-icon\"></span>BB<span class=\"glyphicon glyphicon-ok\"></span></a></li></ul></div></div>'
+        );
+      });
 });

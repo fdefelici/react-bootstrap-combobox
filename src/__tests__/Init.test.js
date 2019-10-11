@@ -127,7 +127,7 @@ describe("Init tests", () => {
         component.update();
     
         expect(component.find("#rbc-menu-button-dropdown-list-123").html()).toEqual(
-          '<ul id="rbc-menu-button-dropdown-list-123" class="dropdown-menu inner" style="max-height: 156px;"> <li class="noselect"><a class="rbc-padding-right10"><span class="rbc-icon"><span class="glyphicon glyphicon-plus"></span></span>AA<span class=""></span></a></li><li class="noselect"><a class="rbc-padding-right30"><span class="rbc-icon"></span>AB<span class=""></span></a></li></ul>'
+          '<ul id="rbc-menu-button-dropdown-list-123" class="dropdown-menu inner" style="max-height: 156px;"> <li class="noselect"><a class="rbc-padding-left10"><span class="rbc-icon"><span class="glyphicon glyphicon-plus"></span></span>AA<span class=""></span></a></li><li class="noselect"><a class="rbc-padding-left30"><span class="rbc-icon"></span>AB<span class=""></span></a></li></ul>'
         );
       });
 

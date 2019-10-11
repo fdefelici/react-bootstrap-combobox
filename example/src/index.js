@@ -289,6 +289,36 @@ class App extends React.Component {
                 </span>
               </td>
             </tr>
+
+            <tr style={this.styleRow}>
+              <td style={this.styleTitle}>
+                <h2>Empty menu</h2>
+              </td>
+              <td style={this.styleCombobox}>
+                <Combobox
+                  id="123456"
+                  isMultiSelect={true}
+                  showButtons={false}
+                  showSearch={false}
+                  maxDropdownItems={4}
+                  data={[
+                  ]}
+                  maxCaptionItems="5"
+                  labels={{
+                    "sel.empty": "Select an item",
+                    "sel.singular": "One item selected",
+                    "sel.plural": "{sel} of {size} items selected",
+                    "btn.select.all": "Pick All",
+                    "btn.unselect.all": "Release All",
+                    "lst.empty": "No items"
+                  }}
+                  onChange={selected => {
+                    this.setState({ selectedCombobox4: selected });
+                  }}
+                ></Combobox>
+              </td>
+            </tr>
+
           </tbody>
         </table>
       </React.Fragment>

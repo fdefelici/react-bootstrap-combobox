@@ -16,7 +16,8 @@ class Combobox extends Component {
     "cap.select.singular": "1 item selected",
     "cap.select.plural": "{sel} items selected",
     "btn.select.all": "All",
-    "btn.unselect.all": "Clear"
+    "btn.unselect.all": "Clear",
+    "lst.empty": "No items"
   };
 
   isMultiSelect = false;
@@ -58,6 +59,9 @@ class Combobox extends Component {
         this.labels["btn.select.all"] = this.props.labels["btn.select.all"];
       if (this.props.labels["btn.unselect.all"])
         this.labels["btn.unselect.all"] = this.props.labels["btn.unselect.all"];
+
+      if (this.props.labels["lst.empty"])
+        this.labels["lst.empty"] = this.props.labels["lst.empty"];
     }
 
     if (this.props.id) {
@@ -90,33 +94,40 @@ class Combobox extends Component {
       ? (3 + 20 + 3) * this.props.maxDropdownItems + "px"
       : (3 + 20 + 3) * 6 + "px";
 
-    let initialData = this.prepareDataFromProps()
-    let initialSelection = this.prepareSelectionFromProps(initialData)
+    let initialData = this.prepareDataFromProps();
+    let initialSelection = this.prepareSelectionFromProps(initialData);
 
-    let newPlaceholder = initialSelection.length > this.maxCaptionItems? this.getLabelSelected(initialSelection.length, initialData): initialSelection.map(each => each.label).join(", ")
+    let newPlaceholder =
+      initialSelection.length > this.maxCaptionItems
+        ? this.getLabelSelected(initialSelection.length, initialData)
+        : initialSelection.map(each => each.label).join(", ");
 
     this.state = {
       placeholder: newPlaceholder,
       isOpen: false,
-      dataFiltered : initialData,
+      dataFiltered: initialData,
       selected: initialSelection,
-      data : initialData
-    }
+      data: initialData
+    };
   }
 
-  prepareSelectionFromProps = (data) => {
-    let selection = []
-    if( this.props.data && typeof this.props.data[0] == "object") {
-      data.forEach(each => {if(this.props.data[each.index].selected) selection.push(each)})
+  prepareSelectionFromProps = data => {
+    let selection = [];
+    if (this.props.data && typeof this.props.data[0] == "object") {
+      data.forEach(each => {
+        if (this.props.data[each.index].selected) selection.push(each);
+      });
     }
-    return selection
-  }
+    return selection;
+  };
 
   prepareDataFromProps = () => {
-    if( this.props.data && this.props.data.length > 0 ) {
-      if(typeof this.props.data[0] == "string") {
-        return this.props.data.map((each,index) => { return {label: each, value: each, index: index} })
-      } else if(typeof this.props.data[0] == "object") {
+    if (this.props.data && this.props.data.length > 0) {
+      if (typeof this.props.data[0] == "string") {
+        return this.props.data.map((each, index) => {
+          return { label: each, value: each, index: index };
+        });
+      } else if (typeof this.props.data[0] == "object") {
         return this.props.data.map((each, index) => {
           this.areThereIcons = each.icon ? true : this.areThereIcons;
 
@@ -133,15 +144,14 @@ class Combobox extends Component {
     }
   };
 
-  componentDidUpdate(prevProps, prevState) {    
-
-    if(this.props.trigReset && !prevProps.trigReset) {
-      this.deselectAllElements()
-      if(this.props.onTrigReset) this.props.onTrigReset()
+  componentDidUpdate(prevProps, prevState) {
+    if (this.props.trigReset && !prevProps.trigReset) {
+      this.deselectAllElements();
+      if (this.props.onTrigReset) this.props.onTrigReset();
     }
 
-    const captionTextContainerSize = this.getCaptionTextContainerSize()
-    const captionTextSize = this.getCaptionTextSize()
+    const captionTextContainerSize = this.getCaptionTextContainerSize();
+    const captionTextSize = this.getCaptionTextSize();
 
     if (
       this.props.maxCaptionItems === "auto" &&
@@ -149,7 +159,10 @@ class Combobox extends Component {
       captionTextSize >= captionTextContainerSize
     ) {
       this.setState({
-        placeholder: this.getLabelSelected(this.state.selected.length, this.state.data)
+        placeholder: this.getLabelSelected(
+          this.state.selected.length,
+          this.state.data
+        )
       });
     }
 
@@ -186,13 +199,13 @@ class Combobox extends Component {
   };
 
   getLabelSelected = (sizeSelected, data) => {
-    let result = this.labels["cap.select.singular"]
-    if(sizeSelected > 1 ) {
-      result = this.labels["cap.select.plural"]
+    let result = this.labels["cap.select.singular"];
+    if (sizeSelected > 1) {
+      result = this.labels["cap.select.plural"];
     }
 
-    result = result.replace("{sel}", sizeSelected)
-    return result.replace("{size}", data.length)
+    result = result.replace("{sel}", sizeSelected);
+    return result.replace("{size}", data.length);
   };
 
   searchElementInArray = (array, element) => {
@@ -204,36 +217,37 @@ class Combobox extends Component {
   };
 
   getCaptionTextContainerSize = () => {
-    return document.getElementById(
-      "caption-text-area-container-" + this.idRbc
-    ).clientWidth;
-  }
+    return document.getElementById("caption-text-area-container-" + this.idRbc)
+      .clientWidth;
+  };
 
   getCaptionTextSize = () => {
-    return document.getElementById(
-      "caption-text-area-" + this.idRbc
-    ).clientWidth;
-  }
+    return document.getElementById("caption-text-area-" + this.idRbc)
+      .clientWidth;
+  };
 
-  getNewPlaceholder = (newSelected) => {
-    const captionTextContainerSize = this.getCaptionTextContainerSize()
-    const captionTextSize = this.getCaptionTextSize()
+  getNewPlaceholder = newSelected => {
+    const captionTextContainerSize = this.getCaptionTextContainerSize();
+    const captionTextSize = this.getCaptionTextSize();
 
     let newPlaceholder = "";
-      if (
-        this.props.maxCaptionItems === "auto" &&
-        captionTextSize >= captionTextContainerSize
-      ) {
-        newPlaceholder = this.getLabelSelected(newSelected.length, this.state.data);
-      } else {
-        newPlaceholder =
-          newSelected.length > this.maxCaptionItems
-            ? this.getLabelSelected(newSelected.length, this.state.data)
-            : newSelected.map(each => each.label).join(", ");
-      }
+    if (
+      this.props.maxCaptionItems === "auto" &&
+      captionTextSize >= captionTextContainerSize
+    ) {
+      newPlaceholder = this.getLabelSelected(
+        newSelected.length,
+        this.state.data
+      );
+    } else {
+      newPlaceholder =
+        newSelected.length > this.maxCaptionItems
+          ? this.getLabelSelected(newSelected.length, this.state.data)
+          : newSelected.map(each => each.label).join(", ");
+    }
 
-      return newPlaceholder
-  }
+    return newPlaceholder;
+  };
 
   selectElement = element => {
     if (this.isMultiSelect) {
@@ -247,7 +261,10 @@ class Combobox extends Component {
         newSelected.push(element);
       }
 
-      this.setState({ selected: newSelected, placeholder: this.getNewPlaceholder(newSelected) });
+      this.setState({
+        selected: newSelected,
+        placeholder: this.getNewPlaceholder(newSelected)
+      });
 
       this.runCallback(
         newSelected.map(each => {
@@ -278,7 +295,10 @@ class Combobox extends Component {
 
     let newSelected = this.state.selected.concat(onlyInDataFiltered);
 
-    this.setState({ selected: newSelected, placeholder:  this.getNewPlaceholder(newSelected) });
+    this.setState({
+      selected: newSelected,
+      placeholder: this.getNewPlaceholder(newSelected)
+    });
 
     this.runCallback(newSelected);
   };
@@ -297,6 +317,58 @@ class Combobox extends Component {
   };
 
   render = () => {
+    let menu = <div className={"rbc-padding-left20"}>{this.labels["lst.empty"]}</div>;
+
+    if (this.props.data && this.props.data.length > 0) {
+      menu = (
+        <ul
+          id={this.idList}
+          className="dropdown-menu inner"
+          style={{
+            maxHeight: this.maxDropdownItems
+          }}
+        >
+          {" "}
+          {/* left (3) + item (20) + rigth (3) */}
+          {this.state.dataFiltered.map(each => {
+            return (
+              <li
+                className="noselect"
+                key={this.idRbc + "_" + each.value + "_" + each.index}
+              >
+                <a
+                  className={
+                    each.icon
+                      ? "rbc-padding-left10"
+                      : this.areThereIcons
+                      ? "rbc-padding-left30"
+                      : ""
+                  }
+                  onClick={() => {
+                    if (!this.isMultiSelect) this.closeOrOpen();
+                    this.selectElement(each);
+                  }}
+                >
+                  <span className={"rbc-icon"}>
+                    {each.icon ? each.icon : ""}
+                  </span>
+                  {each.label}
+                  <span
+                    className={
+                      this.searchElementInArray(this.state.selected, each) !==
+                      undefined
+                        ? "glyphicon glyphicon-ok"
+                        : ""
+                    }
+                  ></span>
+                </a>
+              </li>
+            );
+          })}
+        </ul>
+      );
+    }
+
     return (
       <LostFocusHandler onClickOutside={() => this.setState({ isOpen: false })}>
         <div id={this.idRbc} className="input-box">
@@ -358,56 +430,12 @@ class Combobox extends Component {
               </div>
             </div>
 
-            <ul
-              id={this.idList}
-              className="dropdown-menu inner"
-              style={{
-                maxHeight: this.maxDropdownItems
-              }}
-            >
-              {" "}
-              {/* left (3) + item (20) + rigth (3) */}
-              {this.state.dataFiltered.map(each => {
-                
-                return (
-                  <li className="noselect" key={this.idRbc + "_" + each.value + "_" + each.index}>
-                    <a
-                      className={
-                        each.icon
-                          ? "rbc-padding-right10"
-                          : this.areThereIcons
-                          ? "rbc-padding-right30"
-                          : ""
-                      }
-                      onClick={() => {
-                        if (!this.isMultiSelect) this.closeOrOpen();
-                        this.selectElement(each);
-                      }}
-                    >
-                      <span className={"rbc-icon"}>
-                        {each.icon ? each.icon : ""}
-                      </span>
-                      {each.label}
-                      <span
-                        className={
-                          this.searchElementInArray(
-                            this.state.selected,
-                            each
-                          ) !== undefined
-                            ? "glyphicon glyphicon-ok"
-                            : ""
-                        }
-                      ></span>
-                    </a>
-                  </li>
-                );
-              })}
-            </ul>
+            {menu}
           </div>
         </div>
       </LostFocusHandler>
     );
   };
 }
-  
+
 export default Combobox;

@@ -3,6 +3,7 @@ import { cleanup, render } from "@testing-library/react";
 import Combobox from "../index";
 import Enzyme, { shallow, mount } from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
+import { lstat } from "fs";
 
 Enzyme.configure({ adapter: new Adapter() });
 
@@ -101,6 +102,30 @@ describe("Label tests", () => {
         component.find("#rbc-menu-button-deselectall-button-123").simulate("click");
         expect(component.find("#rbc-menu-button-123").html()).toEqual(
           '<button id="rbc-menu-button-123" type="button" class="btn btn-default dropdown-toggle show-special-title button-dropdown"><span class="pull-left filter-option"></span><span class="pull-left special-title" id="caption-text-area-container-rbc-123"><div class="caption-text-area" id="caption-text-area-rbc-123">Select a car</div></span>&nbsp;<span class="caret"></span></button>'
+        );
+      });
+
+      it("Empty list label", () => {
+        const component = shallow(<Combobox data={[]} />);
+    
+        component.instance().getCaptionTextContainerSize = jest.fn(() => 0);
+        component.instance().getCaptionTextSize = jest.fn(() => 0);
+        component.update();
+    
+        expect(component.find(".input-box").html()).toEqual(
+          '<div class=\"input-box\"><button type=\"button\" class=\"btn btn-default dropdown-toggle show-special-title button-dropdown\"><span class=\"pull-left filter-option\"></span><span class=\"pull-left special-title\" id=\"caption-text-area-container-undefined\"><div class=\"caption-text-area\" id=\"caption-text-area-undefined\">Select an item</div></span> <span class=\"caret\"></span></button><div class=\"dropdown-menu \"><div class=\"bs-searchbox hide\"><input type=\"text\" class=\"form-control\"/></div><div class=\"bs-actionsbox hide\"><div class=\"btn-group btn-block\"><button type=\"button\" class=\"actions-btn bs-select-all btn btn-default select-all-button\">All</button><button type=\"button\" class=\"actions-btn bs-deselect-all btn btn-default deselect-all-button\">Clear</button></div></div><div class=\"rbc-padding-left20\">No items</div></div></div>'
+        );
+      });
+
+      it("Empty list label - different label", () => {
+        const component = shallow(<Combobox data={[]} labels={{"lst.empty":"No cars"}} />);
+    
+        component.instance().getCaptionTextContainerSize = jest.fn(() => 0);
+        component.instance().getCaptionTextSize = jest.fn(() => 0);
+        component.update();
+    
+        expect(component.find(".input-box").html()).toEqual(
+          '<div class=\"input-box\"><button type=\"button\" class=\"btn btn-default dropdown-toggle show-special-title button-dropdown\"><span class=\"pull-left filter-option\"></span><span class=\"pull-left special-title\" id=\"caption-text-area-container-undefined\"><div class=\"caption-text-area\" id=\"caption-text-area-undefined\">Select an item</div></span> <span class=\"caret\"></span></button><div class=\"dropdown-menu \"><div class=\"bs-searchbox hide\"><input type=\"text\" class=\"form-control\"/></div><div class=\"bs-actionsbox hide\"><div class=\"btn-group btn-block\"><button type=\"button\" class=\"actions-btn bs-select-all btn btn-default select-all-button\">All</button><button type=\"button\" class=\"actions-btn bs-deselect-all btn btn-default deselect-all-button\">Clear</button></div></div><div class=\"rbc-padding-left20\">No cars</div></div></div>'
         );
       });
 });

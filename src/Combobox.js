@@ -60,8 +60,8 @@ class Combobox extends Component {
       if (this.props.labels["btn.unselect.all"])
         this.labels["btn.unselect.all"] = this.props.labels["btn.unselect.all"];
 
-      if (this.props.labels["menu.empty"])
-        this.labels["menu.empty"] = this.props.labels["menu.empty"];
+      if (this.props.labels["lst.empty"])
+        this.labels["lst.empty"] = this.props.labels["lst.empty"];
     }
 
     if (this.props.id) {

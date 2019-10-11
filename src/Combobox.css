@@ -138,11 +138,15 @@
                                     supported by Chrome and Opera */
   }
 
-.rbc-padding-right10 {
+.rbc-padding-left10 {
     padding-left: 10px !important;
 }
 
-.rbc-padding-right30 {
+.rbc-padding-left20 {
+    padding-left: 20px !important;
+}
+
+.rbc-padding-left30 {
     padding-left: 30px !important;
 }
 

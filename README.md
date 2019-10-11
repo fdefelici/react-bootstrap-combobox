@@ -86,6 +86,7 @@ Using ```labels``` attribute it is possible to customize any text the component 
 | `cap.select.plural` | string | Shown when multiple items are selected, only when the number of selected items is greather than  `maxCaptionItems` | "{size} item selected" |
 | `btn.select.all` | string | Label for Select All Button | "All" |
 | `btn.unselect.all` | string | Label for Unselect All Button | "Clear" |
+| `lst.empty` | string | Label used when `data` is an empty array | "No Items" |
 
 **Special Markers**
 

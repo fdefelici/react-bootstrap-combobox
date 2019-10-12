@@ -1,4 +1,4 @@
-# react-bootstrap-combobox &middot; [![NPM version](https://img.shields.io/badge/npm-v1.3.0-blue)](https://www.npmjs.com/package/@fdefelici/react-bootstrap-combobox) [![Build Status](https://travis-ci.org/fdefelici/react-bootstrap-combobox.svg?branch=v1.3.0)](https://travis-ci.org/fdefelici/react-bootstrap-combobox) [![codecov](https://codecov.io/gh/fdefelici/react-bootstrap-combobox/branch/v1.3.0/graph/badge.svg)](https://codecov.io/gh/fdefelici/react-bootstrap-combobox) [![CodeSandBox](https://img.shields.io/badge/demo-live-blueviolet)](https://codesandbox.io/s/github/fdefelici/react-bootstrap-combobox/tree/v1.3.0/example?fontsize=14)
+# react-bootstrap-combobox &middot; [![NPM version](https://img.shields.io/badge/npm-v1.4.0-blue)](https://www.npmjs.com/package/@fdefelici/react-bootstrap-combobox) [![Build Status](https://travis-ci.org/fdefelici/react-bootstrap-combobox.svg?branch=v1.4.0)](https://travis-ci.org/fdefelici/react-bootstrap-combobox) [![codecov](https://codecov.io/gh/fdefelici/react-bootstrap-combobox/branch/v1.4.0/graph/badge.svg)](https://codecov.io/gh/fdefelici/react-bootstrap-combobox) [![CodeSandBox](https://img.shields.io/badge/demo-live-blueviolet)](https://codesandbox.io/s/github/fdefelici/react-bootstrap-combobox/tree/v1.4.0/example?fontsize=14)
 
 Combobox Component for React based on Bootstrap which offer the following features:
 
@@ -19,8 +19,8 @@ This component is based on React and Bootstrap (only css part), so in your proje
 
 then import the library:
 ```shell
-$ npm install @fdefelici/react-bootstrap-combobox@1.3.0 --save
-```
+
+$ npm install @fdefelici/react-bootstrap-combobox@1.4.0 --save
 
 and use it in your code:
 ```javascript
@@ -33,7 +33,7 @@ import Combobox from "@fdefelici/react-bootstrap-combobox"
 />
 ```
 
-> For a full working example take a look at the [local example](example/) or at the [live demo](https://codesandbox.io/s/github/fdefelici/react-bootstrap-combobox/tree/v1.3.0/example?fontsize=14).
+> For a full working example take a look at the [local example](example/) or at the [live demo](https://codesandbox.io/s/github/fdefelici/react-bootstrap-combobox/tree/v1.4.0/example?fontsize=14).
 
 # Configuration
 This component allow customization tweeking the following attributes:
@@ -42,6 +42,7 @@ This component allow customization tweeking the following attributes:
 |  ---: | :--- | :---        | :---    |
 | `data` | array | Data attribute can have following format: <ul><li>list of strings: `["Apple", "Banana"]`, <b>or</b></li><li>list of objects, e.g. `[{label: "Apple", value: "apple", selected: true, icon: <span className={"glyphicon glyphicon-plus"}></span>}]` where the attributes `selected` and `icon` are optionals (see details in [Data Attribute paragraph](#data-attribute-explained)).</li></ul>  | []  |
 | `id` | string | html element ID  | none  |
+| `isLoading` | boolean | Set the menu to loading status; combobox will be disabled and reactivated when isLoading comes false. | false  |
 | `isMultiSelect` | boolean | Allow multiple selection | false  |
 | `labels` | object | Localization support (see details in [Localization paragraph](#localization-support)) | - |
 | `maxCaptionItems` | integer <br/>or<br/> "auto" | Max number of visible items (comma separated) in caption before showing label message `cap.select.singular` or `cap.select.plural`. If it is equal to `"auto"`, it automatically detects the caption overflow. | 0 |
@@ -86,6 +87,7 @@ Using ```labels``` attribute it is possible to customize any text the component 
 | `cap.select.plural` | string | Shown when multiple items are selected, only when the number of selected items is greather than  `maxCaptionItems` | "{size} item selected" |
 | `btn.select.all` | string | Label for Select All Button | "All" |
 | `btn.unselect.all` | string | Label for Unselect All Button | "Clear" |
+| `lst.empty` | string | Label used when `data` is an empty array | "No Items" |
 
 **Special Markers**
 

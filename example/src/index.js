@@ -12,7 +12,8 @@ class App extends React.Component {
     selectedCombobox2: [],
     selectedCombobox3: [],
     selectedCombobox4: [],
-    trigResetCombobox1: false
+    trigResetCombobox1: false,
+    isLoading: false
   };
 
   stylePrint = {
@@ -289,6 +290,104 @@ class App extends React.Component {
                 </span>
               </td>
             </tr>
+
+            <tr style={this.styleRow}>
+              <td style={this.styleTitle}>
+                <h2>Empty menu</h2>
+              </td>
+              <td style={this.styleCombobox}>
+                <Combobox
+                  id="123456"
+                  isMultiSelect={true}
+                  showButtons={false}
+                  showSearch={false}
+                  maxDropdownItems={4}
+                  data={[
+                  ]}
+                  maxCaptionItems="5"
+                  labels={{
+                    "sel.empty": "Select an item",
+                    "sel.singular": "One item selected",
+                    "sel.plural": "{sel} of {size} items selected",
+                    "btn.select.all": "Pick All",
+                    "btn.unselect.all": "Release All",
+                    "lst.empty": "No items"
+                  }}
+                  onChange={selected => {
+                    this.setState({ selectedCombobox4: selected });
+                  }}
+                ></Combobox>
+              </td>
+            </tr>
+
+            <tr style={this.styleRow}>
+              <td style={this.styleTitle}>
+                <h2>Test Loading</h2>
+              </td>
+              <td style={this.styleCombobox}>
+                <Combobox
+                  id="1234567"
+                  isMultiSelect={true}
+                  showButtons={true}
+                  maxDropdownItems={4}
+                  isLoading={this.state.isLoading}
+                  data={[
+                    "Apple",
+                    "Banana",
+                    "Citrus",
+                    "Grapefruit",
+                    "Lime",
+                    "Mandarin",
+                    "Mango",
+                    "Melon",
+                    "Watermelon"
+                  ]}
+                  maxCaptionItems="auto"
+                  showSearch={true}
+                  labels={{
+                    "sel.empty": "Select an item",
+                    "sel.singular": "One item selected",
+                    "sel.plural": "{sel} of {size} items selected",
+                    "btn.select.all": "Pick All",
+                    "btn.unselect.all": "Release All"
+                  }}
+                  onChange={selected => {
+                    this.setState({ selectedCombobox1: selected });
+                  }}
+                ></Combobox>
+
+                <button
+                  style={{ marginTop: "5px" }}
+                  onClick={() => {
+                    this.setState({ isLoading: true })
+                    setTimeout(() => {
+                      this.setState({ isLoading: false })
+                    }, 3000);
+                  }}
+                >
+                  LOADING
+                </button>
+              </td>
+              <td style={this.stylePrint}>
+                <span>
+                  <b>selected:</b>
+                  <br />
+                  <ul>
+                    {this.state.selectedCombobox1.map(each => (
+                      <li>
+                        {" "}
+                        {"[value: " +
+                          each.value +
+                          ", index: " +
+                          each.index +
+                          "]"}
+                      </li>
+                    ))}
+                  </ul>
+                </span>
+              </td>
+            </tr>   
+
           </tbody>
         </table>
       </React.Fragment>

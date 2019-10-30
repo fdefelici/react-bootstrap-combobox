@@ -12,8 +12,22 @@ class App extends React.Component {
     selectedCombobox2: [],
     selectedCombobox3: [],
     selectedCombobox4: [],
+    selectedCombobox5: [],
+    selectedCombobox6: [],
     trigResetCombobox1: false,
-    isLoading: false
+    isLoading: false,
+
+    dataExample: [
+      "Apple",
+      "Banana",
+      "Citrus",
+      "Grapefruit",
+      "Lime",
+      "Mandarin",
+      "Mango",
+      "Melon",
+      "Watermelon"
+    ]
   };
 
   stylePrint = {
@@ -93,6 +107,7 @@ class App extends React.Component {
                   RESET
                 </button>
               </td>
+
               <td style={this.stylePrint}>
                 <span>
                   <b>selected:</b>
@@ -112,6 +127,7 @@ class App extends React.Component {
                 </span>
               </td>
             </tr>
+
             <tr style={this.styleRow}>
               <td style={this.styleTitle}>
                 <h2>Label/value array</h2>
@@ -352,7 +368,7 @@ class App extends React.Component {
                     "btn.unselect.all": "Release All"
                   }}
                   onChange={selected => {
-                    this.setState({ selectedCombobox1: selected });
+                    this.setState({ selectedCombobox5: selected });
                   }}
                 ></Combobox>
 
@@ -373,7 +389,7 @@ class App extends React.Component {
                   <b>selected:</b>
                   <br />
                   <ul>
-                    {this.state.selectedCombobox1.map(each => (
+                    {this.state.selectedCombobox5.map(each => (
                       <li>
                         {" "}
                         {"[value: " +
@@ -387,6 +403,64 @@ class App extends React.Component {
                 </span>
               </td>
             </tr>   
+
+            <tr style={this.styleRow}>
+            <td style={this.styleTitle}>
+                <h2>Change Data</h2>
+              </td>
+            <td style={this.styleCombobox}>
+                <Combobox
+                  id="12349"
+                  isMultiSelect={true}
+                  showButtons={true}
+                  maxDropdownItems={4}
+                  trigReset={this.state.trigResetCombobox1}
+                  onTrigReset={() => {
+                    this.setState({ trigResetCombobox1: false })}}
+                  data={this.state.dataExample}
+                  maxCaptionItems="auto"
+                  showSearch={true}
+                  labels={{
+                    "sel.empty": "Select an item",
+                    "sel.singular": "One item selected",
+                    "sel.plural": "{sel} of {size} items selected",
+                    "btn.select.all": "Pick All",
+                    "btn.unselect.all": "Release All"
+                  }}
+                  onChange={selected => {
+                    this.setState({ selectedCombobox6: selected });
+                  }}
+                ></Combobox>
+
+                <button
+                  style={{ marginTop: "5px" }}
+                  onClick={() => {
+                    this.setState({ dataExample: [{label:"Grapefruit",value:"Grapefruit",selected:true},{label:"Mandarin",value:"Mandarin",selected:false},{label:"Melon",value:"Melon",selected:true}] });
+                  }}
+                >
+                  NEW DATA
+                </button>
+              </td>
+
+              <td style={this.stylePrint}>
+                <span>
+                  <b>selected:</b>
+                  <br />
+                  <ul>
+                    {this.state.selectedCombobox6.map(each => (
+                      <li>
+                        {" "}
+                        {"[value: " +
+                          each.value +
+                          ", index: " +
+                          each.index +
+                          "]"}
+                      </li>
+                    ))}
+                  </ul>
+                </span>
+              </td>
+            </tr>
 
           </tbody>
         </table>

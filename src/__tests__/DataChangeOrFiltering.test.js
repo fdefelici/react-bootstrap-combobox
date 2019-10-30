@@ -117,4 +117,25 @@ describe("Data Change or Filtering tests", () => {
       '<ul id="rbc-menu-button-dropdown-list-123" class="dropdown-menu inner" style="max-height: 156px;"> <li class="noselect"><a class=""><span class="rbc-icon"></span>AA<span class=""></span></a></li><li class="noselect"><a class=""><span class="rbc-icon"></span>AB<span class=""></span></a></li></ul>'
     );
   });
+
+
+
+  it("Data change - new data with selection", () => {
+    let data = ["AA", "AB", "BB", "CC", "DD", "EE", "FF", "GG"];
+    let data2 = [{label:"HH", value: "HH", selected:true}, {label:"GG", value: "GG", selected:false}];
+
+    const component = mount(<Combobox data={data} id="123"></Combobox>);
+
+    component.instance().getCaptionTextContainerSize = jest.fn(() => 0);
+    component.instance().getCaptionTextSize = jest.fn(() => 0);
+    component.update();
+
+    expect(component.find("#rbc-menu-button-dropdown-list-123").html()).toEqual(
+      '<ul id="rbc-menu-button-dropdown-list-123" class="dropdown-menu inner" style="max-height: 156px;"> <li class="noselect"><a class=""><span class="rbc-icon"></span>AA<span class=""></span></a></li><li class="noselect"><a class=""><span class="rbc-icon"></span>AB<span class=""></span></a></li><li class="noselect"><a class=""><span class="rbc-icon"></span>BB<span class=""></span></a></li><li class="noselect"><a class=""><span class="rbc-icon"></span>CC<span class=""></span></a></li><li class="noselect"><a class=""><span class="rbc-icon"></span>DD<span class=""></span></a></li><li class="noselect"><a class=""><span class="rbc-icon"></span>EE<span class=""></span></a></li><li class="noselect"><a class=""><span class="rbc-icon"></span>FF<span class=""></span></a></li><li class="noselect"><a class=""><span class="rbc-icon"></span>GG<span class=""></span></a></li></ul>'
+    );
+    component.setProps({ data: data2 });
+    expect(component.find("#rbc-menu-button-dropdown-list-123").html()).toEqual(
+      '<ul id=\"rbc-menu-button-dropdown-list-123\" class=\"dropdown-menu inner\" style=\"max-height: 156px;\"> <li class=\"noselect\"><a class=\"\"><span class=\"rbc-icon\"></span>HH<span class=\"glyphicon glyphicon-ok\"></span></a></li><li class=\"noselect\"><a class=\"\"><span class=\"rbc-icon\"></span>GG<span class=\"\"></span></a></li></ul>'
+    );
+  });
 });

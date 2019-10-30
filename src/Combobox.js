@@ -183,10 +183,16 @@ class Combobox extends Component {
         })
       )
     ) {
+
+      let daraFromProps = this.prepareDataFromProps()
+		  let newSelected = this.prepareSelectionFromProps(daraFromProps)
+		  let newPlaceholder = this.getNewPlaceholder(newSelected)
+
       this.setState({
-        data: this.prepareDataFromProps(),
-        dataFiltered: this.prepareDataFromProps(),
-        selected: []
+        data: daraFromProps,
+        dataFiltered: daraFromProps,
+        selected: newSelected,
+        placeholder: newPlaceholder
       });
 
       this.runCallback([]);

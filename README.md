@@ -2,21 +2,27 @@
 
 Combobox Component for React based on Bootstrap which offer the following features:
 
-<div>
+<table><tr>
+<td>
 <ul>
 <li>Single Selection</li>
 <li>Multiple Selection</li>
 <li>Selection Handling</li>
 <li>Search through items</li>
+<li>Search Autocompletition</li>
 </ul>
-</div>
-<div style="background-color: red">
-Scrollbar Control
-Localization 
-Item customization
-Autocompletition
-Async data loading
-</div>
+</td>
+<td>
+<ul>
+<li>Scrollbar Control</li>
+<li>Localization</li>
+<li>Item customization</li>
+<li>Async data loading</li>
+<li>Customizable Callbacks</li>
+</ul>
+</td>
+</tr></table>
+
 
 ![Component ShowCase](example/src/images/showcase.png)
 

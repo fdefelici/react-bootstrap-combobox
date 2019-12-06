@@ -155,10 +155,10 @@ class AsyncCombobox extends Component {
                 <a
                   className={
                     each.icon
-                      ? "rbc-padding-left10"
+                      ? "rbc-selection rbc-padding-left10"
                       : this.areThereIcons
-                      ? "rbc-padding-left30"
-                      : ""
+                      ? "rbc-selection rbc-padding-left30"
+                      : "rbc-selection"
                   }
                   onClick={() => {
                     this.closeOrOpen();

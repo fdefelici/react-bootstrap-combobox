@@ -89,7 +89,7 @@ describe("Async Component Events tests", () => {
     jest.runAllTimers()
 
     expect(component.find(".dropdown-menu").html()).toEqual(
-      '<div class=\"dropdown-menu open\"><ul id=\"rbc-menu-button-dropdown-list-1234978\" class=\"dropdown-menu inner\" style=\"max-height: 130px;\"> <li class=\"noselect\"><a class=\"\"><span class=\"rbc-icon\"></span>Grapefruit</a></li><li class=\"noselect\"><a class=\"\"><span class=\"rbc-icon\"></span>Mandarin</a></li></ul></div>'
+      '<div class=\"dropdown-menu open\"><ul id=\"rbc-menu-button-dropdown-list-1234978\" class=\"dropdown-menu inner\" style=\"max-height: 130px;\"> <li class=\"noselect\"><a class=\"rbc-selection\"><span class=\"rbc-icon\"></span>Grapefruit</a></li><li class=\"noselect\"><a class=\"rbc-selection\"><span class=\"rbc-icon\"></span>Mandarin</a></li></ul></div>'
     )
     
   });

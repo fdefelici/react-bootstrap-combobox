@@ -3,6 +3,7 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Combobox from "@fdefelici/react-bootstrap-combobox";
+import { AsyncCombobox } from "@fdefelici/react-bootstrap-combobox";
 
 /* Bootstrap glyphicons not shown properly in live demo built with https://codesandbox.io, but it works locally */
 
@@ -14,6 +15,7 @@ class App extends React.Component {
     selectedCombobox4: [],
     selectedCombobox5: [],
     selectedCombobox6: [],
+    selectedCombobox7: undefined,
     trigResetCombobox1: false,
     isLoading: false,
 
@@ -48,7 +50,7 @@ class App extends React.Component {
     width: "450px",
     paddingBottom: "200px",
     paddingRight: "20px",
-    textAlign:"right"
+    textAlign: "right"
   };
 
   styleRow = {
@@ -72,7 +74,8 @@ class App extends React.Component {
                   maxDropdownItems={4}
                   trigReset={this.state.trigResetCombobox1}
                   onTrigReset={() => {
-                    this.setState({ trigResetCombobox1: false })}}
+                    this.setState({ trigResetCombobox1: false });
+                  }}
                   data={[
                     "Apple",
                     "Banana",
@@ -318,8 +321,7 @@ class App extends React.Component {
                   showButtons={false}
                   showSearch={false}
                   maxDropdownItems={4}
-                  data={[
-                  ]}
+                  data={[]}
                   maxCaptionItems="5"
                   labels={{
                     "sel.empty": "Select an item",
@@ -375,9 +377,9 @@ class App extends React.Component {
                 <button
                   style={{ marginTop: "5px" }}
                   onClick={() => {
-                    this.setState({ isLoading: true })
+                    this.setState({ isLoading: true });
                     setTimeout(() => {
-                      this.setState({ isLoading: false })
+                      this.setState({ isLoading: false });
                     }, 3000);
                   }}
                 >
@@ -402,13 +404,13 @@ class App extends React.Component {
                   </ul>
                 </span>
               </td>
-            </tr>   
+            </tr>
 
             <tr style={this.styleRow}>
-            <td style={this.styleTitle}>
+              <td style={this.styleTitle}>
                 <h2>Change Data</h2>
               </td>
-            <td style={this.styleCombobox}>
+              <td style={this.styleCombobox}>
                 <Combobox
                   id="12349"
                   isMultiSelect={true}
@@ -416,7 +418,8 @@ class App extends React.Component {
                   maxDropdownItems={4}
                   trigReset={this.state.trigResetCombobox1}
                   onTrigReset={() => {
-                    this.setState({ trigResetCombobox1: false })}}
+                    this.setState({ trigResetCombobox1: false });
+                  }}
                   data={this.state.dataExample}
                   maxCaptionItems="auto"
                   showSearch={true}
@@ -435,7 +438,21 @@ class App extends React.Component {
                 <button
                   style={{ marginTop: "5px" }}
                   onClick={() => {
-                    this.setState({ dataExample: [{label:"Grapefruit",value:"Grapefruit",selected:true},{label:"Mandarin",value:"Mandarin",selected:false},{label:"Melon",value:"Melon",selected:true}] });
+                    this.setState({
+                      dataExample: [
+                        {
+                          label: "Grapefruit",
+                          value: "Grapefruit",
+                          selected: true
+                        },
+                        {
+                          label: "Mandarin",
+                          value: "Mandarin",
+                          selected: false
+                        },
+                        { label: "Melon", value: "Melon", selected: true }
+                      ]
+                    });
                   }}
                 >
                   NEW DATA
@@ -462,6 +479,53 @@ class App extends React.Component {
               </td>
             </tr>
 
+            <tr style={this.styleRow}>
+              <td style={this.styleTitle}>
+                <h2>Async</h2>
+              </td>
+              <td style={this.styleCombobox}>
+                <AsyncCombobox
+                  id="1234978"
+                  labels={{
+                    "cap.placeholder": "Search...",
+                    "lst.empty": "Empty"
+                  }}
+                  maxDropdownItems={5}
+                  async={(text, callback) => {
+                    setTimeout(() => {
+                      callback([
+                        { label: "Grapefruit", value: "Grapefruit" },
+                        { label: "Mandarin", value: "Mandarin" }
+                      ]);
+                    }, 3000);
+                  }}
+                  onChangeAfterCharNum={3}
+                  onSelection={selected => {
+                    this.setState({ selectedCombobox7: selected });
+                  }}
+                  delay={1}
+                />
+              </td>
+
+              <td style={this.stylePrint}>
+                <span>
+                  <b>selected:</b>
+                  <br />
+                  <ul>
+                    {this.state.selectedCombobox7 !== undefined && this.state.selectedCombobox7.value !== undefined?
+                      <li>
+                        {" "}
+                        {"[value: " +
+                          this.state.selectedCombobox7.value +
+                          ", index: " +
+                          this.state.selectedCombobox7.index +
+                          "]"}
+                      </li>
+                    : ""}
+                  </ul>
+                </span>
+              </td>
+            </tr>
           </tbody>
         </table>
       </React.Fragment>

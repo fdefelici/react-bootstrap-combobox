@@ -1,3 +1,5 @@
-const Combobox = require('./Combobox');
+import Combobox from "./Combobox";
+import AsyncCombobox from "./AsyncCombobox";
 
-module.exports = Combobox.default || Combobox;
+export default Combobox;
+export { AsyncCombobox }

@@ -11,7 +11,7 @@ Enzyme.configure({ adapter: new Adapter() });
 // automatically unmount and cleanup DOM after the test is finished.
 afterEach(cleanup);
 
-jest.mock('../debounce', () => jest.fn(fn => fn));
+jest.mock('../lodash/debounce', () => jest.fn(fn => fn));
 jest.useFakeTimers()
 
 

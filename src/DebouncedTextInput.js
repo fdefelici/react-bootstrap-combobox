@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import debounce from "./debounce";
+import debounce from "./lodash/debounce";
 
 class DebouncedTextInput extends Component {
   constructor(props) {

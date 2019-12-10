@@ -55,6 +55,8 @@ def main(version):
     base_path = os.path.join(os.path.dirname(py_path), "..")
     fix_badges(os.path.join(base_path, "README.md"), version)
     fix_install(os.path.join(base_path, "README.md"), version)
+    fix_badges(os.path.join(base_path, "README_Autocomplete.md"), version)
+    fix_badges(os.path.join(base_path, "README_Select.md"), version)
     fix_version(os.path.join(base_path, "package.json"), version)
     fix_version(os.path.join(base_path, "package-lock.json"), version)
     fix_dependency(os.path.join(base_path, "example/package.json"), version)

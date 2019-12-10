@@ -1,5 +1,4 @@
-import Combobox from "./Combobox";
-import AsyncCombobox from "./AsyncCombobox";
+import Select from "./Select";
+import Autocomplete from "./Autocomplete";
 
-export default Combobox;
-export { AsyncCombobox }
+export { Select,  Autocomplete }

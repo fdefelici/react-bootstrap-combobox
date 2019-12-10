@@ -33,12 +33,13 @@ class DebouncedTextInput extends Component {
 
   render() {
     const { onChange, delay, ...rest } = this.props;
-
+    
     //https://medium.com/trabe/react-syntheticevent-reuse-889cd52981b6  //Solution 2: cache the needed properties
     return (
       <input
         id={"rbc-13sxxr-input-" + (this.props.id ? this.props.id : "")}
         className="rbc-13sxxr-input"
+        placeholder={this.props.placeholder}
         type="search"
         onChange={({ target: { value } }) => {
           this.setState({ value: value });
@@ -56,6 +57,8 @@ class DebouncedTextInput extends Component {
           color: "inherit"
         }}
         value={this.state.value}
+        autoComplete="off"
+        disabled = {(this.props.disabled)? "disabled" : ""}
       />
     );
   }

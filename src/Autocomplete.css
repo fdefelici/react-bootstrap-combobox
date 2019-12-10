@@ -6,9 +6,14 @@ a.clear:hover {
   cursor:pointer;
 }
 
-a.clear {
-  width: 15px;
-  height: 15px;
+.clear {
+  width: 10px;
+  height: 10px;
+}
+
+.wrapper-img {
+  width: 10px;
+  height: 10px;
 }
 
 

@@ -4,11 +4,11 @@ import LostFocusHandler from "./LostFocusHandler";
 import { imgLoading } from "./loading.js";
 import { imgClear } from "./clear.js";
 import DebouncedTextInput from "./DebouncedTextInput";
-import "./Combobox.css";
+import "./Select.css";
 
-import "./AsyncCombobox.css";
+import "./Autocomplete.css";
 
-class AsyncCombobox extends Component {
+class Autocomplete extends Component {
   maxDropdownItems = 6;
 
   areThereIcons = false;
@@ -43,7 +43,8 @@ class AsyncCombobox extends Component {
       isLoading: false,
       valueSelected: undefined,
       text: "",
-      triggerReset: false
+      triggerReset: false,
+      disableInput: false
     };
   }
 
@@ -105,7 +106,7 @@ class AsyncCombobox extends Component {
 
   render = () => {
     let menu = (
-      <div className={"rbc-padding-left20"}>
+      <div className={"rbc-padding-left20 noselect"}>
         {this.props.labels && this.props.labels["lst.empty"]
           ? this.props.labels["lst.empty"]
           : this.labels["lst.empty"]}
@@ -122,7 +123,7 @@ class AsyncCombobox extends Component {
             className="clear"
             onClick={() => this.setState({ triggerReset: true })}
           >
-            <img style={{ width: "15px", height: "15px" }} src={imgClear} />
+            <img  className="wrapper-img" src={imgClear} />
           </a>
         </div>
       );
@@ -130,7 +131,11 @@ class AsyncCombobox extends Component {
 
     if (this.state.isLoading) {
       loadingImg = (
-        <img style={{ width: "15px", height: "15px" }} src={imgLoading} />
+        <div className="pull-right">
+          <span className="wrapper-img">
+        <img  className="wrapper-img" src={imgLoading} />
+        </span>
+        </div>
       );
       clearImg = "";
     }
@@ -190,6 +195,7 @@ class AsyncCombobox extends Component {
                   <div className="rbc-b8ldur-Input">
                     <DebouncedTextInput
                       id={this.props.id}
+                      disabled = {this.props.disabled? this.props.disabled : this.state.disabled}
                       type="text"
                       placeholder={
                         this.props.labels &&
@@ -209,8 +215,7 @@ class AsyncCombobox extends Component {
                           this.props.onChangeAfterCharNum === undefined ||
                           text.length >= this.props.onChangeAfterCharNum
                         ) {
-                          this.setState({ isLoading: true });
-
+                          this.setState({ isLoading: true, isOpen: false });
                           this.props.async(text, data => {
                             this.setState({
                               isOpen: true,
@@ -240,4 +245,4 @@ class AsyncCombobox extends Component {
   };
 }
 
-export default AsyncCombobox;
+export default Autocomplete;

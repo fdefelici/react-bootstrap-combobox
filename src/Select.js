@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import LostFocusHandler from "./LostFocusHandler";
 
-import "./Combobox.css";
+import "./Select.css";
 import {imgLoading} from "./loading.js"
 
-class Combobox extends Component {
+class Select extends Component {
   placeholderDefault = "";
   maxCaptionItems = 0;
   maxDropdownItems = 6;
@@ -457,4 +457,4 @@ class Combobox extends Component {
   };
 }
 
-export default Combobox;
+export default Select;

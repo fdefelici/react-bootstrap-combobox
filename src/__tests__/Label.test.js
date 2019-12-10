@@ -1,6 +1,6 @@
 import React from "react";
 import { cleanup, render } from "@testing-library/react";
-import Combobox from "../index";
+import {Select} from "../index";
 import Enzyme, { shallow, mount } from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
 import { lstat } from "fs";
@@ -13,7 +13,7 @@ afterEach(cleanup);
 describe("Label tests", () => {
     it("Select/deselect all labels", () => {
         const { getByText } = render(
-          <Combobox
+          <Select
             showButtons={true}
             data={["AA", "AB", "BB", "CC", "DD", "BB", "EE", "FF", "GG"]}
             labels={{
@@ -21,7 +21,7 @@ describe("Label tests", () => {
               "btn.unselect.all": "Release All"
             }}
             id="123"
-          ></Combobox>
+          ></Select>
         );
     
         expect(getByText(/Pick All/i)).toBeTruthy();
@@ -29,7 +29,7 @@ describe("Label tests", () => {
       });
     
       it("No html ids", () => {
-        const component = shallow(<Combobox data={["AA"]} />);
+        const component = shallow(<Select data={["AA"]} />);
     
         component.instance().getCaptionTextContainerSize = jest.fn(() => 0);
         component.instance().getCaptionTextSize = jest.fn(() => 0);
@@ -42,13 +42,13 @@ describe("Label tests", () => {
 
       it("Singular/plural labels", () => {
         const component = shallow(
-          <Combobox
+          <Select
             isMultiSelect={true}
             showButtons={true}
             data={["AA", "AB", "BB", "CC", "DD", "BB", "EE", "FF", "GG"]}
             maxCaptionItems="5"
             id="123"
-          ></Combobox>
+          ></Select>
         );
     
         component.instance().getCaptionTextContainerSize = jest.fn(() => 0);
@@ -72,7 +72,7 @@ describe("Label tests", () => {
 
       it("Click select/deselect all with different labels - no singular and no plural", () => {
         const component = mount(
-          <Combobox
+          <Select
             isMultiSelect={true}
             showButtons={true}
             data={["AA", "AB", "BB", "CC", "DD", "BB", "EE", "FF", "GG"]}
@@ -83,7 +83,7 @@ describe("Label tests", () => {
               "btn.unselect.all": "Release All"
             }}
             id="123"
-          ></Combobox>
+          ></Select>
         );
     
         component.instance().getCaptionTextContainerSize = jest.fn(() => 0);
@@ -106,7 +106,7 @@ describe("Label tests", () => {
       });
 
       it("Empty list label", () => {
-        const component = shallow(<Combobox data={[]} />);
+        const component = shallow(<Select data={[]} />);
     
         component.instance().getCaptionTextContainerSize = jest.fn(() => 0);
         component.instance().getCaptionTextSize = jest.fn(() => 0);
@@ -118,7 +118,7 @@ describe("Label tests", () => {
       });
 
       it("Empty list label - different label", () => {
-        const component = shallow(<Combobox data={[]} labels={{"lst.empty":"No cars"}} />);
+        const component = shallow(<Select data={[]} labels={{"lst.empty":"No cars"}} />);
     
         component.instance().getCaptionTextContainerSize = jest.fn(() => 0);
         component.instance().getCaptionTextSize = jest.fn(() => 0);
@@ -130,7 +130,7 @@ describe("Label tests", () => {
       });
 
       it("Join initial selection", () => {
-        const component = shallow(<Combobox
+        const component = shallow(<Select
            data={[{ label: "AA", value: "aa", selected: true}, { label: "BB", value: "bb", selected: true}]} maxCaptionItems={3}  />);
     
         component.instance().getCaptionTextContainerSize = jest.fn(() => 0);

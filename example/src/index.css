@@ -1,3 +1,20 @@
 #app {
   margin: 10px;  
 }
+
+.tabs
+  .tab {
+    margin-top: 10px;
+    color: rgba(0,0,0,0.6);
+    display: inline-block;
+    padding: 10px;
+    border-bottom: 2px solid rgba(0,0,0,0.2);
+    border-radius: 10px 10px 0 0;
+    cursor: pointer;
+  }
+
+  .tab:hover,  .tab.active {
+    background: none;
+    border-bottom: 2px solid rgba(0,0,0,0.5);
+}
+  

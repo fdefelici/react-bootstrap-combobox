@@ -29,6 +29,10 @@ Combobox Components for React based on Bootstrap which offer the following featu
 </td>
 </tr></table>
 
+This library come with two flavour widgets: 
+* **Select**: smart single/multi selection component
+* **Autocomplete**: autocompletion component with single selection
+
 <b>Select showcase</b>
 ![Select ShowCase](example/src/images/showcase_select.png)
 
@@ -46,14 +50,14 @@ Import the npm library as usual:
 $ npm install @fdefelici/react-bootstrap-combobox@1.4.1 --save
 ```
 
-# Examples
-For a full working example take a look at the [example project](example/) or at the [live demo](https://codesandbox.io/s/github/fdefelici/react-bootstrap-combobox/tree/v1.4.1/example?fontsize=14).
-
-
-# Documentation
+# Usage
 Detailed docs, on how to use, configure and tweek the components,can be found here:
 * Select widget [guide](README_Select.md).
 * Autocomplete widget [guide](README_Autocomplete.md)
+
+# Examples
+For a full working example take a look at the [example project](example/) or see them in action at the [live demo](https://codesandbox.io/s/github/fdefelici/react-bootstrap-combobox/tree/v1.4.1/example?fontsize=14).
+
 
 # Browsers Compatibility
 This component has been tested against the following browsers:

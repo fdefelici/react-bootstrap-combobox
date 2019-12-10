@@ -30,7 +30,7 @@ This component allow customization tweeking the following attributes:
 
 | Attribute | Type | Description | Default |
 |  ---: | :--- | :---        | :---    |
-| `data` | array | Data attribute can have following format: <ul><li>list of strings: `["Apple", "Banana"]`, <b>or</b></li><li>list of objects, e.g. `[{label: "Apple", value: "apple", selected: true, icon: <span className={"glyphicon glyphicon-plus"}></span>}]` where the attributes `selected` and `icon` are optionals (see details in [Data Attribute paragraph](#data-attribute-explained)).</li></ul>  | []  |
+| `data` | array | Data attribute can have following format: <ul><li>list of strings: `["Apple", "Banana"]`, <b>or</b></li><li>list of objects, e.g. `[{label: "Apple", value: "apple", icon: <span className={"glyphicon glyphicon-plus"}></span>}]` where the attributes `icon` is optional (see details in [Data Attribute paragraph](#data-attribute-explained)).</li></ul>  | []  |
 | `id` | string | html element ID  | none  |
 | `delay` | integer | Seconds after whom `searchFun` is called | 0 |
 | `labels` | object | Localization support (see details in [Localization paragraph](#localization-support)) | - |

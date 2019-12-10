@@ -1,6 +1,6 @@
 import React from "react";
 import { cleanup, fireEvent, render, create } from "@testing-library/react";
-import Combobox from "../index";
+import {Select} from "../index";
 import Enzyme, { shallow, mount } from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
 
@@ -11,7 +11,7 @@ afterEach(cleanup);
 
 describe("Init tests", () => {
     it("Hide search bar", () => {
-        const component = shallow(<Combobox data={["AA"]} />);
+        const component = shallow(<Select data={["AA"]} />);
     
         component.instance().getCaptionTextContainerSize = jest.fn(() => 0);
         component.instance().getCaptionTextSize = jest.fn(() => 0);
@@ -24,11 +24,11 @@ describe("Init tests", () => {
     
       it("Test items shown in scrollbar, [2 items = 52px, 4 items = 104px]", () => {
         let component = shallow(
-          <Combobox
+          <Select
             data={["AA", "AB", "BB", "CC", "DD", "BB", "EE", "FF", "GG"]}
             maxDropdownItems="2"
             id="123"
-          ></Combobox>
+          ></Select>
         );
     
         component.instance().getCaptionTextContainerSize = jest.fn(() => 0);
@@ -40,11 +40,11 @@ describe("Init tests", () => {
         );
     
         component = shallow(
-          <Combobox
+          <Select
             data={["AA", "AB", "BB", "CC", "DD", "BB", "EE", "FF", "GG"]}
             maxDropdownItems="4"
             id="123"
-          ></Combobox>
+          ></Select>
         );
     
         component.instance().getCaptionTextContainerSize = jest.fn(() => 0);
@@ -65,7 +65,7 @@ describe("Init tests", () => {
         };
     
         const component = mount(
-          <Combobox data={data} onChange={onChange}></Combobox>
+          <Select data={data} onChange={onChange}></Select>
         );
     
         component.instance().getCaptionTextContainerSize = jest.fn(() => 0);
@@ -90,11 +90,11 @@ describe("Init tests", () => {
         };
     
         const component = mount(
-          <Combobox
+          <Select
             isMultiSelect={true}
             data={data}
             onChange={onChange}
-          ></Combobox>
+          ></Select>
         );
     
         component.instance().getCaptionTextContainerSize = jest.fn(() => 0);
@@ -119,7 +119,7 @@ describe("Init tests", () => {
         ];
     
         const component = mount(
-          <Combobox isMultiSelect={true} data={data} id="123"></Combobox>
+          <Select isMultiSelect={true} data={data} id="123"></Select>
         );
     
         component.instance().getCaptionTextContainerSize = jest.fn(() => 0);
@@ -135,12 +135,12 @@ describe("Init tests", () => {
         let data = ["Apple", "Banana", "Citrus", "Strawberry", "Watermelon"];
     
         const component = mount(
-          <Combobox
+          <Select
             maxCaptionItems="auto"
             isMultiSelect={true}
             data={data}
             id="123"
-          ></Combobox>
+          ></Select>
         );
     
         component.instance().getCaptionTextContainerSize = jest.fn(() => 150);

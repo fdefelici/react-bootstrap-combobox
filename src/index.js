@@ -1,3 +1,4 @@
-const Combobox = require('./Combobox');
+import Select from "./Select";
+import Autocomplete from "./Autocomplete";
 
-module.exports = Combobox.default || Combobox;
+export { Select,  Autocomplete }

@@ -1,6 +1,6 @@
 import React from "react";
 import { cleanup } from "@testing-library/react";
-import Combobox from "../index";
+import {Select} from "../index";
 import Enzyme, { shallow, mount } from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
 
@@ -14,7 +14,7 @@ describe("Data Change or Filtering tests", () => {
     let data = ["AA", "AB", "BB", "CC", "DD", "EE", "FF", "GG"];
     let data2 = ["HH", "GG"];
 
-    const component = mount(<Combobox data={data} id="123"></Combobox>);
+    const component = mount(<Select data={data} id="123"></Select>);
 
     component.instance().getCaptionTextContainerSize = jest.fn(() => 0);
     component.instance().getCaptionTextSize = jest.fn(() => 0);
@@ -33,7 +33,7 @@ describe("Data Change or Filtering tests", () => {
     let data = ["AA", "AB", "BB", "CC", "DD", "EE", "FF", "GG"];
 
     const component = mount(
-      <Combobox data={data} trigReset={false} id="123"></Combobox>
+      <Select data={data} trigReset={false} id="123"></Select>
     );
 
     component.instance().getCaptionTextContainerSize = jest.fn(() => 0);
@@ -62,12 +62,12 @@ describe("Data Change or Filtering tests", () => {
     };
 
     const component = mount(
-      <Combobox
+      <Select
         data={data}
         onTrigReset={onTrigReset}
         trigReset={trigReset}
         id="123"
-      ></Combobox>
+      ></Select>
     );
 
     component.instance().getCaptionTextContainerSize = jest.fn(() => 0);
@@ -91,10 +91,10 @@ describe("Data Change or Filtering tests", () => {
 
   it("Filter list", () => {
     const component = mount(
-      <Combobox
+      <Select
         data={["AA", "AB", "BB", "CC", "DD", "BB", "EE", "FF", "GG"]}
         id="123"
-      ></Combobox>
+      ></Select>
     );
 
     component.instance().getCaptionTextContainerSize = jest.fn(() => 0);
@@ -124,7 +124,7 @@ describe("Data Change or Filtering tests", () => {
     let data = ["AA", "AB", "BB", "CC", "DD", "EE", "FF", "GG"];
     let data2 = [{label:"HH", value: "HH", selected:true}, {label:"GG", value: "GG", selected:false}];
 
-    const component = mount(<Combobox data={data} id="123"></Combobox>);
+    const component = mount(<Select data={data} id="123"></Select>);
 
     component.instance().getCaptionTextContainerSize = jest.fn(() => 0);
     component.instance().getCaptionTextSize = jest.fn(() => 0);

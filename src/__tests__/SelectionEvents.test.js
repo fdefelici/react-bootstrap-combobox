@@ -474,7 +474,7 @@ describe("Selection Events tests", () => {
           id="1234978"
           labels={{ "cap.placeholder": "Search..." }}
           maxDropdownItems={5}
-          async={ (text, callback )=>{callback([{label:"Grapefruit",value:"Grapefruit"},{label:"Mandarin",value:"Mandarin"}])}}
+          searchFun={ (text, callback )=>{callback([{label:"Grapefruit",value:"Grapefruit"},{label:"Mandarin",value:"Mandarin"}])}}
           onChangeAfterCharNum={3}
           onSelection={() => {}}
           delay={1}

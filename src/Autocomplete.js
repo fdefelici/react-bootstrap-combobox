@@ -216,7 +216,7 @@ class Autocomplete extends Component {
                           text.length >= this.props.onChangeAfterCharNum
                         ) {
                           this.setState({ isLoading: true, isOpen: false });
-                          this.props.async(text, data => {
+                          this.props.searchFun(text, data => {
                             this.setState({
                               isOpen: true,
                               data: this.prepareData(data),

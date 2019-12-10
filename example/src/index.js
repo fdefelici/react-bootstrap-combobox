@@ -520,7 +520,7 @@ class App extends React.Component {
                         "lst.empty": "Empty"
                       }}
                       maxDropdownItems={5}
-                      async={(text, callback) => {
+                      searchFun={(text, callback) => {
                         setTimeout(() => {
                           callback([
                             "Grapefruit",
@@ -575,7 +575,7 @@ class App extends React.Component {
                         "lst.empty": "Empty"
                       }}
                       maxDropdownItems={5}
-                      async={(text, callback) => {
+                      searchFun={(text, callback) => {
                         setTimeout(() => {
                           callback([
                             { label: "Grapefruit", value: "grapefruit" },
@@ -629,7 +629,7 @@ class App extends React.Component {
                         "lst.empty": "Empty"
                       }}
                       maxDropdownItems={5}
-                      async={(text, callback) => {
+                      searchFun={(text, callback) => {
                         setTimeout(() => {
                           
                           
@@ -724,7 +724,7 @@ class App extends React.Component {
                         "cap.placeholder": "Search..."
                       }}
                       maxDropdownItems={5}
-                      async={(text, callback) => {
+                      searchFun={(text, callback) => {
                         setTimeout(() => {
                           callback([]);
                         }, 3000);

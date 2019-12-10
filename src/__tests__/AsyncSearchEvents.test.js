@@ -39,7 +39,7 @@ describe("Async Component Events tests", () => {
           id="1234978"
           labels={{ "cap.placeholder": "Search..." }}
           maxDropdownItems={5}
-          async={(text, callback) => {
+          searchFun={(text, callback) => {
             callback([
               { label: "Grapefruit", value: "Grapefruit" },
               { label: "Mandarin", value: "Mandarin" }
@@ -65,7 +65,7 @@ describe("Async Component Events tests", () => {
         id="1234978"
         labels={{ "cap.placeholder": "Search!", "lst.empty": "Empty" }}
         maxDropdownItems={5}
-        async={(text, callback) => {
+        searchFun={(text, callback) => {
           callback([
             { label: "Grapefruit", value: "Grapefruit" },
             { label: "Mandarin", value: "Mandarin" }
@@ -104,7 +104,7 @@ describe("Async Component Events tests", () => {
         id="1234978"
         labels={{ "cap.placeholder": "Search!", "lst.empty": "Empty" }}
         maxDropdownItems={5}
-        async={(text, callback) => {
+        searchFun={(text, callback) => {
           callback([]);
         }}
         onChangeAfterCharNum={1}
@@ -140,7 +140,7 @@ describe("Async Component Events tests", () => {
         id="1234978"
         labels={{ "cap.placeholder": "Search!", "lst.empty": "Empty" }}
         maxDropdownItems={5}
-        async={(text, callback) => {
+        searchFun={(text, callback) => {
           callback(["Grapefruit"]);
         }}
         onChangeAfterCharNum={1}
@@ -176,7 +176,7 @@ describe("Async Component Events tests", () => {
         id="1234978"
         labels={{ "cap.placeholder": "Search!", "lst.empty": "Empty" }}
         maxDropdownItems={5}
-        async={(text, callback) => {
+        searchFun={(text, callback) => {
           console.log("call");
           callback([
             { label: "Grapefruit", value: "Grapefruit" },

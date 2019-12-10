@@ -24,11 +24,11 @@ Combobox Components for React based on Bootstrap which offer the following featu
 </tr></table>
 
 
-<b>Select Showcase</b>
-![Component ShowCase](example/src/images/showcase_select.png)
+<b>Select showcase</b>
+![Select ShowCase](example/src/images/showcase_select.png)
 
-<b>Autocomplete Showcase</b>
-![Component ShowCase](example/src/images/showcase_autocomplete.png)
+<b>Autocomplete showcase</b>
+![Autocomplete ShowCase](example/src/images/showcase_autocomplete.png)
 
 # Constraints
 This component is based on React and Bootstrap (only css part), so in your project you must have these dependencies. It's suggested to adopt the following versions:

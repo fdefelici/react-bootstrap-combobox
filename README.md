@@ -58,7 +58,7 @@ Detailed docs, on how to use, configure and tweek the components,can be found he
 * Autocomplete widget [guide](README_Autocomplete.md)
 
 # Examples
-For a full working example take a look at the [example project](example/) or see them in action at the [live demo](https://codesandbox.io/s/github/fdefelici/react-bootstrap-combobox/tree/v1.4.1/example?fontsize=14).
+For a full working example take a look at the [example project](example/) or see the widgets in action at the [live demo](https://codesandbox.io/s/github/fdefelici/react-bootstrap-combobox/tree/v1.4.1/example?fontsize=14).
 
 
 # Browsers Compatibility

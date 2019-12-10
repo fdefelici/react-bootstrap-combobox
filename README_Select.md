@@ -1,7 +1,6 @@
-# RBC: Multi Select 
+# "Select" Widget Documentation
 
-Multi select component which offer the following features:
-
+Select component offers the following features:
 * Single Selection
 * Multiple Selection
 * Selection Handling
@@ -9,17 +8,18 @@ Multi select component which offer the following features:
 * Scrollbar Control
 * Localization 
 * Item customization
+* Customizable Callbacks
 
-![Component ShowCase](example/src/images/showcase.png)
+![Component ShowCase](example/src/images/showcase_select.png)
 
 # Usage
-Multi Select component can be imported like this:
+Select component can be imported like this:
 ```javascript
-import Combobox from "@fdefelici/react-bootstrap-combobox"
+import { Select } from "@fdefelici/react-bootstrap-combobox"
 
 ...
 
-<Combobox
+<Select
     data={["Apple", "Banana", "Citrus", "Grapefruit"]}
 />
 ```

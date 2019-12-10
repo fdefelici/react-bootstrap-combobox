@@ -24,11 +24,11 @@ Combobox Components for React based on Bootstrap which offer the following featu
 </tr></table>
 
 
-<b>Showcase: Multi Select</b>
-![Component ShowCase](example/src/images/showcase.png)
+<b>Select Showcase</b>
+![Component ShowCase](example/src/images/showcase_select.png)
 
-<b>Showcase: Autocomplete</b>
-![Component ShowCase](example/src/images/showcase.png)
+<b>Autocomplete Showcase</b>
+![Component ShowCase](example/src/images/showcase_autocomplete.png)
 
 # Constraints
 This component is based on React and Bootstrap (only css part), so in your project you must have these dependencies. It's suggested to adopt the following versions:
@@ -47,8 +47,8 @@ For a full working example take a look at the [example project](example/) or at 
 
 # Documentation
 Detailed docs, on how to use, configure and tweek the components,can be found here:
-* Multi Select [guide](README_Multiselect.md).
-* Autocomplete Select [guide](README_Autocomplete.md)
+* Select widget [guide](README_Select.md).
+* Autocomplete widget [guide](README_Autocomplete.md)
 
 # Browsers Compatibility
 This component has been tested against the following browsers:

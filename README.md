@@ -29,7 +29,7 @@ Combobox Components for React based on Bootstrap which offer the following featu
 </td>
 </tr></table>
 
-This library come with two flavour widgets: 
+This library comes with two flavour widgets: 
 * **Select**: smart single/multi selection component
 * **Autocomplete**: autocompletion component with single selection
 
@@ -40,9 +40,11 @@ This library come with two flavour widgets:
 ![Autocomplete ShowCase](example/src/images/showcase_autocomplete.png)
 
 # Constraints
-This component is based on React and Bootstrap (only css part), so in your project you must have these dependencies. It's suggested to adopt the following versions:
+The library is based on React and Bootstrap (only css part), so in your project you must have these dependencies. It's suggested to adopt the following versions:
 * react >= 15.0.0
 * bootstrap >= 3.3.0 and < 4.0.0
+
+> Making the library compliant with Bootstrap 4.x is planned. Check-out the [milestone](https://github.com/fdefelici/react-bootstrap-combobox/milestone/11).
 
 # Installation
 Import the npm library as usual:

@@ -359,6 +359,18 @@ class App extends React.Component {
 
                 <tr style={this.styleRow}>
                   <td style={this.styleTitle}>
+                    <h2>Disabled menu</h2>
+                  </td>
+                  <td style={this.styleCombobox}>
+                    <Select
+                      id="123456"
+                      disabled={true}
+                    ></Select>
+                  </td>
+                </tr>
+
+                <tr style={this.styleRow}>
+                  <td style={this.styleTitle}>
                     <h2>Test Loading</h2>
                   </td>
                   <td style={this.styleCombobox}>
@@ -510,7 +522,7 @@ class App extends React.Component {
                 <tr style={this.styleRow}>
                   <td style={this.styleTitle}>
                     <p><h2>Label array</h2></p>
-                    <p><h5>it will search among <b>[Grapefruit, Mandarin, Melon, Watermelon]</b> finding input text as substring, starting after 3 chars</h5></p>
+                    <p><h5>It will search among <b>[Grapefruit, Mandarin, Melon, Watermelon]</b> finding input text as substring, starting after 3 chars</h5></p>
                   </td>
                   <td style={this.styleCombobox}>
                     <Autocomplete
@@ -565,7 +577,7 @@ class App extends React.Component {
                 <tr style={this.styleRow}>
                   <td style={this.styleTitle}>
                     <p><h2>Label/value array</h2></p>
-                    <p><h5>it will search among <b>[Grapefruit, Mandarin, Melon, Watermelon]</b> finding input text as substring, starting after 3 chars</h5></p>
+                    <p><h5>It will search among <b>[Grapefruit, Mandarin, Melon, Watermelon]</b> finding input text as substring, starting after 3 chars</h5></p>
                   </td>
                   <td style={this.styleCombobox}>
                     <Autocomplete

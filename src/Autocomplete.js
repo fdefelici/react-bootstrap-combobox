@@ -184,10 +184,10 @@ class Autocomplete extends Component {
 
     return (
       <LostFocusHandler onClickOutside={() => this.setState({ isOpen: false })}>
-        <div className="input-box">
+        <div className="input-box" style={{width: this.props.width?this.props.width: "100%" }}>
           <div
             className="input-container"
-            style={{ width: this.props.width ? this.props.width : 200 }}
+          
           >
             <div className="rbc-2b097c-container ">
               <div className="rbc-13srbr-control ">
@@ -235,6 +235,7 @@ class Autocomplete extends Component {
 
             <div
               className={"dropdown-menu " + (this.state.isOpen ? "open" : "")}
+              style={{width : this.props.width?this.props.width: "100%" }}
             >
               {menu}
             </div>

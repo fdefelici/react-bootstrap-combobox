@@ -23,7 +23,7 @@ import { Autocomplete } from "@fdefelici/react-bootstrap-combobox"
 />
 ```
 
-> For a full working example take a look at the [local example](example/) or at the [live demo](https://codesandbox.io/s/github/fdefelici/react-bootstrap-combobox/tree/v1.5.0/example?fontsize=14).
+> For a full working example take a look at the [local example](example/) or at the [live demo](https://codesandbox.io/s/github/fdefelici/react-bootstrap-combobox/tree/v1.5.1/example?fontsize=14).
 
 # Configuration
 This component allow customization tweeking the following attributes:
@@ -39,6 +39,7 @@ This component allow customization tweeking the following attributes:
 | `onChangeAfterCharNum` | integer | Number of chars after whom `searchFun` will start | 1 |
 | `onSelection` | function | Function called when an item is selected | none |
 | `searchFun` | function | Function called when you start to type. It has to be with the following signature: `function (text, callback)` where `text` it will be the typed text and the callback is the function called when data will be retrieved (see details in the [example](example/)) | none  |
+| `width` | string | Set the widget width (css style: e.g. 100px, 60%...) | 100%  |
 
 
 ## Data Attribute Explained

@@ -49,7 +49,7 @@ class App extends React.Component {
   };
 
   styleTitle = {
-    width: "450px",
+    width: "200px",
     paddingBottom: "200px",
     paddingRight: "20px",
     textAlign: "right"

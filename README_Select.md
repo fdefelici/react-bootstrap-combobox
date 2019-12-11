@@ -24,7 +24,7 @@ import { Select } from "@fdefelici/react-bootstrap-combobox"
 />
 ```
 
-> For a full working example take a look at the [local example](example/) or at the [live demo](https://codesandbox.io/s/github/fdefelici/react-bootstrap-combobox/tree/v1.5.0/example?fontsize=14).
+> For a full working example take a look at the [local example](example/) or at the [live demo](https://codesandbox.io/s/github/fdefelici/react-bootstrap-combobox/tree/v1.5.1/example?fontsize=14).
 
 # Configuration
 This component allow customization tweeking the following attributes:
@@ -44,6 +44,7 @@ This component allow customization tweeking the following attributes:
 | `showButtons` | boolean | Show Select/Deselect All buttons | false |
 | `showSearch` | boolean | Show Search field | false |
 | `trigReset` | boolean | Deselect all elements when, from `false`, it comes `true`; it will be called `onTrigReset` callback | false |
+| `width` | string | Set the widget width (css style: e.g. 100px, 60%...) | 100%  |
 
 
 ## Data Attribute Explained

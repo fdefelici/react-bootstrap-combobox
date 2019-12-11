@@ -1,6 +1,6 @@
 {
   "name": "@fdefelici/react-bootstrap-combobox",
-  "version": "1.4.1",
+  "version": "1.5.0",
   "description": "Select Component for React based on Bootstrap",
   "license": "MIT",
   "repository": {
@@ -32,7 +32,7 @@
     "npm": ">=5"
   },
   "scripts": {
-    "test": "cross-env CI=1 react-scripts test --env=jsdom",
+    "test": "cross-env CI=1 react-scripts test --testPathIgnorePatterns=src/lodash --env=jsdom",
     "coverage": "cross-env CI=1 react-scripts test --coverage --env=jsdom",
     "test:watch": "react-scripts test --env=jsdom",
     "build": "rollup -c",

@@ -44,6 +44,7 @@ This component allow customization tweeking the following attributes:
 | `showButtons` | boolean | Show Select/Deselect All buttons | false |
 | `showSearch` | boolean | Show Search field | false |
 | `trigReset` | boolean | Deselect all elements when, from `false`, it comes `true`; it will be called `onTrigReset` callback | false |
+| `width` | string | Set the widget width (css style: e.g. 100px, 60%...) | 100%  |
 
 
 ## Data Attribute Explained

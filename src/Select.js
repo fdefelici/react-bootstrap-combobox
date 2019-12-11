@@ -392,6 +392,7 @@ class Select extends Component {
       <LostFocusHandler onClickOutside={() => this.setState({ isOpen: false })}>
         <div id={this.idRbc} className="input-box">
           <button
+            style={{ width: this.props.width ? this.props.width : "100%" }}
             id={this.idMenuButton}
             onClick={this.closeOrOpen}
             type="button"
@@ -416,6 +417,7 @@ class Select extends Component {
             {caretOrLoadingImg}
           </button>
           <div
+            style={{ width: this.props.width ? this.props.width : "100%" }}
             className={
               "dropdown-menu " +
               (this.state.isOpen ||
@@ -443,7 +445,7 @@ class Select extends Component {
                   id={this.idSelectAll}
                   onClick={this.selectAllElements}
                   type="button"
-                  className="actions-btn bs-select-all btn btn-default select-all-button"
+                  className="actions-btn bs-select-all btn btn-default select-all-button fixed-heigth text-centered-button"
                 >
                   {this.labels["btn.select.all"]}
                 </button>
@@ -451,7 +453,7 @@ class Select extends Component {
                   id={this.idDeselectAll}
                   onClick={this.deselectAllElements}
                   type="button"
-                  className="actions-btn bs-deselect-all btn btn-default deselect-all-button"
+                  className="actions-btn bs-deselect-all btn btn-default deselect-all-button fixed-heigth text-centered-button"
                 >
                   {this.labels["btn.unselect.all"]}
                 </button>

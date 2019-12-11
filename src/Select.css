@@ -156,3 +156,11 @@
     width: auto;
     display: inline-block
 }
+
+.fixed-heigth {
+    height: 25px;
+}
+
+.text-centered-button {
+    padding: 0px;
+}

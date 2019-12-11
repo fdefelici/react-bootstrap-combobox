@@ -4,21 +4,15 @@
 
 .open {
     display: block;
-    /*margin-left: inherit !important;*/
     padding-left: inherit !important;
-    min-width: 100%;
 }
 
 .dropdown-menu {
-    /*top: 3%;
-    padding: 5px 2px;*/
     position: absolute;
-
     top: 100%;
     left: 0;
     z-index: 1000;
     float: left;
-    min-width: 100%;
     padding: 10px 0px 5px 0px;
     margin: 3px 0 0;
     font-size: 14px;
@@ -60,7 +54,6 @@
 }
 
 .dropdown-menu>li>a>span {
-    /*position: absolute;*/
     float: right;
     display: inline-block;
     right: 15px;
@@ -79,7 +72,6 @@
 }
 
 .input-box {
-    width:200px;
     position:relative;
 }
 
@@ -109,13 +101,11 @@
 .btn-group > .btn:last-child:not(:first-child), .btn-group > .dropdown-toggle:not(:first-child) {
     border-top-left-radius: 4px !important;
     border-bottom-left-radius: 4px !important;
-    /*padding: 0px;*/
 }
 
 .btn-group > .btn:first-child:not(:last-child):not(.dropdown-toggle) {
     border-top-right-radius: 4px !important;
     border-bottom-right-radius: 4px !important;
-    /*padding: 0px;*/
 }
 
 .hide {

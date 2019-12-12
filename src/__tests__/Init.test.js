@@ -179,11 +179,21 @@ describe("Init tests", () => {
   });
 
   it("Test disabled init", () => {
-    let data = ["Apple", "Banana", "Citrus", "Strawberry", "Watermelon"];
 
     const component = mount(
-      <Select disabled={true} data={data} id="123"/>
+      <Select disabled={false} data={[]} id="123"/>
     );
+
+    component.instance().getCaptionTextContainerSize = jest.fn(() => 0);
+    component.instance().getCaptionTextSize = jest.fn(() => 0);
+    component.update();
+
+
+    expect(component.find("#rbc-menu-button-123").html()).toEqual(
+      '<button style=\"width: 100%;\" id=\"rbc-menu-button-123\" type=\"button\" class=\"btn btn-default dropdown-toggle show-special-title button-dropdown\"><span class=\"pull-left filter-option\"></span><span class=\"pull-left special-title\" id=\"caption-text-area-container-rbc-123\"><div class=\"caption-text-area\" id=\"caption-text-area-rbc-123\">Select an item</div></span>&nbsp;<span class=\"caret\"></span></button>'
+    );
+
+    component.setProps({ disabled: true});
 
     expect(component.find("#rbc-menu-button-123").html()).toEqual(
       '<button style=\"width: 100%;\" id=\"rbc-menu-button-123\" type=\"button\" class=\"btn btn-default dropdown-toggle show-special-title button-dropdown\" disabled=\"\"><span class=\"pull-left filter-option\"></span><span class=\"pull-left special-title\" id=\"caption-text-area-container-rbc-123\"><div class=\"caption-text-area\" id=\"caption-text-area-rbc-123\">Select an item</div></span>&nbsp;<span class=\"caret\"></span></button>'

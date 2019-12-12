@@ -19,6 +19,7 @@ class App extends React.Component {
     selectedCombobox8: undefined,
     selectedCombobox9: undefined,
     trigResetCombobox1: false,
+    disabled:false,
     isLoading: false,
 
     dataExample: [
@@ -364,8 +365,16 @@ class App extends React.Component {
                   <td style={this.styleCombobox}>
                     <Select
                       id="123456"
-                      disabled={true}
+                      disabled={this.state.disabled}
                     ></Select>
+                    <button
+                      style={{ marginTop: "45px" }}
+                      onClick={() => {
+                        this.setState({ disabled: !this.state.disabled });
+                      }}
+                    >
+                      DISABLED/ENABLED
+                    </button>
                   </td>
                 </tr>
 

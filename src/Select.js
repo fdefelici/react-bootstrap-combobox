@@ -420,8 +420,8 @@ class Select extends Component {
             style={{ width: this.props.width ? this.props.width : "100%" }}
             className={
               "dropdown-menu " +
-              (this.state.isOpen ||
-              (this.props.disabled !== undefined && !this.props.disabled)
+              (this.state.isOpen &&
+              ((this.props.disabled !== undefined && !this.props.disabled) || this.props.disabled === undefined)
                 ? "open"
                 : "")
             }

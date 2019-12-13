@@ -18,9 +18,12 @@ class App extends React.Component {
     selectedCombobox7: undefined,
     selectedCombobox8: undefined,
     selectedCombobox9: undefined,
+    selectedCombobox10: undefined,
     trigResetCombobox1: false,
-    disabled:false,
+    disabled: false,
     isLoading: false,
+
+    newValueAutocomplete: "default",
 
     dataExample: [
       "Apple",
@@ -66,8 +69,9 @@ class App extends React.Component {
         <Tabs>
           Select
           <span>
-
-            <p style={{paddingTop: "25px"}}>These are examples of <b>Select</b> component</p>
+            <p style={{ paddingTop: "25px" }}>
+              These are examples of <b>Select</b> component
+            </p>
 
             <table>
               <tbody>
@@ -363,10 +367,7 @@ class App extends React.Component {
                     <h2>Disabled menu</h2>
                   </td>
                   <td style={this.styleCombobox}>
-                    <Select
-                      id="123456"
-                      disabled={this.state.disabled}
-                    ></Select>
+                    <Select id="123456" disabled={this.state.disabled}></Select>
                     <button
                       style={{ marginTop: "45px" }}
                       onClick={() => {
@@ -523,15 +524,21 @@ class App extends React.Component {
           </span>
           Autocomplete
           <span>
-
-          <p style={{paddingTop: "25px"}}>These are examples of <b>Autocomplete</b> component</p>
+            <p style={{ paddingTop: "25px" }}>
+              These are examples of <b>Autocomplete</b> component
+            </p>
 
             <table>
               <tbody>
                 <tr style={this.styleRow}>
                   <td style={this.styleTitle}>
-                    <p><h2>Label array</h2></p>
-                    <p><h5>It will search among <b>[Grapefruit, Mandarin, Melon, Watermelon]</b> finding input text as substring, starting after 3 chars</h5></p>
+                    <h2>Label array</h2>
+
+                    <h5>
+                      It will search among{" "}
+                      <b>[Grapefruit, Mandarin, Melon, Watermelon]</b> finding
+                      input text as substring, starting after 3 chars
+                    </h5>
                   </td>
                   <td style={this.styleCombobox}>
                     <Autocomplete
@@ -543,12 +550,16 @@ class App extends React.Component {
                       maxDropdownItems={5}
                       searchFun={(text, callback) => {
                         setTimeout(() => {
-                          callback([
-                            "Grapefruit",
-                            "Mandarin",
-                            "Melon",
-                            "Watermelon"
-                          ].filter(each => {return each.toLowerCase().includes(text)}) );
+                          callback(
+                            [
+                              "Grapefruit",
+                              "Mandarin",
+                              "Melon",
+                              "Watermelon"
+                            ].filter(each => {
+                              return each.toLowerCase().includes(text);
+                            })
+                          );
                         }, 3000);
                       }}
                       onChangeAfterCharNum={3}
@@ -582,11 +593,15 @@ class App extends React.Component {
                   </td>
                 </tr>
 
-
                 <tr style={this.styleRow}>
                   <td style={this.styleTitle}>
-                    <p><h2>Label/value array</h2></p>
-                    <p><h5>It will search among <b>[Grapefruit, Mandarin, Melon, Watermelon]</b> finding input text as substring, starting after 3 chars</h5></p>
+                    <h2>Label/value array</h2>
+
+                    <h5>
+                      It will search among{" "}
+                      <b>[Grapefruit, Mandarin, Melon, Watermelon]</b> finding
+                      input text as substring, starting after 3 chars
+                    </h5>
                   </td>
                   <td style={this.styleCombobox}>
                     <Autocomplete
@@ -598,12 +613,16 @@ class App extends React.Component {
                       maxDropdownItems={5}
                       searchFun={(text, callback) => {
                         setTimeout(() => {
-                          callback([
-                            { label: "Grapefruit", value: "grapefruit" },
-                            { label: "Mandarin", value: "mandarin" },
-                            { label: "Melon", value: "melon" },
-                            { label: "Watermelon", value: "watermelon" }
-                          ].filter(each => {return each.value.toLowerCase().includes(text)}));
+                          callback(
+                            [
+                              { label: "Grapefruit", value: "grapefruit" },
+                              { label: "Mandarin", value: "mandarin" },
+                              { label: "Melon", value: "melon" },
+                              { label: "Watermelon", value: "watermelon" }
+                            ].filter(each => {
+                              return each.value.toLowerCase().includes(text);
+                            })
+                          );
                         }, 3000);
                       }}
                       onChangeAfterCharNum={3}
@@ -639,8 +658,16 @@ class App extends React.Component {
 
                 <tr style={this.styleRow}>
                   <td style={this.styleTitle}>
-                    <p><h2>Label/value array with icons</h2></p>
-                    <p><h5>it will search among <b>[Apple, Banana, Citrus, Grapes, Lime, Mandarin, Mango, Melon, Orange, Watermelon]</b> finding input text as substring, starting after 3 chars</h5></p>
+                    <h2>Label/value array with icons</h2>
+
+                    <h5>
+                      it will search among{" "}
+                      <b>
+                        [Apple, Banana, Citrus, Grapes, Lime, Mandarin, Mango,
+                        Melon, Orange, Watermelon]
+                      </b>{" "}
+                      finding input text as substring, starting after 3 chars
+                    </h5>
                   </td>
                   <td style={this.styleCombobox}>
                     <Autocomplete
@@ -652,53 +679,67 @@ class App extends React.Component {
                       maxDropdownItems={5}
                       searchFun={(text, callback) => {
                         setTimeout(() => {
-                          
-                          
-                          callback([
-                            {
-                              label: "Apple",
-                              value: "apple",
-                              icon: (
-                                <img alt="" src={require("./images/apple.png")} />
-                              )
-                            },
-                            {
-                              label: "Banana",
-                              value: "banana",
-                              icon: (
-                                <img alt="" src={require("./images/banana.png")} />
-                              )
-                            },
-                            { label: "Citrus", value: "citrus" },
-                            {
-                              label: "Grapes",
-                              value: "grapes",
-                              icon: (
-                                <img alt="" src={require("./images/grapes.png")} />
-                              )
-                            },
-                            { label: "Lime", value: "lime" },
-                            { label: "Mandarin", value: "mandarin" },
-                            { label: "Mango", value: "mango" },
-                            { label: "Melon", value: "melon" },
-                            {
-                              label: "Orange",
-                              value: "orange",
-                              icon: (
-                                <img alt="" src={require("./images/orange.png")} />
-                              )
-                            },
-                            {
-                              label: "Watermelon",
-                              value: "watermelon",
-                              icon: (
-                                <img
-                                  alt=""
-                                  src={require("./images/watermelon.png")}
-                                />
-                              )
-                            }
-                          ].filter(each => {return each.value.toLowerCase().includes(text)}) );
+                          callback(
+                            [
+                              {
+                                label: "Apple",
+                                value: "apple",
+                                icon: (
+                                  <img
+                                    alt=""
+                                    src={require("./images/apple.png")}
+                                  />
+                                )
+                              },
+                              {
+                                label: "Banana",
+                                value: "banana",
+                                icon: (
+                                  <img
+                                    alt=""
+                                    src={require("./images/banana.png")}
+                                  />
+                                )
+                              },
+                              { label: "Citrus", value: "citrus" },
+                              {
+                                label: "Grapes",
+                                value: "grapes",
+                                icon: (
+                                  <img
+                                    alt=""
+                                    src={require("./images/grapes.png")}
+                                  />
+                                )
+                              },
+                              { label: "Lime", value: "lime" },
+                              { label: "Mandarin", value: "mandarin" },
+                              { label: "Mango", value: "mango" },
+                              { label: "Melon", value: "melon" },
+                              {
+                                label: "Orange",
+                                value: "orange",
+                                icon: (
+                                  <img
+                                    alt=""
+                                    src={require("./images/orange.png")}
+                                  />
+                                )
+                              },
+                              {
+                                label: "Watermelon",
+                                value: "watermelon",
+                                icon: (
+                                  <img
+                                    alt=""
+                                    src={require("./images/watermelon.png")}
+                                  />
+                                )
+                              }
+                            ].filter(each => {
+                              return each.value.toLowerCase().includes(text);
+                            })
+                          );
                         }, 3000);
                       }}
                       onChangeAfterCharNum={3}
@@ -732,11 +773,11 @@ class App extends React.Component {
                   </td>
                 </tr>
 
-
                 <tr style={this.styleRow}>
                   <td style={this.styleTitle}>
-                    <p><h2>Empty</h2></p>
-                    <p><h5>Always it returns an empty result</h5></p>
+                    <h2>Empty</h2>
+
+                    <h5>Always it returns an empty result</h5>
                   </td>
                   <td style={this.styleCombobox}>
                     <Autocomplete
@@ -755,11 +796,86 @@ class App extends React.Component {
                         this.setState({ selectedCombobox9: selected });
                       }}
                       delay={1}
-                     
                     />
                   </td>
+                </tr>
 
-              
+                <tr style={this.styleRow}>
+                  <td style={this.styleTitle}>
+                    <h2>Change Value</h2>
+                    <h5>From outside with random string. It will search among <b>[Lime, Mandarin, Mango, Melon]</b> finding input text as substring, starting after 3 chars</h5>
+                  </td>
+                  <td style={this.styleCombobox}>
+                    <Autocomplete
+                      id="123497891011"
+                      labels={{
+                        "cap.placeholder": "Search..."
+                      }}
+                      maxDropdownItems={5}
+                      searchFun={(text, callback) => {
+                        setTimeout(() => {
+                          callback([
+                            { label: "Lime", value: "lime" },
+                            { label: "Mandarin", value: "mandarin" },
+                            { label: "Mango", value: "mango" },
+                            { label: "Melon", value: "melon" }
+                          ].filter(each => {
+                            return each.value.toLowerCase().includes(text);
+                          }));
+                        }, 3000);
+                      }}
+                      onClear={()=>{this.setState({ selectedCombobox10: undefined, newValueAutocomplete: undefined });}}
+                      onChangeAfterCharNum={3}
+                      onSelection={selected => {
+                        this.setState({ selectedCombobox10: selected });
+                      }}
+                      delay={1}
+                     
+                      value={this.state.newValueAutocomplete}
+                    />
+
+                    <button
+                      style={{ marginTop: "45px" }}
+                      onClick={() => {
+                        this.setState({
+                          newValueAutocomplete:
+                            Math.random()
+                              .toString(36)
+                              .substring(2, 15) +
+                            Math.random()
+                              .toString(36)
+                              .substring(2, 15),
+                              selectedCombobox10: undefined
+                        });
+                      }}
+                    >
+                      Random String
+                    </button>
+                  </td>
+
+                  <td style={this.stylePrint}>
+                    <span>
+                      <b>selected:</b>
+                      <br />
+                      <ul>
+                        {(this.state.selectedCombobox10 !== undefined &&
+                          this.state.selectedCombobox10.value !== undefined) ||
+                        this.state.newValueAutocomplete ? (
+                          <li>
+                            {" "}
+                            {"[value: " +
+                              (this.state.selectedCombobox10 !== undefined &&
+                                this.state.selectedCombobox10.value !== undefined
+                                ? this.state.selectedCombobox10.value
+                                : this.state.newValueAutocomplete) +
+                              "]"}
+                          </li>
+                        ) : (
+                          ""
+                        )}
+                      </ul>
+                    </span>
+                  </td>
                 </tr>
               </tbody>
             </table>

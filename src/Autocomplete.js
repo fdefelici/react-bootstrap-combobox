@@ -194,6 +194,7 @@ class Autocomplete extends Component {
                 <div className="rbc-1hwfws3">
                   <div className="rbc-b8ldur-Input">
                     <DebouncedTextInput
+                      newValue={this.props.value}
                       id={this.props.id}
                       disabled = {this.props.disabled? this.props.disabled : this.state.disabled}
                       type="text"
@@ -207,8 +208,11 @@ class Autocomplete extends Component {
                       delay={this.props.delay ? this.props.delay * 1000 : 0}
                       onTextType={text => this.setState({ text: text })}
                       triggerReset={this.state.triggerReset}
-                      afterTriggerReset={() =>
+                      afterTriggerReset={() => {
                         this.setState({ triggerReset: false })
+
+                        if(this.props.onClear) this.props.onClear()
+                        } 
                       }
                       onChange={text => {
                         if (

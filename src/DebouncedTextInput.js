@@ -16,6 +16,12 @@ class DebouncedTextInput extends Component {
     };
   }
 
+  componentDidMount(prevProps, prevState) {
+    if(this.props.newValue) {
+      this.setState({value: this.props.newValue})
+    }
+  }
+
   componentDidUpdate(prevProps, prevState) {
     if (this.props.selected !== prevProps.selected) {
       this.setState({ value: this.props.selected });
@@ -28,6 +34,10 @@ class DebouncedTextInput extends Component {
     if(!prevProps.triggerReset && this.props.triggerReset) {
       this.setState({value: ""})
       this.props.afterTriggerReset()
+    }
+
+    if(prevProps.newValue !== this.props.newValue && this.props.newValue !== undefined) {
+      this.setState({value: this.props.newValue})
     }
   }
 

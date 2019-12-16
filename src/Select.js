@@ -180,13 +180,13 @@ class Select extends Component {
         this.state.data
       ) || (this.props.dataId !== prevProps.dataId)
     ) {
-      let daraFromProps = this.prepareDataFromProps();
-      let newSelected = this.prepareSelectionFromProps(daraFromProps);
+      let dataFromProps = this.prepareDataFromProps();
+      let newSelected = this.prepareSelectionFromProps(dataFromProps);
       let newPlaceholder = this.getNewPlaceholder(newSelected);
 
       this.setState({
-        data: daraFromProps,
-        dataFiltered: daraFromProps,
+        data: dataFromProps,
+        dataFiltered: dataFromProps,
         selected: newSelected,
         placeholder: newPlaceholder
       });

@@ -24,7 +24,7 @@ import { Select } from "@fdefelici/react-bootstrap-combobox"
 />
 ```
 
-> For a full working example take a look at the [local example](example/) or at the [live demo](https://codesandbox.io/s/github/fdefelici/react-bootstrap-combobox/tree/v1.6.0/example?fontsize=14).
+> For a full working example take a look at the [local example](example/) or at the [live demo](https://codesandbox.io/s/github/fdefelici/react-bootstrap-combobox/tree/v1.6.1/example?fontsize=14).
 
 # Configuration
 This component allow customization tweeking the following attributes:
@@ -32,6 +32,7 @@ This component allow customization tweeking the following attributes:
 | Attribute | Type | Description | Default |
 |  ---: | :--- | :---        | :---    |
 | `data` | array | Data attribute can have following format: <ul><li>list of strings: `["Apple", "Banana"]`, <b>or</b></li><li>list of objects, e.g. `[{label: "Apple", value: "apple", selected: true, icon: <span className={"glyphicon glyphicon-plus"}></span>}]` where the attributes `selected` and `icon` are optionals (see details in [Data Attribute paragraph](#data-attribute-explained)).</li></ul>  | []  |
+| `dataId` | object | This is a technical field to force the `data` field reinitialization when `data` field update doesn't produce any effect. When you need this, you have to create an unique id, so we suggest to use "new Date()" as value; you don't need to reset this field after the reinitialization event.  | none |
 | `disabled` | boolean | Disable the button | false |
 | `id` | string | html element ID  | none  |
 | `isLoading` | boolean | Set the menu to loading status; combobox will be disabled and reactivated when isLoading comes false. | false  |

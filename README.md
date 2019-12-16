@@ -1,4 +1,4 @@
-# react-bootstrap-combobox &middot; [![NPM version](https://img.shields.io/badge/npm-v1.6.0-blue)](https://www.npmjs.com/package/@fdefelici/react-bootstrap-combobox) [![Build Status](https://travis-ci.org/fdefelici/react-bootstrap-combobox.svg?branch=v1.6.0)](https://travis-ci.org/fdefelici/react-bootstrap-combobox) [![codecov](https://codecov.io/gh/fdefelici/react-bootstrap-combobox/branch/v1.6.0/graph/badge.svg)](https://codecov.io/gh/fdefelici/react-bootstrap-combobox) [![CodeSandBox](https://img.shields.io/badge/demo-live-blueviolet)](https://codesandbox.io/s/github/fdefelici/react-bootstrap-combobox/tree/v1.6.0/example?fontsize=14)
+# react-bootstrap-combobox &middot; [![NPM version](https://img.shields.io/badge/npm-v1.6.1-blue)](https://www.npmjs.com/package/@fdefelici/react-bootstrap-combobox) [![Build Status](https://travis-ci.org/fdefelici/react-bootstrap-combobox.svg?branch=v1.6.1)](https://travis-ci.org/fdefelici/react-bootstrap-combobox) [![codecov](https://codecov.io/gh/fdefelici/react-bootstrap-combobox/branch/v1.6.1/graph/badge.svg)](https://codecov.io/gh/fdefelici/react-bootstrap-combobox) [![CodeSandBox](https://img.shields.io/badge/demo-live-blueviolet)](https://codesandbox.io/s/github/fdefelici/react-bootstrap-combobox/tree/v1.6.1/example?fontsize=14)
 
 Combobox Components for React based on Bootstrap which offer the following features:
 
@@ -49,7 +49,7 @@ The library is based on React and Bootstrap (only css part), so in your project 
 # Installation
 Import the npm library as usual:
 ```shell
-$ npm install @fdefelici/react-bootstrap-combobox@1.6.0 --save
+$ npm install @fdefelici/react-bootstrap-combobox@1.6.1 --save
 ```
 
 # Usage
@@ -58,7 +58,7 @@ Detailed docs, on how to use, configure and tweek the components,can be found he
 * Autocomplete widget [guide](README_Autocomplete.md)
 
 # Examples
-For a full working example take a look at the [example project](example/) or see the widgets in action at the [live demo](https://codesandbox.io/s/github/fdefelici/react-bootstrap-combobox/tree/v1.6.0/example?fontsize=14).
+For a full working example take a look at the [example project](example/) or see the widgets in action at the [live demo](https://codesandbox.io/s/github/fdefelici/react-bootstrap-combobox/tree/v1.6.1/example?fontsize=14).
 
 
 # Browsers Compatibility

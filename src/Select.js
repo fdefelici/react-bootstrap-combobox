@@ -95,20 +95,20 @@ class Select extends Component {
       ? (3 + 20 + 3) * this.props.maxDropdownItems + "px"
       : (3 + 20 + 3) * 6 + "px";
 
-    let initialData = this.prepareDataFromProps();
-    let initialSelection = this.prepareSelectionFromProps(initialData);
+    let initialModelData = this.prepareDataFromProps();
+    let initialSelection = this.prepareSelectionFromProps(initialModelData);
 
     let newPlaceholder =
       initialSelection.length > this.maxCaptionItems
-        ? this.getLabelSelected(initialSelection.length, initialData)
+        ? this.getLabelSelected(initialSelection.length, initialModelData)
         : initialSelection.map(each => each.label).join(", ");
 
     this.state = {
       placeholder: newPlaceholder,
       isOpen: false,
-      dataFiltered: initialData,
+      dataFiltered: initialModelData,
       selected: initialSelection,
-      data: initialData
+      data: initialModelData
     };
   }
 
@@ -126,7 +126,7 @@ class Select extends Component {
     if (this.props.data && this.props.data.length > 0) {
       if (typeof this.props.data[0] == "string") {
         return this.props.data.map((each, index) => {
-          return { label: each, value: each, index: index };
+          return { label: each, value: each, index: index, selected: false };
         });
       } else if (typeof this.props.data[0] == "object") {
         return this.props.data.map((each, index) => {
@@ -136,7 +136,8 @@ class Select extends Component {
             label: each.label,
             value: each.value,
             icon: each.icon,
-            index: index
+            index: index,
+            selected: each.selected?each.selected:false
           };
         });
       }
@@ -173,28 +174,25 @@ class Select extends Component {
 
     if (
       JSON.stringify(
-        this.prepareDataFromProps().map(each => {
-          return { label: each.label, value: each.value, index: each.index };
-        })
+        this.prepareDataFromProps()
       ) !==
       JSON.stringify(
-        this.state.data.map(each => {
-          return { label: each.label, value: each.value, index: each.index };
-        })
-      )
+        this.state.data
+      ) || (this.props.dataId !== prevProps.dataId)
     ) {
-      let daraFromProps = this.prepareDataFromProps();
-      let newSelected = this.prepareSelectionFromProps(daraFromProps);
+      let dataFromProps = this.prepareDataFromProps();
+      let newSelected = this.prepareSelectionFromProps(dataFromProps);
       let newPlaceholder = this.getNewPlaceholder(newSelected);
 
       this.setState({
-        data: daraFromProps,
-        dataFiltered: daraFromProps,
+        data: dataFromProps,
+        dataFiltered: dataFromProps,
         selected: newSelected,
         placeholder: newPlaceholder
       });
 
-      this.runCallback([]);
+      this.runCallback(newSelected);
+      
     }
   }
 

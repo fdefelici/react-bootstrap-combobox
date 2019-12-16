@@ -185,6 +185,7 @@ describe("Async Component Events tests", () => {
         onChangeAfterCharNum={1}
         onSelection={() => {}}
         delay={2}
+        onClear={()=>{}}
       />
     );
 

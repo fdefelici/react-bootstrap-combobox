@@ -137,7 +137,7 @@ class Select extends Component {
             value: each.value,
             icon: each.icon,
             index: index,
-            selected: each.selected ? each.selected : false
+            selected: each.selected?each.selected:false
           };
         });
       }
@@ -173,9 +173,12 @@ class Select extends Component {
     }
 
     if (
-      JSON.stringify(this.prepareDataFromProps()) !==
-        JSON.stringify(this.state.data) ||
-      this.props.tokenValidation !== prevProps.tokenValidation
+      JSON.stringify(
+        this.prepareDataFromProps()
+      ) !==
+      JSON.stringify(
+        this.state.data
+      ) || (this.props.dataId !== prevProps.dataId)
     ) {
       let daraFromProps = this.prepareDataFromProps();
       let newSelected = this.prepareSelectionFromProps(daraFromProps);
@@ -189,6 +192,7 @@ class Select extends Component {
       });
 
       this.runCallback(newSelected);
+      
     }
   }
 
@@ -415,8 +419,7 @@ class Select extends Component {
             className={
               "dropdown-menu " +
               (this.state.isOpen &&
-              ((this.props.disabled !== undefined && !this.props.disabled) ||
-                this.props.disabled === undefined)
+              ((this.props.disabled !== undefined && !this.props.disabled) || this.props.disabled === undefined)
                 ? "open"
                 : "")
             }

@@ -29,7 +29,7 @@ describe("Data Change or Filtering tests", () => {
     );
   });
 
-  it("Data change - same change without token", () => {
+  it("Data change - same change without dataId", () => {
     let data = [{value:"AA", label:"AA", selected:true}, {value:"BB", label:"BB", selected:false}];
 
     const component = shallow(<Select data={data} id="123"></Select>);
@@ -53,7 +53,7 @@ describe("Data Change or Filtering tests", () => {
     );
   });
 
-  it("Data change - same change with token", () => {
+  it("Data change - same change with dataId", () => {
     let data = [{value:"AA", label:"AA", selected:true}, {value:"BB", label:"BB", selected:false}];
 
     const component = shallow(<Select data={data} id="123"></Select>);
@@ -71,7 +71,7 @@ describe("Data Change or Filtering tests", () => {
       '<ul id=\"rbc-menu-button-dropdown-list-123\" class=\"dropdown-menu inner\" style=\"max-height:156px\"> <li class=\"noselect\"><a class=\"\"><span class=\"rbc-icon\"></span>AA<span class=\"\"></span></a></li><li class=\"noselect\"><a class=\"\"><span class=\"rbc-icon\"></span>BB<span class=\"glyphicon glyphicon-ok\"></span></a></li></ul>'
     );
 
-    component.setProps({ data: data, tokenValidation: new Date() });
+    component.setProps({ data: data, dataId: new Date() });
     expect(component.find("#rbc-menu-button-dropdown-list-123").html()).toEqual(
       '<ul id=\"rbc-menu-button-dropdown-list-123\" class=\"dropdown-menu inner\" style=\"max-height:156px\"> <li class=\"noselect\"><a class=\"\"><span class=\"rbc-icon\"></span>AA<span class=\"glyphicon glyphicon-ok\"></span></a></li><li class=\"noselect\"><a class=\"\"><span class=\"rbc-icon\"></span>BB<span class=\"\"></span></a></li></ul>'
     );

@@ -32,6 +32,7 @@ This component allow customization tweeking the following attributes:
 | Attribute | Type | Description | Default |
 |  ---: | :--- | :---        | :---    |
 | `data` | array | Data attribute can have following format: <ul><li>list of strings: `["Apple", "Banana"]`, <b>or</b></li><li>list of objects, e.g. `[{label: "Apple", value: "apple", selected: true, icon: <span className={"glyphicon glyphicon-plus"}></span>}]` where the attributes `selected` and `icon` are optionals (see details in [Data Attribute paragraph](#data-attribute-explained)).</li></ul>  | []  |
+| `dataId` | object | This is a technical field to force the `data` field reinitialization when `data` field update doesn't produce any effect. When you need this, you have to create an unique id, so we suggest to use "new Date()" as value; you don't need to reset this field after the reinitialization event.  | none |
 | `disabled` | boolean | Disable the button | false |
 | `id` | string | html element ID  | none  |
 | `isLoading` | boolean | Set the menu to loading status; combobox will be disabled and reactivated when isLoading comes false. | false  |
@@ -43,7 +44,6 @@ This component allow customization tweeking the following attributes:
 | `onTrigReset` | function | Callback function called when `trigReset` attribute comes `true` (see details in the [example](example/)). | none  |
 | `showButtons` | boolean | Show Select/Deselect All buttons | false |
 | `showSearch` | boolean | Show Search field | false |
-| `tokenValidation` | object | This field sets the token that validate `data` field. If you change the token, the widget will reset the data with `data` array, even if nothing is changed. We suggest to use "new Date()" as token.  | none |
 | `trigReset` | boolean | Deselect all elements when, from `false`, it comes `true`; it will be called `onTrigReset` callback | false |
 | `width` | string | Set the widget width (css style: e.g. 100px, 60%...) | 100%  |
 

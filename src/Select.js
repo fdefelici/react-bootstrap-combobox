@@ -95,20 +95,20 @@ class Select extends Component {
       ? (3 + 20 + 3) * this.props.maxDropdownItems + "px"
       : (3 + 20 + 3) * 6 + "px";
 
-    let initialData = this.prepareDataFromProps();
-    let initialSelection = this.prepareSelectionFromProps(initialData);
+    let initialModelData = this.prepareDataFromProps();
+    let initialSelection = this.prepareSelectionFromProps(initialModelData);
 
     let newPlaceholder =
       initialSelection.length > this.maxCaptionItems
-        ? this.getLabelSelected(initialSelection.length, initialData)
+        ? this.getLabelSelected(initialSelection.length, initialModelData)
         : initialSelection.map(each => each.label).join(", ");
 
     this.state = {
       placeholder: newPlaceholder,
       isOpen: false,
-      dataFiltered: initialData,
+      dataFiltered: initialModelData,
       selected: initialSelection,
-      data: initialData
+      data: initialModelData
     };
   }
 
@@ -126,7 +126,7 @@ class Select extends Component {
     if (this.props.data && this.props.data.length > 0) {
       if (typeof this.props.data[0] == "string") {
         return this.props.data.map((each, index) => {
-          return { label: each, value: each, index: index };
+          return { label: each, value: each, index: index, selected: false };
         });
       } else if (typeof this.props.data[0] == "object") {
         return this.props.data.map((each, index) => {
@@ -136,7 +136,8 @@ class Select extends Component {
             label: each.label,
             value: each.value,
             icon: each.icon,
-            index: index
+            index: index,
+            selected: each.selected ? each.selected : false
           };
         });
       }
@@ -172,16 +173,9 @@ class Select extends Component {
     }
 
     if (
-      JSON.stringify(
-        this.prepareDataFromProps().map(each => {
-          return { label: each.label, value: each.value, index: each.index };
-        })
-      ) !==
-      JSON.stringify(
-        this.state.data.map(each => {
-          return { label: each.label, value: each.value, index: each.index };
-        })
-      )
+      JSON.stringify(this.prepareDataFromProps()) !==
+        JSON.stringify(this.state.data) ||
+      this.props.tokenValidation !== prevProps.tokenValidation
     ) {
       let daraFromProps = this.prepareDataFromProps();
       let newSelected = this.prepareSelectionFromProps(daraFromProps);
@@ -194,7 +188,7 @@ class Select extends Component {
         placeholder: newPlaceholder
       });
 
-      this.runCallback([]);
+      this.runCallback(newSelected);
     }
   }
 
@@ -421,7 +415,8 @@ class Select extends Component {
             className={
               "dropdown-menu " +
               (this.state.isOpen &&
-              ((this.props.disabled !== undefined && !this.props.disabled) || this.props.disabled === undefined)
+              ((this.props.disabled !== undefined && !this.props.disabled) ||
+                this.props.disabled === undefined)
                 ? "open"
                 : "")
             }

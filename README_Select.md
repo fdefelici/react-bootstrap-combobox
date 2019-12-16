@@ -43,7 +43,7 @@ This component allow customization tweeking the following attributes:
 | `onTrigReset` | function | Callback function called when `trigReset` attribute comes `true` (see details in the [example](example/)). | none  |
 | `showButtons` | boolean | Show Select/Deselect All buttons | false |
 | `showSearch` | boolean | Show Search field | false |
-| `tokenValidation` | object | This field sets the token that validate `data` field. If you change the token, the widget will reset the data with `data` array; even if nothing is changed. We suggest to use "new Date()" as token.  | none |
+| `tokenValidation` | object | This field sets the token that validate `data` field. If you change the token, the widget will reset the data with `data` array, even if nothing is changed. We suggest to use "new Date()" as token.  | none |
 | `trigReset` | boolean | Deselect all elements when, from `false`, it comes `true`; it will be called `onTrigReset` callback | false |
 | `width` | string | Set the widget width (css style: e.g. 100px, 60%...) | 100%  |
 

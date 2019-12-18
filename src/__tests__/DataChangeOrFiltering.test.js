@@ -29,7 +29,7 @@ describe("Data Change or Filtering tests", () => {
     );
   });
 
-  it("Data change - same change without dataId", () => {
+  it("Data change - same change without trigEvent", () => {
     let data = [{value:"AA", label:"AA", selected:true}, {value:"BB", label:"BB", selected:false}];
 
     const component = shallow(<Select data={data} id="123"></Select>);
@@ -53,7 +53,7 @@ describe("Data Change or Filtering tests", () => {
     );
   });
 
-  it("Data change - same change with dataId", () => {
+  it("Data change - same change with trigEvent", () => {
     let data = [{value:"AA", label:"AA", selected:true}, {value:"BB", label:"BB", selected:false}];
 
     const component = shallow(<Select data={data} id="123"></Select>);
@@ -71,17 +71,18 @@ describe("Data Change or Filtering tests", () => {
       '<ul id=\"rbc-menu-button-dropdown-list-123\" class=\"dropdown-menu inner\" style=\"max-height:156px\"> <li class=\"noselect\"><a class=\"\"><span class=\"rbc-icon\"></span>AA<span class=\"\"></span></a></li><li class=\"noselect\"><a class=\"\"><span class=\"rbc-icon\"></span>BB<span class=\"glyphicon glyphicon-ok\"></span></a></li></ul>'
     );
 
-    component.setProps({ data: data, dataId: new Date() });
+    component.setProps({ data: data, trigEvent: Select.TrigEvent.reset() });
     expect(component.find("#rbc-menu-button-dropdown-list-123").html()).toEqual(
       '<ul id=\"rbc-menu-button-dropdown-list-123\" class=\"dropdown-menu inner\" style=\"max-height:156px\"> <li class=\"noselect\"><a class=\"\"><span class=\"rbc-icon\"></span>AA<span class=\"glyphicon glyphicon-ok\"></span></a></li><li class=\"noselect\"><a class=\"\"><span class=\"rbc-icon\"></span>BB<span class=\"\"></span></a></li></ul>'
     );
   });
 
-  it("Reset selection from parent - without onTrigReset", () => {
+  it("Reset selection from parent - without TrigEvent", () => {
     let data = ["AA", "AB", "BB", "CC", "DD", "EE", "FF", "GG"];
+    let data2 = ["AA", "AB", "BB", "CC", "DD", "EE", "FF", "GG", "ZZ"];
 
     const component = mount(
-      <Select data={data} trigReset={false} id="123"></Select>
+      <Select data={data} id="123"></Select>
     );
 
     component.instance().getCaptionTextContainerSize = jest.fn(() => 0);
@@ -93,27 +94,20 @@ describe("Data Change or Filtering tests", () => {
     expect(component.find("#rbc-menu-button-123").html()).toEqual(
       '<button style=\"width: 100%;\" id=\"rbc-menu-button-123\" type=\"button\" class=\"btn btn-default dropdown-toggle show-special-title button-dropdown\"><span class=\"pull-left filter-option\"></span><span class=\"pull-left special-title\" id=\"caption-text-area-container-rbc-123\"><div class=\"caption-text-area\" id=\"caption-text-area-rbc-123\">AA</div></span>&nbsp;<span class=\"caret\"></span></button>'
     );
-    component.setProps({ trigReset: true });
+    component.setProps({ data: data2 });
     expect(component.find("#rbc-menu-button-123").html()).toEqual(
       '<button style=\"width: 100%;\" id=\"rbc-menu-button-123\" type=\"button\" class=\"btn btn-default dropdown-toggle show-special-title button-dropdown\"><span class=\"pull-left filter-option\"></span><span class=\"pull-left special-title\" id=\"caption-text-area-container-rbc-123\"><div class=\"caption-text-area\" id=\"caption-text-area-rbc-123\">Select an item</div></span>&nbsp;<span class=\"caret\"></span></button>'
     );
     
   });
 
-  it("Reset selection from parent - with onTrigReset", () => {
+  it("Reset selection from parent - with TrigEvent", () => {
     let data = ["AA", "AB", "BB", "CC", "DD", "EE", "FF", "GG"];
 
-    let trigReset = false;
-
-    const onTrigReset = () => {
-      trigReset = false;
-    };
 
     const component = mount(
       <Select
         data={data}
-        onTrigReset={onTrigReset}
-        trigReset={trigReset}
         id="123"
       ></Select>
     );
@@ -128,13 +122,13 @@ describe("Data Change or Filtering tests", () => {
       '<button style=\"width: 100%;\" id=\"rbc-menu-button-123\" type=\"button\" class=\"btn btn-default dropdown-toggle show-special-title button-dropdown\"><span class=\"pull-left filter-option\"></span><span class=\"pull-left special-title\" id=\"caption-text-area-container-rbc-123\"><div class=\"caption-text-area\" id=\"caption-text-area-rbc-123\">AA</div></span>&nbsp;<span class=\"caret\"></span></button>'
     );
 
-    trigReset = true;
-    component.setProps({ trigReset: trigReset });
+    let trigReset = Select.TrigEvent.reset();
+    component.setProps({ trigEvent: trigReset });
     expect(component.find("#rbc-menu-button-123").html()).toEqual(
       '<button style=\"width: 100%;\" id=\"rbc-menu-button-123\" type=\"button\" class=\"btn btn-default dropdown-toggle show-special-title button-dropdown\"><span class=\"pull-left filter-option\"></span><span class=\"pull-left special-title\" id=\"caption-text-area-container-rbc-123\"><div class=\"caption-text-area\" id=\"caption-text-area-rbc-123\">Select an item</div></span>&nbsp;<span class=\"caret\"></span></button>'
     );
 
-    expect(trigReset).toEqual(false);
+    expect(trigReset.startsWith("reset")).toEqual(true);
   });
 
   it("Filter list", () => {

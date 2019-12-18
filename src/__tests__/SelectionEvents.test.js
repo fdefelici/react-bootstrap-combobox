@@ -440,6 +440,36 @@ describe("Selection Events tests", () => {
     );
   });
 
+  it("Clear selection from parent - with TrigEvent", () => {
+    let data = ["AA", "AB", "BB", "CC", "DD", "EE", "FF", "GG"];
+
+
+    const component = mount(
+      <Select
+        data={data}
+        id="123"
+      ></Select>
+    );
+
+    component.instance().getCaptionTextContainerSize = jest.fn(() => 0);
+    component.instance().getCaptionTextSize = jest.fn(() => 0);
+    component.update();
+
+    shallow(component.find("a").get(0)).simulate("click");
+
+    expect(component.find("#rbc-menu-button-123").html()).toEqual(
+      '<button style=\"width: 100%;\" id=\"rbc-menu-button-123\" type=\"button\" class=\"btn btn-default dropdown-toggle show-special-title button-dropdown\"><span class=\"pull-left filter-option\"></span><span class=\"pull-left special-title\" id=\"caption-text-area-container-rbc-123\"><div class=\"caption-text-area\" id=\"caption-text-area-rbc-123\">AA</div></span>&nbsp;<span class=\"caret\"></span></button>'
+    );
+
+    let trigClear = Select.TrigEvent.clear();
+    component.setProps({ trigEvent: trigClear });
+    expect(component.find("#rbc-menu-button-123").html()).toEqual(
+      '<button style=\"width: 100%;\" id=\"rbc-menu-button-123\" type=\"button\" class=\"btn btn-default dropdown-toggle show-special-title button-dropdown\"><span class=\"pull-left filter-option\"></span><span class=\"pull-left special-title\" id=\"caption-text-area-container-rbc-123\"><div class=\"caption-text-area\" id=\"caption-text-area-rbc-123\">Select an item</div></span>&nbsp;<span class=\"caret\"></span></button>'
+    );
+
+    expect(trigClear.startsWith("clear")).toEqual(true);
+  });
+
   it("onChange run", () => {
     let data = ["AA", "AB", "BB", "CC", "DD", "EE", "FF", "GG"];
 

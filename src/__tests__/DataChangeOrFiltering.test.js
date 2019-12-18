@@ -101,7 +101,7 @@ describe("Data Change or Filtering tests", () => {
     
   });
 
-  it("Reset selection from parent - with TrigEvent", () => {
+  it("ReinitData with TrigEvent", () => {
     let data = ["AA", "AB", "BB", "CC", "DD", "EE", "FF", "GG"];
 
 

@@ -182,10 +182,10 @@ class App extends React.Component {
                       <ul>
                         {this.state.selectedCombobox2.map(each => (
                           <li>
-                            {"[value: " +
-                              each.value +
+                            {"[value: "   +
+                              each.value  +
                               ", index: " +
-                              each.index +
+                              each.index  +
                               "]"}{" "}
                           </li>
                         ))}

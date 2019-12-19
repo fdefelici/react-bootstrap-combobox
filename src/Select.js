@@ -4,6 +4,8 @@ import LostFocusHandler from "./LostFocusHandler";
 import "./Select.css";
 import { imgLoading } from "./loading.js";
 
+import Utils from "./Utils";
+
 class Select extends Component {
   placeholderDefault = "";
   maxCaptionItems = 0;
@@ -32,6 +34,8 @@ class Select extends Component {
   idSelectAll = undefined;
   idDeselectAll = undefined;
   idList = undefined;
+
+  utils = Utils()
 
   constructor(props) {
     super(props);
@@ -170,25 +174,7 @@ class Select extends Component {
     this.runCallback(newSelected);
   }
 
-  isEqual = (array1, array2) => {
-   
-    let result = true
-    
-    if(array1 == undefined && array2 != undefined ||
-      array1 != undefined && array2 == undefined) return false
 
-    if(array1.length !== array2.length) return false
-
-    array1.forEach((each, index) => { 
-
-        if(each.value !== array2[index].value ||
-          each.label !== array2[index].label ||
-          each.selected !== array2[index].selected)
-          result = false
-     })
-
-     return result
-  }
 
   componentDidUpdate(prevProps, prevState) {
     
@@ -220,7 +206,7 @@ class Select extends Component {
     }
 
     if (
-      !this.isEqual(this.prepareDataFromProps(), this.state.data)
+      !this.utils.isEqual(this.prepareDataFromProps(), this.state.data)
     ) {
       this.initData()
     }

@@ -3,7 +3,6 @@ import { cleanup, render } from "@testing-library/react";
 import {Select} from "../index";
 import Enzyme, { shallow, mount } from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
-import { lstat } from "fs";
 
 Enzyme.configure({ adapter: new Adapter() });
 

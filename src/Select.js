@@ -4,6 +4,8 @@ import LostFocusHandler from "./LostFocusHandler";
 import "./Select.css";
 import { imgLoading } from "./loading.js";
 
+import Utils from "./Utils";
+
 class Select extends Component {
   placeholderDefault = "";
   maxCaptionItems = 0;
@@ -32,6 +34,8 @@ class Select extends Component {
   idSelectAll = undefined;
   idDeselectAll = undefined;
   idList = undefined;
+
+  utils = Utils()
 
   constructor(props) {
     super(props);
@@ -112,6 +116,15 @@ class Select extends Component {
     };
   }
 
+  static TrigEvent = {
+    clear: () => {
+      return "clear_" + Math.random().toString();
+    },
+    reset: () => {
+      return "reset_" + Math.random().toString();
+    }
+  };
+
   prepareSelectionFromProps = data => {
     let selection = [];
     if (this.props.data && typeof this.props.data[0] == "object") {
@@ -137,7 +150,7 @@ class Select extends Component {
             value: each.value,
             icon: each.icon,
             index: index,
-            selected: each.selected?each.selected:false
+            selected: each.selected ? each.selected : false
           };
         });
       }
@@ -146,10 +159,30 @@ class Select extends Component {
     }
   };
 
+  initData() {
+    let dataFromProps = this.prepareDataFromProps();
+    let newSelected = this.prepareSelectionFromProps(dataFromProps);
+    let newPlaceholder = this.getNewPlaceholder(newSelected);
+
+    this.setState({
+      data: dataFromProps,
+      dataFiltered: dataFromProps,
+      selected: newSelected,
+      placeholder: newPlaceholder
+    });
+
+    this.runCallback(newSelected);
+  }
+
+
+
   componentDidUpdate(prevProps, prevState) {
-    if (this.props.trigReset && !prevProps.trigReset) {
-      this.deselectAllElements();
-      if (this.props.onTrigReset) this.props.onTrigReset();
+    
+    if (this.props.trigEvent && this.props.trigEvent !== prevProps.trigEvent) {
+      if (this.props.trigEvent.toLowerCase().startsWith("clear"))
+        this.deselectAllElements();
+      if (this.props.trigEvent.toLowerCase().startsWith("reset"))
+        this.initData();
     }
 
     if (this.props.isLoading && !prevProps.isLoading) {
@@ -173,26 +206,9 @@ class Select extends Component {
     }
 
     if (
-      JSON.stringify(
-        this.prepareDataFromProps()
-      ) !==
-      JSON.stringify(
-        this.state.data
-      ) || (this.props.dataId !== prevProps.dataId)
+      !this.utils.isEqual(this.prepareDataFromProps(), this.state.data)
     ) {
-      let dataFromProps = this.prepareDataFromProps();
-      let newSelected = this.prepareSelectionFromProps(dataFromProps);
-      let newPlaceholder = this.getNewPlaceholder(newSelected);
-
-      this.setState({
-        data: dataFromProps,
-        dataFiltered: dataFromProps,
-        selected: newSelected,
-        placeholder: newPlaceholder
-      });
-
-      this.runCallback(newSelected);
-      
+      this.initData()
     }
   }
 
@@ -419,7 +435,8 @@ class Select extends Component {
             className={
               "dropdown-menu " +
               (this.state.isOpen &&
-              ((this.props.disabled !== undefined && !this.props.disabled) || this.props.disabled === undefined)
+              ((this.props.disabled !== undefined && !this.props.disabled) ||
+                this.props.disabled === undefined)
                 ? "open"
                 : "")
             }

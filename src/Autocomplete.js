@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import LostFocusHandler from "./LostFocusHandler";
 
+import Utils from "./Utils";
 import { imgLoading } from "./loading.js";
 import { imgClear } from "./clear.js";
 import DebouncedTextInput from "./DebouncedTextInput";
@@ -10,6 +11,7 @@ import "./Autocomplete.css";
 
 class Autocomplete extends Component {
   maxDropdownItems = 6;
+  utils = Utils()
 
   areThereIcons = false;
 
@@ -73,12 +75,10 @@ class Autocomplete extends Component {
 
   componentDidUpdate(prevProps, prevState) {
     if (
-      JSON.stringify(
+      !this.utils.isEqual(
         prevState.data.map(each => {
           return { label: each.label, value: each.value, index: each.index };
-        })
-      ) !==
-      JSON.stringify(
+        }),
         this.state.data.map(each => {
           return { label: each.label, value: each.value, index: each.index };
         })

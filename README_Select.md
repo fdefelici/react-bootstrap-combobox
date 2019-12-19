@@ -32,7 +32,7 @@ This component allow customization tweeking the following attributes:
 | Attribute | Type | Description | Default |
 |  ---: | :--- | :---        | :---    |
 | `data` | array | Data attribute can have following format: <ul><li>list of strings: `["Apple", "Banana"]`, <b>or</b></li><li>list of objects, e.g. `[{label: "Apple", value: "apple", selected: true, icon: <span className={"glyphicon glyphicon-plus"}></span>}]` where the attributes `selected` and `icon` are optionals (see details in [Data Attribute paragraph](#data-attribute-explained)).</li></ul>  | []  |
-| `dataId` | object | This is a technical field to force the `data` field reinitialization when `data` field update doesn't produce any effect. When you need this, you have to create an unique id, so we suggest to use "new Date()" as value; you don't need to reset this field after the reinitialization event.  | none |
+have to create an unique id, so we suggest to use "new Date()" as value; you don't need to reset this field after the reinitialization event.  | none |
 | `disabled` | boolean | Disable the button | false |
 | `id` | string | html element ID  | none  |
 | `isLoading` | boolean | Set the menu to loading status; combobox will be disabled and reactivated when isLoading comes false. | false  |
@@ -41,10 +41,9 @@ This component allow customization tweeking the following attributes:
 | `maxCaptionItems` | integer <br/>or<br/> "auto" | Max number of visible items (comma separated) in caption before showing label message `cap.select.singular` or `cap.select.plural`. If it is equal to `"auto"`, it automatically detects the caption overflow. | 0 |
 | `maxDropdownItems` | integer | Max number of visible items in dropdown menu | 6 |
 | `onChange` | function | Callback function called when a selection/deselection happens with the following signature: `function (selection)` where `selection` is an array of objects with format `{index, value}` (see details in the [example](example/)) | none  |
-| `onTrigReset` | function | Callback function called when `trigReset` attribute comes `true` (see details in the [example](example/)). | none  |
 | `showButtons` | boolean | Show Select/Deselect All buttons | false |
 | `showSearch` | boolean | Show Search field | false |
-| `trigReset` | boolean | Deselect all elements when, from `false`, it comes `true`; it will be called `onTrigReset` callback | false |
+| `trigEvent` | string | You can run these actions: `clear`, `reset`. You need to use an unique id to run the action multiple times. To simplify the creation of an action with an unique id, you can call `Select.TrigEvent.clear()` or  `Select.TrigEvent.reset()`. | none |
 | `width` | string | Set the widget width (css style: e.g. 100px, 60%...) | 100%  |
 
 

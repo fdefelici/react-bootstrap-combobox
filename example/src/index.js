@@ -19,7 +19,7 @@ class App extends React.Component {
     selectedCombobox8: undefined,
     selectedCombobox9: undefined,
     selectedCombobox10: undefined,
-    trigResetCombobox1: false,
+    trigClearCombobox1: undefined,
     disabled: false,
     isLoading: false,
 
@@ -85,10 +85,7 @@ class App extends React.Component {
                       isMultiSelect={true}
                       showButtons={true}
                       maxDropdownItems={4}
-                      trigReset={this.state.trigResetCombobox1}
-                      onTrigReset={() => {
-                        this.setState({ trigResetCombobox1: false });
-                      }}
+                      trigEvent={this.state.trigClearCombobox1}
                       data={[
                         "Apple",
                         "Banana",
@@ -117,10 +114,10 @@ class App extends React.Component {
                     <button
                       style={{ marginTop: "5px" }}
                       onClick={() => {
-                        this.setState({ trigResetCombobox1: true });
+                        this.setState({ trigClearCombobox1: Select.TrigEvent.clear() });
                       }}
                     >
-                      RESET
+                      CLEAR
                     </button>
                   </td>
 
@@ -457,10 +454,6 @@ class App extends React.Component {
                       isMultiSelect={true}
                       showButtons={true}
                       maxDropdownItems={4}
-                      trigReset={this.state.trigResetCombobox1}
-                      onTrigReset={() => {
-                        this.setState({ trigResetCombobox1: false });
-                      }}
                       data={this.state.dataExample}
                       maxCaptionItems="auto"
                       showSearch={true}

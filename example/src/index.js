@@ -86,17 +86,7 @@ class App extends React.Component {
                       showButtons={true}
                       maxDropdownItems={4}
                       trigEvent={this.state.trigClearCombobox1}
-                      data={[
-                        "Apple",
-                        "Banana",
-                        "Citrus",
-                        "Grapefruit",
-                        "Lime",
-                        "Mandarin",
-                        "Mango",
-                        "Melon",
-                        "Watermelon"
-                      ]}
+                      data={this.state.dataExample}
                       maxCaptionItems="auto"
                       showSearch={true}
                       labels={{
@@ -118,6 +108,15 @@ class App extends React.Component {
                       }}
                     >
                       CLEAR
+                    </button>
+
+                    <button
+                      style={{ marginTop: "5px", marginleft: "15px" }}
+                      onClick={() => {
+                        this.setState({dataExample: [{value: "apple", label: "Apple", selected:true}, {value: "banana", label: "Banana", selected:false}], trigClearCombobox1: Select.TrigEvent.reset() });
+                      }}
+                    >
+                      RESET
                     </button>
                   </td>
 

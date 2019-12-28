@@ -8,6 +8,8 @@ script:
 - npm run test -- "--coverage"
 - codecov --token=b0fd890e-36fd-4395-8591-9054d978f917
 - npm run build
+- echo "FILESYSTEM:"
+- ls -l
 deploy:
   provider: npm
   email: fdf8210@gmail.com

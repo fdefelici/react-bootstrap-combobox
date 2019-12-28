@@ -10,6 +10,7 @@ script:
 - npm run build
 - echo "FILESYSTEM:"
 - ls -l
+- ls -l dist/
 deploy:
   provider: npm
   email: fdf8210@gmail.com

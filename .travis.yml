@@ -7,16 +7,24 @@ install:
 script:
 - npm run test -- "--coverage"
 - codecov --token=b0fd890e-36fd-4395-8591-9054d978f917
-- npm run build
-- echo "FILESYSTEM:"
-- ls -l
-- ls -l dist/
+# Execute "npm run build" and create a npm package tgz. 
+- npm pack
 deploy:
-  provider: npm
-  email: fdf8210@gmail.com
-  api_key:
-    secure: rm1JYf5xEkkCRLgdAsMjMC0qQTkKijq+NjXe1ZA6x9IDzCGNeo7L0GAOTK0O4B1Oo1N11HNdBDeDDN7TPpJtJeMdLHN2XDdj1o5wAbfdImZ7yjxkiw/4x1SRy32/kESdDINjGRN9ea9RGSZVKIOWC9liehZvnWVxHdklHFoeiZljQQcqQfCZ5hpD+zVuTa7RZmpi9iF0vtLVO5fa1ZIIZlDOvgo1iP0WEi8d9sTW4STvbYSjZiwrF5rVSabL1Phgk2Bi8F5BkUhziLWnpInWgabaGh7XPdsOhqrypQ/h1BR9bSDO3t/Fu845J4MDstBBX6Olk09vZdqj7H9F4cpDpf6TPNnLuqjtZs9G+2xw5DEx5M7/7olgjORt8Ixjjo+Ac/4sLXHyTo0fjUNm6z2gtc+XJDj8n4rsyx+rklDxcLngpgr5jBdyfpRKoUJJxtg6dPiHybggJtZoS/bvbTM8bZSBxmy/13ZHR+Odr79fpHDCfbX8bhyygINUS1pLk3bJH7B1YuHAKTPj5kE3Ogr5HXM3Uao5/+y/sjm/z3BOXNvjxw/DMJfSw66CEqMJzhq315cmOpQm6nTCzPPgw9woVLGc+UyTS9b7QJuh4guoev4kyJm0VQXTT5CGj/hG50HGZLTYg45lAck6ATqrHAFPZka+Yzy5qYOqxMEFNM7wDPU=
-  on:
-    tags: true
-    repo: fdefelici/react-bootstrap-combobox
-  skip_cleanup: true
+  - provider: npm
+    email: fdf8210@gmail.com
+    api_key:
+      secure: rm1JYf5xEkkCRLgdAsMjMC0qQTkKijq+NjXe1ZA6x9IDzCGNeo7L0GAOTK0O4B1Oo1N11HNdBDeDDN7TPpJtJeMdLHN2XDdj1o5wAbfdImZ7yjxkiw/4x1SRy32/kESdDINjGRN9ea9RGSZVKIOWC9liehZvnWVxHdklHFoeiZljQQcqQfCZ5hpD+zVuTa7RZmpi9iF0vtLVO5fa1ZIIZlDOvgo1iP0WEi8d9sTW4STvbYSjZiwrF5rVSabL1Phgk2Bi8F5BkUhziLWnpInWgabaGh7XPdsOhqrypQ/h1BR9bSDO3t/Fu845J4MDstBBX6Olk09vZdqj7H9F4cpDpf6TPNnLuqjtZs9G+2xw5DEx5M7/7olgjORt8Ixjjo+Ac/4sLXHyTo0fjUNm6z2gtc+XJDj8n4rsyx+rklDxcLngpgr5jBdyfpRKoUJJxtg6dPiHybggJtZoS/bvbTM8bZSBxmy/13ZHR+Odr79fpHDCfbX8bhyygINUS1pLk3bJH7B1YuHAKTPj5kE3Ogr5HXM3Uao5/+y/sjm/z3BOXNvjxw/DMJfSw66CEqMJzhq315cmOpQm6nTCzPPgw9woVLGc+UyTS9b7QJuh4guoev4kyJm0VQXTT5CGj/hG50HGZLTYg45lAck6ATqrHAFPZka+Yzy5qYOqxMEFNM7wDPU=
+    on:
+      repo: fdefelici/react-bootstrap-combobox
+      tags: true
+    skip_cleanup: true
+  - provider: releases
+    api_key:
+      secure: I8XWVF/OVlwTCfgvtZN1aOEUlbR1tX+8Cc6pe6Vr3xffYvXMfRcn6N9sRIxj8IqJpqXXdBw5y7+ShzkZxfhFbKh3MeOLOlA82Nq8cZI+KBJuOnFS5IjUj+HDjmVehCqX+VIzQMIEghBKlHxJ8yHtAqQavXzYSsGtHPjJ8PJtVIf0VysO4ce1mANoOOKHNurwmRLH+zCFdg913j7clcVOm+eeXvik3PKSx4878CLeueXm0A3VnyeeO5o/W91LPnV9VIXPDfT/xojKvAWXjpn+v6nbxbWk0yndkEZqNPQa0w8bUkz8z5uBbNt3oYyQgU1rEshtKwuyn/5Gy76jw/nFLsREbk6BThCdraI4onVAVuI+t/C8KLYcvvSTIEZcnerjEnJoH09sUH7+uhFnK3K3S+/E0ZWePUCSUEUnO2XKvzmzEpbD3SWrrSPgh8KiviD5Mopt3jNgWDg+7U5k0MlnbTVg4EHAl1F90Zt/OaVi/vIRPHEmG4LKsNCS7WSI/8qlu0E8XlNz1va5XKTJbTewIE+6jIAalm/lGJHw9DwhElIM7qyqAfXY9cp1Mw6OKtqezghJSj1c30tLH1kwKlHxxYaPcDfQz7pE7ZquH1eocoqWQWaR5UvS1A0GT+ucPmOVt26hgGpQRdjfzn395hJIFr9eKjYE9XBYXp0mW5rxLXo=
+    file_glob: true
+    file: fdefelici-react-bootstrap-combobox-*.tgz
+    on:
+      repo: fdefelici/react-bootstrap-combobox
+      tags: true
+    skip_cleanup: true
+

@@ -26,7 +26,7 @@
     border-radius: 4px;
     -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
     box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
-    
+    min-width: 100%;
 }
 
 .dropdown-menu.inner {
@@ -83,6 +83,7 @@
     margin-left: 0;
     float: right;
     margin-top: 9px;
+    position: absolute;
 }
 
 .select-all-button {
@@ -163,4 +164,6 @@
 
 .text-centered-button {
     padding: 0px;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }

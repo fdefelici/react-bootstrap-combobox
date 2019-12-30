@@ -348,7 +348,7 @@ class Select extends Component {
     let caretOrLoadingImg = <span className="caret"></span>;
     if (this.props.isLoading) {
       caretOrLoadingImg = (
-        <img style={{ width: "15px", height: "15px" }} src={imgLoading} />
+        <img style={{ width: "10px", height: "10px" }} src={imgLoading} />
       );
     }
 

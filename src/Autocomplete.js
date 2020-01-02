@@ -50,6 +50,12 @@ class Autocomplete extends Component {
     };
   }
 
+  static TrigEvent = {
+    reset: () => {
+      return "reset_" + Math.random().toString();
+    }
+  };
+
   prepareData = data => {
     if (data && data.length > 0) {
       if (typeof data[0] == "string") {
@@ -74,6 +80,12 @@ class Autocomplete extends Component {
   };
 
   componentDidUpdate(prevProps, prevState) {
+    if (this.props.trigEvent && this.props.trigEvent !== prevProps.trigEvent) {
+      if (this.props.trigEvent.toLowerCase().startsWith("reset"))
+        this.setState({ triggerReset: true })
+    }
+
+
     if (
       !this.utils.isEqual(
         prevState.data.map(each => {

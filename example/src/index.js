@@ -22,6 +22,7 @@ class App extends React.Component {
     trigClearCombobox1: undefined,
     disabled: false,
     isLoading: false,
+    trigResetAutocomplete: undefined,
 
     newValueAutocomplete: "default",
 
@@ -549,7 +550,7 @@ class App extends React.Component {
                               "Melon",
                               "Watermelon"
                             ].filter(each => {
-                              return each.toLowerCase().includes(text);
+                              return each.toLowerCase().includes(text.toLowerCase());
                             })
                           );
                         }, 3000);
@@ -612,7 +613,7 @@ class App extends React.Component {
                               { label: "Melon", value: "melon" },
                               { label: "Watermelon", value: "watermelon" }
                             ].filter(each => {
-                              return each.value.toLowerCase().includes(text);
+                              return each.value.toLowerCase().includes(text.toLowerCase());
                             })
                           );
                         }, 3000);
@@ -729,7 +730,7 @@ class App extends React.Component {
                                 )
                               }
                             ].filter(each => {
-                              return each.value.toLowerCase().includes(text);
+                              return each.value.toLowerCase().includes(text.toLowerCase());
                             })
                           );
                         }, 3000);
@@ -804,6 +805,7 @@ class App extends React.Component {
                         "cap.placeholder": "Search..."
                       }}
                       maxDropdownItems={5}
+                      trigEvent={this.state.trigResetAutocomplete}
                       searchFun={(text, callback) => {
                         setTimeout(() => {
                           callback([
@@ -812,7 +814,7 @@ class App extends React.Component {
                             { label: "Mango", value: "mango" },
                             { label: "Melon", value: "melon" }
                           ].filter(each => {
-                            return each.value.toLowerCase().includes(text);
+                            return each.value.toLowerCase().includes(text.toLowerCase());
                           }));
                         }, 3000);
                       }}
@@ -842,6 +844,15 @@ class App extends React.Component {
                       }}
                     >
                       Random String
+                    </button>
+
+                    <button
+                      style={{ marginTop: "5px", marginleft: "15px" }}
+                      onClick={() => {
+                        this.setState({trigResetAutocomplete: Autocomplete.TrigEvent.reset() });
+                      }}
+                    >
+                      RESET
                     </button>
                   </td>
 

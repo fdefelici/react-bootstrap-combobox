@@ -31,9 +31,9 @@ class DebouncedTextInput extends Component {
       this.props.onTextType(this.state.value);
     }
 
-    if(!prevProps.triggerReset && this.props.triggerReset) {
+    if(!prevProps.triggerClear && this.props.triggerClear) {
       this.setState({value: ""})
-      this.props.afterTriggerReset()
+      this.props.afterTriggerClear()
     }
 
     if(prevProps.newValue !== this.props.newValue && this.props.newValue !== undefined) {
@@ -58,7 +58,7 @@ class DebouncedTextInput extends Component {
         
         style={{
           boxSizing: "content-box",
-          width: "90%",
+          width: "calc(100% - 16px)",
           background: "0px center",
           border: "0px",
           fontSize: "inherit",

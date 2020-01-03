@@ -24,7 +24,7 @@ import { Select } from "@fdefelici/react-bootstrap-combobox"
 />
 ```
 
-> For a full working example take a look at the [local example](example/) or at the [live demo](https://codesandbox.io/s/github/fdefelici/react-bootstrap-combobox/tree/v1.8.0/example?fontsize=14).
+> For a full working example take a look at the [local example](example/) or at the [live demo](https://codesandbox.io/s/github/fdefelici/react-bootstrap-combobox/tree/v1.9.0/example?fontsize=14).
 
 # Configuration
 This component allow customization tweeking the following attributes:

@@ -45,10 +45,16 @@ class Autocomplete extends Component {
       isLoading: false,
       valueSelected: undefined,
       text: "",
-      triggerReset: false,
+      triggerClear: false,
       disableInput: false
     };
   }
+
+  static TrigEvent = {
+    clear: () => {
+      return "clear_" + Math.random().toString();
+    }
+  };
 
   prepareData = data => {
     if (data && data.length > 0) {
@@ -74,6 +80,12 @@ class Autocomplete extends Component {
   };
 
   componentDidUpdate(prevProps, prevState) {
+    if (this.props.trigEvent && this.props.trigEvent !== prevProps.trigEvent) {
+      if (this.props.trigEvent.toLowerCase().startsWith("clear"))
+        this.setState({ triggerClear: true })
+    }
+
+
     if (
       !this.utils.isEqual(
         prevState.data.map(each => {
@@ -121,7 +133,7 @@ class Autocomplete extends Component {
         <div className="pull-right">
           <a
             className="clear"
-            onClick={() => this.setState({ triggerReset: true })}
+            onClick={() => this.setState({ triggerClear: true })}
           >
             <img  className="wrapper-img" src={imgClear} />
           </a>
@@ -207,9 +219,9 @@ class Autocomplete extends Component {
                       selected={this.state.valueSelected}
                       delay={this.props.delay ? this.props.delay * 1000 : 0}
                       onTextType={text => this.setState({ text: text })}
-                      triggerReset={this.state.triggerReset}
-                      afterTriggerReset={() => {
-                        this.setState({ triggerReset: false })
+                      triggerClear={this.state.triggerClear}
+                      afterTriggerClear={() => {
+                        this.setState({ triggerClear: false })
 
                         if(this.props.onClear) this.props.onClear()
                         } 

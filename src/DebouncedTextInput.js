@@ -58,7 +58,7 @@ class DebouncedTextInput extends Component {
         
         style={{
           boxSizing: "content-box",
-          width: "90%",
+          width: "calc(100% - 16px)",
           background: "0px center",
           border: "0px",
           fontSize: "inherit",

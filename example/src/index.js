@@ -549,7 +549,7 @@ class App extends React.Component {
                               "Melon",
                               "Watermelon"
                             ].filter(each => {
-                              return each.toLowerCase().includes(text);
+                              return each.toLowerCase().includes(text.toLowerCase());
                             })
                           );
                         }, 3000);
@@ -612,7 +612,7 @@ class App extends React.Component {
                               { label: "Melon", value: "melon" },
                               { label: "Watermelon", value: "watermelon" }
                             ].filter(each => {
-                              return each.value.toLowerCase().includes(text);
+                              return each.value.toLowerCase().includes(text.toLowerCase());
                             })
                           );
                         }, 3000);
@@ -729,7 +729,7 @@ class App extends React.Component {
                                 )
                               }
                             ].filter(each => {
-                              return each.value.toLowerCase().includes(text);
+                              return each.value.toLowerCase().includes(text.toLowerCase());
                             })
                           );
                         }, 3000);
@@ -812,7 +812,7 @@ class App extends React.Component {
                             { label: "Mango", value: "mango" },
                             { label: "Melon", value: "melon" }
                           ].filter(each => {
-                            return each.value.toLowerCase().includes(text);
+                            return each.value.toLowerCase().includes(text.toLowerCase());
                           }));
                         }, 3000);
                       }}

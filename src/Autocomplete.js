@@ -154,7 +154,6 @@ class Autocomplete extends Component {
           {this.state.data.map(each => {
             return (
               <li
-                className="noselect"
                 key={this.idRbc + "_" + each.value + "_" + each.index}
               >
                 <a
@@ -187,12 +186,13 @@ class Autocomplete extends Component {
         <div className="input-box" style={{width: this.props.width?this.props.width: "100%" }}>
           <div
             className="input-container"
-          
+            style={{width: this.props.width?this.props.width: "100%" }}
           >
-            <div className="rbc-2b097c-container ">
-              <div className="rbc-13srbr-control ">
+            
+              
                 <div className="rbc-1hwfws3">
                   <div className="rbc-b8ldur-Input">
+                    <div style={{width:"calc(100% - 16px)", marginLeft:"8px", marginRight:"8px"}}>
                     <DebouncedTextInput
                       newValue={this.props.value}
                       id={this.props.id}
@@ -232,10 +232,11 @@ class Autocomplete extends Component {
                     />
                     {loadingImg}
                     {clearImg}
+                    </div>
                   </div>
                 </div>
-              </div>
-            </div>
+              
+            
 
             <div
               className={"dropdown-menu " + (this.state.isOpen ? "open" : "")}

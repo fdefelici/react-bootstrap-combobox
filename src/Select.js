@@ -404,9 +404,9 @@ class Select extends Component {
 
     return (
       <LostFocusHandler onClickOutside={() => this.setState({ isOpen: false })}>
-        <div id={this.idRbc} className="input-box">
+        <div id={this.idRbc} className="input-box" style={{ width: (this.props.width ? this.props.width : "100%") }}>
           <button
-            style={{ width: this.props.width ? this.props.width : "100%" }}
+            
             id={this.idMenuButton}
             onClick={this.closeOrOpen}
             type="button"
@@ -431,7 +431,7 @@ class Select extends Component {
             {caretOrLoadingImg}
           </button>
           <div
-            style={{ width: this.props.width ? this.props.width : "100%" }}
+            style={{ width: this.props.menuWidth ? this.props.menuWidth : "100%" }}
             className={
               "dropdown-menu " +
               (this.state.isOpen &&

@@ -252,7 +252,7 @@ class Autocomplete extends Component {
 
             <div
               className={"dropdown-menu " + (this.state.isOpen ? "open" : "")}
-              style={{width : this.props.width?this.props.width: "100%" }}
+              style={{ width: this.props.menuWidth ? this.props.menuWidth : "100%" }}
             >
               {menu}
             </div>

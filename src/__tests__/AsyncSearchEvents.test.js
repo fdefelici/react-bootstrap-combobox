@@ -219,7 +219,7 @@ describe("Async Component Events tests", () => {
     component.update();
 
     expect(component.find(".input-box").html()).toEqual(
-      '<div class=\"input-box\" style=\"width: 200px;\"><div class=\"input-container\" style=\"width: 200px;\"><div class=\"rbc-1hwfws3\"><div class=\"rbc-b8ldur-Input\"><div style=\"margin-left: 8px; margin-right: 8px;\"><input id=\"rbc-13sxxr-input-\" class=\"rbc-13sxxr-input\" placeholder=\"Search...\" type=\"search\" style=\"box-sizing: content-box; background: center; border: 0px; font-size: inherit; opacity: 1; outline: 0px;\" autocomplete=\"off\" value=\"\"></div></div></div><div class=\"dropdown-menu \" style=\"width: 200px;\"><div class=\"rbc-padding-left20 noselect\">No items</div></div></div></div>'
+      '<div class=\"input-box\" style=\"width: 200px;\"><div class=\"input-container\" style=\"width: 200px;\"><div class=\"rbc-1hwfws3\"><div class=\"rbc-b8ldur-Input\"><div style=\"margin-left: 8px; margin-right: 8px;\"><input id=\"rbc-13sxxr-input-\" class=\"rbc-13sxxr-input\" placeholder=\"Search...\" type=\"search\" style=\"box-sizing: content-box; background: center; border: 0px; font-size: inherit; opacity: 1; outline: 0px;\" autocomplete=\"off\" value=\"\"></div></div></div><div class=\"dropdown-menu \" style=\"width: 100%;\"><div class=\"rbc-padding-left20 noselect\">No items</div></div></div></div>'
     );
 
   });

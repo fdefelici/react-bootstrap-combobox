@@ -35,7 +35,7 @@ describe("Selection Events tests", () => {
 
     shallow(component.find("a").get(0)).simulate("click");
     expect(component.find("#rbc-menu-button-123").html()).toEqual(
-      '<button style=\"width:100%\" id=\"rbc-menu-button-123\" type=\"button\" class=\"btn btn-default dropdown-toggle show-special-title button-dropdown\"><span class=\"pull-left filter-option\"></span><span class=\"pull-left special-title\" id=\"caption-text-area-container-rbc-123\"><div class=\"caption-text-area\" id=\"caption-text-area-rbc-123\">AA</div></span> <span class=\"caret\"></span></button>'
+      '<button id=\"rbc-menu-button-123\" type=\"button\" class=\"btn btn-default dropdown-toggle show-special-title button-dropdown\"><span class=\"pull-left filter-option\"></span><span class=\"pull-left special-title\" id=\"caption-text-area-container-rbc-123\"><div class=\"caption-text-area\" id=\"caption-text-area-rbc-123\">AA</div></span> <span class=\"caret\"></span></button>'
     );
 
     let eventObj = { target: { value: "BB" } };
@@ -109,17 +109,17 @@ describe("Selection Events tests", () => {
     component.update();
 
     expect(component.find("#rbc-menu-button-123").html()).toEqual(
-      '<button style=\"width:100%\" id=\"rbc-menu-button-123\" type=\"button\" class=\"btn btn-default dropdown-toggle show-special-title button-dropdown\"><span class=\"pull-left filter-option\"></span><span class=\"pull-left special-title\" id=\"caption-text-area-container-rbc-123\"><div class=\"caption-text-area\" id=\"caption-text-area-rbc-123\">Select a car</div></span> <span class=\"caret\"></span></button>'
+      '<button id=\"rbc-menu-button-123\" type=\"button\" class=\"btn btn-default dropdown-toggle show-special-title button-dropdown\"><span class=\"pull-left filter-option\"></span><span class=\"pull-left special-title\" id=\"caption-text-area-container-rbc-123\"><div class=\"caption-text-area\" id=\"caption-text-area-rbc-123\">Select a car</div></span> <span class=\"caret\"></span></button>'
     );
 
     component.find("#rbc-menu-button-selectall-button-123").simulate("click");
     expect(component.find("#rbc-menu-button-123").html()).toEqual(
-      '<button style=\"width:100%\" id=\"rbc-menu-button-123\" type=\"button\" class=\"btn btn-default dropdown-toggle show-special-title button-dropdown\"><span class=\"pull-left filter-option\"></span><span class=\"pull-left special-title\" id=\"caption-text-area-container-rbc-123\"><div class=\"caption-text-area\" id=\"caption-text-area-rbc-123\">9 of 9 cars selected</div></span> <span class=\"caret\"></span></button>'
+      '<button id=\"rbc-menu-button-123\" type=\"button\" class=\"btn btn-default dropdown-toggle show-special-title button-dropdown\"><span class=\"pull-left filter-option\"></span><span class=\"pull-left special-title\" id=\"caption-text-area-container-rbc-123\"><div class=\"caption-text-area\" id=\"caption-text-area-rbc-123\">9 of 9 cars selected</div></span> <span class=\"caret\"></span></button>'
     );
 
     component.find("#rbc-menu-button-deselectall-button-123").simulate("click");
     expect(component.find("#rbc-menu-button-123").html()).toEqual(
-      '<button style=\"width:100%\" id=\"rbc-menu-button-123\" type=\"button\" class=\"btn btn-default dropdown-toggle show-special-title button-dropdown\"><span class=\"pull-left filter-option\"></span><span class=\"pull-left special-title\" id=\"caption-text-area-container-rbc-123\"><div class=\"caption-text-area\" id=\"caption-text-area-rbc-123\">Select a car</div></span> <span class=\"caret\"></span></button>'
+      '<button id=\"rbc-menu-button-123\" type=\"button\" class=\"btn btn-default dropdown-toggle show-special-title button-dropdown\"><span class=\"pull-left filter-option\"></span><span class=\"pull-left special-title\" id=\"caption-text-area-container-rbc-123\"><div class=\"caption-text-area\" id=\"caption-text-area-rbc-123\">Select a car</div></span> <span class=\"caret\"></span></button>'
     );
   });
 
@@ -145,17 +145,17 @@ describe("Selection Events tests", () => {
     component.update();
 
     expect(component.find("#rbc-menu-button-123").html()).toEqual(
-      '<button style=\"width:100%\" id=\"rbc-menu-button-123\" type=\"button\" class=\"btn btn-default dropdown-toggle show-special-title button-dropdown\"><span class=\"pull-left filter-option\"></span><span class=\"pull-left special-title\" id=\"caption-text-area-container-rbc-123\"><div class=\"caption-text-area\" id=\"caption-text-area-rbc-123\">Select a car</div></span> <span class=\"caret\"></span></button>'
+      '<button id=\"rbc-menu-button-123\" type=\"button\" class=\"btn btn-default dropdown-toggle show-special-title button-dropdown\"><span class=\"pull-left filter-option\"></span><span class=\"pull-left special-title\" id=\"caption-text-area-container-rbc-123\"><div class=\"caption-text-area\" id=\"caption-text-area-rbc-123\">Select a car</div></span> <span class=\"caret\"></span></button>'
     );
 
     shallow(component.find("a").get(0)).simulate("click");
     expect(component.find("#rbc-menu-button-123").html()).toEqual(
-      '<button style=\"width:100%\" id=\"rbc-menu-button-123\" type=\"button\" class=\"btn btn-default dropdown-toggle show-special-title button-dropdown\"><span class=\"pull-left filter-option\"></span><span class=\"pull-left special-title\" id=\"caption-text-area-container-rbc-123\"><div class=\"caption-text-area\" id=\"caption-text-area-rbc-123\">1 of 9 cars selected</div></span> <span class=\"caret\"></span></button>'
+      '<button id=\"rbc-menu-button-123\" type=\"button\" class=\"btn btn-default dropdown-toggle show-special-title button-dropdown\"><span class=\"pull-left filter-option\"></span><span class=\"pull-left special-title\" id=\"caption-text-area-container-rbc-123\"><div class=\"caption-text-area\" id=\"caption-text-area-rbc-123\">1 of 9 cars selected</div></span> <span class=\"caret\"></span></button>'
     );
 
     component.find("#rbc-menu-button-deselectall-button-123").simulate("click");
     expect(component.find("#rbc-menu-button-123").html()).toEqual(
-      '<button style=\"width:100%\" id=\"rbc-menu-button-123\" type=\"button\" class=\"btn btn-default dropdown-toggle show-special-title button-dropdown\"><span class=\"pull-left filter-option\"></span><span class=\"pull-left special-title\" id=\"caption-text-area-container-rbc-123\"><div class=\"caption-text-area\" id=\"caption-text-area-rbc-123\">Select a car</div></span> <span class=\"caret\"></span></button>'
+      '<button id=\"rbc-menu-button-123\" type=\"button\" class=\"btn btn-default dropdown-toggle show-special-title button-dropdown\"><span class=\"pull-left filter-option\"></span><span class=\"pull-left special-title\" id=\"caption-text-area-container-rbc-123\"><div class=\"caption-text-area\" id=\"caption-text-area-rbc-123\">Select a car</div></span> <span class=\"caret\"></span></button>'
     );
   });
 
@@ -181,12 +181,12 @@ describe("Selection Events tests", () => {
     component.update();
 
     expect(component.find("#rbc-menu-button-123").html()).toEqual(
-      '<button style=\"width:100%\" id=\"rbc-menu-button-123\" type=\"button\" class=\"btn btn-default dropdown-toggle show-special-title button-dropdown\"><span class=\"pull-left filter-option\"></span><span class=\"pull-left special-title\" id=\"caption-text-area-container-rbc-123\"><div class=\"caption-text-area\" id=\"caption-text-area-rbc-123\">Select a car</div></span> <span class=\"caret\"></span></button>'
+      '<button id=\"rbc-menu-button-123\" type=\"button\" class=\"btn btn-default dropdown-toggle show-special-title button-dropdown\"><span class=\"pull-left filter-option\"></span><span class=\"pull-left special-title\" id=\"caption-text-area-container-rbc-123\"><div class=\"caption-text-area\" id=\"caption-text-area-rbc-123\">Select a car</div></span> <span class=\"caret\"></span></button>'
     );
 
     component.find("#rbc-menu-button-selectall-button-123").simulate("click");
     expect(component.find("#rbc-menu-button-123").html()).toEqual(
-      '<button style=\"width:100%\" id=\"rbc-menu-button-123\" type=\"button\" class=\"btn btn-default dropdown-toggle show-special-title button-dropdown\"><span class=\"pull-left filter-option\"></span><span class=\"pull-left special-title\" id=\"caption-text-area-container-rbc-123\"><div class=\"caption-text-area\" id=\"caption-text-area-rbc-123\">9 of 9 cars selected</div></span> <span class=\"caret\"></span></button>'
+      '<button id=\"rbc-menu-button-123\" type=\"button\" class=\"btn btn-default dropdown-toggle show-special-title button-dropdown\"><span class=\"pull-left filter-option\"></span><span class=\"pull-left special-title\" id=\"caption-text-area-container-rbc-123\"><div class=\"caption-text-area\" id=\"caption-text-area-rbc-123\">9 of 9 cars selected</div></span> <span class=\"caret\"></span></button>'
     );
     expect(component.find("#rbc-menu-button-dropdown-list-123").html()).toEqual(
       '<ul id="rbc-menu-button-dropdown-list-123" class="dropdown-menu inner" style="max-height:156px"> <li class="noselect"><a class=""><span class="rbc-icon"></span>AA<span class="glyphicon glyphicon-ok"></span></a></li><li class="noselect"><a class=""><span class="rbc-icon"></span>AA<span class="glyphicon glyphicon-ok"></span></a></li><li class="noselect"><a class=""><span class="rbc-icon"></span>AA<span class="glyphicon glyphicon-ok"></span></a></li><li class="noselect"><a class=""><span class="rbc-icon"></span>CC<span class="glyphicon glyphicon-ok"></span></a></li><li class="noselect"><a class=""><span class="rbc-icon"></span>DD<span class="glyphicon glyphicon-ok"></span></a></li><li class="noselect"><a class=""><span class="rbc-icon"></span>BB<span class="glyphicon glyphicon-ok"></span></a></li><li class="noselect"><a class=""><span class="rbc-icon"></span>EE<span class="glyphicon glyphicon-ok"></span></a></li><li class="noselect"><a class=""><span class="rbc-icon"></span>FF<span class="glyphicon glyphicon-ok"></span></a></li><li class="noselect"><a class=""><span class="rbc-icon"></span>GG<span class="glyphicon glyphicon-ok"></span></a></li></ul>'
@@ -194,7 +194,7 @@ describe("Selection Events tests", () => {
 
     component.find("#rbc-menu-button-deselectall-button-123").simulate("click");
     expect(component.find("#rbc-menu-button-123").html()).toEqual(
-      '<button style=\"width:100%\" id=\"rbc-menu-button-123\" type=\"button\" class=\"btn btn-default dropdown-toggle show-special-title button-dropdown\"><span class=\"pull-left filter-option\"></span><span class=\"pull-left special-title\" id=\"caption-text-area-container-rbc-123\"><div class=\"caption-text-area\" id=\"caption-text-area-rbc-123\">Select a car</div></span> <span class=\"caret\"></span></button>'
+      '<button id=\"rbc-menu-button-123\" type=\"button\" class=\"btn btn-default dropdown-toggle show-special-title button-dropdown\"><span class=\"pull-left filter-option\"></span><span class=\"pull-left special-title\" id=\"caption-text-area-container-rbc-123\"><div class=\"caption-text-area\" id=\"caption-text-area-rbc-123\">Select a car</div></span> <span class=\"caret\"></span></button>'
     );
     expect(component.find("#rbc-menu-button-dropdown-list-123").html()).toEqual(
       '<ul id="rbc-menu-button-dropdown-list-123" class="dropdown-menu inner" style="max-height:156px"> <li class="noselect"><a class=""><span class="rbc-icon"></span>AA<span class=""></span></a></li><li class="noselect"><a class=""><span class="rbc-icon"></span>AA<span class=""></span></a></li><li class="noselect"><a class=""><span class="rbc-icon"></span>AA<span class=""></span></a></li><li class="noselect"><a class=""><span class="rbc-icon"></span>CC<span class=""></span></a></li><li class="noselect"><a class=""><span class="rbc-icon"></span>DD<span class=""></span></a></li><li class="noselect"><a class=""><span class="rbc-icon"></span>BB<span class=""></span></a></li><li class="noselect"><a class=""><span class="rbc-icon"></span>EE<span class=""></span></a></li><li class="noselect"><a class=""><span class="rbc-icon"></span>FF<span class=""></span></a></li><li class="noselect"><a class=""><span class="rbc-icon"></span>GG<span class=""></span></a></li></ul>'
@@ -215,12 +215,12 @@ describe("Selection Events tests", () => {
     component.update();
 
     expect(component.find("#rbc-menu-button-123").html()).toEqual(
-      '<button style=\"width:100%\" id=\"rbc-menu-button-123\" type=\"button\" class=\"btn btn-default dropdown-toggle show-special-title button-dropdown\"><span class=\"pull-left filter-option\"></span><span class=\"pull-left special-title\" id=\"caption-text-area-container-rbc-123\"><div class=\"caption-text-area\" id=\"caption-text-area-rbc-123\">Select an item</div></span> <span class=\"caret\"></span></button>'
+      '<button id=\"rbc-menu-button-123\" type=\"button\" class=\"btn btn-default dropdown-toggle show-special-title button-dropdown\"><span class=\"pull-left filter-option\"></span><span class=\"pull-left special-title\" id=\"caption-text-area-container-rbc-123\"><div class=\"caption-text-area\" id=\"caption-text-area-rbc-123\">Select an item</div></span> <span class=\"caret\"></span></button>'
     );
 
     shallow(component.find("a").get(0)).simulate("click");
     expect(component.find("#rbc-menu-button-123").html()).toEqual(
-      '<button style=\"width:100%\" id=\"rbc-menu-button-123\" type=\"button\" class=\"btn btn-default dropdown-toggle show-special-title button-dropdown\"><span class=\"pull-left filter-option\"></span><span class=\"pull-left special-title\" id=\"caption-text-area-container-rbc-123\"><div class=\"caption-text-area\" id=\"caption-text-area-rbc-123\">1 item selected</div></span> <span class=\"caret\"></span></button>'
+      '<button id=\"rbc-menu-button-123\" type=\"button\" class=\"btn btn-default dropdown-toggle show-special-title button-dropdown\"><span class=\"pull-left filter-option\"></span><span class=\"pull-left special-title\" id=\"caption-text-area-container-rbc-123\"><div class=\"caption-text-area\" id=\"caption-text-area-rbc-123\">1 item selected</div></span> <span class=\"caret\"></span></button>'
     );
 
     let eventObj = { target: { value: "B" } };
@@ -251,17 +251,17 @@ describe("Selection Events tests", () => {
     component.update();
 
     expect(component.find("#rbc-menu-button-123").html()).toEqual(
-      '<button style=\"width:100%\" id=\"rbc-menu-button-123\" type=\"button\" class=\"btn btn-default dropdown-toggle show-special-title button-dropdown\"><span class=\"pull-left filter-option\"></span><span class=\"pull-left special-title\" id=\"caption-text-area-container-rbc-123\"><div class=\"caption-text-area\" id=\"caption-text-area-rbc-123\">Select an item</div></span> <span class=\"caret\"></span></button>'
+      '<button id=\"rbc-menu-button-123\" type=\"button\" class=\"btn btn-default dropdown-toggle show-special-title button-dropdown\"><span class=\"pull-left filter-option\"></span><span class=\"pull-left special-title\" id=\"caption-text-area-container-rbc-123\"><div class=\"caption-text-area\" id=\"caption-text-area-rbc-123\">Select an item</div></span> <span class=\"caret\"></span></button>'
     );
 
     shallow(component.find("a").get(0)).simulate("click");
     expect(component.find("#rbc-menu-button-123").html()).toEqual(
-      '<button style=\"width:100%\" id=\"rbc-menu-button-123\" type=\"button\" class=\"btn btn-default dropdown-toggle show-special-title button-dropdown\"><span class=\"pull-left filter-option\"></span><span class=\"pull-left special-title\" id=\"caption-text-area-container-rbc-123\"><div class=\"caption-text-area\" id=\"caption-text-area-rbc-123\">1 item selected</div></span> <span class=\"caret\"></span></button>'
+      '<button id=\"rbc-menu-button-123\" type=\"button\" class=\"btn btn-default dropdown-toggle show-special-title button-dropdown\"><span class=\"pull-left filter-option\"></span><span class=\"pull-left special-title\" id=\"caption-text-area-container-rbc-123\"><div class=\"caption-text-area\" id=\"caption-text-area-rbc-123\">1 item selected</div></span> <span class=\"caret\"></span></button>'
     );
 
     shallow(component.find("a").get(1)).simulate("click");
     expect(component.find("#rbc-menu-button-123").html()).toEqual(
-      '<button style=\"width:100%\" id=\"rbc-menu-button-123\" type=\"button\" class=\"btn btn-default dropdown-toggle show-special-title button-dropdown\"><span class=\"pull-left filter-option\"></span><span class=\"pull-left special-title\" id=\"caption-text-area-container-rbc-123\"><div class=\"caption-text-area\" id=\"caption-text-area-rbc-123\">2 items selected</div></span> <span class=\"caret\"></span></button>'
+      '<button id=\"rbc-menu-button-123\" type=\"button\" class=\"btn btn-default dropdown-toggle show-special-title button-dropdown\"><span class=\"pull-left filter-option\"></span><span class=\"pull-left special-title\" id=\"caption-text-area-container-rbc-123\"><div class=\"caption-text-area\" id=\"caption-text-area-rbc-123\">2 items selected</div></span> <span class=\"caret\"></span></button>'
     );
   });
 
@@ -279,12 +279,12 @@ describe("Selection Events tests", () => {
     component.update();
 
     expect(component.find("#rbc-menu-button-123").html()).toEqual(
-      '<button style=\"width:100%\" id=\"rbc-menu-button-123\" type=\"button\" class=\"btn btn-default dropdown-toggle show-special-title button-dropdown\"><span class=\"pull-left filter-option\"></span><span class=\"pull-left special-title\" id=\"caption-text-area-container-rbc-123\"><div class=\"caption-text-area\" id=\"caption-text-area-rbc-123\">Select an item</div></span> <span class=\"caret\"></span></button>'
+      '<button id=\"rbc-menu-button-123\" type=\"button\" class=\"btn btn-default dropdown-toggle show-special-title button-dropdown\"><span class=\"pull-left filter-option\"></span><span class=\"pull-left special-title\" id=\"caption-text-area-container-rbc-123\"><div class=\"caption-text-area\" id=\"caption-text-area-rbc-123\">Select an item</div></span> <span class=\"caret\"></span></button>'
     );
 
     shallow(component.find("a").get(0)).simulate("click");
     expect(component.find("#rbc-menu-button-123").html()).toEqual(
-      '<button style=\"width:100%\" id=\"rbc-menu-button-123\" type=\"button\" class=\"btn btn-default dropdown-toggle show-special-title button-dropdown\"><span class=\"pull-left filter-option\"></span><span class=\"pull-left special-title\" id=\"caption-text-area-container-rbc-123\"><div class=\"caption-text-area\" id=\"caption-text-area-rbc-123\">1 item selected</div></span> <span class=\"caret\"></span></button>'
+      '<button id=\"rbc-menu-button-123\" type=\"button\" class=\"btn btn-default dropdown-toggle show-special-title button-dropdown\"><span class=\"pull-left filter-option\"></span><span class=\"pull-left special-title\" id=\"caption-text-area-container-rbc-123\"><div class=\"caption-text-area\" id=\"caption-text-area-rbc-123\">1 item selected</div></span> <span class=\"caret\"></span></button>'
     );
     expect(component.find("#rbc-menu-button-dropdown-list-123").html()).toEqual(
       '<ul id="rbc-menu-button-dropdown-list-123" class="dropdown-menu inner" style="max-height:156px"> <li class="noselect"><a class=""><span class="rbc-icon"></span>AA<span class="glyphicon glyphicon-ok"></span></a></li><li class="noselect"><a class=""><span class="rbc-icon"></span>AA<span class=""></span></a></li><li class="noselect"><a class=""><span class="rbc-icon"></span>AA<span class=""></span></a></li><li class="noselect"><a class=""><span class="rbc-icon"></span>CC<span class=""></span></a></li><li class="noselect"><a class=""><span class="rbc-icon"></span>DD<span class=""></span></a></li><li class="noselect"><a class=""><span class="rbc-icon"></span>EE<span class=""></span></a></li><li class="noselect"><a class=""><span class="rbc-icon"></span>FF<span class=""></span></a></li><li class="noselect"><a class=""><span class="rbc-icon"></span>GG<span class=""></span></a></li></ul>'
@@ -292,7 +292,7 @@ describe("Selection Events tests", () => {
 
     shallow(component.find("a").get(1)).simulate("click");
     expect(component.find("#rbc-menu-button-123").html()).toEqual(
-      '<button style=\"width:100%\" id=\"rbc-menu-button-123\" type=\"button\" class=\"btn btn-default dropdown-toggle show-special-title button-dropdown\"><span class=\"pull-left filter-option\"></span><span class=\"pull-left special-title\" id=\"caption-text-area-container-rbc-123\"><div class=\"caption-text-area\" id=\"caption-text-area-rbc-123\">2 items selected</div></span> <span class=\"caret\"></span></button>'
+      '<button id=\"rbc-menu-button-123\" type=\"button\" class=\"btn btn-default dropdown-toggle show-special-title button-dropdown\"><span class=\"pull-left filter-option\"></span><span class=\"pull-left special-title\" id=\"caption-text-area-container-rbc-123\"><div class=\"caption-text-area\" id=\"caption-text-area-rbc-123\">2 items selected</div></span> <span class=\"caret\"></span></button>'
     );
     expect(component.find("#rbc-menu-button-dropdown-list-123").html()).toEqual(
       '<ul id="rbc-menu-button-dropdown-list-123" class="dropdown-menu inner" style="max-height:156px"> <li class="noselect"><a class=""><span class="rbc-icon"></span>AA<span class="glyphicon glyphicon-ok"></span></a></li><li class="noselect"><a class=""><span class="rbc-icon"></span>AA<span class="glyphicon glyphicon-ok"></span></a></li><li class="noselect"><a class=""><span class="rbc-icon"></span>AA<span class=""></span></a></li><li class="noselect"><a class=""><span class="rbc-icon"></span>CC<span class=""></span></a></li><li class="noselect"><a class=""><span class="rbc-icon"></span>DD<span class=""></span></a></li><li class="noselect"><a class=""><span class="rbc-icon"></span>EE<span class=""></span></a></li><li class="noselect"><a class=""><span class="rbc-icon"></span>FF<span class=""></span></a></li><li class="noselect"><a class=""><span class="rbc-icon"></span>GG<span class=""></span></a></li></ul>'
@@ -313,12 +313,12 @@ describe("Selection Events tests", () => {
     component.update();
 
     expect(component.find("#rbc-menu-button-123").html()).toEqual(
-      '<button style=\"width:100%\" id=\"rbc-menu-button-123\" type=\"button\" class=\"btn btn-default dropdown-toggle show-special-title button-dropdown\"><span class=\"pull-left filter-option\"></span><span class=\"pull-left special-title\" id=\"caption-text-area-container-rbc-123\"><div class=\"caption-text-area\" id=\"caption-text-area-rbc-123\">Select an item</div></span> <span class=\"caret\"></span></button>'
+      '<button id=\"rbc-menu-button-123\" type=\"button\" class=\"btn btn-default dropdown-toggle show-special-title button-dropdown\"><span class=\"pull-left filter-option\"></span><span class=\"pull-left special-title\" id=\"caption-text-area-container-rbc-123\"><div class=\"caption-text-area\" id=\"caption-text-area-rbc-123\">Select an item</div></span> <span class=\"caret\"></span></button>'
     );
 
     shallow(component.find("a").get(0)).simulate("click");
     expect(component.find("#rbc-menu-button-123").html()).toEqual(
-      '<button style=\"width:100%\" id=\"rbc-menu-button-123\" type=\"button\" class=\"btn btn-default dropdown-toggle show-special-title button-dropdown\"><span class=\"pull-left filter-option\"></span><span class=\"pull-left special-title\" id=\"caption-text-area-container-rbc-123\"><div class=\"caption-text-area\" id=\"caption-text-area-rbc-123\">1 item selected</div></span> <span class=\"caret\"></span></button>'
+      '<button id=\"rbc-menu-button-123\" type=\"button\" class=\"btn btn-default dropdown-toggle show-special-title button-dropdown\"><span class=\"pull-left filter-option\"></span><span class=\"pull-left special-title\" id=\"caption-text-area-container-rbc-123\"><div class=\"caption-text-area\" id=\"caption-text-area-rbc-123\">1 item selected</div></span> <span class=\"caret\"></span></button>'
     );
     expect(component.find("#rbc-menu-button-dropdown-list-123").html()).toEqual(
       '<ul id="rbc-menu-button-dropdown-list-123" class="dropdown-menu inner" style="max-height:156px"> <li class="noselect"><a class=""><span class="rbc-icon"></span>AA<span class="glyphicon glyphicon-ok"></span></a></li><li class="noselect"><a class=""><span class="rbc-icon"></span>AA<span class=""></span></a></li><li class="noselect"><a class=""><span class="rbc-icon"></span>AA<span class=""></span></a></li><li class="noselect"><a class=""><span class="rbc-icon"></span>CC<span class=""></span></a></li><li class="noselect"><a class=""><span class="rbc-icon"></span>DD<span class=""></span></a></li><li class="noselect"><a class=""><span class="rbc-icon"></span>EE<span class=""></span></a></li><li class="noselect"><a class=""><span class="rbc-icon"></span>FF<span class=""></span></a></li><li class="noselect"><a class=""><span class="rbc-icon"></span>GG<span class=""></span></a></li></ul>'
@@ -326,7 +326,7 @@ describe("Selection Events tests", () => {
 
     shallow(component.find("a").get(0)).simulate("click");
     expect(component.find("#rbc-menu-button-123").html()).toEqual(
-      '<button style=\"width:100%\" id=\"rbc-menu-button-123\" type=\"button\" class=\"btn btn-default dropdown-toggle show-special-title button-dropdown\"><span class=\"pull-left filter-option\"></span><span class=\"pull-left special-title\" id=\"caption-text-area-container-rbc-123\"><div class=\"caption-text-area\" id=\"caption-text-area-rbc-123\">Select an item</div></span> <span class=\"caret\"></span></button>'
+      '<button id=\"rbc-menu-button-123\" type=\"button\" class=\"btn btn-default dropdown-toggle show-special-title button-dropdown\"><span class=\"pull-left filter-option\"></span><span class=\"pull-left special-title\" id=\"caption-text-area-container-rbc-123\"><div class=\"caption-text-area\" id=\"caption-text-area-rbc-123\">Select an item</div></span> <span class=\"caret\"></span></button>'
     );
     expect(component.find("#rbc-menu-button-dropdown-list-123").html()).toEqual(
       '<ul id="rbc-menu-button-dropdown-list-123" class="dropdown-menu inner" style="max-height:156px"> <li class="noselect"><a class=""><span class="rbc-icon"></span>AA<span class=""></span></a></li><li class="noselect"><a class=""><span class="rbc-icon"></span>AA<span class=""></span></a></li><li class="noselect"><a class=""><span class="rbc-icon"></span>AA<span class=""></span></a></li><li class="noselect"><a class=""><span class="rbc-icon"></span>CC<span class=""></span></a></li><li class="noselect"><a class=""><span class="rbc-icon"></span>DD<span class=""></span></a></li><li class="noselect"><a class=""><span class="rbc-icon"></span>EE<span class=""></span></a></li><li class="noselect"><a class=""><span class="rbc-icon"></span>FF<span class=""></span></a></li><li class="noselect"><a class=""><span class="rbc-icon"></span>GG<span class=""></span></a></li></ul>'
@@ -346,12 +346,12 @@ describe("Selection Events tests", () => {
     component.update();
 
     expect(component.find("#rbc-menu-button-123").html()).toEqual(
-      '<button style=\"width:100%\" id=\"rbc-menu-button-123\" type=\"button\" class=\"btn btn-default dropdown-toggle show-special-title button-dropdown\"><span class=\"pull-left filter-option\"></span><span class=\"pull-left special-title\" id=\"caption-text-area-container-rbc-123\"><div class=\"caption-text-area\" id=\"caption-text-area-rbc-123\">Select an item</div></span> <span class=\"caret\"></span></button>'
+      '<button id=\"rbc-menu-button-123\" type=\"button\" class=\"btn btn-default dropdown-toggle show-special-title button-dropdown\"><span class=\"pull-left filter-option\"></span><span class=\"pull-left special-title\" id=\"caption-text-area-container-rbc-123\"><div class=\"caption-text-area\" id=\"caption-text-area-rbc-123\">Select an item</div></span> <span class=\"caret\"></span></button>'
     );
 
     shallow(component.find("a").get(0)).simulate("click");
     expect(component.find("#rbc-menu-button-123").html()).toEqual(
-      '<button style=\"width:100%\" id=\"rbc-menu-button-123\" type=\"button\" class=\"btn btn-default dropdown-toggle show-special-title button-dropdown\"><span class=\"pull-left filter-option\"></span><span class=\"pull-left special-title\" id=\"caption-text-area-container-rbc-123\"><div class=\"caption-text-area\" id=\"caption-text-area-rbc-123\">AA</div></span> <span class=\"caret\"></span></button>'
+      '<button id=\"rbc-menu-button-123\" type=\"button\" class=\"btn btn-default dropdown-toggle show-special-title button-dropdown\"><span class=\"pull-left filter-option\"></span><span class=\"pull-left special-title\" id=\"caption-text-area-container-rbc-123\"><div class=\"caption-text-area\" id=\"caption-text-area-rbc-123\">AA</div></span> <span class=\"caret\"></span></button>'
     );
     expect(component.find("#rbc-menu-button-dropdown-list-123").html()).toEqual(
       '<ul id="rbc-menu-button-dropdown-list-123" class="dropdown-menu inner" style="max-height:156px"> <li class="noselect"><a class=""><span class="rbc-icon"></span>AA<span class="glyphicon glyphicon-ok"></span></a></li><li class="noselect"><a class=""><span class="rbc-icon"></span>AA<span class=""></span></a></li><li class="noselect"><a class=""><span class="rbc-icon"></span>AA<span class=""></span></a></li><li class="noselect"><a class=""><span class="rbc-icon"></span>CC<span class=""></span></a></li><li class="noselect"><a class=""><span class="rbc-icon"></span>DD<span class=""></span></a></li><li class="noselect"><a class=""><span class="rbc-icon"></span>EE<span class=""></span></a></li><li class="noselect"><a class=""><span class="rbc-icon"></span>FF<span class=""></span></a></li><li class="noselect"><a class=""><span class="rbc-icon"></span>GG<span class=""></span></a></li></ul>'
@@ -359,7 +359,7 @@ describe("Selection Events tests", () => {
 
     shallow(component.find("a").get(0)).simulate("click");
     expect(component.find("#rbc-menu-button-123").html()).toEqual(
-      '<button style=\"width:100%\" id=\"rbc-menu-button-123\" type=\"button\" class=\"btn btn-default dropdown-toggle show-special-title button-dropdown\"><span class=\"pull-left filter-option\"></span><span class=\"pull-left special-title\" id=\"caption-text-area-container-rbc-123\"><div class=\"caption-text-area\" id=\"caption-text-area-rbc-123\">AA</div></span> <span class=\"caret\"></span></button>'
+      '<button id=\"rbc-menu-button-123\" type=\"button\" class=\"btn btn-default dropdown-toggle show-special-title button-dropdown\"><span class=\"pull-left filter-option\"></span><span class=\"pull-left special-title\" id=\"caption-text-area-container-rbc-123\"><div class=\"caption-text-area\" id=\"caption-text-area-rbc-123\">AA</div></span> <span class=\"caret\"></span></button>'
     );
     expect(component.find("#rbc-menu-button-dropdown-list-123").html()).toEqual(
       '<ul id="rbc-menu-button-dropdown-list-123" class="dropdown-menu inner" style="max-height:156px"> <li class="noselect"><a class=""><span class="rbc-icon"></span>AA<span class="glyphicon glyphicon-ok"></span></a></li><li class="noselect"><a class=""><span class="rbc-icon"></span>AA<span class=""></span></a></li><li class="noselect"><a class=""><span class="rbc-icon"></span>AA<span class=""></span></a></li><li class="noselect"><a class=""><span class="rbc-icon"></span>CC<span class=""></span></a></li><li class="noselect"><a class=""><span class="rbc-icon"></span>DD<span class=""></span></a></li><li class="noselect"><a class=""><span class="rbc-icon"></span>EE<span class=""></span></a></li><li class="noselect"><a class=""><span class="rbc-icon"></span>FF<span class=""></span></a></li><li class="noselect"><a class=""><span class="rbc-icon"></span>GG<span class=""></span></a></li></ul>'
@@ -379,11 +379,11 @@ describe("Selection Events tests", () => {
     component.update();
 
     expect(component.find("#rbc-menu-button-123").html()).toEqual(
-      '<button style=\"width:100%\" id=\"rbc-menu-button-123\" type=\"button\" class=\"btn btn-default dropdown-toggle show-special-title button-dropdown\"><span class=\"pull-left filter-option\"></span><span class=\"pull-left special-title\" id=\"caption-text-area-container-rbc-123\"><div class=\"caption-text-area\" id=\"caption-text-area-rbc-123\">Select an item</div></span> <span class=\"caret\"></span></button>'
+      '<button id=\"rbc-menu-button-123\" type=\"button\" class=\"btn btn-default dropdown-toggle show-special-title button-dropdown\"><span class=\"pull-left filter-option\"></span><span class=\"pull-left special-title\" id=\"caption-text-area-container-rbc-123\"><div class=\"caption-text-area\" id=\"caption-text-area-rbc-123\">Select an item</div></span> <span class=\"caret\"></span></button>'
     );
     shallow(component.find("a").get(0)).simulate("click");
     expect(component.find("#rbc-menu-button-123").html()).toEqual(
-      '<button style=\"width:100%\" id=\"rbc-menu-button-123\" type=\"button\" class=\"btn btn-default dropdown-toggle show-special-title button-dropdown\"><span class=\"pull-left filter-option\"></span><span class=\"pull-left special-title\" id=\"caption-text-area-container-rbc-123\"><div class=\"caption-text-area\" id=\"caption-text-area-rbc-123\">AA</div></span> <span class=\"caret\"></span></button>'
+      '<button id=\"rbc-menu-button-123\" type=\"button\" class=\"btn btn-default dropdown-toggle show-special-title button-dropdown\"><span class=\"pull-left filter-option\"></span><span class=\"pull-left special-title\" id=\"caption-text-area-container-rbc-123\"><div class=\"caption-text-area\" id=\"caption-text-area-rbc-123\">AA</div></span> <span class=\"caret\"></span></button>'
     );
   });
 
@@ -400,15 +400,15 @@ describe("Selection Events tests", () => {
     component.update();
 
     expect(component.find("#rbc-menu-button-123").html()).toEqual(
-      '<button style=\"width:100%\" id=\"rbc-menu-button-123\" type=\"button\" class=\"btn btn-default dropdown-toggle show-special-title button-dropdown\"><span class=\"pull-left filter-option\"></span><span class=\"pull-left special-title\" id=\"caption-text-area-container-rbc-123\"><div class=\"caption-text-area\" id=\"caption-text-area-rbc-123\">Select an item</div></span> <span class=\"caret\"></span></button>'
+      '<button id=\"rbc-menu-button-123\" type=\"button\" class=\"btn btn-default dropdown-toggle show-special-title button-dropdown\"><span class=\"pull-left filter-option\"></span><span class=\"pull-left special-title\" id=\"caption-text-area-container-rbc-123\"><div class=\"caption-text-area\" id=\"caption-text-area-rbc-123\">Select an item</div></span> <span class=\"caret\"></span></button>'
     );
     shallow(component.find("a").get(0)).simulate("click");
     expect(component.find("#rbc-menu-button-123").html()).toEqual(
-      '<button style=\"width:100%\" id=\"rbc-menu-button-123\" type=\"button\" class=\"btn btn-default dropdown-toggle show-special-title button-dropdown\"><span class=\"pull-left filter-option\"></span><span class=\"pull-left special-title\" id=\"caption-text-area-container-rbc-123\"><div class=\"caption-text-area\" id=\"caption-text-area-rbc-123\">AA</div></span> <span class=\"caret\"></span></button>'
+      '<button id=\"rbc-menu-button-123\" type=\"button\" class=\"btn btn-default dropdown-toggle show-special-title button-dropdown\"><span class=\"pull-left filter-option\"></span><span class=\"pull-left special-title\" id=\"caption-text-area-container-rbc-123\"><div class=\"caption-text-area\" id=\"caption-text-area-rbc-123\">AA</div></span> <span class=\"caret\"></span></button>'
     );
     shallow(component.find("a").get(1)).simulate("click");
     expect(component.find("#rbc-menu-button-123").html()).toEqual(
-      '<button style=\"width:100%\" id=\"rbc-menu-button-123\" type=\"button\" class=\"btn btn-default dropdown-toggle show-special-title button-dropdown\"><span class=\"pull-left filter-option\"></span><span class=\"pull-left special-title\" id=\"caption-text-area-container-rbc-123\"><div class=\"caption-text-area\" id=\"caption-text-area-rbc-123\">AB</div></span> <span class=\"caret\"></span></button>'
+      '<button id=\"rbc-menu-button-123\" type=\"button\" class=\"btn btn-default dropdown-toggle show-special-title button-dropdown\"><span class=\"pull-left filter-option\"></span><span class=\"pull-left special-title\" id=\"caption-text-area-container-rbc-123\"><div class=\"caption-text-area\" id=\"caption-text-area-rbc-123\">AB</div></span> <span class=\"caret\"></span></button>'
     );
   });
 
@@ -427,16 +427,16 @@ describe("Selection Events tests", () => {
     component.update();
 
     expect(component.find("#rbc-menu-button-123").html()).toEqual(
-      '<button style=\"width:100%\" id=\"rbc-menu-button-123\" type=\"button\" class=\"btn btn-default dropdown-toggle show-special-title button-dropdown\"><span class=\"pull-left filter-option\"></span><span class=\"pull-left special-title\" id=\"caption-text-area-container-rbc-123\"><div class=\"caption-text-area\" id=\"caption-text-area-rbc-123\">Select an item</div></span> <span class=\"caret\"></span></button>'
+      '<button id=\"rbc-menu-button-123\" type=\"button\" class=\"btn btn-default dropdown-toggle show-special-title button-dropdown\"><span class=\"pull-left filter-option\"></span><span class=\"pull-left special-title\" id=\"caption-text-area-container-rbc-123\"><div class=\"caption-text-area\" id=\"caption-text-area-rbc-123\">Select an item</div></span> <span class=\"caret\"></span></button>'
     );
     shallow(component.find("a").get(0)).simulate("click");
     shallow(component.find("a").get(1)).simulate("click");
     expect(component.find("#rbc-menu-button-123").html()).toEqual(
-      '<button style=\"width:100%\" id=\"rbc-menu-button-123\" type=\"button\" class=\"btn btn-default dropdown-toggle show-special-title button-dropdown\"><span class=\"pull-left filter-option\"></span><span class=\"pull-left special-title\" id=\"caption-text-area-container-rbc-123\"><div class=\"caption-text-area\" id=\"caption-text-area-rbc-123\">AA, AB</div></span> <span class=\"caret\"></span></button>'
+      '<button id=\"rbc-menu-button-123\" type=\"button\" class=\"btn btn-default dropdown-toggle show-special-title button-dropdown\"><span class=\"pull-left filter-option\"></span><span class=\"pull-left special-title\" id=\"caption-text-area-container-rbc-123\"><div class=\"caption-text-area\" id=\"caption-text-area-rbc-123\">AA, AB</div></span> <span class=\"caret\"></span></button>'
     );
     shallow(component.find("a").get(2)).simulate("click");
     expect(component.find("#rbc-menu-button-123").html()).toEqual(
-      '<button style=\"width:100%\" id=\"rbc-menu-button-123\" type=\"button\" class=\"btn btn-default dropdown-toggle show-special-title button-dropdown\"><span class=\"pull-left filter-option\"></span><span class=\"pull-left special-title\" id=\"caption-text-area-container-rbc-123\"><div class=\"caption-text-area\" id=\"caption-text-area-rbc-123\">3 items selected</div></span> <span class=\"caret\"></span></button>'
+      '<button id=\"rbc-menu-button-123\" type=\"button\" class=\"btn btn-default dropdown-toggle show-special-title button-dropdown\"><span class=\"pull-left filter-option\"></span><span class=\"pull-left special-title\" id=\"caption-text-area-container-rbc-123\"><div class=\"caption-text-area\" id=\"caption-text-area-rbc-123\">3 items selected</div></span> <span class=\"caret\"></span></button>'
     );
   });
 
@@ -458,13 +458,13 @@ describe("Selection Events tests", () => {
     shallow(component.find("a").get(0)).simulate("click");
 
     expect(component.find("#rbc-menu-button-123").html()).toEqual(
-      '<button style=\"width: 100%;\" id=\"rbc-menu-button-123\" type=\"button\" class=\"btn btn-default dropdown-toggle show-special-title button-dropdown\"><span class=\"pull-left filter-option\"></span><span class=\"pull-left special-title\" id=\"caption-text-area-container-rbc-123\"><div class=\"caption-text-area\" id=\"caption-text-area-rbc-123\">AA</div></span>&nbsp;<span class=\"caret\"></span></button>'
+      '<button id=\"rbc-menu-button-123\" type=\"button\" class=\"btn btn-default dropdown-toggle show-special-title button-dropdown\"><span class=\"pull-left filter-option\"></span><span class=\"pull-left special-title\" id=\"caption-text-area-container-rbc-123\"><div class=\"caption-text-area\" id=\"caption-text-area-rbc-123\">AA</div></span>&nbsp;<span class=\"caret\"></span></button>'
     );
 
     let trigClear = Select.TrigEvent.clear();
     component.setProps({ trigEvent: trigClear });
     expect(component.find("#rbc-menu-button-123").html()).toEqual(
-      '<button style=\"width: 100%;\" id=\"rbc-menu-button-123\" type=\"button\" class=\"btn btn-default dropdown-toggle show-special-title button-dropdown\"><span class=\"pull-left filter-option\"></span><span class=\"pull-left special-title\" id=\"caption-text-area-container-rbc-123\"><div class=\"caption-text-area\" id=\"caption-text-area-rbc-123\">Select an item</div></span>&nbsp;<span class=\"caret\"></span></button>'
+      '<button id=\"rbc-menu-button-123\" type=\"button\" class=\"btn btn-default dropdown-toggle show-special-title button-dropdown\"><span class=\"pull-left filter-option\"></span><span class=\"pull-left special-title\" id=\"caption-text-area-container-rbc-123\"><div class=\"caption-text-area\" id=\"caption-text-area-rbc-123\">Select an item</div></span>&nbsp;<span class=\"caret\"></span></button>'
     );
 
     expect(trigClear.startsWith("clear")).toEqual(true);

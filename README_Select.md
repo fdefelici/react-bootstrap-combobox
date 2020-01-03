@@ -24,7 +24,7 @@ import { Select } from "@fdefelici/react-bootstrap-combobox"
 />
 ```
 
-> For a full working example take a look at the [local example](example/) or at the [live demo](https://codesandbox.io/s/github/fdefelici/react-bootstrap-combobox/tree/v1.8.0/example?fontsize=14).
+> For a full working example take a look at the [local example](example/) or at the [live demo](https://codesandbox.io/s/github/fdefelici/react-bootstrap-combobox/tree/v1.9.0/example?fontsize=14).
 
 # Configuration
 This component allow customization tweeking the following attributes:
@@ -39,6 +39,7 @@ This component allow customization tweeking the following attributes:
 | `labels` | object | Localization support (see details in [Localization paragraph](#localization-support)) | - |
 | `maxCaptionItems` | integer <br/>or<br/> "auto" | Max number of visible items (comma separated) in caption before showing label message `cap.select.singular` or `cap.select.plural`. If it is equal to `"auto"`, it automatically detects the caption overflow. | 0 |
 | `maxDropdownItems` | integer | Max number of visible items in dropdown menu | 6 |
+| `menuWidth` | string | Set the dropdown menu width (css style: e.g. 100px, 60%...) | 100%  |
 | `onChange` | function | Callback function called when a selection/deselection happens (calling an action with `trigEvent`, when the user select or deselect an item or data changes) with the following signature: `function (selection)` where `selection` is an array of objects with format `{index, value}` (see details in the [example](example/)) | none  |
 | `showButtons` | boolean | Show Select/Deselect All buttons | false |
 | `showSearch` | boolean | Show Search field | false |

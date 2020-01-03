@@ -36,6 +36,7 @@ This component allow customization tweeking the following attributes:
 | `id` | string | html element ID  | none  |
 | `labels` | object | Localization support (see details in [Localization paragraph](#localization-support)) | - |
 | `maxDropdownItems` | integer | Max number of visible items in dropdown menu | 6 |
+| `menuWidth` | string | Set the dropdown menu width (css style: e.g. 100px, 60%...) | 100%  |
 | `onChangeAfterCharNum` | integer | Number of chars after whom `searchFun` will start | 1 |
 | `onClear` | function | Function called when you click on clear button | none |
 | `onSelection` | function | Function called when an item is selected | none |

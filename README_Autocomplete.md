@@ -23,7 +23,7 @@ import { Autocomplete } from "@fdefelici/react-bootstrap-combobox"
 />
 ```
 
-> For a full working example take a look at the [local example](example/) or at the [live demo](https://codesandbox.io/s/github/fdefelici/react-bootstrap-combobox/tree/v1.9.0/example?fontsize=14).
+> For a full working example take a look at the [local example](example/) or at the [live demo](https://codesandbox.io/s/github/fdefelici/react-bootstrap-combobox/tree/v1.9.1/example?fontsize=14).
 
 # Configuration
 This component allow customization tweeking the following attributes:
@@ -33,10 +33,10 @@ This component allow customization tweeking the following attributes:
 | `data` | array | Data attribute can have following format: <ul><li>list of strings: `["Apple", "Banana"]`, <b>or</b></li><li>list of objects, e.g. `[{label: "Apple", value: "apple", icon: <span className={"glyphicon glyphicon-plus"}></span>}]` where the attributes `icon` is optional (see details in [Data Attribute paragraph](#data-attribute-explained)).</li></ul>  | []  |
 | `disabled` | boolean | Disable the field | false |
 | `delay` | integer | Seconds after whom `searchFun` is called | 0 |
+| `dropdownWidth` | string | Set the dropdown menu width (css style: e.g. 100px, 60%...) | 100%  |
 | `id` | string | html element ID  | none  |
 | `labels` | object | Localization support (see details in [Localization paragraph](#localization-support)) | - |
 | `maxDropdownItems` | integer | Max number of visible items in dropdown menu | 6 |
-| `menuWidth` | string | Set the dropdown menu width (css style: e.g. 100px, 60%...) | 100%  |
 | `onChangeAfterCharNum` | integer | Number of chars after whom `searchFun` will start | 1 |
 | `onClear` | function | Function called when you click on clear button | none |
 | `onSelection` | function | Function called when an item is selected | none |

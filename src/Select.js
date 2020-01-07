@@ -431,7 +431,7 @@ class Select extends Component {
             {caretOrLoadingImg}
           </button>
           <div
-            style={{ width: this.props.menuWidth ? this.props.menuWidth : "100%" }}
+            style={{ width: this.props.dropdownWidth ? this.props.dropdownWidth : "100%" }}
             className={
               "dropdown-menu " +
               (this.state.isOpen &&

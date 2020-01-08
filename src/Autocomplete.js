@@ -24,6 +24,7 @@ class Autocomplete extends Component {
   id = undefined;
   idRbc = undefined;
   idList = undefined;
+  idMenuInput = undefined;
 
   constructor(props) {
     super(props);
@@ -32,6 +33,7 @@ class Autocomplete extends Component {
       this.id = this.props.id;
       this.idRbc = "rbc-" + this.id;
       this.idList = "rbc-menu-button-dropdown-list-" + this.id;
+      this.idMenuInput = "rbc-menu-input-" + this.id;
     }
 
     this.maxDropdownItems = this.props.maxDropdownItems
@@ -202,7 +204,7 @@ class Autocomplete extends Component {
           >
             
               
-                <div className="rbc-1hwfws3">
+                <div id={this.idMenuInput} className="rbc-1hwfws3">
                   <div className="rbc-b8ldur-Input">
                     <div style={{width:"calc(100% - 16px)", marginLeft:"8px", marginRight:"8px"}}>
                     <DebouncedTextInput

@@ -47,8 +47,7 @@ class Autocomplete extends Component {
       isLoading: false,
       valueSelected: undefined,
       text: "",
-      triggerClear: false,
-      disableInput: false
+      triggerClear: false
     };
   }
 
@@ -130,7 +129,7 @@ class Autocomplete extends Component {
     let loadingImg = "";
     let clearImg = "";
 
-    if (this.state.text.length > 0) {
+    if (this.state.text.length > 0 && !this.props.disabled && !this.state.disabled) {
       clearImg = (
         <div className="pull-right">
           <a
@@ -204,13 +203,13 @@ class Autocomplete extends Component {
           >
             
               
-                <div id={this.idMenuInput} className="rbc-1hwfws3">
+                <div id={this.idMenuInput} className={"rbc-1hwfws3" + (this.props.disabled?" disabled-grey": "")}>
                   <div className="rbc-b8ldur-Input">
                     <div style={{width:"calc(100% - 16px)", marginLeft:"8px", marginRight:"8px"}}>
                     <DebouncedTextInput
                       newValue={this.props.value}
                       id={this.props.id}
-                      disabled = {this.props.disabled? this.props.disabled : this.state.disabled}
+                      disabled = {this.props.disabled? this.props.disabled : false}
                       type="text"
                       placeholder={
                         this.props.labels &&

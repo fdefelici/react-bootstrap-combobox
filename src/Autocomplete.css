@@ -63,3 +63,7 @@ a.clear:hover {
   height: 36px;
   
 }
+
+.disabled-grey {
+  background-color: #eee;
+}

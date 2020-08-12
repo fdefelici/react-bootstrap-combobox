@@ -252,7 +252,7 @@ class Autocomplete extends Component {
             
 
             <div
-              className={"dropdown-menu " + (this.state.isOpen ? "open" : "")}
+              className={"dropdown-menu " + (this.state.isOpen ? "open" : "") + (this.props.dropdownAlign=="right" ? " pull-right" : "")}
               style={{ width: this.props.dropdownWidth ? this.props.dropdownWidth : "100%" }}
             >
               {menu}

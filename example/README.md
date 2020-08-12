@@ -19,7 +19,7 @@ You can update ```example/package.json``` to load locally the library as follow:
 ```javascript
  "dependencies": {
     ...,
-    "@fdefelici/react-bootstrap-combobox": "file.."
+    "@fdefelici/react-bootstrap-combobox": "file:../"
   },
 ```
 

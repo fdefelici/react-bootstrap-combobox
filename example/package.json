@@ -7,7 +7,7 @@
     "react-dom": "16.4.2",
     "react-scripts": "1.1.4",
     "bootstrap": "3.4.1",
-    "@fdefelici/react-bootstrap-combobox": "1.11.0"
+    "@fdefelici/react-bootstrap-combobox": "file:../"
   },
   "scripts": {
     "start": "react-scripts start"

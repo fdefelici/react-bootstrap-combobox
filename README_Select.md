@@ -33,6 +33,7 @@ This component allow customization tweeking the following attributes:
 |  ---: | :--- | :---        | :---    |
 | `data` | array | Data attribute can have following format: <ul><li>list of strings: `["Apple", "Banana"]`, <b>or</b></li><li>list of objects, e.g. `[{label: "Apple", value: "apple", selected: true, icon: <span className={"glyphicon glyphicon-plus"}></span>}]` where the attributes `selected` and `icon` are optionals (see details in [Data Attribute paragraph](#data-attribute-explained)).</li></ul>  | []  |
 | `disabled` | boolean | Disable the button | false |
+| `dropdownAlign` | string | Set the dropdown menu alignment related to input textbox (accepted "right" or "left") | left  |
 | `dropdownWidth` | string | Set the dropdown menu width (css style: e.g. 100px, 60%...) | 100%  |
 | `id` | string | html element ID  | none  |
 | `isLoading` | boolean | Set the menu to loading status; combobox will be disabled and reactivated when isLoading comes false. | false  |

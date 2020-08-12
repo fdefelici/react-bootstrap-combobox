@@ -67,3 +67,7 @@ a.clear:hover {
 .disabled-grey {
   background-color: #eee;
 }
+
+.rbc-selection {
+  cursor: pointer;
+}

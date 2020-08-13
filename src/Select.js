@@ -438,7 +438,7 @@ class Select extends Component {
               ((this.props.disabled !== undefined && !this.props.disabled) ||
                 this.props.disabled === undefined)
                 ? "open"
-                : "")
+                : "")  + (this.props.dropdownAlign=="right" ? " pull-right" : "")
             }
           >
             <div className={"bs-searchbox " + (this.showSearch ? "" : "hide")}>

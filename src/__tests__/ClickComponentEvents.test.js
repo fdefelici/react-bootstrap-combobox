@@ -16,6 +16,58 @@ jest.useFakeTimers()
 
 describe("Click Component Events tests", () => {
   
+  it("Should click to open and check the right align", () => {
+
+    /* https://github.com/airbnb/enzyme/issues/1525 */
+    document.body.innerHTML = '<div id="destattach"></div>';
+    const options = {
+      attachTo: document.querySelector("#destattach")
+    };
+
+    Object.defineProperties(window.document.documentElement, {
+      clientWidth: {
+        value: 300,
+        writable: false
+      }
+    });
+
+    const map = {};
+
+    document.addEventListener = jest.fn((event, cb) => {
+      map[event] = cb;
+    });
+
+    const component = mount(
+      <div id="container">
+        <button id="outside">click outside</button>
+        <Select
+          dropdownWidth={"350px"}
+          dropdownAlign={"right"}
+          data={["AA", "AB", "BB", "CC", "DD", "BB", "EE", "FF", "GG"]}
+          id="123"
+        ></Select>
+      </div>,
+        options
+    );
+
+    //closed
+    expect(component.find(".input-box").html()).toEqual(
+      '<div id=\"rbc-123\" class=\"input-box\" style=\"width: 100%;\"><button id=\"rbc-menu-button-123\" type=\"button\" class=\"btn btn-default dropdown-toggle show-special-title button-dropdown\"><span class=\"pull-left filter-option\"></span><span class=\"pull-left special-title\" id=\"caption-text-area-container-rbc-123\"><div class=\"caption-text-area\" id=\"caption-text-area-rbc-123\">Select an item</div></span>&nbsp;<span class=\"caret\"></span></button><div style=\"width: 350px;\" class=\"dropdown-menu  pull-right\"><div class=\"bs-searchbox hide\"><input type=\"text\" class=\"form-control\"></div><div class=\"bs-actionsbox hide\"><div class=\"btn-group btn-block\"><button id=\"rbc-menu-button-selectall-button-123\" type=\"button\" class=\"actions-btn bs-select-all btn btn-default select-all-button fixed-heigth text-centered-button\">All</button><button id=\"rbc-menu-button-deselectall-button-123\" type=\"button\" class=\"actions-btn bs-deselect-all btn btn-default deselect-all-button fixed-heigth text-centered-button\">Clear</button></div></div><ul id=\"rbc-menu-button-dropdown-list-123\" class=\"dropdown-menu inner\" style=\"max-height: 156px;\"> <li class=\"noselect\"><a class=\"\"><span class=\"rbc-icon\"></span>AA<span class=\"\"></span></a></li><li class=\"noselect\"><a class=\"\"><span class=\"rbc-icon\"></span>AB<span class=\"\"></span></a></li><li class=\"noselect\"><a class=\"\"><span class=\"rbc-icon\"></span>BB<span class=\"\"></span></a></li><li class=\"noselect\"><a class=\"\"><span class=\"rbc-icon\"></span>CC<span class=\"\"></span></a></li><li class=\"noselect\"><a class=\"\"><span class=\"rbc-icon\"></span>DD<span class=\"\"></span></a></li><li class=\"noselect\"><a class=\"\"><span class=\"rbc-icon\"></span>BB<span class=\"\"></span></a></li><li class=\"noselect\"><a class=\"\"><span class=\"rbc-icon\"></span>EE<span class=\"\"></span></a></li><li class=\"noselect\"><a class=\"\"><span class=\"rbc-icon\"></span>FF<span class=\"\"></span></a></li><li class=\"noselect\"><a class=\"\"><span class=\"rbc-icon\"></span>GG<span class=\"\"></span></a></li></ul></div></div>'
+    );
+    component.find("#rbc-menu-button-123").simulate("click");
+    //open
+    expect(component.find(".input-box").html()).toEqual(
+      '<div id=\"rbc-123\" class=\"input-box\" style=\"width: 100%;\"><button id=\"rbc-menu-button-123\" type=\"button\" class=\"btn btn-default dropdown-toggle show-special-title button-dropdown\"><span class=\"pull-left filter-option\"></span><span class=\"pull-left special-title\" id=\"caption-text-area-container-rbc-123\"><div class=\"caption-text-area\" id=\"caption-text-area-rbc-123\">Select an item</div></span>&nbsp;<span class=\"caret\"></span></button><div style=\"width: 350px;\" class=\"dropdown-menu open pull-right\"><div class=\"bs-searchbox hide\"><input type=\"text\" class=\"form-control\"></div><div class=\"bs-actionsbox hide\"><div class=\"btn-group btn-block\"><button id=\"rbc-menu-button-selectall-button-123\" type=\"button\" class=\"actions-btn bs-select-all btn btn-default select-all-button fixed-heigth text-centered-button\">All</button><button id=\"rbc-menu-button-deselectall-button-123\" type=\"button\" class=\"actions-btn bs-deselect-all btn btn-default deselect-all-button fixed-heigth text-centered-button\">Clear</button></div></div><ul id=\"rbc-menu-button-dropdown-list-123\" class=\"dropdown-menu inner\" style=\"max-height: 156px;\"> <li class=\"noselect\"><a class=\"\"><span class=\"rbc-icon\"></span>AA<span class=\"\"></span></a></li><li class=\"noselect\"><a class=\"\"><span class=\"rbc-icon\"></span>AB<span class=\"\"></span></a></li><li class=\"noselect\"><a class=\"\"><span class=\"rbc-icon\"></span>BB<span class=\"\"></span></a></li><li class=\"noselect\"><a class=\"\"><span class=\"rbc-icon\"></span>CC<span class=\"\"></span></a></li><li class=\"noselect\"><a class=\"\"><span class=\"rbc-icon\"></span>DD<span class=\"\"></span></a></li><li class=\"noselect\"><a class=\"\"><span class=\"rbc-icon\"></span>BB<span class=\"\"></span></a></li><li class=\"noselect\"><a class=\"\"><span class=\"rbc-icon\"></span>EE<span class=\"\"></span></a></li><li class=\"noselect\"><a class=\"\"><span class=\"rbc-icon\"></span>FF<span class=\"\"></span></a></li><li class=\"noselect\"><a class=\"\"><span class=\"rbc-icon\"></span>GG<span class=\"\"></span></a></li></ul></div></div>'
+    );
+    //click outside
+    map.mousedown({
+      target: ReactDOM.findDOMNode(component.instance())
+    });
+    //closed
+    expect(component.find(".input-box").html()).toEqual(
+      '<div id=\"rbc-123\" class=\"input-box\" style=\"width: 100%;\"><button id=\"rbc-menu-button-123\" type=\"button\" class=\"btn btn-default dropdown-toggle show-special-title button-dropdown\"><span class=\"pull-left filter-option\"></span><span class=\"pull-left special-title\" id=\"caption-text-area-container-rbc-123\"><div class=\"caption-text-area\" id=\"caption-text-area-rbc-123\">Select an item</div></span>&nbsp;<span class=\"caret\"></span></button><div style=\"width: 350px;\" class=\"dropdown-menu  pull-right\"><div class=\"bs-searchbox hide\"><input type=\"text\" class=\"form-control\"></div><div class=\"bs-actionsbox hide\"><div class=\"btn-group btn-block\"><button id=\"rbc-menu-button-selectall-button-123\" type=\"button\" class=\"actions-btn bs-select-all btn btn-default select-all-button fixed-heigth text-centered-button\">All</button><button id=\"rbc-menu-button-deselectall-button-123\" type=\"button\" class=\"actions-btn bs-deselect-all btn btn-default deselect-all-button fixed-heigth text-centered-button\">Clear</button></div></div><ul id=\"rbc-menu-button-dropdown-list-123\" class=\"dropdown-menu inner\" style=\"max-height: 156px;\"> <li class=\"noselect\"><a class=\"\"><span class=\"rbc-icon\"></span>AA<span class=\"\"></span></a></li><li class=\"noselect\"><a class=\"\"><span class=\"rbc-icon\"></span>AB<span class=\"\"></span></a></li><li class=\"noselect\"><a class=\"\"><span class=\"rbc-icon\"></span>BB<span class=\"\"></span></a></li><li class=\"noselect\"><a class=\"\"><span class=\"rbc-icon\"></span>CC<span class=\"\"></span></a></li><li class=\"noselect\"><a class=\"\"><span class=\"rbc-icon\"></span>DD<span class=\"\"></span></a></li><li class=\"noselect\"><a class=\"\"><span class=\"rbc-icon\"></span>BB<span class=\"\"></span></a></li><li class=\"noselect\"><a class=\"\"><span class=\"rbc-icon\"></span>EE<span class=\"\"></span></a></li><li class=\"noselect\"><a class=\"\"><span class=\"rbc-icon\"></span>FF<span class=\"\"></span></a></li><li class=\"noselect\"><a class=\"\"><span class=\"rbc-icon\"></span>GG<span class=\"\"></span></a></li></ul></div></div>'
+    );
+  });
 
   it("Should click outside the component, closing menu", () => {
 

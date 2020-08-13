@@ -24,7 +24,7 @@ import { Select } from "@fdefelici/react-bootstrap-combobox"
 />
 ```
 
-> For a full working example take a look at the [local example](example/) or at the [live demo](https://codesandbox.io/s/github/fdefelici/react-bootstrap-combobox/tree/v1.11.0/example?fontsize=14).
+> For a full working example take a look at the [local example](example/) or at the [live demo](https://codesandbox.io/s/github/fdefelici/react-bootstrap-combobox/tree/v1.12.0/example?fontsize=14).
 
 # Configuration
 This component allow customization tweeking the following attributes:
@@ -33,6 +33,7 @@ This component allow customization tweeking the following attributes:
 |  ---: | :--- | :---        | :---    |
 | `data` | array | Data attribute can have following format: <ul><li>list of strings: `["Apple", "Banana"]`, <b>or</b></li><li>list of objects, e.g. `[{label: "Apple", value: "apple", selected: true, icon: <span className={"glyphicon glyphicon-plus"}></span>}]` where the attributes `selected` and `icon` are optionals (see details in [Data Attribute paragraph](#data-attribute-explained)).</li></ul>  | []  |
 | `disabled` | boolean | Disable the button | false |
+| `dropdownAlign` | string | Set the dropdown menu alignment related to input textbox (accepted "right" or "left") | left  |
 | `dropdownWidth` | string | Set the dropdown menu width (css style: e.g. 100px, 60%...) | 100%  |
 | `id` | string | html element ID  | none  |
 | `isLoading` | boolean | Set the menu to loading status; combobox will be disabled and reactivated when isLoading comes false. | false  |
@@ -43,7 +44,7 @@ This component allow customization tweeking the following attributes:
 | `onChange` | function | Callback function called when a selection/deselection happens (calling an action with `trigEvent`, when the user select or deselect an item or data changes) with the following signature: `function (selection)` where `selection` is an array of objects with format `{index, value}` (see details in the [example](example/)) | none  |
 | `showButtons` | boolean | Show Select/Deselect All buttons | false |
 | `showSearch` | boolean | Show Search field | false |
-| `trigEvent` | string | You can run these actions: `clear`, `reset`. You need to use an unique id to run the action multiple times. To simplify the creation of an action with an unique id, you can call `Select.TrigEvent.clear()` or  `Select.TrigEvent.reset()`. `clear` deselects all items selected in the past. `reset` reinits data removing all previous selections; if data contains selected items, the widget will set them. | none |
+| `trigEvent` | string | It accepts only three values: "clear", "reset", none. When sets `clear` deselects all items selected in the past. With `reset` reinits data removing all previous selections; if data contains selected items, the widget will set them. You need to use an unique id to run the action multiple times. To simplify the creation of an action with an unique id, you can call it from external as `Select.TrigEvent.clear()` or  `Select.TrigEvent.reset()`. | none |
 | `width` | string | Set the widget width (css style: e.g. 100px, 60%...) | 100%  |
 
 

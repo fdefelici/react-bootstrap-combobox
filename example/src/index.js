@@ -76,6 +76,61 @@ class App extends React.Component {
 
             <table>
               <tbody>
+              <tr style={this.styleRow}>
+                  <td style={this.styleTitle}>
+                    <h2>DropDown Menu align to right</h2>
+                  </td>
+                  <td style={this.styleCombobox}>
+                    <Select
+                      id="456"
+                      isMultiSelect={true}
+                      showButtons={true}
+                      maxDropdownItems={4}
+                      dropdownWidth={"350px"}
+                      dropdownAlign={"right"}
+                      data={[
+                        { label: "Apple", value: "apple" },
+                        { label: "Banana", value: "banana" },
+                        { label: "Citrus", value: "citrus" },
+                        { label: "Grapefruit", value: "grapefruit" },
+                        { label: "Lime", value: "lime" },
+                        { label: "Mandarin", value: "mandarin" },
+                        { label: "Mango", value: "mango" },
+                        { label: "Melon", value: "melon" },
+                        { label: "Watermelon", value: "watermelon" }
+                      ]}
+                      maxCaptionItems="0"
+                      showSearch={true}
+                      labels={{
+                        "sel.empty": "Select an item",
+                        "sel.singular": "One item selected",
+                        "sel.plural": "{sel} of {size} items selected",
+                        "btn.select.all": "Pick All",
+                        "btn.unselect.all": "Release All"
+                      }}
+                      onChange={selected => {
+                        this.setState({ selectedCombobox2: selected });
+                      }}
+                    ></Select>
+                  </td>
+                  <td style={this.stylePrint}>
+                    <span>
+                      <b>selected:</b> <br />
+                      <ul>
+                        {this.state.selectedCombobox2.map(each => (
+                          <li>
+                            {"[value: "   +
+                              each.value  +
+                              ", index: " +
+                              each.index  +
+                              "]"}{" "}
+                          </li>
+                        ))}
+                      </ul>
+                    </span>
+                  </td>
+                </tr>
+
                 <tr style={this.styleRow}>
                   <td style={this.styleTitle}>
                     <h2>Label array</h2>
@@ -114,7 +169,7 @@ class App extends React.Component {
                     <button
                       style={{ marginTop: "5px", marginleft: "15px" }}
                       onClick={() => {
-                        this.setState({dataExample: [{value: "apple", label: "Apple", selected:true}, {value: "banana", label: "Banana", selected:false}], trigClearCombobox1: Select.TrigEvent.reset() });
+                        this.setState({dataExample: [{value: "apple", label: "Apple", selected:true}, {value: "banana", label: "Banana", selected:false}], trigClearCombobox1: Select.TrigEvent.clear() });
                       }}
                     >
                       RESET
@@ -523,6 +578,71 @@ class App extends React.Component {
 
             <table>
               <tbody>
+              <tr style={this.styleRow}>
+                  <td style={this.styleTitle}>
+                    <h2>DropDown Menu align to right</h2>
+
+                    <h5>
+                      It will search among{" "}
+                      <b>[Grapefruit, Mandarin, Melon, Watermelon]</b> finding
+                      input text as substring, starting after 3 chars
+                    </h5>
+                  </td>
+                  <td style={this.styleCombobox}>
+                    <Autocomplete
+                      id="1234978"
+                      labels={{
+                        "cap.placeholder": "Search...",
+                        "lst.empty": "Empty"
+                      }}
+                      maxDropdownItems={5}
+                      dropdownWidth={"350px"}
+                      dropdownAlign={"right"}
+                      searchFun={(text, callback) => {
+                        setTimeout(() => {
+                          callback(
+                            [
+                              "Grapefruit",
+                              "Mandarin",
+                              "Melon",
+                              "Watermelon"
+                            ].filter(each => {
+                              return each.toLowerCase().includes(text.toLowerCase());
+                            })
+                          );
+                        }, 3000);
+                      }}
+                      onChangeAfterCharNum={3}
+                      onSelection={selected => {
+                        this.setState({ selectedCombobox7: selected });
+                      }}
+                      delay={1}
+                    />
+                  </td>
+
+                  <td style={this.stylePrint}>
+                    <span>
+                      <b>selected:</b>
+                      <br />
+                      <ul>
+                        {this.state.selectedCombobox7 !== undefined &&
+                        this.state.selectedCombobox7.value !== undefined ? (
+                          <li>
+                            {" "}
+                            {"[value: " +
+                              this.state.selectedCombobox7.value +
+                              ", index: " +
+                              this.state.selectedCombobox7.index +
+                              "]"}
+                          </li>
+                        ) : (
+                          ""
+                        )}
+                      </ul>
+                    </span>
+                  </td>
+                </tr>
+
                 <tr style={this.styleRow}>
                   <td style={this.styleTitle}>
                     <h2>Label array</h2>
@@ -849,7 +969,7 @@ class App extends React.Component {
                     <button
                       style={{ marginTop: "5px", marginleft: "15px" }}
                       onClick={() => {
-                        this.setState({trigResetAutocomplete: Autocomplete.TrigEvent.reset() });
+                        this.setState({trigResetAutocomplete: Autocomplete.TrigEvent.clear() });
                       }}
                     >
                       RESET

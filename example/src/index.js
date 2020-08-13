@@ -169,7 +169,7 @@ class App extends React.Component {
                     <button
                       style={{ marginTop: "5px", marginleft: "15px" }}
                       onClick={() => {
-                        this.setState({dataExample: [{value: "apple", label: "Apple", selected:true}, {value: "banana", label: "Banana", selected:false}], trigClearCombobox1: Select.TrigEvent.reset() });
+                        this.setState({dataExample: [{value: "apple", label: "Apple", selected:true}, {value: "banana", label: "Banana", selected:false}], trigClearCombobox1: Select.TrigEvent.clear() });
                       }}
                     >
                       RESET
@@ -969,7 +969,7 @@ class App extends React.Component {
                     <button
                       style={{ marginTop: "5px", marginleft: "15px" }}
                       onClick={() => {
-                        this.setState({trigResetAutocomplete: Autocomplete.TrigEvent.reset() });
+                        this.setState({trigResetAutocomplete: Autocomplete.TrigEvent.clear() });
                       }}
                     >
                       RESET

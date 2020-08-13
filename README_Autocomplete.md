@@ -41,7 +41,7 @@ This component allow customization tweeking the following attributes:
 | `onClear` | function | Function called when you click on clear button | none |
 | `onSelection` | function | Function called when an item is selected | none |
 | `searchFun` | function | Function called when you start to type. It has to be with the following signature: `function (text, callback)` where `text` it will be the typed text and the callback is the function called when data will be retrieved (see details in the [example](example/)) | none  |
-| `trigEvent` | string | You can run these actions: `clear`. You need to use an unique id to run the action multiple times. To simplify the creation of an action with an unique id, you can call `Autocomplete.TrigEvent.clear()`. `clear` remove item selected in the past. | none |
+| `trigEvent` | string | It accepts only two values: "clear", none. When set with `clear` it will raise an event to clear the selection and input text. You need to use an unique id to run the action multiple times. To simplify the creation of clear action with an unique id, you can call it from external as `Autocomplete.TrigEvent.clear()`. | none |
 | `value` | string | Value to set as input string; when it changes `searchFun` won't be called   | none  |
 | `width` | string | Set the widget width (css style: e.g. 100px, 60%...) | 100%  |
 

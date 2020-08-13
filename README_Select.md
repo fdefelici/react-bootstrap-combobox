@@ -44,7 +44,7 @@ This component allow customization tweeking the following attributes:
 | `onChange` | function | Callback function called when a selection/deselection happens (calling an action with `trigEvent`, when the user select or deselect an item or data changes) with the following signature: `function (selection)` where `selection` is an array of objects with format `{index, value}` (see details in the [example](example/)) | none  |
 | `showButtons` | boolean | Show Select/Deselect All buttons | false |
 | `showSearch` | boolean | Show Search field | false |
-| `trigEvent` | string | You can run these actions: `clear`, `reset`. You need to use an unique id to run the action multiple times. To simplify the creation of an action with an unique id, you can call `Select.TrigEvent.clear()` or  `Select.TrigEvent.reset()`. `clear` deselects all items selected in the past. `reset` reinits data removing all previous selections; if data contains selected items, the widget will set them. | none |
+| `trigEvent` | string | It accepts only three values: "clear", "reset", none. When sets `clear` deselects all items selected in the past. With `reset` reinits data removing all previous selections; if data contains selected items, the widget will set them. You need to use an unique id to run the action multiple times. To simplify the creation of an action with an unique id, you can call it from external as `Select.TrigEvent.clear()` or  `Select.TrigEvent.reset()`. | none |
 | `width` | string | Set the widget width (css style: e.g. 100px, 60%...) | 100%  |
 
 

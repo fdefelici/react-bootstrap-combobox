@@ -206,11 +206,17 @@ class Autocomplete extends Component {
                 <div id={this.idMenuInput} className={"rbc-1hwfws3" + (this.props.disabled?" disabled-grey": "")}>
                   <div className="rbc-b8ldur-Input">
                     <div style={{width:"calc(100% - 16px)", marginLeft:"8px", marginRight:"8px"}}>
+                      {this.props.searchIcon &&
+                        <div className="search-img-div pull-left">
+                          {this.props.searchIcon}
+                        </div>
+                      }
                     <DebouncedTextInput
                       newValue={this.props.value}
                       id={this.props.id}
                       disabled = {this.props.disabled? this.props.disabled : false}
                       type="text"
+                      searchIconEnabled={this.props.searchIcon!==undefined}
                       placeholder={
                         this.props.labels &&
                         this.props.labels["cap.placeholder"]

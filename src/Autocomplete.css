@@ -11,6 +11,11 @@ a.clear:hover {
   height: 10px;
 }
 
+.search-img-div * {
+  max-height: 20px;
+  padding-right: 5px;
+}
+
 .wrapper-img {
   width: 10px;
   height: 10px;

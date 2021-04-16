@@ -422,6 +422,9 @@ class Select extends Component {
                 className="caption-text-area"
                 id={"caption-text-area-" + this.idRbc}
               >
+                {this.props.icon &&
+                  this.props.icon
+                }
                 {this.state.placeholder
                   ? this.state.placeholder
                   : this.placeholderDefault}
@@ -442,11 +445,22 @@ class Select extends Component {
             }
           >
             <div className={"bs-searchbox " + (this.showSearch ? "" : "hide")}>
+              {this.props.searchIcon && (
+                <div className="input-group">
+                  <span className="input-group-addon" style={{backgroundColor:"inherit"}}>
+                    <div className="search-img-div pull-left">
+                      {this.props.searchIcon}
+                    </div>
+                  </span>
+                </div>
+              )}
+              {this.props.searchIcon === undefined && (
               <input
                 type="text"
                 className="form-control"
                 onChange={this.filterData}
               />
+              )}
             </div>
 
             <div

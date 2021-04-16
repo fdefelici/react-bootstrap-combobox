@@ -35,6 +35,8 @@ This component allow customization tweeking the following attributes:
 | `disabled` | boolean | Disable the button | false |
 | `dropdownAlign` | string | Set the dropdown menu alignment related to input textbox (accepted "right" or "left") | left  |
 | `dropdownWidth` | string | Set the dropdown menu width (css style: e.g. 100px, 60%...) | 100%  |
+| `icon` | html | Set html image element on the left inside the dropdown menu | undefined (no image shown) |
+| `searchIcon` | html | Set html image element on the left inside the search field | undefined (no image shown) |
 | `id` | string | html element ID  | none  |
 | `isLoading` | boolean | Set the menu to loading status; combobox will be disabled and reactivated when isLoading comes false. | false  |
 | `isMultiSelect` | boolean | Allow multiple selection | false  |

@@ -157,6 +157,11 @@
     display: inline-block
 }
 
+.caption-text-area * {
+    max-height: 20px;
+    padding-right: 5px;
+}
+
 .fixed-heigth {
     height: 25px;
 }

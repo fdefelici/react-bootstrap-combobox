@@ -140,6 +140,8 @@ class App extends React.Component {
                       id="123"
                       isMultiSelect={true}
                       showButtons={true}
+                      icon={<img alt="" src={require("./images/apple.png")}/>}
+                      searchIcon={<img alt="" src={require("./images/apple.png")} style={{opacity: "0.5"}}/>}
                       maxDropdownItems={4}
                       trigEvent={this.state.trigClearCombobox1}
                       data={this.state.dataExample}

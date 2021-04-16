@@ -35,6 +35,7 @@ This component allow customization tweeking the following attributes:
 | `delay` | integer | Seconds after whom `searchFun` is called | 0 |
 | `dropdownAlign` | string | Set the dropdown menu alignment related to input textbox (accepted "right" or "left") | left  |
 | `dropdownWidth` | string | Set the dropdown menu width (css style: e.g. 100px, 60%...) | 100%  |
+| `searchIcon` | html | Set html image element on the left inside the textbox | undefined (no image shown) |
 | `id` | string | html element ID  | none  |
 | `labels` | object | Localization support (see details in [Localization paragraph](#localization-support)) | - |
 | `maxDropdownItems` | integer | Max number of visible items in dropdown menu | 6 |

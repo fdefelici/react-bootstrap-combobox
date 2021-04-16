@@ -58,7 +58,7 @@ class DebouncedTextInput extends Component {
         
         style={{
           boxSizing: "content-box",
-          width: "calc(100% - 16px)",
+          width: "calc(100% - " + (this.props.searchIconEnabled===true?"42px)":"16px)"),
           background: "0px center",
           border: "0px",
           fontSize: "inherit",

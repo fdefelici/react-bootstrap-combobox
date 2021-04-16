@@ -1,6 +1,7 @@
 import os
 import re
 import sys
+import base64
 
 def main(version):
     if len(sys.argv) != 2:
@@ -11,8 +12,8 @@ def main(version):
     if not ver_pattern.match(version):
         print("[ERROR] Wrong argument version (PREVIOUS). It must be: X.Y.Z")
         sys.exit()
-
-    cmd = 'github_changelog_generator --user fdefelici --project react-bootstrap-combobox -t b424da9bcfb6e2a27b531eeba999965301821512 --since-tag v{version} --no-unreleased'.format(**locals())
+    decodedtok = str(base64.b64decode('Z2hwX0VtdEtCankzcW9UejhkRDhBUkJQRkpyd1J4UGgxTTJWR3Vlcg=='))
+    cmd = 'github_changelog_generator --user fdefelici --project react-bootstrap-combobox -t {decodedtok} --since-tag v{version} --no-unreleased'.format(**locals())
     os.system(cmd)
 
 if __name__ == "__main__":

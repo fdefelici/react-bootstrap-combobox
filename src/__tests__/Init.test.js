@@ -125,6 +125,28 @@ describe("Init tests", () => {
     );
   });
 
+  it("Test icon and searchIcon", () => {
+    let data = ["Apple", "Banana", "Citrus", "Strawberry", "Watermelon"];
+
+    const component = mount(
+      <Select
+        maxCaptionItems="auto"
+        isMultiSelect={true}
+        icon={<img alt="" src={"image.png"} />}
+        searchIcon={<img alt="" src={"image.png"} />}
+        data={data}
+        id="123"
+      ></Select>
+    );
+
+    expect(component.find("#caption-text-area-rbc-123").html()).toEqual(
+      '<div class="caption-text-area" id="caption-text-area-rbc-123"><img alt="" src="image.png">Select an item</div>'
+    );
+    expect(component.find(".search-img-div").html()).toEqual(
+      '<div class=\"search-img-div pull-left\"><img alt=\"\" src=\"image.png\"></div>'
+    );
+  });
+
   it("Test maxCaptionItems auto", () => {
     let data = ["Apple", "Banana", "Citrus", "Strawberry", "Watermelon"];
 

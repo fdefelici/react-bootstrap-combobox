@@ -27,6 +27,6 @@ if there is no proxy configured, can run the same command without `--http-proxy`
 1. [Github] Open pull request from vX.Y.Z to master (merge + delete branch)
 1. [Github] Draft New Release (define tag as vX.Y.Z and title as date formatted in this way: YYYY-MM-DD)
 1. [Github] Publish Release vX.Y.Z
-1. [Local] Run `python .auto/rdoc.py PREV(X.Y.Z)` to generate release info
+1. [Local] Run `python .auto/rdoc.py PREV(X.Y.Z) USERID TOKEN` to generate release info
 1. [Github] Edit Release vX.Y.Z
 1. [Github] Close Milestone X.Y.Z
